@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum UIType
 { 
-    None, Loading,  Movable, SongPlayList, Title, Example,
+    None, Loading,  Movable, SongPlayList, Title, Stage,
         _Length
 }
 
@@ -62,7 +62,7 @@ public class UIManager : ManagerBase
         switcherTransform.localScale = Vector3.one;
 
         CreateUI(UIType.Title, "TitleScreen", switcherTransform);
-        CreateUI(UIType.Example, "ExScreen", switcherTransform);
+        CreateUI(UIType.Stage, "StageScreen", switcherTransform);
 
         foreach (Transform currentTransform in switcherTransform)
         { 

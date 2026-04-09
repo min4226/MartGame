@@ -48,8 +48,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cab289493373e4e945d20e20119407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_MovableScreen
-  requiredUI:
-  - prefabName: SongList
-    uiType: 4
-    isOpen: 0
+  requiredUI: []
   popupList: []
