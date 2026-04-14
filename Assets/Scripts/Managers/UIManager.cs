@@ -80,8 +80,18 @@ public class UIManager : ManagerBase
             
             currentTransform.gameObject.SetActive(false);
         }
-        
 
+        RectTransform changerTransform = CreateFullScreen("ScreenChanger");
+        changerTransform.SetAsLastSibling();
+        GameObject instance = ObjectManager.CreateObject("ScreenChanger", changerTransform);
+        if (instance.TryGetComponent(out ScreenChanger asChanger))
+        {
+            asChanger.ChangeStart();
+
+            yield return new WaitForSeconds(3);
+
+            asChanger.ChangeEnd();
+        }
         yield return null;
        
        
