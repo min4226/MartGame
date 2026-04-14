@@ -21,6 +21,8 @@ public class UIManager : ManagerBase
     public Canvas MainCanvas => _mainCanvas;
 
     UIBase _movableScreen;
+    RectTransform switcherTransform;
+    RectTransform createdTransform;
 
     GraphicRaycaster _raycaster;
     public GraphicRaycaster Raycaster => _raycaster;
@@ -44,23 +46,30 @@ public class UIManager : ManagerBase
         //ObjectManager.CreateObject("Popup",_mainCanvas.transform);
         yield return null;
     }
+    public RectTransform CreateFullScreen(string wantName)
+    {
+        GameObject instance = new GameObject(wantName);
+
+        RectTransform result = instance.AddComponent<RectTransform>();
+
+        result.SetParent(MainCanvas.transform);
+        result.SetAsFirstSibling();
+
+        result.anchorMin = Vector3.zero;
+        result.anchorMax = Vector3.one;
+
+        result.offsetMin = Vector3.zero;
+        result.offsetMax = Vector3.zero;
+
+        result.localScale = Vector3.one;
+
+        return result;
+    }
     protected override IEnumerator OnConnected(GameManager newManager)
     {
-        _movableScreen =  CreateUI(UIType.Movable, "MovableScreen");
-        GameObject screenSwitcher = new GameObject("ScreenSwitcher");
-
-        RectTransform switcherTransform =  screenSwitcher.AddComponent<RectTransform>();
-
-        switcherTransform.SetParent(MainCanvas.transform);
-        switcherTransform.SetAsFirstSibling();
-
-        switcherTransform.anchorMin = Vector3.zero;
-        switcherTransform.anchorMax = Vector3.one;
-
-        switcherTransform.offsetMin = Vector3.zero;
-        switcherTransform.offsetMax = Vector3.zero;
-
-        switcherTransform.localScale = Vector3.one;
+        _movableScreen =  CreateUI(UIType.Movable, "MovableScreen", MainCanvas?.transform);
+        createdTransform = CreateFullScreen("createdUI");
+        switcherTransform = CreateFullScreen("ScreenSwitcher");
 
         CreateUI(UIType.Title, "TitleScreen", switcherTransform);
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
@@ -68,8 +77,10 @@ public class UIManager : ManagerBase
 
         foreach (Transform currentTransform in switcherTransform)
         { 
+            
             currentTransform.gameObject.SetActive(false);
         }
+        
 
         yield return null;
        
@@ -110,7 +121,7 @@ public class UIManager : ManagerBase
     }
     protected UIBase CreateUI(UIType wantType, string wantName)
     { 
-        UIBase result = CreateUI(wantType, wantName, _mainCanvas?.transform);
+        UIBase result = CreateUI(wantType, wantName, createdTransform ?? _mainCanvas?.transform);
 
         if (result?.GetComponentInChildren<UI_DraggableWindow>())
         {
