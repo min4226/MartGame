@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum UIType
 { 
-    None, Loading,  Movable, SongPlayList, Title, Stage,
+    None, Loading,  Movable, SongPlayList, Title, Stage, Option, GameQuit,
         _Length
 }
 
@@ -63,6 +64,7 @@ public class UIManager : ManagerBase
 
         CreateUI(UIType.Title, "TitleScreen", switcherTransform);
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
+        CreateUI(UIType.Option, "OptionWindow", switcherTransform);
 
         foreach (Transform currentTransform in switcherTransform)
         { 
@@ -178,6 +180,9 @@ public class UIManager : ManagerBase
     {
         UIBase result = GetUI(wantType);
         if(result is IOpenable opener) opener.Open();
+
+        if (result) EventSystem.current.SetSelectedGameObject(result.gameObject);
+
         return result;
     }
     public static UIBase ClaimOpenUI(UIType wantType) => GameManager.Instance?.UI?.OpenUI(wantType);

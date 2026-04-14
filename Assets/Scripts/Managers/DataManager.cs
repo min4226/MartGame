@@ -35,7 +35,7 @@ public class DataManager : ManagerBase
         {
             loaded ++;
             progressUI?.AddCurrent(1);
-            statusUI?.SetCurrentStatus($"{loadString}{loaded}/{total} 로딩 중입니다.");
+            statusUI?.SetCurrentStatus($"{loadString}{loaded}/{total} 로딩 중입니다");
         
         };
         loadString = "Load Game Objects";
