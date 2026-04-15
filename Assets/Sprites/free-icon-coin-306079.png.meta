@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fe12f77fc7cb01d4a99c8d668f394960
+guid: 0f936816c7f864b40b7e17a2422fa421
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5998844543061282131
-    second: free-icon-delete-5610965_0
+      213: -5134785308634899494
+    second: free-icon-coin-306079_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: free-icon-delete-5610965_0
+      name: free-icon-coin-306079_0
       rect:
         serializedVersion: 2
-        x: 104
-        y: 103
-        width: 305
-        height: 305
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: da2ba0cdba2dfbca0800000000000000
-      internalID: -5998844543061282131
+      spriteID: adb1ce097f39db8b0800000000000000
+      internalID: -5134785308634899494
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      free-icon-delete-5610965_0: -5998844543061282131
+      free-icon-coin-306079_0: -5134785308634899494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

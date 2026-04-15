@@ -8,7 +8,7 @@ public class UI_LoadingScreen : UI_ScreenBase, IOpenable, IProgress<int> , IStat
 
     public int Max { get; protected set; }
 
-    public float Progress => Max != 0 ? (float)Current / Max : 0.0f; // 항상 0이 아닐 경우를 생각
+    public float Progress => Max != 0 ? (float)Current / Max : 0f; 
 
     
     public int AddCurrent(int value) => Set(Current + value, Max);

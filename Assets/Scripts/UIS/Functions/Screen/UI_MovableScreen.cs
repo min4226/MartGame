@@ -18,7 +18,7 @@ public class UI_MovableScreen : UI_ScreenBase
     public override void Registration(UIManager manager)
     {
         base.Registration(manager);
-        InputManager.OnCancel += (value) => UIManager.ClaimToggleUI(UIType.SongPlayList);
+        // InputManager.OnCancel += (value) => UIManager.ClaimToggleUI(UIType.SongPlayList);
         InputManager.OnMouseMove -= MouseMove;
         InputManager.OnMouseMove += MouseMove;
         InputManager.OnMouseLeftButton -= MouseLeft;

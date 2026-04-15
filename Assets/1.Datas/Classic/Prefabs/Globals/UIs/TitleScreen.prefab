@@ -217,8 +217,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play !
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 446bc414d8fec784a8ad5019ae86a9f5, type: 2}
-  m_sharedMaterial: {fileID: -4781877146405788438, guid: 446bc414d8fec784a8ad5019ae86a9f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fd2da051a806a5845b84db1741cb83bd, type: 2}
+  m_sharedMaterial: {fileID: 6080371196372134464, guid: fd2da051a806a5845b84db1741cb83bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -354,8 +354,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play !
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 446bc414d8fec784a8ad5019ae86a9f5, type: 2}
-  m_sharedMaterial: {fileID: -4781877146405788438, guid: 446bc414d8fec784a8ad5019ae86a9f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fd2da051a806a5845b84db1741cb83bd, type: 2}
+  m_sharedMaterial: {fileID: 6080371196372134464, guid: fd2da051a806a5845b84db1741cb83bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -697,8 +697,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC81C\uBAA9\uC744 \uC785\uB825\uD558\uC138\uC694."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 446bc414d8fec784a8ad5019ae86a9f5, type: 2}
-  m_sharedMaterial: {fileID: -4781877146405788438, guid: 446bc414d8fec784a8ad5019ae86a9f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fd2da051a806a5845b84db1741cb83bd, type: 2}
+  m_sharedMaterial: {fileID: 6080371196372134464, guid: fd2da051a806a5845b84db1741cb83bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f051122d75b34aa43ae0b0f5dd58220e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Button_OpenScreen
-  wantType: 5
+  wantType: 4
   wantToggle: 0
 --- !u!1 &7054720388493163040
 GameObject:
