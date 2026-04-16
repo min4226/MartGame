@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 622621e14d4b45d4b8ba8088089e5e93
+guid: dd1d101603a510d47bb70c568299b69c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9197614001361547850
-    second: "\uB2E4\uC6B4\uB85C\uB4DC_0"
+      213: 4506492694891613593
+    second: SolidArrow-Right_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uB2E4\uC6B4\uB85C\uB4DC_0"
+      name: SolidArrow-Right_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 489
-        height: 283
+        x: 17
+        y: 1
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6bd8fabfbc28b5080800000000000000
-      internalID: -9197614001361547850
+      spriteID: 99d48e5ca374a8e30800000000000000
+      internalID: 4506492694891613593
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uB2E4\uC6B4\uB85C\uB4DC_0": -9197614001361547850
+      SolidArrow-Right_0: 4506492694891613593
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3020206236378630772}
   - component: {fileID: 8247405720294597875}
   - component: {fileID: 3660527725443310997}
+  - component: {fileID: 3634164773922977572}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -119,7 +120,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8247405720294597875}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3634164773922977572}
+        m_TargetAssemblyTypeName: UI_Button_OpenScreen, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3634164773922977572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273756297161188821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f051122d75b34aa43ae0b0f5dd58220e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Button_OpenScreen
+  wantType: 0
+  wantToggle: 0
+  changeType: 0
 --- !u!1 &451227281314184760
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,8 +214,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3546469167490301977, guid: 7df785aefe967c94888107c65c6d23dc, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 4333122558310488597, guid: 65ea4e23c2d36594890396490d432143, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -195,7 +223,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.3
 --- !u!1 &730676436637588959
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_Button_OpenScreen
   wantType: 6
   wantToggle: 0
+  changeType: 0
 --- !u!1 &3383212217718146533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,6 +1523,7 @@ GameObject:
   - component: {fileID: 3936303760389300553}
   - component: {fileID: 6043483572173314806}
   - component: {fileID: 3973756977813594862}
+  - component: {fileID: 7806528112911488210}
   m_Layer: 5
   m_Name: MyMarketButton
   m_TagString: Untagged
@@ -1603,7 +1633,34 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6043483572173314806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7806528112911488210}
+        m_TargetAssemblyTypeName: UI_Button_OpenScreen, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7806528112911488210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5716146072233243062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f051122d75b34aa43ae0b0f5dd58220e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Button_OpenScreen
+  wantType: 8
+  wantToggle: 0
+  changeType: 0
 --- !u!1 &5823836817338320134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,7 +1727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9764151, b: 0.9764151, a: 0.7529412}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1712,6 +1769,7 @@ GameObject:
   - component: {fileID: 71293571134281221}
   - component: {fileID: 7005832078273792417}
   - component: {fileID: 8634868854113426936}
+  - component: {fileID: 3329285406635226120}
   m_Layer: 5
   m_Name: ResetButton
   m_TagString: Untagged
@@ -1822,6 +1880,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3329285406635226120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6038151438830319340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f051122d75b34aa43ae0b0f5dd58220e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Button_OpenScreen
+  wantType: 4
+  wantToggle: 0
+  changeType: 0
 --- !u!1 &6646670402304134716
 GameObject:
   m_ObjectHideFlags: 0

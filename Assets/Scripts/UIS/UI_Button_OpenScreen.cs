@@ -5,15 +5,12 @@ public class UI_Button_OpenScreen : MonoBehaviour
 {
     [SerializeField] UIType wantType;
     [SerializeField] bool wantToggle;
+    [SerializeField] ScreenChangeType changeType;
     public void Open()
     {
-        if (wantToggle) UIManager.ClaimToggleUI(wantType);
-        else UIManager.ClaimOpenUI(wantType);
+        UIManager.ClaimOpenScreen(wantType, changeType);
         
     }
 
-    public void Close()
-    { 
-        UIManager.ClaimCloseUI(wantType);
-    }
+    
 }

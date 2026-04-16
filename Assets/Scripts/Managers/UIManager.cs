@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public enum UIType
 { 
-    None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, 
+    None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow,
         _Length
 }
 
@@ -84,6 +84,8 @@ public class UIManager : ManagerBase
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
         CreateUI(UIType.Option, "OptionWindow", switcherTransform);
         CreateUI(UIType.Shop, "ShopWindow" , switcherTransform);
+        CreateUI(UIType.MyMarket, "MyMarket", switcherTransform);
+        CreateUI(UIType.PayWindow, "PayWindow", switcherTransform);
 
         foreach (Transform currentTransform in switcherTransform)
         { 
@@ -237,17 +239,32 @@ public class UIManager : ManagerBase
     }
     public static UIBase ClaimToggleUI(UIType wantType) => GameManager.Instance?.UI?.ToggleUI(wantType);
 
-    protected void ScreenChangeEffectStart(ScreenChangeType wantType)
+    protected void ScreenChangeEffectStart(ScreenChangeType wantType , System.Action endFunction = null)
     {
+        if (currentScreenChanger) return;
+
         if (screenChangerDictionary.TryGetValue(wantType, out ScreenChanger result))
         {
-            if (!result) return;
+            if (!result)
+            {
+                endFunction.Invoke();
+                return;
+            }
             result.gameObject.SetActive(true);
-            result?.ChangeStart();
+            result?.ChangeStart(endFunction);
             currentScreenChanger = result;
         }
+        else
+        {
+            endFunction?.Invoke();
+        }
     }
-    public static void ClaimScreenChangeEffectStart(ScreenChangeType wantType) => GameManager.Instance?.UI?.ScreenChangeEffectStart(wantType);
+    public static void ClaimScreenChangeEffectStart(ScreenChangeType wantType, System.Action endFunction = null)
+    {
+        GameManager.Instance?.UI?.ScreenChangeEffectStart(wantType, endFunction + ClaimScreenChangeEffectEnd);
+    }    
+        
+    public static void ClaimScreenChangeEffect(ScreenChangeType wantType, System.Action endFunction = null) => GameManager.Instance?.UI?.ScreenChangeEffectStart(wantType, endFunction+ClaimScreenChangeEffectEnd);
     protected void ScreenChangeEffectEnd()
     {
         if (!currentScreenChanger) return;
@@ -255,7 +272,8 @@ public class UIManager : ManagerBase
         currentScreenChanger.ChangeEnd(() => targetObject.SetActive(false));
         currentScreenChanger = null;
     }
-    public static void ClaimScreenChangeEffectEnd() => GameManager.Instance?.UI?.ScreenChangeEffectEnd();
+    public static void ClaimScreenChangeEffectEnd() 
+        => GameManager.Instance?.UI?.ScreenChangeEffectEnd();
 
 
     public static void ClaimPopup(string title, string context, string confirm)
@@ -269,6 +287,14 @@ public class UIManager : ManagerBase
         _currentScreenType = wantType;
         return OpenUI(wantType);
     }
+
+    protected void OpenScreen(UIType wantScreen, ScreenChangeType changeType)
+    {
+        ClaimScreenChangeEffect(changeType, () => OpenScreen(wantScreen));
+    }
+
+    public static void ClaimOpenScreen(UIType wantScreen, ScreenChangeType changeType)
+        => GameManager.Instance?.UI?.OpenScreen(wantScreen, changeType);
 
     public static UIBase ClaimOpenScreen(UIType wantType) => GameManager.Instance?.UI?.OpenScreen(wantType);
     public static void ClaimErrorPopup(string context)
