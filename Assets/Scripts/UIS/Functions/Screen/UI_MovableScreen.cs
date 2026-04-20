@@ -2,9 +2,8 @@ using NUnit.Framework;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 
-// µå·¡±× °¡´ÉÇÑ ±â´Éµé Àû´Â °÷
+// ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Éµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 public class UI_MovableScreen : UI_ScreenBase
 {
 

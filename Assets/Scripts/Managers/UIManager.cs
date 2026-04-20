@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// 팝업을 띄우고 싶을 때 무조건 option->ranking 일때 맨처음 창에 required window 넣기!
 public enum UIType
 { 
-    None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow,
+    None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow, Ranking,
         _Length
 }
 
@@ -82,11 +83,8 @@ public class UIManager : ManagerBase
 
         CreateUI(UIType.Title, "TitleScreen", switcherTransform);
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
-        CreateUI(UIType.Option, "OptionWindow", switcherTransform);
-        CreateUI(UIType.Shop, "ShopWindow" , switcherTransform);
         CreateUI(UIType.MyMarket, "MyMarket", switcherTransform);
-        CreateUI(UIType.PayWindow, "PayWindow", switcherTransform);
-
+        
         foreach (Transform currentTransform in switcherTransform)
         { 
             

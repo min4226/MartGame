@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Threading.Tasks;
 using Unity.Mathematics.Geometry;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine.UIElements;
 public static class Extensions
 {
@@ -34,8 +33,8 @@ public static class Extensions
 
     public static IEnumerator WaitForTask(this Task targetTask)
     {
-        // waituntil : falseÀÎ °æ¿ì¿¡¸¸ ÀÛµ¿ - true°¡ µÉ ¶§±îÁö ±â´Ù¸²
-        // waitwhile : trueÀÎ °æ¿ì¿¡¸¸ ÀÛµ¿
+        // waituntil : falseï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½Ûµï¿½ - trueï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù¸ï¿½
+        // waitwhile : trueï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½Ûµï¿½
         yield return new WaitUntil(() => targetTask.IsCompleted);
         targetTask.Dispose();
     }
@@ -91,7 +90,7 @@ public static class Extensions
         return result;
         
     }
-                                                       // Å×µÎ¸®
+                                                       // ï¿½×µÎ¸ï¿½
     public static Vector2 InversedAABB(this Rect target, Rect bound)
     {
         Vector2 result;

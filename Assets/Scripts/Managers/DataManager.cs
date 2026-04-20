@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
 public class DataManager : ManagerBase
 {
     static Dictionary<System.Type, Dictionary<string, Object>> dataDictionary = new();
+    event System.Action DisconnectEvent;
     public override int LoadingCount
     {
         get 
@@ -59,7 +62,8 @@ public class DataManager : ManagerBase
 
     protected override void OnDisconnected()
     {
-
+        DisconnectEvent?.Invoke();
+        DisconnectEvent = null;
     }
 
     bool TryGetFileFromResources<T>(string path, out T result) where T : Object
@@ -119,7 +123,7 @@ public class DataManager : ManagerBase
         }); // 람다식
         Task result = finder.Task;
         await result;
-        finder.Release();
+        DisconnectEvent += () => finder.Release();
 
     }
     
@@ -129,7 +133,7 @@ public class DataManager : ManagerBase
         var finder = Addressables.LoadAssetAsync<T>(address);
         await finder.Task; // 작업이 끝날 때까지 기다리기
         SaveDataFile(finder.Result);
-        
+        DisconnectEvent += () => finder.Release();
     }
     
 }

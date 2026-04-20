@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public delegate void InitializeEvent();
@@ -11,7 +10,7 @@ public class GameManager : MonoBehaviour
     static GameManager _instance;
     public static GameManager Instance => _instance;
 
-    // °¢ ÇÁ·ÎÆÛÆ¼¸¦ ¸¸µê
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     UIManager _ui;
     public UIManager UI => _ui;
     DataManager _data;
@@ -65,7 +64,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // º¯¼ö¿¡ ÀúÀåÀ» ÇØ¼­ »ç¿ëÇÏ´Â °ÍÀÌ ´õ ÁÁ´Ù. ÀÌ¸§À¸·Î ³Ö´Â °Ô ¾Æ´Ï¶ó
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ ï¿½Æ´Ï¶ï¿½
         initializing = InitializeManagers();
 
         StartCoroutine(initializing);

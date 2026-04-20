@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 7674261107193711493}
   - component: {fileID: 1179329065604527058}
   - component: {fileID: 301743961176967307}
-  - component: {fileID: 307652462742263327}
+  - component: {fileID: 654681018554970759}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -259,8 +259,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 307652462742263327}
-        m_TargetAssemblyTypeName: UI_Button_OpenScreen, Assembly-CSharp
+      - m_Target: {fileID: 654681018554970759}
+        m_TargetAssemblyTypeName: UI_OpenPopup, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1
         m_Arguments:
@@ -271,7 +271,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &307652462742263327
+--- !u!114 &654681018554970759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,8 +280,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6879422314352897107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f051122d75b34aa43ae0b0f5dd58220e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3746ed79334e51a408aeec93da8f24c9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_Button_OpenScreen
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OpenPopup
   wantType: 9
   wantToggle: 0
+  openOnTop: 1
