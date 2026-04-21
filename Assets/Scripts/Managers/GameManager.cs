@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     static GameManager _instance;
     public static GameManager Instance => _instance;
 
-    // �� ������Ƽ�� ����
+    
     UIManager _ui;
     public UIManager UI => _ui;
     DataManager _data;
@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     public static event UpdateEvent OnUpdateController;
     public static event UpdateEvent OnUpdateCharacter;
     public static event UpdateEvent OnUpdateObject;
+    public static event UpdateEvent  OnPhysicsCharacter;
+    public static event UpdateEvent  OnPhysicsObject;
 
     public static DestroyEvent OnDestroyManager;
     public static DestroyEvent OnDestroyController;
@@ -213,4 +215,13 @@ public class GameManager : MonoBehaviour
         OnDestroyManager?.Invoke();
 
 }
+
+    void FixedUpdate()
+    {
+        if (isLoading || !isPlaying) return;
+        float deltaTime = Time.fixedDeltaTime;
+
+        OnPhysicsCharacter?.Invoke(deltaTime);
+        OnPhysicsObject?.Invoke(deltaTime);
+    }
 }
