@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     public static DestroyEvent OnDestroyCharacter;
     public static DestroyEvent OnDestroyObject;
 
+    [SerializeField] UIType startScreen = UIType.Title;
+
     bool isLoading = true;
     bool isPlaying = true;
     void Awake()
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // ������ ������ �ؼ� ����ϴ� ���� �� ����. �̸����� �ִ� �� �ƴ϶�
+        
         initializing = InitializeManagers();
 
         StartCoroutine(initializing);
@@ -115,7 +117,7 @@ public class GameManager : MonoBehaviour
         loadingProgress?.AddCurrent(1);
         yield return new WaitForSeconds(1.0f);
 
-        UIManager.ClaimOpenScreen(UIType.Title, ScreenChangeType.ScreenChanger);
+        UIManager.ClaimOpenScreen(startScreen, ScreenChangeType.ScreenChanger);
         isLoading = false;
 
     }

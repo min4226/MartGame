@@ -26,9 +26,8 @@ public class ObjectManager : ManagerBase
     static Dictionary<string, ObjectPoolModule> poolDictionary = new();
     protected override IEnumerator OnConnected(GameManager newManager)
     {
+        RegistrationInHierarchy();
         RegistrationPool(globalPoolSettings);
-        
-
         InitilizePool();                                                                                                                
 
         yield return null;
@@ -297,5 +296,17 @@ public class ObjectManager : ManagerBase
         { 
             currentPool?.Initialize();
         }
+    }
+
+    public void RegistrationInHierarchy()
+    {
+        foreach (MonoBehaviour current in FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
+        {
+            if (current is IFunctionable currentFunctionable)
+            {
+                currentFunctionable.RegistrationFunctions();
+            }
+        }
+        
     }
 }

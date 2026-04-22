@@ -25,39 +25,21 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MouseLeftButtonDown",
+                    "name": "MouseLeftButton",
                     "type": "Button",
                     "id": "cbc36a0e-6599-4e7e-9084-99c3168ed8f4",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MouseRightButtonDown",
+                    "name": "MouseRightButton",
                     "type": "Button",
                     "id": "65c277a8-7e11-4602-9cee-3cb0d18d94b6",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MouseLeftButtonUp",
-                    "type": "Button",
-                    "id": "22995f6a-79ed-4b95-80fb-fbf1f0a4b719",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MouseRightButtonUp",
-                    "type": "Button",
-                    "id": "25be7eab-1270-4949-bde3-b6e729cf7ae9",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -82,6 +64,24 @@
                     "name": "ExterminItemRight",
                     "type": "Button",
                     "id": "92a4fdba-b7ee-4702-9034-37427c2165da",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "57023454-8983-498f-9d49-e4952fd603c2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "864d6a20-5a4f-47ba-a972-e013eb714630",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -118,7 +118,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MouseLeftButtonDown",
+                    "action": "MouseLeftButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -129,29 +129,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MouseRightButtonDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "97c6ce00-0200-406e-b0c0-1b67f03caca8",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseLeftButtonUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c002bde3-278c-4650-a70e-e4e07e2ba32e",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MouseRightButtonUp",
+                    "action": "MouseRightButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -185,6 +163,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExterminItemRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "3fd004e4-1cbc-44d9-af92-0aac0f0a250d",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "5b2aa59d-280e-425b-a28a-ec476c92ee8a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "45845b65-62cd-4ede-a6a1-e7fa36955f95",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "2593bbcc-5065-4d39-9636-f2694a9b8ac9",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "49cac3be-678a-41fc-afc4-fc73f60d199e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b2915ed3-ae2f-4fa0-9a3d-e35fc8ef2a11",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

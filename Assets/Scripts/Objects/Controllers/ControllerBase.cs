@@ -6,10 +6,7 @@ public class ControllerBase : MonoBehaviour, IFunctionable
     CharacterBase _character;
     public CharacterBase Character => _character;
     public virtual string DisplayName => "SeoSangWon";
-    void Start()
-    {
-        GameManager.OnInitializeController += RegistrationFunctions;
-    }
+    
 
     protected virtual void OnPossess(CharacterBase newCharacter) { }
     public void Possess(CharacterBase target)

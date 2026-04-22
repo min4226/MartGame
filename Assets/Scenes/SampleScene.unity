@@ -511,6 +511,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2276690479873679349, guid: 6510300a28d87b141bddd0d810705221, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5165296437076613161, guid: 6510300a28d87b141bddd0d810705221, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -626,7 +630,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4347656469268204367, guid: 281b3d8e7bd0f8f4c996db453afd8cad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -708,6 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46532c317a3d734aac427b4fef905b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  startScreen: 3
 --- !u!4 &1772593127
 Transform:
   m_ObjectHideFlags: 0
