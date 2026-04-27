@@ -5,9 +5,7 @@ public class ControllerBase : MonoBehaviour, IFunctionable
 {
     CharacterBase _character;
     public CharacterBase Character => _character;
-    public virtual string DisplayName => "SeoSangWon";
     
-
     protected virtual void OnPossess(CharacterBase newCharacter) { }
     public void Possess(CharacterBase target)
     {
@@ -45,7 +43,7 @@ public class ControllerBase : MonoBehaviour, IFunctionable
 
     public void CommandMoveToDirection(Vector3 direction)
     {
-        if (Character is IRunable target)
+        if (Character && Character.GetModule<MovementModule>() is IRunable target)
         { 
             target.MoveToDirection(direction);
         }
@@ -53,7 +51,7 @@ public class ControllerBase : MonoBehaviour, IFunctionable
     // 오차범위
     public void CommandMoveToDestination(Vector3 destination, float tolerance)
     {
-        if (Character is IRunable target)
+        if (Character && Character.GetModule<MovementModule>() is IRunable target)
         { 
             target.MoveToDestination(destination, tolerance);
         }
@@ -61,7 +59,7 @@ public class ControllerBase : MonoBehaviour, IFunctionable
     }
     public void CommandStop()
     {
-        if (Character is IRunable target)
+        if (Character && Character.GetModule<MovementModule>() is IRunable target)
         { 
             target.StopMovement();
         }
