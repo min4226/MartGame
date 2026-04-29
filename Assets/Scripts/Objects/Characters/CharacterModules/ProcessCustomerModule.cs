@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ProcessCustomerModule : CharacterModule
 {
-    public float Attack();
+    //public float Attack();
 
 
     

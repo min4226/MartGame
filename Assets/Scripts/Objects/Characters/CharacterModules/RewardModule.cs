@@ -12,11 +12,30 @@ public class RewardModule : MonoBehaviour
     int _coin;
     public int Coin => _coin;
 
-    public int ReceiveReward(int Fame, int Coin)
+    // 스테이지를 성공 했을 때 받는 보상 정도
+    public TimeResult ReceiveReward(TimeResult result, StageData stageData)
     {
-        
+        if (result == TimeResult.Success)
+        {
+            _fame += stageData.fameReward;
+            _coin += stageData.coinReward;
+        }
+        return result;
     }
 
-    public  IncreaseReward(int Fame, int Coin);
-    public  DecreaseReward(int Fame, int Coin);
+    // 진상을 처리했을 때 받는 보상
+    public void IncreaseReward(StageData stageData)
+    {
+        _fame += stageData.fameIncrease;
+        _coin += stageData.coinIncrease;
+    }
+    // 진상 처리를 못 했을 시
+    public void DecreaseReward(StageData stageData)
+    {
+        _fame -= stageData.fameDecrease;
+        _coin -= stageData.coinDecrease;
+
+        _fame = Mathf.Max(0, _fame);
+        _coin = Mathf.Max(0, _coin);
+    }
 }
