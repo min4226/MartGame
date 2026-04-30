@@ -12,8 +12,20 @@ public class RewardModule : MonoBehaviour
     int _coin;
     public int Coin => _coin;
 
+
+    public void ApplyReward(Reward reward)
+    {
+        _fame += reward.fame;
+        _coin += reward.coin;
+
+        _fame = Mathf.Max(0, _fame);
+        _coin = Mathf.Max(0, _coin);
+    }
+
+
+
     // 스테이지를 성공 했을 때 받는 보상 정도
-    public TimeResult ReceiveReward(TimeResult result, StageData stageData)
+    /*public TimeResult ReceiveReward(TimeResult result, StageData stageData)
     {
         if (result == TimeResult.Success)
         {
@@ -37,5 +49,5 @@ public class RewardModule : MonoBehaviour
 
         _fame = Mathf.Max(0, _fame);
         _coin = Mathf.Max(0, _coin);
-    }
+    }*/
 }

@@ -2,9 +2,7 @@ using UnityEngine;
 
   public enum CustomerType
   { 
-      None,
-      NormalCustomer, RudeCustomer, ShopLifter, SpecialCustomer, 
-      _Length
+      NormalCustomer, TroubleMakerCustomer, ThiefCustomer, SpecialCustomer, 
   }
 
   // 진상손님 행동타입
@@ -20,3 +18,9 @@ using UnityEngine;
       None, Success, Fail,
       _Length
   }
+
+public enum StageType
+{ 
+    stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8, stage9, stage10, 
+    stage11, stage12, stage13, stage14, stage15
+}
