@@ -46,7 +46,12 @@ public class DataManager : ManagerBase
         loadString = "Load Pool Requests";                                       
         yield return LoadAllFromAssetBundle<PoolRequest>("Global", ProgressOnLoad).WaitForTask();
         loadString = "Load Scriptable Objects";
-        yield return LoadAllFromAssetBundle<ScriptableObject>("Global", ProgressOnLoad).WaitForTask();
+        yield return LoadAllFromAssetBundle<CustomerData>("Global", ProgressOnLoad).WaitForTask();
+        yield return LoadAllFromAssetBundle<ItemData>("Global", ProgressOnLoad).WaitForTask();
+        yield return LoadAllFromAssetBundle<NormalCustomerItem>("Global", ProgressOnLoad).WaitForTask();
+        yield return LoadAllFromAssetBundle<ShopData>("Global", ProgressOnLoad).WaitForTask();
+        yield return LoadAllFromAssetBundle<StageData>("Global", ProgressOnLoad).WaitForTask();
+
         /*GameObject prefab = LoadDataFile<GameObject>("Square");
         Instantiate(prefab, Random.insideUnitCircle * 3.0f, Random.rotation);*/
 

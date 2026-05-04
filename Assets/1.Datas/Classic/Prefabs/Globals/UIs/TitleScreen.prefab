@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 6385222819855136040}
   - component: {fileID: 8923345870474431078}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 3677751079926661089}
   - component: {fileID: 9022296736204414675}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
