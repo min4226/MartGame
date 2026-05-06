@@ -9,8 +9,8 @@ using UnityEngine.EventSystems;
 public class CameraManager : ManagerBase
 {
     public Camera MainCamera { get; private set; }
-    public Physics2DRaycaster Raycaster2D { get; private set; }
-    public PhysicsRaycaster Raycaster3D { get; private set; }
+
+    
 
     protected override IEnumerator OnConnected(GameManager newManager)
     {
@@ -26,27 +26,17 @@ public class CameraManager : ManagerBase
     public void SetMainCamera(Camera wantCamera)
     {
         MainCamera = wantCamera;
-        if (MainCamera)
-        {
-            Raycaster2D = wantCamera.GetComponent<Physics2DRaycaster>();
-            Raycaster3D = wantCamera.GetComponent<Physics2DRaycaster>();
-        }
     }
 
-    public void GetRaycastResult2D(Vector2 screenPosition, List<RaycastResult> outResult)
+    public void GetRaycastResult(Vector2 screenPosition, List<RaycastResult> outResult)
     {
-        PointerEventData eventData = new(EventSystem.current);
+        EventSystem currentEvent = EventSystem.current;
+        if (!currentEvent) return;
+
+        PointerEventData eventData = new(currentEvent);
         eventData.position = screenPosition;
 
-        Raycaster2D?.Raycast(eventData, outResult);
-    }
-
-    public void GetRaycastResult3D(Vector2 screenPosition, List<RaycastResult> outResult)
-    {
-        PointerEventData eventData = new(EventSystem.current);
-        eventData.position = screenPosition;
-
-        Raycaster3D?.Raycast(eventData, outResult);
+        currentEvent.RaycastAll(eventData, outResult);
     }
 
 }

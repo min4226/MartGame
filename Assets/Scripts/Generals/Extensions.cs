@@ -1,7 +1,9 @@
-using UnityEngine;
 using System.Collections;
 using System.Threading.Tasks;
 using Unity.Mathematics.Geometry;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 public static class Extensions
 {
@@ -24,6 +26,31 @@ public static class Extensions
 
         return result;
     }
+    public static T GetExtreme<T>(this IEnumerable targetList, float defaultScore,
+        System.Func<T, float> Evalueator, System.Func<float, float, bool> Comparison)
+    {
+        T result = default;
+        float firstScore = float.MinValue; // maxValue : 가장 큰 값
+
+        foreach (T currentTarget in targetList)
+        {
+            float currentScore = Evalueator(currentTarget);
+
+            if (currentScore > firstScore)
+            {
+                result = currentTarget;
+                firstScore = currentScore;
+            }
+        }
+        return result;
+
+    }
+    public static T GetMaximum<T>(this IEnumerable targetList, System.Func<T, float> Evalueator)
+    => GetExtreme(targetList, float.MinValue, Evalueator, (a,b) => a > b);
+
+    public static T GetMinimum<T>(this IEnumerable targetList, System.Func<T, float> Evalueator)
+    => GetExtreme(targetList, float.MaxValue, Evalueator, (a, b) => a < b);
+    
 
     public static T TryAddComponent<T>(this Component target) where T : Component
     {
