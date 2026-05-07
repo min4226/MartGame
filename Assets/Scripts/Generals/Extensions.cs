@@ -30,13 +30,13 @@ public static class Extensions
         System.Func<T, float> Evalueator, System.Func<float, float, bool> Comparison)
     {
         T result = default;
-        float firstScore = float.MinValue; // maxValue : 가장 큰 값
+        float firstScore = defaultScore; // maxValue : 가장 큰 값
 
         foreach (T currentTarget in targetList)
         {
             float currentScore = Evalueator(currentTarget);
 
-            if (currentScore > firstScore)
+            if (Comparison(currentScore , firstScore))
             {
                 result = currentTarget;
                 firstScore = currentScore;

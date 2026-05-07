@@ -9,6 +9,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public delegate void MouseButtonEvent(bool value, Vector2 screenPosition, Vector3 worldPosition);
 public delegate void MouseMoveEvent(Vector2 screenPosition, Vector3 worldPosition);
+public delegate void MouseHoverEvent(GameObject newTarget, GameObject oldTarget);
+public delegate void MouseUIHoverEvent(UIType uiType , UIType oldUITarget);
 public delegate void ExterminItemEvent(bool value);
 public delegate void AxisEvent(Vector2 value);
 public delegate void ButtonEvent(bool value);
@@ -20,11 +22,16 @@ public class InputManager : ManagerBase
     public static event MouseButtonEvent OnMouseLeftButton;
     public static event MouseButtonEvent OnMouseRightButton;
     public static event MouseMoveEvent OnMouseMove;
+    public static event MouseHoverEvent OnMouseHover;
+    public static event MouseUIHoverEvent OnMouseUIHover;
+
     public static event ExterminItemEvent OnExterminItemLeft;
     public static event ExterminItemEvent OnExterminItemMiddle;
     public static event ExterminItemEvent OnExterminItemRight;
+
     public static event AxisEvent OnMove;
     public static event ButtonEvent OnCancel;
+
 
     PlayerInput targetInput;
     Dictionary<string, InputAction> actionDictionary = new();
@@ -78,11 +85,12 @@ public class InputManager : ManagerBase
 
             float GetValue(RaycastResult target)
             {
+                Debug.Log(target.gameObject);
                 return target.sortingOrder + target.sortingLayer * 100000;
             }
             RaycastResult nearest = cursorHitList.GetMaximum<RaycastResult>(GetValue);
             firstObject = nearest.gameObject;
-            worldPosition = nearest.worldPosition;
+            
         }
         else 
         {
@@ -95,28 +103,21 @@ public class InputManager : ManagerBase
             firstObject = nearest.gameObject;
             worldPosition = nearest.worldPosition;
         }
+        GameObject lastHoverObject = cursorHoverObject;
 
-            float firstDistance = float.MaxValue; // maxValue : 가장 큰 값
-        Vector3 firstPosition = worldPosition;
-        foreach (RaycastResult currentResult in cursorHitList)
-        {
-            float currentDistance = currentResult.distance;
-
-            if (currentDistance < firstDistance)
-            {
-                firstObject = currentResult.gameObject;
-                firstDistance = currentDistance;
-                firstPosition = currentResult.worldPosition;
-            }
-        }
         cursorScreenPosition = screenPosition;
         cursorWorldPosition = worldPosition;
+        cursorHoverObject = firstObject;
+
+        if (lastHoverObject != firstObject)
+        {
+            OnMouseHover?.Invoke(firstObject, lastHoverObject);
+        }
+
     }
 
     public GameObject GetGameObjectUnderCursor()
     {
-        
-
         if (cursorHitList.Count == 0) return null;
 
         return cursorHitList[0].gameObject;
@@ -168,7 +169,7 @@ public class InputManager : ManagerBase
 
         void CursorPositionChanged(InputAction.CallbackContext context)
         {
-            RefreshGameObjectUnderCursor(cursorScreenPosition);
+            RefreshGameObjectUnderCursor(GetVector2Value(context));
             OnMouseMove?.Invoke(cursorScreenPosition, cursorWorldPosition);
         }
 
