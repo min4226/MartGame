@@ -29,20 +29,21 @@ public class UI_TargetInfo : OpenbleUIBase
 
     void HoverInfoChange(GameObject newTarget, GameObject oldTarget)
     {
+        if(newTarget)
+        {
+            if (newTarget.name == "MyCoinCount")
+            {
+                Open();
+                return;
+            }
+            else if (newTarget.name == "MyFameCount")
+            {
+                Open();
+                return;
+            }
+        }
 
-        if (newTarget.name == "MyCoinCount")
-        {
-            Open();
-        }
-        else if (newTarget.name == "MyFameCount")
-        {
-            Debug.Log($"ÇöÀç Å¸°Ù: {newTarget.name}");
-            Open();
-            
-        }
-        else
-        {
-            Close();
-        }
+        Close();
+
     }
 }

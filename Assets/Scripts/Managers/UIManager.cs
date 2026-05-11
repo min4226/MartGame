@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public enum UIType
 { 
     None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow, 
-    Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo,
+    Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, 
     _Length
 }
 

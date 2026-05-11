@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UI_Button_OpenScreen : MonoBehaviour
 {
@@ -9,8 +10,7 @@ public class UI_Button_OpenScreen : MonoBehaviour
     public void Open()
     {
         UIManager.ClaimOpenScreen(wantType, changeType);
-        
+
     }
 
-    
 }

@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3660527725443310997}
   - component: {fileID: 5300345262919386167}
   m_Layer: 5
-  m_Name: Button
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 4550352971298513269}
   - component: {fileID: 4019613122392318385}
   m_Layer: 5
-  m_Name: Image
+  m_Name: UserInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -867,7 +867,7 @@ GameObject:
   - component: {fileID: 3936303760389300553}
   - component: {fileID: 6043483572173314806}
   - component: {fileID: 3973756977813594862}
-  - component: {fileID: 7806528112911488210}
+  - component: {fileID: 6357588279286462460}
   m_Layer: 5
   m_Name: MyMarketButton
   m_TagString: Untagged
@@ -978,8 +978,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7806528112911488210}
-        m_TargetAssemblyTypeName: UI_Button_OpenScreen, Assembly-CSharp
+      - m_Target: {fileID: 6357588279286462460}
+        m_TargetAssemblyTypeName: MarketWindow, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1
         m_Arguments:
@@ -990,7 +990,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7806528112911488210
+--- !u!114 &6357588279286462460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -999,12 +999,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5716146072233243062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f051122d75b34aa43ae0b0f5dd58220e, type: 3}
+  m_Script: {fileID: 11500000, guid: 97ce0e9d8ed8ce041a9bf7ea2329b5f9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_Button_OpenScreen
-  wantType: 8
-  wantToggle: 0
-  changeType: 0
+  m_EditorClassIdentifier: Assembly-CSharp::MarketWindow
+  marketWindow: {fileID: 8689371032371938187, guid: 0e9005013810a7d49ba38db2634c721c, type: 3}
+  stageScene: {fileID: 6274211180090025720, guid: 36c596e3255e51d43a37e86c9296934e, type: 3}
 --- !u!1 &5823836817338320134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,7 +1223,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7005832078273792417}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3329285406635226120}
+        m_TargetAssemblyTypeName: UI_Button_OpenScreen, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3329285406635226120
 MonoBehaviour:
   m_ObjectHideFlags: 0
