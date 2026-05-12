@@ -67,6 +67,8 @@ public class CharacterBase : MonoBehaviour
     }
 
     public virtual void OnPossessed(ControllerBase newController) { }
+
+    // possess : ∫Ÿ¿‚¥Ÿ
     public ControllerBase Possessed(ControllerBase from)
     {
         if (_controller) Unpossessed();

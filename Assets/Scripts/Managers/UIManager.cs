@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public enum UIType
 { 
     None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow, 
-    Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, 
+    Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, MarketWindow,
     _Length
 }
 
@@ -28,6 +28,8 @@ public class UIManager : ManagerBase
     public Canvas MainCanvas => _mainCanvas;
 
     UIBase _movableScreen;
+
+    
     RectTransform switcherTransform;
     RectTransform createdTransform;
     RectTransform changerTransform;
@@ -86,6 +88,7 @@ public class UIManager : ManagerBase
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
         CreateUI(UIType.MyMarket, "MyMarket", switcherTransform);
         
+
         foreach (Transform currentTransform in switcherTransform)
         { 
             
@@ -145,6 +148,8 @@ public class UIManager : ManagerBase
         UIBase result = instance?.GetComponent<UIBase>();
         return SetUI(wantType, result);
     }
+
+    
     protected UIBase CreateUI(UIType wantType, string wantName)
     { 
         UIBase result = CreateUI(wantType, wantName, createdTransform ?? _mainCanvas?.transform);
