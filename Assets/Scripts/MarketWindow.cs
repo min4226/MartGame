@@ -13,15 +13,13 @@ public class MarketWindow : UIManager
     }
     public void Open()
     {
-        //Debug.Log(marketWindow == null);
         UIManager.ClaimCloseUI(UIType.Option);
         stageScene.SetActive(false);
         //UIManager.ClaimOpenUI(UIType.MyMarket);
         marketWindow.SetActive(true);
     }
-    /*public void Close()
+    public void Close()
     {
-        Debug.Log("¹® ´ÝÈû");
         marketWindow.SetActive(false);
-    }*/
+    }
 }
