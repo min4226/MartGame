@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public InputManager Input => _input;
 
     
+    
     IEnumerator initializing;
 
     public static event InitializeEvent OnInitializeManager;
@@ -94,6 +95,7 @@ public class GameManager : MonoBehaviour
         totalLoad += CreateManager(ref _audio).LoadingCount;
         totalLoad += CreateManager(ref _camera).LoadingCount;
         totalLoad += CreateManager(ref _input).LoadingCount;
+        
 
         yield return  UI.Initialize(this);
         UIBase loadingUI = UIManager.ClaimOpenScreen(UIType.Loading);
@@ -117,6 +119,7 @@ public class GameManager : MonoBehaviour
         loadingProgress?.AddCurrent(1);
         yield return _input.Connect(this);
         loadingProgress?.AddCurrent(1);
+        
         yield return new WaitForSeconds(1.0f);
 
         UIManager.ClaimOpenScreen(startScreen, ScreenChangeType.ScreenChanger);

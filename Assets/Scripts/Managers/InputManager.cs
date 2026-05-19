@@ -15,6 +15,11 @@ public delegate void ExterminItemEvent(bool value);
 public delegate void AxisEvent(Vector2 value);
 public delegate void ButtonEvent(bool value);
 
+public delegate void RestartEvent(bool value);
+public delegate void ShopEvent(bool value);
+public delegate void MarketEvent(bool value);
+public delegate void RankingEvent(bool value);
+
 [RequireComponent(typeof(PlayerInput))]
 
 public class InputManager : ManagerBase
@@ -32,6 +37,10 @@ public class InputManager : ManagerBase
     public static event AxisEvent OnMove;
     public static event ButtonEvent OnCancel;
 
+    public static event RestartEvent OnRestart;
+    public static event ShopEvent OnShop;
+    public static event MarketEvent OnMarket;
+    public static event RankingEvent OnRanking;
 
     PlayerInput targetInput;
     Dictionary<string, InputAction> actionDictionary = new();
@@ -150,6 +159,12 @@ public class InputManager : ManagerBase
         InitializeAction("ExterminItemRight", (context) => OnExterminItemRight?.Invoke(true));
         InitializeAction("Move", (context) => OnMove?.Invoke(GetVector2Value(context))
                                , (context) => OnMove?.Invoke(Vector2.zero));
+
+        InitializeAction("Restart", (context) => OnRestart?.Invoke(true));
+        InitializeAction("Shop", (context) => OnShop?.Invoke(true));
+        InitializeAction("Market", (context) => OnMarket?.Invoke(true));
+        InitializeAction("Ranking", (context) => OnRanking?.Invoke(true));
+
 
         void InitializeAction(string actionName, Action<InputAction.CallbackContext> actionMethod, Action<InputAction.CallbackContext> cancelMethod = null)
         {

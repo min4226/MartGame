@@ -283,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4563395243211055005}
   - component: {fileID: 8634123787546624444}
+  - component: {fileID: -1087886622278047190}
   m_Layer: 0
   m_Name: MarketWindow
   m_TagString: MarketWindow
@@ -300,7 +301,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18.766401, y: 10.6425, z: 1}
+  m_LocalScale: {x: 4.4570203, y: 3.724875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8907248285787218865}
@@ -357,7 +358,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: a29f7e6d221f4cb49a9e97ab1167e77c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.41960785}
   m_FlipX: 0
   m_FlipY: 0
@@ -367,3 +368,16 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &-1087886622278047190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8689371032371938187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be4e9a8984dca54ebf9c8aede63afce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ExScreen
+  requiredUI: []

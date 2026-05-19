@@ -1,9 +1,11 @@
 using UnityEngine;
 
-  public enum CustomerType
-  { 
-      NormalCustomer, TroubleMakerCustomer, ThiefCustomer, SpecialCustomer, 
-  }
+ public enum CustomerType
+ { 
+     NormalCustomer, TroubleMakerCustomer, ThiefCustomer, SpecialCustomer, 
+ }
+
+
 
   // 진상손님 행동타입
   public enum RudeCustomerBehaviorType

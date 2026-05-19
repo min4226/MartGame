@@ -5,6 +5,12 @@ public class SettingManager : ManagerBase
 {
     protected override IEnumerator OnConnected(GameManager newManager)
     {
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.autorotateToPortrait = true;
+        Screen.autorotateToPortraitUpsideDown = true;
+
+        Screen.sleepTimeout = SleepTimeout.SystemSetting;
         yield return null;
     }
 

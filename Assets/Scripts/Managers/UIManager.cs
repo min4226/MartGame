@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,6 +85,11 @@ public class UIManager : ManagerBase
         createdTransform = CreateFullScreen("createdUI");
         switcherTransform = CreateFullScreen("ScreenSwitcher");
 
+        InputManager.OnRestart += RestartButton;
+        InputManager.OnShop += ShopButton;
+        InputManager.OnRanking += RankingButton;
+
+
         CreateUI(UIType.Title, "TitleScreen", switcherTransform);
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
         CreateUI(UIType.MyMarket, "MyMarket", switcherTransform);
@@ -114,6 +120,27 @@ public class UIManager : ManagerBase
         yield return null;
        
        
+    }
+
+    private void RankingButton(bool value)
+    {
+        if (!value) return;
+        ClaimOpenUI(UIType.Ranking);
+    }
+
+    private void ShopButton(bool value)
+    {
+        if (!value) return;
+        Debug.Log("상점으로");
+        ClaimOpenUI(UIType.Shop);
+    }
+
+    private void RestartButton(bool value)
+    {
+        if (!value) return;
+        Debug.Log("다시하기");
+        ClaimOpenUI(UIType.Stage);
+        ClaimOpenUI(UIType.BackGround);
     }
 
     protected override void OnDisconnected()

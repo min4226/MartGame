@@ -5,6 +5,6 @@ public class ItemData : ScriptableObject
 {
     public Sprite itemSprite;
     public string itemName;
-    public int itemPrice;
+    public Reward reward;
 
 }
