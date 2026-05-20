@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42.200035, y: -85.1}
+  m_AnchoredPosition: {x: 50.500023, y: -85.1}
   m_SizeDelta: {x: 19.2, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3082344801767511952
@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34.6, y: -84.6}
+  m_AnchoredPosition: {x: -42.3, y: -84.6}
   m_SizeDelta: {x: 13, y: 13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1239661708806682052
@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 292455308970231148}
   - component: {fileID: 3374929707754592542}
   - component: {fileID: 6397201012237463676}
+  - component: {fileID: 5190156168840118192}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -255,7 +256,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 186, y: 199.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1719625063071332524
 CanvasRenderer:
@@ -338,7 +339,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 292455308970231148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5190156168840118192}
+        m_TargetAssemblyTypeName: UI_OpenPopup, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6397201012237463676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +368,21 @@ MonoBehaviour:
   itemSlotName: {fileID: 4760563324201370973}
   coinText: {fileID: 7736863496609524282}
   fameText: {fileID: 3936931387908103608}
+--- !u!114 &5190156168840118192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103402494691588990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3746ed79334e51a408aeec93da8f24c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OpenPopup
+  wantType: 9
+  wantToggle: 0
+  openOnTop: 1
 --- !u!1 &6210133332015653128
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.799963, y: -85.1}
+  m_AnchoredPosition: {x: -18.499975, y: -85.1}
   m_SizeDelta: {x: 19.2, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3220248694081480927
@@ -601,7 +629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.400024, y: -84.6}
+  m_AnchoredPosition: {x: 26.7, y: -84.6}
   m_SizeDelta: {x: 13, y: 13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6667528673558789933
