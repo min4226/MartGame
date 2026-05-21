@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class MarketWindow : UIManager
 {
-    [SerializeField] GameObject _marketWindow;
-    GameObject marketWindow => _marketWindow;
-    [SerializeField] GameObject _stageScene;
-    GameObject stageScene => _stageScene;
+    [SerializeField] GameObject marketWindow;
+    
+    [SerializeField] GameObject stageScene;
+   
 
     void Awake()
     {
-        _marketWindow = GameObject.FindGameObjectWithTag("MarketWindow");
-        _stageScene = GameObject.FindGameObjectWithTag("PlayGame");
+        marketWindow = GameObject.FindGameObjectWithTag("MarketWindow");
+        stageScene = GameObject.FindGameObjectWithTag("PlayGame");
         marketWindow.SetActive(false);
     }
     public void Open()
@@ -20,8 +20,5 @@ public class MarketWindow : UIManager
         //UIManager.ClaimOpenUI(UIType.MyMarket);
         marketWindow.SetActive(true);
     }
-    public void Close()
-    {
-        marketWindow.SetActive(false);
-    }
+    
 }

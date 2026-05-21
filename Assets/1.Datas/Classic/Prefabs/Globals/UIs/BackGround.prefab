@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 5165296437076613161}
   - component: {fileID: 1935344984876292095}
   - component: {fileID: 796415615982377824}
+  - component: {fileID: 3381873107494676674}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -209,3 +210,19 @@ MonoBehaviour:
   - prefabName: PayWindow
     uiType: 9
     isOpen: 0
+  - prefabName: MarketWindow
+    uiType: 15
+    isOpen: 0
+--- !u!114 &3381873107494676674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9124268566221645886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be4e9a8984dca54ebf9c8aede63afce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ExScreen
+  requiredUI: []
