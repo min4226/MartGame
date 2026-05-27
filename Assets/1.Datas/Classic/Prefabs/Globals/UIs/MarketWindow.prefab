@@ -380,4 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be4e9a8984dca54ebf9c8aede63afce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_ExScreen
-  requiredUI: []
+  requiredUI:
+  - prefabName: Inventory
+    uiType: 16
+    isOpen: 0

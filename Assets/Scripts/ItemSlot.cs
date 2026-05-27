@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,4 +18,8 @@ public class ItemSlot : MonoBehaviour
         fameText.text = itemData.reward.fame.ToString();
     }
 
+    internal item GetItem()
+    {
+        throw new NotImplementedException();
+    }
 }

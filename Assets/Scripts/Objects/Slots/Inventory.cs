@@ -6,11 +6,24 @@ public class Inventory : MonoBehaviour
     public int columns;
     public int rows;
 
-    ItemSlot[,] slots;
+    ItemSlots[,] slots;
 
     public void Initialize()
     {
-        slots = new ItemSlot[rows, columns];
+        slots = new ItemSlots[rows, columns];
+        for (int row = 0; row < rows; row++)
+        {
+            for (int column = 0; column < columns; column++)
+            {
+                slots[row, column] = new ItemSlots();
+            }
+        }
+    }
+
+    public void HealPotionPlus()
+    {
+        item potion = DataManager.LoadDataFile<item>("HealPotion");
+        AddItem(potion, 927);
     }
 
     public void Sort(System.Comparison<item> Method)
@@ -59,24 +72,43 @@ public class Inventory : MonoBehaviour
         return default;
     }
 
-    public ItemSlot FindItem(item target)
+    public ItemSlots[] GetAllSlot()
+    {
+        ItemSlots[] result = new ItemSlots[slots.Length];
+
+        int height = slots.GetLength(0);
+        int width = slots.GetLength(1);
+        for (int row = 0; row < height; row++)
+        {
+            for (int column = 0; column < width; column++)
+            {
+                result[width * row + column] = slots[row, column];
+            }
+        }
+        return result;
+    }
+
+    public ItemSlots FindItem(item target)
     {
         return default;
     }
 
-    public ItemSlot FindItem(ItemType wantType)
+    public ItemSlots FindItem(ItemType wantType)
     {
         return default;
     }
 
-    public ItemSlot FindItem(string containWord)
+    public ItemSlots FindItem(string containWord)
     {
         return default;
     }
 
-    public ItemSlot FindItem(int wantRow, int wantColumn)
+    public ItemSlots FindItem(int wantRow, int wantColumn)
     {
-        return default;
+        if (wantRow < 0 || wantColumn < 0) return null;
+        if(wantRow >= slots.GetLength(0)) return null;
+        if (wantColumn >= slots.GetLength(1)) return null;
+        return slots[wantRow, wantColumn];
     }
 
     public ItemSlot FindFirstItem(item target)
@@ -101,6 +133,7 @@ public class Inventory : MonoBehaviour
 
     public int AddItem(item wantItem, int amount = 1)
     {
+        slots[0, 0].AddItem(wantItem, amount);
         return default;
     }
 
@@ -119,9 +152,9 @@ public class Inventory : MonoBehaviour
         return default;
     }
 
-    public ItemSlot[,] Clear()
+    public ItemSlots[,] Clear()
     {
-        ItemSlot[,] origin = slots;
+        ItemSlots[,] origin = slots;
         Initialize();
         return origin;
     }
