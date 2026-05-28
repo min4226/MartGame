@@ -11,15 +11,25 @@ public class UI_ItemSlotInfo : UIBase
     ItemSlots connectedSlot;
     public void ConnectSlot(ItemSlots targetSlot)
     {
+        DisconnectSlot();
         if (targetSlot is null) return;
         connectedSlot = targetSlot;
+        connectedSlot.OnItemSlotChanged -= VisualUpdate;
+        connectedSlot.OnItemSlotChanged += VisualUpdate;
         VisualUpdate(connectedSlot);
+    }
+
+    public void DisconnectSlot()
+    {
+        if (connectedSlot is null) return;
+        connectedSlot.OnItemSlotChanged -= VisualUpdate;
+        connectedSlot = null;
     }
 
     protected virtual void VisualUpdate(ItemSlots targetSlot)
     {
         if (targetSlot is null) return;
-        item targetItem = targetSlot.GetItem();
+        Item targetItem = targetSlot.GetItem();
 
         if (iconImage)
         {

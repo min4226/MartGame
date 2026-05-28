@@ -18,7 +18,7 @@ public class ItemSlot : MonoBehaviour
         fameText.text = itemData.reward.fame.ToString();
     }
 
-    internal item GetItem()
+    internal Item GetItem()
     {
         throw new NotImplementedException();
     }

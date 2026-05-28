@@ -48,6 +48,7 @@ public class DataManager : ManagerBase
         loadString = "Load Scriptable Objects";
         yield return LoadAllFromAssetBundle<CustomerData>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<ItemData>("Global", ProgressOnLoad).WaitForTask();
+        yield return LoadAllFromAssetBundle<Item>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<NormalCustomerItem>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<ShopData>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<StageData>("Global", ProgressOnLoad).WaitForTask();

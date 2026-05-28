@@ -7,7 +7,7 @@ public enum ItemType
 }
 
 [CreateAssetMenu(fileName = "item", menuName = "Item/ItemBase")]
-public class item : idContainer
+public class Item : idContainer
 {
     public ItemType type;
     public int maxStack;
