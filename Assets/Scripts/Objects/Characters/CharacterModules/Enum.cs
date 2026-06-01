@@ -1,25 +1,29 @@
 using UnityEngine;
 
- public enum CustomerType
- { 
-     NormalCustomer, TroubleMakerCustomer, ThiefCustomer, SpecialCustomer, 
- }
+public enum CustomerType
+{ 
+    NormalCustomer, TroubleMakerCustomer, ThiefCustomer, SpecialCustomer, 
+}
 
-
+// ¿¬·É´ë
+public enum AgeType
+{ 
+    Teenager, TwenThirty, FourFifty, Sixty,
+}
 
   // Áø»ó¼Õ´Ô Çàµ¿Å¸ÀÔ
-  public enum RudeCustomerBehaviorType
-  {
-                         // ¶¯±ø
-      Steal, ThrowMoney, Tantrum, LayCounter, 
-      _Length
-  }
+public enum RudeCustomerBehaviorType
+{
+                       // ¶¯±ø
+    Steal, ThrowMoney, Tantrum, LayCounter, 
+    _Length
+}
 
-  public enum TimeResult
-  { 
-      None, Success, Fail,
-      _Length
-  }
+public enum TimeResult
+{ 
+    None, Success, Fail,
+    _Length
+}
 
 public enum StageType
 { 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -21,17 +22,16 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void HealPotionPlus()
+    public void HealPotionPlus(int amount)
     {
         Item potion = DataManager.LoadDataFile<Item>("Potion");
-        AddItem(potion, 927);
+        AddItem(potion, amount);
     }
 
-    public void RemovePotion()
+    public void RemovePotionButton(int amount)
     {
         Item potion = DataManager.LoadDataFile<Item>("Potion");
-        RemoveItem(potion, 5);
-        
+        RemoveItem(potion, amount);
     }
 
     public void Sort(System.Comparison<Item> Method)
@@ -219,38 +219,35 @@ public class Inventory : MonoBehaviour
 
     public int RemoveItem(Item wantItem)
     {
-        return default;
+        int result = 0;
+        foreach (ItemSlots currentSlot in FindLastItem(wantItem))
+        {
+            result += currentSlot.RemoveItem(wantItem);
+            currentSlot.NoticeChanged();
+        }
+        return result
+            ;
     }
 
     public int RemoveItem(Item wantItem, int amount)
     {
-        amount = RemoveItemOnExistSlots(wantItem, amount);
-        return RemoveItemOnEmptySlots(wantItem, amount);
+        foreach (ItemSlots currentSlot in FindLastItem(wantItem))
+        {
+            amount = currentSlot.RemoveItem(wantItem, amount);
+            currentSlot.NoticeChanged();
+        }
+        return amount;
     }
 
     
 
     public int RemoveItemOnExistSlots(Item wantItem, int amount)
     {
-        foreach (ItemSlots currentSlot in GetAllSlot())
-        {
-            amount = currentSlot.RemoveItem(wantItem, amount);
-            currentSlot.NoticeChanged();
-        }
-        return amount;
+        return default;
         
     }
 
-    public int RemoveItemOnEmptySlots(Item wantItem, int amount)
-    {
-        foreach (ItemSlots currentSlot in FindLastItem(wantItem))
-        {
-            //if (amount <= 0) return 0;
-            amount = currentSlot.RemoveItem(wantItem, amount);
-            currentSlot.NoticeChanged();
-        }
-        return amount;
-    }
+    
     public int RemoveItemFromLocation(int row, int column)
     {
         return default;

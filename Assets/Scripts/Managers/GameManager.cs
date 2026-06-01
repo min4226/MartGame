@@ -13,27 +13,34 @@ public class GameManager : MonoBehaviour
     
     UIManager _ui;
     public UIManager UI => _ui;
+
     DataManager _data;
     public DataManager Data => _data;
     
-
     public ObjectManager ObjectM => _objectM;
     ObjectManager _objectM;
 
     SaveManager _save;
     public SaveManager Save => _save;
+
     SettingManager _setting;
     public SettingManager Setting => _setting;
+
     LanguageManager _language;
     public LanguageManager Language => _language;
+
     AudioManager _audio;
     public AudioManager Audio => _audio;
+
     CameraManager _camera;
     public CameraManager Camera => _camera;
+
     InputManager _input;
     public InputManager Input => _input;
 
-    
+    PoolManager _pool;
+    public PoolManager Pool => _pool;
+
     
     IEnumerator initializing;
 
@@ -95,7 +102,9 @@ public class GameManager : MonoBehaviour
         totalLoad += CreateManager(ref _audio).LoadingCount;
         totalLoad += CreateManager(ref _camera).LoadingCount;
         totalLoad += CreateManager(ref _input).LoadingCount;
-        
+        totalLoad += CreateManager(ref _pool).LoadingCount;
+
+
 
         yield return  UI.Initialize(this);
         UIBase loadingUI = UIManager.ClaimOpenScreen(UIType.Loading);
@@ -119,7 +128,9 @@ public class GameManager : MonoBehaviour
         loadingProgress?.AddCurrent(1);
         yield return _input.Connect(this);
         loadingProgress?.AddCurrent(1);
-        
+        yield return _pool.Connect(this);
+        loadingProgress?.AddCurrent(1);
+
         yield return new WaitForSeconds(1.0f);
 
         UIManager.ClaimOpenScreen(startScreen, ScreenChangeType.ScreenChanger);
@@ -138,6 +149,7 @@ public class GameManager : MonoBehaviour
         Camera?.Disconnect();
         UI?.Disconnect();
         Data?.Disconnect();
+        Pool?.Disconnect();
     }
 
     ManagerType CreateManager<ManagerType>(ref ManagerType targetVariable)  where ManagerType :  ManagerBase
