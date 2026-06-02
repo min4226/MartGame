@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6331415108093384308}
   - component: {fileID: 3043186059799071580}
-  - component: {fileID: 1703228288306411876}
+  - component: {fileID: 7939111046968528547}
+  - component: {fileID: 1602426972439110401}
   m_Layer: 0
   m_Name: CustomerPool
   m_TagString: Untagged
@@ -63,7 +64,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -79,7 +80,34 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1703228288306411876
+--- !u!50 &7939111046968528547
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783548677214263882}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1602426972439110401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,6 +216,56 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &8818204817850154479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9108484198134008851}
+  - component: {fileID: 7468286764850322015}
+  m_Layer: 0
+  m_Name: ItemPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9108484198134008851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818204817850154479}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.42487645, z: 0}
+  m_LocalScale: {x: 0.28139076, y: 0.3157313, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5165296437076613161}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7468286764850322015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8818204817850154479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3f27f08f1212341a5a3f71d0bfc842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalCustomer
+  items:
+  - {fileID: 11400000, guid: ae36b0512b63f2147b12220624ceb618, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  itemPool: {fileID: 9108484198134008851}
 --- !u!1 &9124268566221645886
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,10 +277,9 @@ GameObject:
   - component: {fileID: 5165296437076613161}
   - component: {fileID: 1935344984876292095}
   - component: {fileID: 796415615982377824}
-  - component: {fileID: 3381873107494676674}
   m_Layer: 0
   m_Name: BackGround
-  m_TagString: Untagged
+  m_TagString: PlayGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,6 +299,7 @@ Transform:
   m_Children:
   - {fileID: 4520196195703210810}
   - {fileID: 6331415108093384308}
+  - {fileID: 9108484198134008851}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1935344984876292095
@@ -271,7 +349,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 971398881716211163, guid: af425d535608a9845bb95531f225498a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -308,19 +386,6 @@ MonoBehaviour:
   - prefabName: PayWindow
     uiType: 9
     isOpen: 0
-  - prefabName: MarketWindow
-    uiType: 15
+  - prefabName: StageScene
+    uiType: 4
     isOpen: 0
---- !u!114 &3381873107494676674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9124268566221645886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be4e9a8984dca54ebf9c8aede63afce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ExScreen
-  requiredUI: []
