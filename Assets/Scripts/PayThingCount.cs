@@ -6,9 +6,19 @@ public class PayThingCount : MonoBehaviour
     public GameObject rightButton;
     public GameObject leftButton;
     public TMP_InputField inputField;
-    public int payCount; 
+    public int payCount;
+
+    public static PayThingCount Instance;
+
+    
+
+    void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
+        
         inputField.text = payCount.ToString();
     }
 
@@ -19,6 +29,7 @@ public class PayThingCount : MonoBehaviour
         { 
             payCount--;
             inputField.text = payCount.ToString();
+            
         } 
     }
 
@@ -26,5 +37,11 @@ public class PayThingCount : MonoBehaviour
     {
         payCount++;
         inputField.text = payCount.ToString();
+        Debug.Log("inputfield instance: " + inputField.gameObject.name);
+
     }
+
+
+
+
 }

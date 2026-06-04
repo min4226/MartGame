@@ -17,6 +17,7 @@ public class MarketWindow : UIManager
     {
         UIManager.ClaimCloseUI(UIType.Option);
         stageScene.SetActive(false);
+        UIManager.ClaimCloseUI(UIType.Stage);
         //UIManager.ClaimOpenUI(UIType.MyMarket);
         marketWindow.SetActive(true);
     }

@@ -19,9 +19,9 @@ public class ToPlayMode : MonoBehaviour
         {
             marketScene = GameObject.FindGameObjectWithTag("MarketWindow");
         }
-        stageScene.SetActive(true);
         marketScene.SetActive(false);
         UIManager.ClaimCloseUI(UIType.MyMarket);
+        stageScene.SetActive(true);
         UIManager.ClaimOpenUI(UIType.Stage);
     }
 }

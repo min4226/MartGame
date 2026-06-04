@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NormalCustomer : MonoBehaviour
@@ -6,9 +7,10 @@ public class NormalCustomer : MonoBehaviour
     
     [SerializeField] NormalCustomerItem[] items;
     [SerializeField] Transform itemPool;
-    
+    int speed = 3;
     void Start()
     {
+        
         StartCoroutine(ItemCreate());
     }
 
@@ -22,6 +24,7 @@ public class NormalCustomer : MonoBehaviour
             ItemData itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
 
             GameObject normalItem  = Instantiate(itemData.itemSprite, itemPool, false);
+            normalItem.AddComponent<MoveRight>();
             yield return new WaitForSeconds(2);
 
         }
