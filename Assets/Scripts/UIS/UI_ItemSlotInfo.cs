@@ -8,7 +8,8 @@ public class UI_ItemSlotInfo : UIBase
     [SerializeField] Image iconImage;
     [SerializeField] TextMeshProUGUI amountText;
     [SerializeField] Sprite errorIcon;
-    ItemSlots connectedSlot;
+    protected ItemSlots connectedSlot;
+    public ItemSlots ConnectedSlot => connectedSlot;
     public void ConnectSlot(ItemSlots targetSlot)
     {
         DisconnectSlot();

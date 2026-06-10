@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public enum UIType
 { 
     None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow, 
-    Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, MarketWindow, Inventory,
+    Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, MarketWindow, Inventory, ItemCursorSlot,
     _Length
 }
 
@@ -30,7 +30,7 @@ public class UIManager : ManagerBase
 
     UIBase _movableScreen;
 
-    
+    RectTransform overlayTransform;
     RectTransform switcherTransform;
     RectTransform createdTransform;
     RectTransform changerTransform;
@@ -52,7 +52,9 @@ public class UIManager : ManagerBase
     float _uiScale = 1.0f;
     public static float UIScale => GameManager.Instance?.UI?._uiScale ?? 1.0f;
 
-    
+    public PayThingCount payThingCount;
+    public PayCountChange payCountChange;
+
     public IEnumerator Initialize(GameManager newManager)
     {
         SetMainCanvas(GetComponentInChildren<Canvas>());
@@ -105,6 +107,9 @@ public class UIManager : ManagerBase
         changerTransform = CreateFullScreen("ScreenChanger");
         changerTransform.SetAsLastSibling();
 
+        overlayTransform = CreateFullScreen("ScreenChanger");
+        overlayTransform.SetAsLastSibling();
+
         for (ScreenChangeType currentChanger = (ScreenChangeType)1;
             currentChanger < ScreenChangeType._Length;
             currentChanger++)
@@ -130,17 +135,37 @@ public class UIManager : ManagerBase
 
     private void ShopButton(bool value)
     {
+        throw new System.Exception("여기 실행됨");
         if (!value) return;
         Debug.Log("상점으로");
         ClaimOpenUI(UIType.Shop);
+        Debug.Log("초기화 호출 전");
+        Init();
+        Debug.Log("초기화 호출 후");
+
     }
 
     private void RestartButton(bool value)
     {
         if (!value) return;
-        Debug.Log("다시하기");
         ClaimOpenUI(UIType.Stage);
         ClaimOpenUI(UIType.BackGround);
+    }
+
+    void Init()
+    {
+        Debug.Log("init함수 시작");
+
+        payThingCount = GetComponentInChildren<PayThingCount>();
+        Debug.Log($"payThingCount = {payThingCount}");
+
+        payCountChange = GetComponentInChildren<PayCountChange>();
+        Debug.Log($"payCountChange = {payCountChange}");
+
+        payCountChange.Init(payThingCount);
+
+        Debug.Log("init함수 끝");
+
     }
 
     protected override void OnDisconnected()
@@ -176,6 +201,12 @@ public class UIManager : ManagerBase
         return SetUI(wantType, result);
     }
 
+    protected UIBase CreateOverlay(UIType wantType, string wantName)
+    {
+        return CreateUI(wantType, wantName, overlayTransform ?? _mainCanvas?.transform);
+    }
+
+    public static UIBase ClaimOverlay(UIType wantType, string wantName) => GameManager.Instance.UI?.CreateOverlay(wantType, wantName);
     
     protected UIBase CreateUI(UIType wantType, string wantName)
     { 

@@ -28,7 +28,7 @@ public class NormalCustomer : MonoBehaviour
             yield return new WaitForSeconds(2);
 
         }
-
+    
     }
 
     

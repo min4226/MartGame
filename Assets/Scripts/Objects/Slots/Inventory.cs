@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.UIElements;
@@ -5,6 +6,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static ItemSlots cursorSlot = new ItemSlots();
     public int columns;
     public int rows;
 
@@ -172,11 +174,22 @@ public class Inventory : MonoBehaviour
 
     public int AddItem(Item wantItem, int amount = 1)
     {
+        
         amount = AddItemOnExistSlots(wantItem, amount);
         if (amount <= 0) return 0;
         return AddItemOnEmptySlots(wantItem, amount);
-    } 
+    }
+
+    public void ExchangeItem(int startRow, int startColumn, ItemSlots targetSlot)
+    {
+        if (targetSlot is null) return;
+        ItemSlots first = FindItem(startRow, startColumn);
+        if (first is null) return;
         
+        first.ExchangeItem(targetSlot);
+        first.NoticeChanged();
+        targetSlot.NoticeChanged();
+    }
 
     public int AddItemOnExistSlots(Item wantItem, int amount)
     {
@@ -259,10 +272,27 @@ public class Inventory : MonoBehaviour
     }
 
     // -1 = all
-    public void MoveItem(int startRow, int startColumn,Inventory targetInventory , int targetRow, int targetColumn, int amount = -1 )
-    { 
-        
+    public void MoveItem(int startRow, int startColumn, Inventory targetInventory, int targetRow, int targetColumn, int amount = -1)
+    {
+
     }
+    public void ExchangeItem(int startRow, int startColumn, int targetRow, int targetColumn)
+    {
+        ExchangeItem(startRow, startColumn, this, targetRow, targetColumn);
+    }
+    public void ExchangeItem(int startRow, int startColumn, Inventory targetInventory, int targetRow, int targetColumn)
+    {
+        ItemSlots first = FindItem(startRow, startColumn);
+        if (first is null) return;
+        if (!targetInventory) return;
+        ItemSlots second = targetInventory.FindItem(targetRow, targetColumn);
+        if (second is null) return;
+        first.ExchangeItem(second);
+        first.NoticeChanged();
+        second.NoticeChanged();
+    }
+    
+   
 
     public void UseItem(Item target)
     {

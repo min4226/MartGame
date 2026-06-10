@@ -57,18 +57,27 @@ MonoBehaviour:
   - prefabName: OptionWindow
     uiType: 5
     isOpen: 0
+    isOverlay: 0
   - prefabName: ShopWindow
     uiType: 6
     isOpen: 0
+    isOverlay: 0
   - prefabName: RankingPopup
     uiType: 10
     isOpen: 0
+    isOverlay: 0
   - prefabName: payWindow
     uiType: 9
     isOpen: 0
+    isOverlay: 0
   - prefabName: CoinDetail
     uiType: 12
     isOpen: 0
+    isOverlay: 0
+  - prefabName: CursorSlot
+    uiType: 17
+    isOpen: 0
+    isOverlay: 1
 --- !u!1001 &123197199734729299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +188,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4767276600562145134}
     m_Modifications:
+    - target: {fileID: 4104333855707382359, guid: 67689f0d4c3526f498c80af4744a49d9, type: 3}
+      propertyPath: stageData
+      value: 
+      objectReference: {fileID: 11400000, guid: c67e569a7debce44a986a186f3c6f1e4, type: 2}
+    - target: {fileID: 4104333855707382359, guid: 67689f0d4c3526f498c80af4744a49d9, type: 3}
+      propertyPath: stageText
+      value: 
+      objectReference: {fileID: 4735920290725048682}
     - target: {fileID: 7211052250504441577, guid: 67689f0d4c3526f498c80af4744a49d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -268,6 +285,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67689f0d4c3526f498c80af4744a49d9, type: 3}
+--- !u!114 &4735920290725048682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5532493411350222358, guid: 67689f0d4c3526f498c80af4744a49d9, type: 3}
+  m_PrefabInstance: {fileID: 972217972993238908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &7596674032080652693 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7211052250504441577, guid: 67689f0d4c3526f498c80af4744a49d9, type: 3}

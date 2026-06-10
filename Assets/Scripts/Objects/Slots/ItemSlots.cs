@@ -69,5 +69,22 @@ public class ItemSlots
         currentStack -= amount;
         return 0;
     }
-    
+    public void ExchangeItem(ItemSlots wantSlot)
+    {
+        if (wantSlot is null) return;
+        Item wasItem = item ;
+        int wasStack = currentStack;
+        item = wantSlot.item;
+        currentStack = wantSlot.currentStack;
+        wantSlot.item = wasItem;
+        wantSlot.currentStack = wasStack;
+    }
+
+    public void LeftClick(ItemSlots wantSlot)
+    {
+        if (wantSlot is null) return;
+        ExchangeItem(wantSlot);
+        NoticeChanged();
+        wantSlot.NoticeChanged();
+    }
 }

@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &490990419
 RectTransform:
   m_ObjectHideFlags: 0
@@ -918,6 +918,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1602426972439110401, guid: 6510300a28d87b141bddd0d810705221, type: 3}
+      propertyPath: stageData
+      value: 
+      objectReference: {fileID: 11400000, guid: c67e569a7debce44a986a186f3c6f1e4, type: 2}
     - target: {fileID: 5165296437076613161, guid: 6510300a28d87b141bddd0d810705221, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1246,6 +1250,7 @@ GameObject:
   - component: {fileID: 1772593126}
   - component: {fileID: 1772593128}
   - component: {fileID: 1772593129}
+  - component: {fileID: 1772593130}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1325,6 +1330,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde2c0165e9eeca4ca51283c47fd9fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectManager
+--- !u!114 &1772593130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772593125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1a529b368b74d45a77b4c5a4d9bfb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StageManager
+  container: {fileID: 11400000, guid: c67e569a7debce44a986a186f3c6f1e4, type: 2}
 --- !u!1 &1856653715
 GameObject:
   m_ObjectHideFlags: 0

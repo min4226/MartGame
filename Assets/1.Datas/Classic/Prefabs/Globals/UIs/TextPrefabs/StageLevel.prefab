@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7211052250504441577}
   - component: {fileID: 4318703351738918038}
   - component: {fileID: 5532493411350222358}
+  - component: {fileID: 4104333855707382359}
   m_Layer: 5
   m_Name: StageLevel
-  m_TagString: Untagged
+  m_TagString: StageLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,3 +138,15 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4104333855707382359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7959045168830693779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6da6f19c4fc09e46a2a22e262493d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeStageLevel

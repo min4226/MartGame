@@ -1,8 +1,13 @@
 using UnityEngine;
 
+
+
+
 [CreateAssetMenu(fileName = "Stage", menuName = "Scriptable Objects/StageData")]
+
 public class StageData : ScriptableObject 
 {
+    
     // ½Ã°£ Á¦ÇÑ
     public float timeLimit;
 
@@ -18,4 +23,6 @@ public class StageData : ScriptableObject
     public int troublemakerCustomerCount; // Áø»ó ¼Õ´Ô
     public int thiefCustomerCount; // µµµÏ ¼Õ´Ô
     public int specialCustomerCount; // Æ¯º° ¼Õ´Ô
+
+    
 }

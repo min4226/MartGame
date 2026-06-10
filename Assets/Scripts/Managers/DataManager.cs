@@ -54,7 +54,7 @@ public class DataManager : ManagerBase
         yield return LoadAllFromAssetBundle<StageData>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<ShopData>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<ShopItemData>("Global", ProgressOnLoad).WaitForTask();
-
+        yield return LoadAllFromAssetBundle<StageContainer>("Global", ProgressOnLoad).WaitForTask();
 
         /*GameObject prefab = LoadDataFile<GameObject>("Square");
         Instantiate(prefab, Random.insideUnitCircle * 3.0f, Random.rotation);*/

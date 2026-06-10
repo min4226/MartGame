@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     /*PoolManager _pool;
     public PoolManager Pool => _pool;*/
 
+    StageManager _stage;
+    public StageManager Stage => _stage;
+
     
     IEnumerator initializing;
 
@@ -102,7 +105,8 @@ public class GameManager : MonoBehaviour
         totalLoad += CreateManager(ref _audio).LoadingCount;
         totalLoad += CreateManager(ref _camera).LoadingCount;
         totalLoad += CreateManager(ref _input).LoadingCount;
-        //totalLoad += CreateManager(ref _pool).LoadingCount;
+        totalLoad += CreateManager(ref _stage).LoadingCount;
+        
 
 
 
@@ -128,8 +132,9 @@ public class GameManager : MonoBehaviour
         loadingProgress?.AddCurrent(1);
         yield return _input.Connect(this);
         loadingProgress?.AddCurrent(1);
-        /*yield return _pool.Connect(this);
-        loadingProgress?.AddCurrent(1);*/
+        yield return _stage.Connect(this);
+       
+        loadingProgress?.AddCurrent(1);
 
         yield return new WaitForSeconds(1.0f);
 
@@ -149,7 +154,7 @@ public class GameManager : MonoBehaviour
         Camera?.Disconnect();
         UI?.Disconnect();
         Data?.Disconnect();
-        //Pool?.Disconnect();
+        Stage?.Disconnect();
     }
 
     ManagerType CreateManager<ManagerType>(ref ManagerType targetVariable)  where ManagerType :  ManagerBase

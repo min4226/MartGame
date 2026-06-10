@@ -47,7 +47,9 @@ public class InputManager : ManagerBase
     List<RaycastResult> cursorHitList = new();
 
 
-    GameObject cursorHoverObject;
+    static GameObject _cursorHoverObject;
+    public static GameObject CursorSelectObject => _cursorHoverObject;
+
     Vector2 cursorScreenPosition;
     Vector3 cursorWorldPosition;
 
@@ -112,11 +114,11 @@ public class InputManager : ManagerBase
             firstObject = nearest.gameObject;
             worldPosition = nearest.worldPosition;
         }
-        GameObject lastHoverObject = cursorHoverObject;
+        GameObject lastHoverObject = CursorSelectObject;
 
         cursorScreenPosition = screenPosition;
         cursorWorldPosition = worldPosition;
-        cursorHoverObject = firstObject;
+        _cursorHoverObject = firstObject;
 
         if (lastHoverObject != firstObject)
         {

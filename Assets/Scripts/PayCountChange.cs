@@ -1,23 +1,37 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class PayCountChange : MonoBehaviour
+public class PayCountChange : MonoBehaviour 
 {
-    [SerializeField] TextMeshProUGUI payWindowCount;
-    [SerializeField] PayThingCount payThingCount;
+    public TextMeshProUGUI payWindowCount;
+    [SerializeField]PayThingCount payThingCount;
 
-    // Update is called once per frame
-    void Update()
+    
+
+    /*public void ConnectPayThingCount(PayThingCount target)
     {
-        
-        payWindowCount.text = payThingCount.payCount.ToString();
+        payThingCount = target;
+        Debug.Log(payThingCount);
+        UpdateUI();
+    }*/
 
+    private void UpdateUI()
+    {
+        payWindowCount.text = payThingCount.payCount.ToString();
         
-        Debug.Log("payThingCount instance: " + payThingCount.gameObject.name);
-        Debug.Log("paywindowcount instance" + payWindowCount.gameObject.name);
-        Debug.Log("payCount: " + payThingCount.payCount);
     }
 
+    public void Init(PayThingCount target)
+    {
+        Debug.Log("paycountchange ÂÊ init ÇÔ¼ö");
+        payThingCount = target;
+        UpdateUI();
+    }
+
+    
+
+    
 }
