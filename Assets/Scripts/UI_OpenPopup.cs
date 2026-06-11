@@ -23,7 +23,7 @@ public class UI_OpenPopup : MonoBehaviour
         }
         
         
-        payThingCount = GetComponentInChildren<PayThingCount>(); // shopwindow -> gameobejct 이런 식으로 찾기
+        payThingCount = GetComponent<PayThingCount>(); // shopwindow -> gameobejct 이런 식으로 찾기
         Debug.Log($"paythingcount : {payThingCount}");
         payCountChange = GetComponentInChildren<PayCountChange>(); // paywindow -> inputfield 이런 식으로 찾기
         Debug.Log($"paycountchange : {payCountChange}");

@@ -234,6 +234,7 @@ MonoBehaviour:
   - prefabName: ShopWindow
     uiType: 6
     isOpen: 0
+    isOverlay: 0
 --- !u!1 &2590357537048978003
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +533,8 @@ MonoBehaviour:
   wantType: 6
   wantToggle: 0
   openOnTop: 1
+  payThingCount: {fileID: 0}
+  payCountChange: {fileID: 0}
 --- !u!1 &9013341709821495597
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +978,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4797605213642909847}
     m_Modifications:
+    - target: {fileID: 654681018554970759, guid: 90955788580b24c469bf529a68410d36, type: 3}
+      propertyPath: payThingCount
+      value: 
+      objectReference: {fileID: 6489829432982052438}
     - target: {fileID: 4269875862720158632, guid: 90955788580b24c469bf529a68410d36, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1130,6 +1137,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bf7a18c4eb418d46a52c066529a4aea, type: 3}
+--- !u!114 &6489829432982052438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8043448447510765615, guid: 3bf7a18c4eb418d46a52c066529a4aea, type: 3}
+  m_PrefabInstance: {fileID: 3868751247889596025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e314b68ec65d344599463487255f5e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PayThingCount
 --- !u!4 &6754785639944940344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7497720437462078785, guid: 3bf7a18c4eb418d46a52c066529a4aea, type: 3}

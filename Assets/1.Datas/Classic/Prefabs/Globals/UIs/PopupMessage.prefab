@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2892679205858755748}
   - component: {fileID: 5351276055855207858}
   - component: {fileID: 8792373127124043974}
+  - component: {fileID: 1916533865809187004}
   m_Layer: 5
   m_Name: NoButton
   m_TagString: Untagged
@@ -121,18 +122,31 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_MovableScreen, Assembly-CSharp
-        m_MethodName: UnsetChild
-        m_Mode: 2
+      - m_Target: {fileID: 1916533865809187004}
+        m_TargetAssemblyTypeName: UI_ExScreen, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 5648252053699298687}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1916533865809187004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817554017308319092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be4e9a8984dca54ebf9c8aede63afce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_ExScreen
+  requiredUI: []
 --- !u!1 &1995764838514742607
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,8 +347,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uCC3D\uC744 \uB2EB\uC73C\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9bee63883d8cf624793d5b3a3a2a84a8, type: 2}
-  m_sharedMaterial: {fileID: -5839882911295127093, guid: 9bee63883d8cf624793d5b3a3a2a84a8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 72cf18496994d7944a2e4fffc52b8678, type: 2}
+  m_sharedMaterial: {fileID: -4781877146405788438, guid: 72cf18496994d7944a2e4fffc52b8678, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -470,8 +484,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 72cf18496994d7944a2e4fffc52b8678, type: 2}
+  m_sharedMaterial: {fileID: -4781877146405788438, guid: 72cf18496994d7944a2e4fffc52b8678, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -605,10 +619,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC608\n"
+  m_text: '
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9bee63883d8cf624793d5b3a3a2a84a8, type: 2}
-  m_sharedMaterial: {fileID: -5839882911295127093, guid: 9bee63883d8cf624793d5b3a3a2a84a8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1074,10 +1090,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: " \uC608\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 72cf18496994d7944a2e4fffc52b8678, type: 2}
+  m_sharedMaterial: {fileID: -4781877146405788438, guid: 72cf18496994d7944a2e4fffc52b8678, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

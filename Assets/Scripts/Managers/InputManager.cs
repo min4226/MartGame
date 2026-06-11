@@ -41,7 +41,13 @@ public class InputManager : ManagerBase
     public static event ShopEvent OnShop;
     public static event MarketEvent OnMarket;
     public static event RankingEvent OnRanking;
-
+    public static event ButtonEvent OnShift;
+    public static bool IsShift { get; private set; } = false;
+    void ShiftFunction(bool value)
+    {
+        IsShift = value;
+        OnShift?.Invoke(value);
+    }
     PlayerInput targetInput;
     Dictionary<string, InputAction> actionDictionary = new();
     List<RaycastResult> cursorHitList = new();
@@ -166,7 +172,8 @@ public class InputManager : ManagerBase
         InitializeAction("Shop", (context) => OnShop?.Invoke(true));
         InitializeAction("Market", (context) => OnMarket?.Invoke(true));
         InitializeAction("Ranking", (context) => OnRanking?.Invoke(true));
-
+        InitializeAction("Shift", (context) => ShiftFunction(true)
+                                , (context) => ShiftFunction(false));
 
         void InitializeAction(string actionName, Action<InputAction.CallbackContext> actionMethod, Action<InputAction.CallbackContext> cancelMethod = null)
         {

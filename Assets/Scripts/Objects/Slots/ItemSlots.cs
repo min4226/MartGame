@@ -22,6 +22,8 @@ public class ItemSlots
     }
 
     public Item GetItem() => item;
+    public int GetStackable(Item wantItem) => Containable(wantItem) ? wantItem.maxStack - currentStack : 0;
+    public int GetStackable() => GetStackable(item);
     public int GetStack() => currentStack;
     public bool GetIsMax() => item ? currentStack >= item.maxStack : false;
 
@@ -69,6 +71,20 @@ public class ItemSlots
         currentStack -= amount;
         return 0;
     }
+    public int GiveItem(ItemSlots wantSlot) => GiveItem(wantSlot, currentStack);
+    public int GiveItem(ItemSlots wantSlot, int amount)
+    {
+        if (wantSlot is null) return amount;
+        if (!item) return amount;
+        if (currentStack <= 0 || amount <= 0) return amount;
+        Item targetItem = item;
+        amount = Mathf.Min(amount, wantSlot.GetStackable(targetItem));
+        amount -= RemoveItem(targetItem, amount);
+        amount = wantSlot.AddItem(targetItem, amount);
+
+        return amount;
+    }
+
     public void ExchangeItem(ItemSlots wantSlot)
     {
         if (wantSlot is null) return;
@@ -82,8 +98,41 @@ public class ItemSlots
 
     public void LeftClick(ItemSlots wantSlot)
     {
+         // ¹Ý¿Ã¸² :  + 0.5
         if (wantSlot is null) return;
-        ExchangeItem(wantSlot);
+        if (InputManager.IsShift)
+        {
+            if (wantSlot.GetIsEmpty())
+            {
+                if (GetIsEmpty()) return;
+                else if (wantSlot.Containable(item))
+                {
+                    GiveItem(wantSlot, Mathf.CeilToInt(currentStack * 0.5f));
+                    
+                    
+                }
+
+            }
+            else if (Containable(wantSlot.item))
+            {
+                
+                wantSlot.GiveItem(this, Mathf.CeilToInt(wantSlot.currentStack * 0.5f));
+            }
+
+        }
+        else
+        {
+            if (wantSlot.Containable(item))
+            {
+                GiveItem(wantSlot);
+            }
+            else
+            {
+                ExchangeItem(wantSlot);
+            }
+
+        }
+        
         NoticeChanged();
         wantSlot.NoticeChanged();
     }

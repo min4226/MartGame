@@ -139,9 +139,7 @@ public class UIManager : ManagerBase
         if (!value) return;
         Debug.Log("상점으로");
         ClaimOpenUI(UIType.Shop);
-        Debug.Log("초기화 호출 전");
-        Init();
-        Debug.Log("초기화 호출 후");
+        
 
     }
 
