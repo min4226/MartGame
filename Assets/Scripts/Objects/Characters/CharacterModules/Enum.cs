@@ -30,3 +30,16 @@ public enum StageType
     stage1, stage2, stage3, stage4, stage5, stage6, stage7, stage8, stage9, stage10, 
     stage11, stage12, stage13, stage14, stage15
 }
+
+public enum ItemCreatePattern
+{ 
+    straight, zigzag, 
+}
+
+public enum PatternRules
+{
+    // 변장   훔침    할인
+    disguise, steal, discount,
+
+
+}

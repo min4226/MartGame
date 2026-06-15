@@ -1,73 +1,96 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-public class CustomerSpawn : MonoBehaviour ,IFunctionable
+
+public class CustomerSpawn : MonoBehaviour
 {
-    [SerializeField] CustomerData[] customerData; 
+    [SerializeField] CustomerData[] customerData;
     [SerializeField] Transform poolPosition;
-    [SerializeField] NormalCustomer normalCustomer;
 
-    // 스테이지마다 생성될 손님들 종류와 개수를 리스트에 넣음
+    StageData stageData;
 
+    List<CustomerType> spawnList;
+    int index = 0;
+    bool isSpawning = false;
+
+    GameObject currentCustomer;
+
+    
+    public void Init(StageData data)
+    {
+        stageData = data;
+
+        spawnList = BuildCustomerList(stageData);
+        index = 0;
+
+        SpawnNextCustomer();
+    }
+
+    // 손님 타입들을 리스트에 저장
     List<CustomerType> BuildCustomerList(StageData stageData)
     {
-        /*if (stageData == null)
-        {
-            Debug.LogError("stageData null");
-            return new List<CustomerType>();
-        }*/
-        
-        List<CustomerType> spawnList = new List<CustomerType>();
+        List<CustomerType> list = new List<CustomerType>();
 
-        AddCustomers(spawnList, CustomerType.NormalCustomer, stageData.normalCustomerCount);
-        AddCustomers(spawnList, CustomerType.ThiefCustomer, stageData.thiefCustomerCount);
-        AddCustomers(spawnList, CustomerType.TroubleMakerCustomer, stageData.troublemakerCustomerCount);
-        AddCustomers(spawnList, CustomerType.SpecialCustomer, stageData.specialCustomerCount);
+        AddCustomers(list, CustomerType.NormalCustomer, stageData.normalCustomerCount);
+        AddCustomers(list, CustomerType.ThiefCustomer, stageData.thiefCustomerCount);
+        AddCustomers(list, CustomerType.TroubleMakerCustomer, stageData.troublemakerCustomerCount);
+        AddCustomers(list, CustomerType.SpecialCustomer, stageData.specialCustomerCount);
 
-        return spawnList;
+        return list;
     }
+
     void AddCustomers(List<CustomerType> list, CustomerType type, int count)
     {
         for (int i = 0; i < count; i++)
             list.Add(type);
     }
 
-    void Initialize() 
+    // 다음 손님 생성
+    void SpawnNextCustomer()
     {
-        var list = BuildCustomerList(StageManager.GetcurrentStage());
-        StartCoroutine(SpawnCustomer(list));
-    } 
-    IEnumerator SpawnCustomer(List<CustomerType> list)
-    {
-        foreach (var customerType in list)
+        if (isSpawning) return;
+
+        if (spawnList == null || index >= spawnList.Count)
         {
-            Spawn(customerType);
-            yield return new WaitForSeconds(1);
+            Debug.Log("Stage Clear");
+            return;
         }
+
+        StartCoroutine(SpawnRoutine(spawnList[index]));
     }
 
+    
+    IEnumerator SpawnRoutine(CustomerType type)
+    {
+        isSpawning = true;
+
+        yield return new WaitForSeconds(1f); // 등장 연출 시간
+
+        Spawn(type);
+
+        index++;
+
+        isSpawning = false;
+    }
+
+    
     void Spawn(CustomerType type)
     {
         CustomerData data = GetCustomerData(type);
-        
-        Instantiate(data.ageSprite, poolPosition.position, Quaternion.identity);
-
+        currentCustomer = Instantiate(data.ageSprite, poolPosition.position, Quaternion.identity);
     }
 
     CustomerData GetCustomerData(CustomerType type)
     {
-        // customerdata 안의 배열에서 customertype이 같은 경우 리턴
         return System.Array.Find(customerData, x => x.customerType == type);
     }
 
-    public void RegistrationFunctions()
+    
+    public void OnCustomerEnd()
     {
-        GameManager.OnInitializeObject += Initialize;
-    }
+        if (currentCustomer != null)
+            Destroy(currentCustomer);
 
-    public void UnregistrationFunctions()
-    {
-
+        SpawnNextCustomer();
     }
 }

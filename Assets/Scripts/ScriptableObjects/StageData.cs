@@ -24,5 +24,8 @@ public class StageData : ScriptableObject
     public int thiefCustomerCount; // 도둑 손님
     public int specialCustomerCount; // 특별 손님
 
-    
+    public int normalCustomerItemCount; // 일반 손님이 생성되었을 때 나올 아이템의 개수
+
+    public ItemCreatePattern[] itemCreatePatterns; // 아이템이 나오는 패턴
+    public PatternRules[] patternRules; // 패턴 규칙
 }

@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class StageManager : ManagerBase
 {
-    CustomerSpawn customerSpawn;
-    public StageContainer container;
+    [SerializeField] CustomerSpawn customerSpawn;
+    [SerializeField] StageContainer container;
     private int currentIndex;
     StageData currentStage;
 
@@ -15,7 +15,7 @@ public class StageManager : ManagerBase
 
     public void StartStage(int index)
     {
-
+        Debug.Log(customerSpawn == null);
         if (container == null)
         {
             Debug.LogError("StageContainer not initialized!");
@@ -24,11 +24,16 @@ public class StageManager : ManagerBase
 
         currentIndex = index;
         currentStage = container.stageDatas[index];
+        customerSpawn.Init(currentStage);
+        
+        
+
     }
 
 
     protected override IEnumerator OnConnected(GameManager newManager)
     {
+        customerSpawn = FindFirstObjectByType<CustomerSpawn>();
         StartStage(currentIndex);
 
         yield break;

@@ -14,22 +14,27 @@ public class NormalCustomer : MonoBehaviour
         StartCoroutine(ItemCreate());
     }
 
-    IEnumerator ItemCreate()
+    IEnumerator ItemCreate(int count)
     {
-        
-
-        while (true)
+        for (int i = 0; i < count; i++)
         {
+            if (items.Length == 0) yield break;
+
             NormalCustomerItem customerItem = items[Random.Range(0, items.Length)];
+
+            if (customerItem.item.Length == 0) continue;
+
             ItemData itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
 
-            GameObject normalItem  = Instantiate(itemData.itemSprite, itemPool, false);
-            normalItem.AddComponent<MoveRight>();
-            yield return new WaitForSeconds(2);
+            GameObject normalItem = Instantiate(itemData.itemSprite, itemPool, false);
 
+            var move = normalItem.GetComponent<MoveRight>();
+            if (move == null)
+                normalItem.AddComponent<MoveRight>();
+
+            yield return new WaitForSeconds(2);
         }
-    
     }
 
-    
+
 }
