@@ -58,4 +58,12 @@ public class UI_InventoryWindow : OpenbleUIBase
         }
         
     }
+
+    public void ClaimSort()
+    {
+        if (targetInventory)
+        {
+            targetInventory.SortByType();
+        }
+    }
 }

@@ -7,12 +7,13 @@ public class NormalCustomer : MonoBehaviour
     
     [SerializeField] NormalCustomerItem[] items;
     [SerializeField] Transform itemPool;
+    [SerializeField] StageData stageData;
     int speed = 3;
-    void Start()
+    /*void Start()
     {
         
-        StartCoroutine(ItemCreate());
-    }
+        StartCoroutine(ItemCreate(stageData.normalCustomerItemCount));
+    }*/
 
     IEnumerator ItemCreate(int count)
     {

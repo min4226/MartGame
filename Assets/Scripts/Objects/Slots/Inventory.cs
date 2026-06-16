@@ -1,4 +1,4 @@
-using System;
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.UIElements;
@@ -23,12 +23,28 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    readonly string[] itemList = { "Bed", "Chair", "Jelly", "Sereal" };
 
     public void HealPotionPlus(int amount)
     {
-        Item potion = DataManager.LoadDataFile<Item>("Potion");
+        int index = Random.Range(0, itemList.Length);
+
+        Debug.Log($"index : {index}");
+        Debug.Log($"item name : {itemList[index]}");
+
+        Item potion = DataManager.LoadDataFile<Item>(itemList[index].ToLower());
+
+        Debug.Log($"loaded item : {potion}");
+
+        if (potion == null)
+        {
+            Debug.LogError($"아이템 로드 실패 : {itemList[index]}");
+            return;
+        }
+
         AddItem(potion, amount);
     }
+
 
     public void RemovePotionButton(int amount)
     {
@@ -36,10 +52,87 @@ public class Inventory : MonoBehaviour
         RemoveItem(potion, amount);
     }
 
-    public void Sort(System.Comparison<Item> Method)
-    { 
-       
+    public void Sort(System.Comparison<ItemSlots> Method)
+    {
+        int totalLength = slots.Length;
+        if (slots is null || totalLength <= 1) return;
+        int width = slots.GetLength(1);
+
+        int lastFinder = totalLength - 1;
+        while (lastFinder > 0)
+        {
+            int currentFinder = -1;
+            for (int i = 0; i < lastFinder; i++)
+            {
+                ItemSlots left = GetSlot(i, width);
+                ItemSlots right = GetSlot(i + 1, width);
+                int comparisonResult = Method(left, right);
+                if (comparisonResult < 0)
+                {
+                    currentFinder = i;
+                    left.ExchangeItem(right);
+                }
+
+            }
+            lastFinder = currentFinder;
+        }
+        foreach (ItemSlots currentSlot in GetAllSlot())
+        {
+            currentSlot?.NoticeChanged();
+        }
+        
     }
+
+    
+
+    int ItemTypeComparison(ItemSlots left, ItemSlots right)
+    {
+        int result;
+        if (ItemExistComparison(left, right, out result)) return result;
+        Item leftItem = left.GetItem();
+        Item rightItem = right.GetItem();
+
+        
+        result = leftItem.CompareByType(rightItem);
+        if (result != 0) return result;
+        result = left.GetStack() - right.GetStack();
+        return result;
+        
+        
+        
+    }
+    int? ItemExistComparison(ItemSlots left, ItemSlots right)
+    {
+        if (left is null)
+        {
+            if (right is null) return 0;
+            else return -1;
+        }
+        if (right is null) return 1;
+
+        Item leftItem = left.GetItem();
+        Item rightItem = right.GetItem();
+
+        if (!leftItem)
+        {
+            if (!rightItem) return 0;
+            else return -1;
+        }
+        if (!rightItem) return 1;
+
+        return null;
+
+    }
+
+    bool ItemExistComparison(ItemSlots left, ItemSlots right, out int result)
+    {
+        int? calculated = ItemExistComparison(left, right);
+        result = calculated ?? 0;
+        return calculated.HasValue;
+    }
+
+    public void SortByType() => Sort(ItemTypeComparison);
+    
 
     public void AutoQuickInsert(Inventory other)
     { 
@@ -73,13 +166,35 @@ public class Inventory : MonoBehaviour
 
     public int CountItem(Item wantItem)
     {
-        return default;
+        int result = 0;
+        if (wantItem == null) return 0;
+        foreach (ItemSlots currentSlot in FindFirstItem(wantItem))
+        {
+            result += currentSlot.GetStack();
+        }
+        return result;
     }
 
-    public int CountItem(Item wantItem, out List<ItemSlot> returnSlots)
+    public int CountItem(Item wantItem, out List<ItemSlots> returnSlots)
     {
-        returnSlots = default;
-        return default;
+        returnSlots = new();
+        int result = 0;
+        if (wantItem == null) return 0;
+        foreach (ItemSlots currentSlot in FindFirstItem(wantItem))
+        {
+            returnSlots.Add(currentSlot);
+            result += currentSlot.GetStack();
+        }
+        return result;
+    }
+
+    public ItemSlots GetSlot(int index, int width) => slots[index / width, index % width];
+    
+    public ItemSlots GetSlot(int index)
+    {
+        if (slots is null || index < 0 || slots.Length == 0 || slots.Length <= index) return null;
+        int width = slots.GetLength(1);
+        return slots[index / width ,(index % width)];
     }
 
     // 원하는 자료형을 반복적으로 내보냄. itemslot을 요구할 때마다 다음 슬롯을 내놓음
@@ -269,6 +384,21 @@ public class Inventory : MonoBehaviour
     public int RemoveItemFromLocation(int row, int column , int amount)
     {
         return default;
+    }
+
+    public void MergeItem(Item wantItem)
+    {
+        if (!wantItem) return;
+        if (wantItem.maxStack <= 1) return;
+        int totalCount = CountItem(wantItem, out List<ItemSlots> containSlots);
+
+        if (containSlots is null || containSlots.Count <= 1) return;
+
+        for (int i = 0; i < containSlots.Count; i++)
+        { 
+            ItemSlots currentSlot = containSlots[i];
+            if (currentSlot.GetIsMax()) continue;
+        }
     }
 
     // -1 = all

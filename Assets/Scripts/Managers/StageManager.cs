@@ -15,7 +15,7 @@ public class StageManager : ManagerBase
 
     public void StartStage(int index)
     {
-        Debug.Log(customerSpawn == null);
+        
         if (container == null)
         {
             Debug.LogError("StageContainer not initialized!");

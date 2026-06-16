@@ -296,7 +296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &490990419
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1342,6 +1342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1a529b368b74d45a77b4c5a4d9bfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageManager
+  customerSpawn: {fileID: 0}
   container: {fileID: 11400000, guid: c67e569a7debce44a986a186f3c6f1e4, type: 2}
 --- !u!1 &1856653715
 GameObject:
