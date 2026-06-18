@@ -29,16 +29,11 @@ public class Inventory : MonoBehaviour
     {
         int index = Random.Range(0, itemList.Length);
 
-        Debug.Log($"index : {index}");
-        Debug.Log($"item name : {itemList[index]}");
-
         Item potion = DataManager.LoadDataFile<Item>(itemList[index].ToLower());
 
-        Debug.Log($"loaded item : {potion}");
 
         if (potion == null)
         {
-            Debug.LogError($"아이템 로드 실패 : {itemList[index]}");
             return;
         }
 
@@ -54,6 +49,8 @@ public class Inventory : MonoBehaviour
 
     public void Sort(System.Comparison<ItemSlots> Method)
     {
+        MergeAll();
+
         int totalLength = slots.Length;
         if (slots is null || totalLength <= 1) return;
         int width = slots.GetLength(1);
@@ -229,11 +226,45 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public IEnumerable<Item> GetAllItem()
+    {
+        HashSet<Item> usedItem = new();
+        foreach (ItemSlots currentSlot in GetAllSlot())
+        {
+            Item currentItem = currentSlot.GetItem();
+            if (!currentItem) continue;
+            if (!usedItem.Add(currentItem)) continue;
+            yield return currentItem;
+        }
+        
+    }
+
+    public Dictionary<Item, List<ItemSlots>> GetAllItemList()
+    {
+        Dictionary<Item, List<ItemSlots>> result = new();
+        foreach (ItemSlots currentSlot in GetAllSlot())
+        {
+            Item currentItem = currentSlot.GetItem();
+            if (!currentItem) continue;
+            // 이미 딕셔너리에 해당 아이템이 있는 경우
+            if (result.TryGetValue(currentItem, out List<ItemSlots> currentList))
+            {
+                currentList.Add(currentSlot);
+            }
+            else // 처음 보는 아이템일 경우
+            {
+                // 딕셔너리에 해당 아이템 추가 (새로운 리스트 안에 내가 들어가 있도록)
+                result.Add(currentItem, new() { currentSlot });
+            }
+        }
+        return result;
+    }
+
     public ItemSlots FindItem(Item target)
     {
         return default;
     }
-
+    
     public ItemSlots FindItem(ItemType wantType)
     {
         return default;
@@ -389,15 +420,28 @@ public class Inventory : MonoBehaviour
     public void MergeItem(Item wantItem)
     {
         if (!wantItem) return;
-        if (wantItem.maxStack <= 1) return;
+        int maxStack = wantItem.maxStack;
+        if (maxStack <= 1) return;
         int totalCount = CountItem(wantItem, out List<ItemSlots> containSlots);
+        if (totalCount <= 1) return;
+        if (containSlots is null) return;
+        int slotCount = containSlots.Count;
+        if (totalCount >= slotCount * maxStack || slotCount <= 1) return;
 
-        if (containSlots is null || containSlots.Count <= 1) return;
-
-        for (int i = 0; i < containSlots.Count; i++)
+        // 모든 슬롯을 돌지만 맨 마지막은 돌지 않기
+        int finalSlot = slotCount - 1;
+        for (int i = 0; i < finalSlot; i++)
         { 
             ItemSlots currentSlot = containSlots[i];
-            if (currentSlot.GetIsMax()) continue;
+            for (int j = finalSlot; j > i; j--)
+            {
+                if (currentSlot.GetIsMax()) break; // 꽉 찬 슬롯은 병합 시킬 필요 x
+                ItemSlots targetSlot = containSlots[j];
+                targetSlot.GiveItem(currentSlot);
+                // 대상이 되는 슬롯이 비어있다면 마지막 슬롯을 하나 덜 체크
+                if (targetSlot.GetIsEmpty()) finalSlot--;
+            }
+            
         }
     }
 
@@ -406,6 +450,15 @@ public class Inventory : MonoBehaviour
     {
 
     }
+
+    public void MergeAll()
+    {
+        foreach (Item currentItem in GetAllItem())
+        {
+            MergeItem(currentItem);
+        }
+    }
+
     public void ExchangeItem(int startRow, int startColumn, int targetRow, int targetColumn)
     {
         ExchangeItem(startRow, startColumn, this, targetRow, targetColumn);

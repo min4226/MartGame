@@ -16,7 +16,6 @@ public class ShopItemSlot : MonoBehaviour
         itemSlotName.text = shopData.shopItemName.ToString();
         coinText.text = shopData.reward.coin.ToString();
         fameText.text = shopData.reward.fame.ToString();
-        Debug.Log($"shopData : {shopData}");
     }
 
     internal Item GetItem()

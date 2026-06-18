@@ -104,10 +104,7 @@ public class DataManager : ManagerBase
         fileName = fileName.ToLower();
         if (dataDictionary.TryGetValue(typeof(T), out Dictionary<string, Object> innerDictinary))
         {
-            foreach (var key in innerDictinary.Keys)
-            {
-                Debug.Log($"등록된 키 : [{key}]");
-            }
+           
             if (innerDictinary.TryGetValue(fileName, out Object result))
             {
                 return result as T;

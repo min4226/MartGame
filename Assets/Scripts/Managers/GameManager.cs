@@ -38,13 +38,15 @@ public class GameManager : MonoBehaviour
     InputManager _input;
     public InputManager Input => _input;
 
-    /*PoolManager _pool;
-    public PoolManager Pool => _pool;*/
-
     StageManager _stage;
     public StageManager Stage => _stage;
 
-    
+    [SerializeField] StageContainer stageContainer;
+    [SerializeField] CustomerData customerData;
+    [SerializeField] NormalCustomer normalCustomer;
+    public StageContainer StageContainer => stageContainer;
+    public CustomerData CustomerData => customerData;
+    public NormalCustomer NormalCustomer => normalCustomer;
     IEnumerator initializing;
 
     public static event InitializeEvent OnInitializeManager;

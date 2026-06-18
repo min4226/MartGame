@@ -1,41 +1,44 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class NormalCustomer : MonoBehaviour
 {
-    
     [SerializeField] NormalCustomerItem[] items;
     [SerializeField] Transform itemPool;
-    [SerializeField] StageData stageData;
-    int speed = 3;
-    /*void Start()
-    {
-        
-        StartCoroutine(ItemCreate(stageData.normalCustomerItemCount));
-    }*/
+    [SerializeField] StageContainer stageContainer;
 
-    IEnumerator ItemCreate(int count)
+    int speed = 3;
+    int currentIndex;
+    public void Init(StageContainer data)
     {
+        stageContainer = data;
+        StartCoroutine(ItemCreate());
+    }
+
+    IEnumerator ItemCreate()
+    {
+
+        int count = stageContainer.stageDatas[currentIndex].normalCustomerItemCount; // 여기가 문제
+        Debug.Log($"count 생성 개수 : {count}");
         for (int i = 0; i < count; i++)
         {
+            Debug.Log($"Instantiate 실행 {i}");
             if (items.Length == 0) yield break;
 
-            NormalCustomerItem customerItem = items[Random.Range(0, items.Length)];
+            var customerItem = items[Random.Range(0, items.Length)];
 
             if (customerItem.item.Length == 0) continue;
 
-            ItemData itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
+            var itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
 
             GameObject normalItem = Instantiate(itemData.itemSprite, itemPool, false);
 
-            var move = normalItem.GetComponent<MoveRight>();
-            if (move == null)
-                normalItem.AddComponent<MoveRight>();
+            if (!normalItem.TryGetComponent<MoveRight>(out var move))
+                move = normalItem.AddComponent<MoveRight>();
 
-            yield return new WaitForSeconds(2);
+            move.speed = speed; 
+
+            yield return new WaitForSeconds(2f);
         }
     }
-
-
 }
