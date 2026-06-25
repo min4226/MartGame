@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageManager : ManagerBase
 {
@@ -13,7 +14,7 @@ public class StageManager : ManagerBase
     StageData currentStage;
     CustomerData customerData;
     NormalCustomer normalCustomer;
-
+    TMP_InputField inputField;
     public void StartStage(int index)
     {
         currentIndex = index;
@@ -32,7 +33,13 @@ public class StageManager : ManagerBase
         customerData = GameManager.Instance.CustomerData;
         normalCustomer = GameManager.Instance.NormalCustomer;
         customerSpawn = FindFirstObjectByType<CustomerSpawn>();
-        StartStage(currentIndex);
+        Debug.Log("OnConnected");
+        inputField = FindFirstObjectByType<TMP_InputField>();
+        Debug.Log(inputField == null);
+        Debug.Log($"inputfield를 찾는 시점 : {FindObjectOfType<InputField>()}");
+
+
+        //StartStage(currentIndex);
 
         yield break;
     }

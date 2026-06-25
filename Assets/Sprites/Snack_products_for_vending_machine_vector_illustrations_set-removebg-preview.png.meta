@@ -1,0 +1,793 @@
+fileFormatVersion: 2
+guid: 6891d04e1559df24f9323424f74d0c07
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1722751175308013494
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_0
+  - first:
+      213: 1742192732173270399
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_1
+  - first:
+      213: 429649521224874510
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_2
+  - first:
+      213: -8341275592555610141
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_3
+  - first:
+      213: -8985536088696473128
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_4
+  - first:
+      213: -1635508606434094042
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_5
+  - first:
+      213: -4164914207759683119
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_6
+  - first:
+      213: 8304408385027680107
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_7
+  - first:
+      213: -6038960427337143077
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_8
+  - first:
+      213: -2421861589567470145
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_9
+  - first:
+      213: 6006574695847006656
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_10
+  - first:
+      213: -1368403529082358618
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_11
+  - first:
+      213: -843636604273350284
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_12
+  - first:
+      213: 4470907238946162304
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_13
+  - first:
+      213: -5109513171692374047
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_14
+  - first:
+      213: -5207504333772645072
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_15
+  - first:
+      213: -2134930122202013115
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_16
+  - first:
+      213: 6381084623768477968
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_17
+  - first:
+      213: 8585354135620266894
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_18
+  - first:
+      213: -1100938658168940287
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_19
+  - first:
+      213: 8849992564593089183
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_20
+  - first:
+      213: -6888469382142922847
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_21
+  - first:
+      213: -220979891633194260
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_22
+  - first:
+      213: 7437281081716492320
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_23
+  - first:
+      213: -254407578914710462
+    second: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 318
+        width: 39
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bfee90011178e710800000000000000
+      internalID: 1722751175308013494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 318
+        width: 46
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7d74733f038d2810800000000000000
+      internalID: 1742192732173270399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 318
+        width: 40
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0a768296fb66f500800000000000000
+      internalID: 429649521224874510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 318
+        width: 45
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef3614ea06dd3c80800000000000000
+      internalID: -8341275592555610141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 338
+        width: 75
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d93bc4e886fc4380800000000000000
+      internalID: -8985536088696473128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 338
+        width: 75
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 624d66676918d49e0800000000000000
+      internalID: -1635508606434094042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 228
+        width: 40
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d1b18e38904336c0800000000000000
+      internalID: -4164914207759683119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 228
+        width: 40
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b67a9537d6f2f3370800000000000000
+      internalID: 8304408385027680107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 228
+        width: 40
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdcade3bc7d413ca0800000000000000
+      internalID: -6038960427337143077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 228
+        width: 41
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb50ba247b1d36ed0800000000000000
+      internalID: -2421861589567470145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 224
+        width: 70
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c19fc69cd3ab5350800000000000000
+      internalID: 6006574695847006656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 224
+        width: 70
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a4b7ab8d34720de0800000000000000
+      internalID: -1368403529082358618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 109
+        width: 40
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47925ca6afcca44f0800000000000000
+      internalID: -843636604273350284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 109
+        width: 40
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 086cb19227adb0e30800000000000000
+      internalID: 4470907238946162304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 109
+        width: 40
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e7b81a77dc5719b0800000000000000
+      internalID: -5109513171692374047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 170
+        width: 80
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03d9c23266a3bb7b0800000000000000
+      internalID: -5207504333772645072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 135
+        width: 86
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5422edd7d543f52e0800000000000000
+      internalID: -2134930122202013115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 135
+        width: 86
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0116d6928aa2e8850800000000000000
+      internalID: 6381084623768477968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 126
+        width: 52
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ba394691e452770800000000000000
+      internalID: 8585354135620266894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 45
+        width: 77
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10958589f1ea8b0f0800000000000000
+      internalID: -1100938658168940287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 45
+        width: 86
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9a5b65295d71da70800000000000000
+      internalID: 8849992564593089183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 86
+        width: 52
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1af6737f79d3760a0800000000000000
+      internalID: -6888469382142922847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 42
+        width: 86
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceaf2b895fbeeecf0800000000000000
+      internalID: -220979891633194260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_23
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 42
+        width: 86
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 028c17a4db7863760800000000000000
+      internalID: 7437281081716492320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_24
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 46
+        width: 52
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24c1f96a7a9287cf0800000000000000
+      internalID: -254407578914710462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_0: 1722751175308013494
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_1: 1742192732173270399
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_10: 6006574695847006656
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_11: -1368403529082358618
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_12: -843636604273350284
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_13: 4470907238946162304
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_14: -5109513171692374047
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_15: -5207504333772645072
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_16: -2134930122202013115
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_17: 6381084623768477968
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_18: 8585354135620266894
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_19: -1100938658168940287
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_2: 429649521224874510
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_20: 8849992564593089183
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_21: -6888469382142922847
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_22: -220979891633194260
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_23: 7437281081716492320
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_24: -254407578914710462
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_3: -8341275592555610141
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_4: -8985536088696473128
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_5: -1635508606434094042
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_6: -4164914207759683119
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_7: 8304408385027680107
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_8: -6038960427337143077
+      Snack_products_for_vending_machine_vector_illustrations_set-removebg-preview_9: -2421861589567470145
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public enum UIType
 { 
     None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow, 
-    Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, MarketWindow, Inventory, ItemCursorSlot,
+    Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, MarketWindow, Inventory, ItemCursorSlot, 
+    ItemPriceMenu,
     _Length
 }
 
@@ -94,6 +95,7 @@ public class UIManager : ManagerBase
 
         CreateUI(UIType.Title, "TitleScreen", switcherTransform);
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
+        Debug.Log($"stagescreen 생성 시점 : {UIType.Stage}");
         CreateUI(UIType.MyMarket, "MyMarket", switcherTransform);
         
 

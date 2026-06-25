@@ -1,5 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public delegate void InitializeEvent();
 public delegate void UpdateEvent(float deltaTime);
@@ -44,9 +46,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] StageContainer stageContainer;
     [SerializeField] CustomerData customerData;
     [SerializeField] NormalCustomer normalCustomer;
+    [SerializeField] CreateMethod createMethod;
+    
     public StageContainer StageContainer => stageContainer;
     public CustomerData CustomerData => customerData;
     public NormalCustomer NormalCustomer => normalCustomer;
+    public CreateMethod CreateMethod => createMethod;
+
+    private TMP_InputField inputField;
+
+
+
+
+
+
     IEnumerator initializing;
 
     public static event InitializeEvent OnInitializeManager;
@@ -66,7 +79,7 @@ public class GameManager : MonoBehaviour
     public static DestroyEvent OnDestroyObject;
 
     [SerializeField] UIType startScreen = UIType.Title;
-
+    
     public static bool is2D = true;
 
     bool isLoading = true;
@@ -135,6 +148,7 @@ public class GameManager : MonoBehaviour
         yield return _input.Connect(this);
         loadingProgress?.AddCurrent(1);
         yield return _stage.Connect(this);
+        
        
         loadingProgress?.AddCurrent(1);
 
@@ -180,6 +194,21 @@ public class GameManager : MonoBehaviour
 
     }
 
+    
+
+    public void SetInputField(TMP_InputField field)
+    {
+        inputField = field;
+    }
+
+    public void ShowInputField()
+    {
+        if (inputField != null)
+        {
+            inputField.gameObject.SetActive(true);
+        }
+    }
+
     public static void Pause()
     {
         Instance.isPlaying = false;
@@ -190,7 +219,6 @@ public class GameManager : MonoBehaviour
         Instance.isPlaying = true;
     }
 
-    
     public void currentInitialize(ref InitializeEvent initializeEvent)
     {
         if (initializeEvent != null)
