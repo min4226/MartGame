@@ -12,11 +12,14 @@ public class UI_Button_OpenScreen : MonoBehaviour
 
     private void Awake()
     {
+        
         createMethod = GameManager.Instance.CreateMethod;
     }
 
     public void Open()
     {
+        if (GameManager.Instance.CurrentState != GameState.PlayScene)
+            return;
         UIManager.ClaimOpenScreen(wantType, changeType);
         createMethod.OnToggle();
 

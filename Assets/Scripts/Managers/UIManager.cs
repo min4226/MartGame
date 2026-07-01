@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -22,7 +23,7 @@ public enum ScreenChangeType
 public delegate void PopupEvent(string title, string context, string confirm);
 public class UIManager : ManagerBase
 {
-
+    
     public static event PopupEvent OnPopup;
 
 
@@ -89,15 +90,15 @@ public class UIManager : ManagerBase
         switcherTransform = CreateFullScreen("ScreenSwitcher");
 
         InputManager.OnRestart += RestartButton;
+
         InputManager.OnShop += ShopButton;
         InputManager.OnRanking += RankingButton;
 
 
         CreateUI(UIType.Title, "TitleScreen", switcherTransform);
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
-        Debug.Log($"stagescreen 생성 시점 : {UIType.Stage}");
         CreateUI(UIType.MyMarket, "MyMarket", switcherTransform);
-        
+        CreateUI(UIType.ItemPriceMenu, "ItemPricePanel");
 
         foreach (Transform currentTransform in switcherTransform)
         { 
@@ -152,6 +153,7 @@ public class UIManager : ManagerBase
         ClaimOpenUI(UIType.BackGround);
     }
 
+    
     void Init()
     {
         Debug.Log("init함수 시작");
@@ -347,6 +349,16 @@ public class UIManager : ManagerBase
     {
         CloseUI(CurrentScreen);
         _currentScreenType = wantType;
+        switch (wantType)
+        {
+            case UIType.Stage:
+                GameManager.Instance.CurrentState = GameState.PlayScene;
+                break;
+
+            case UIType.MyMarket:
+                GameManager.Instance.CurrentState = GameState.DecoScene;
+                break;
+        }
         return OpenUI(wantType);
     }
 

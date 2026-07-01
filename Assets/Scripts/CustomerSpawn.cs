@@ -18,17 +18,20 @@ public class CustomerSpawn : MonoBehaviour
     
     public void Init(StageData data)
     {
+        
         stageData = data;
 
         spawnList = BuildCustomerList(stageData);
         index = 0;
-
+        if (GameManager.Instance.CurrentState != GameState.PlayScene)
+            return;
         SpawnNextCustomer();
     }
 
     // 손님 타입들을 리스트에 저장
     List<CustomerType> BuildCustomerList(StageData stageData)
     {
+
         List<CustomerType> list = new List<CustomerType>();
 
         AddCustomers(list, CustomerType.NormalCustomer, stageData.normalCustomerCount);
@@ -62,6 +65,7 @@ public class CustomerSpawn : MonoBehaviour
     
     IEnumerator SpawnRoutine(CustomerType type)
     {
+
         isSpawning = true;
 
         yield return new WaitForSeconds(1f); // 등장 연출 시간
@@ -76,6 +80,7 @@ public class CustomerSpawn : MonoBehaviour
     
     void Spawn(CustomerType type)
     {
+        
         CustomerData data = GetCustomerData(type);
         currentCustomer = Instantiate(data.ageSprite, poolPosition.position, Quaternion.identity);
     }

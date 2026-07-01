@@ -720,7 +720,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -470, y: 41}
-  m_SizeDelta: {x: 565, y: 131}
+  m_SizeDelta: {x: 279, y: 92}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1853039181804529463
 CanvasRenderer:
@@ -885,6 +885,7 @@ MonoBehaviour:
   - prefabName: QuitWindow
     uiType: 7
     isOpen: 0
+    isOverlay: 0
 --- !u!1 &6408239421062975675
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +924,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 503, y: 41}
-  m_SizeDelta: {x: 565, y: 131}
+  m_SizeDelta: {x: 279, y: 92}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7775804267838925254
 CanvasRenderer:

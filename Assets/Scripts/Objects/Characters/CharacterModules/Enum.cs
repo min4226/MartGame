@@ -5,6 +5,11 @@ public enum CustomerType
     NormalCustomer, TroubleMakerCustomer, ThiefCustomer, SpecialCustomer, 
 }
 
+public enum GameState
+{ 
+    PlayScene, DecoScene,
+}
+
 // ¿¬·É´ë
 public enum AgeType
 { 

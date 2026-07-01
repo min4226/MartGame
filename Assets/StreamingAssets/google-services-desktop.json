@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "502012811663",
+    "firebase_url": "https://eseojinsang-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "eseojinsang",
+    "storage_bucket": "eseojinsang.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502012811663:android:c1fd3d226e6a792c2cd3fa",
+        "android_client_info": {
+          "package_name": "com.GongChaniCompany.eseojinsang"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYEqHbJI9QKt27FJe6XQjtLUMSqkQXIu0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

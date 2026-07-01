@@ -17,15 +17,6 @@ public class ShopItemInstance : MonoBehaviour
             Debug.Log(slot);
             slot.SetItemData(shopData.items[i]);
         } 
-        /*for (int i = 0; i < shopData.items.Length; i++)
-        {
-            GameObject itemSlotObj = Instantiate(itemSlotPrefab, content);
-
-            ShopItemSlot slot = itemSlotObj.GetComponent<ShopItemSlot>();
-            Debug.Log(slot);
-            slot.SetItemData(shopData.items[i]);
-
-            //Debug.Log("»ý¼ºµÊ: " + shopData.items[i].name);
-        }*/
+        
     }
 }

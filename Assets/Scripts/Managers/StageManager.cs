@@ -1,7 +1,5 @@
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,10 +31,10 @@ public class StageManager : ManagerBase
         customerData = GameManager.Instance.CustomerData;
         normalCustomer = GameManager.Instance.NormalCustomer;
         customerSpawn = FindFirstObjectByType<CustomerSpawn>();
-        Debug.Log("OnConnected");
-        inputField = FindFirstObjectByType<TMP_InputField>();
-        Debug.Log(inputField == null);
-        Debug.Log($"inputfield를 찾는 시점 : {FindObjectOfType<InputField>()}");
+        
+        /*inputField = FindFirstObjectByType<TMP_InputField>();
+        Debug.Log(inputField == null);*/
+        
 
 
         //StartStage(currentIndex);

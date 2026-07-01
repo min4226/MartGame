@@ -8,28 +8,29 @@ public class NormalCustomer : MonoBehaviour
     [SerializeField] NormalCustomerItem[] items;
     [SerializeField] Transform itemPool;
     [SerializeField] StageContainer stageContainer;
-    
+    [SerializeField] Trigger trigger;
 
     
 
     GameObject normalItem;
-    int normalItemCount;
     int speed = 3;
     int currentIndex;
     
 
     public void Init(StageContainer data)
     {
-        
+        if (GameManager.Instance.CurrentState != GameState.PlayScene)
+            return;
         stageContainer = data;
         StartCoroutine(ItemCreate());
+
     }
 
     IEnumerator ItemCreate()
     {
-
-        int count = stageContainer.stageDatas[currentIndex].normalCustomerItemCount; 
-        
+        yield return new WaitForSeconds(2f);
+        int count = stageContainer.stageDatas[currentIndex].normalCustomerItemCount;
+        trigger.SetItemCount(count);
         for (int i = 0; i < count; i++)
         {
             if (items.Length == 0) yield break;
@@ -41,16 +42,19 @@ public class NormalCustomer : MonoBehaviour
             ItemData itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
 
             normalItem = Instantiate(itemData.itemSprite, itemPool, false);
+            
 
             if (!normalItem.TryGetComponent<MoveRight>(out var move))
                 move = normalItem.AddComponent<MoveRight>();
 
-            move.speed = speed; 
+            move.speed = speed;
 
             yield return new WaitForSeconds(2f);
         }
     }
 
-   
+    
+
+
 
 }

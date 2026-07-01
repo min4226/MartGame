@@ -102,7 +102,6 @@ public class InputManager : ManagerBase
 
             float GetValue(RaycastResult target)
             {
-                Debug.Log(target.gameObject);
                 return target.sortingOrder + target.sortingLayer * 100000;
             }
             RaycastResult nearest = cursorHitList.GetMaximum<RaycastResult>(GetValue);

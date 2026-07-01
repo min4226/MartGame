@@ -43,6 +43,16 @@ public class GameManager : MonoBehaviour
     StageManager _stage;
     public StageManager Stage => _stage;
 
+    DBManager _db;
+    public static DBManager DB => _instance?._db;
+
+    /*TMP_InputField _inputField;
+    public TMP_InputField InputField => _inputField;*/
+
+    public TMP_InputField InputField { get; set; }
+    public Button EnterButton { get; set; }
+    public GameState CurrentState { get; set; }
+
     [SerializeField] StageContainer stageContainer;
     [SerializeField] CustomerData customerData;
     [SerializeField] NormalCustomer normalCustomer;
@@ -53,12 +63,7 @@ public class GameManager : MonoBehaviour
     public NormalCustomer NormalCustomer => normalCustomer;
     public CreateMethod CreateMethod => createMethod;
 
-    private TMP_InputField inputField;
-
-
-
-
-
+    
 
     IEnumerator initializing;
 
@@ -121,7 +126,8 @@ public class GameManager : MonoBehaviour
         totalLoad += CreateManager(ref _camera).LoadingCount;
         totalLoad += CreateManager(ref _input).LoadingCount;
         totalLoad += CreateManager(ref _stage).LoadingCount;
-        
+        totalLoad += CreateManager(ref _db).LoadingCount;
+
 
 
 
@@ -148,8 +154,9 @@ public class GameManager : MonoBehaviour
         yield return _input.Connect(this);
         loadingProgress?.AddCurrent(1);
         yield return _stage.Connect(this);
-        
-       
+        loadingProgress?.AddCurrent(1);
+        yield return _db.Connect(this);
+
         loadingProgress?.AddCurrent(1);
 
         yield return new WaitForSeconds(1.0f);
@@ -171,6 +178,7 @@ public class GameManager : MonoBehaviour
         UI?.Disconnect();
         Data?.Disconnect();
         Stage?.Disconnect();
+        DB?.Disconnect();
     }
 
     ManagerType CreateManager<ManagerType>(ref ManagerType targetVariable)  where ManagerType :  ManagerBase
@@ -194,20 +202,18 @@ public class GameManager : MonoBehaviour
 
     }
 
-    
-
-    public void SetInputField(TMP_InputField field)
+    /*public void SetInputField(TMP_InputField field)
     {
-        inputField = field;
+        _inputField = field;
     }
 
     public void ShowInputField()
     {
-        if (inputField != null)
-        {
-            inputField.gameObject.SetActive(true);
-        }
-    }
+        Debug.Log("showinputfield");
+        Debug.Log($"inputfield »ý¼º Áß : {_inputField}");
+        _inputField.gameObject.SetActive(true);
+        
+    }*/
 
     public static void Pause()
     {
