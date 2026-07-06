@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName ="Item", menuName = "Scriptable Objects/ItemData")]
 public class ItemData : ScriptableObject

@@ -8,9 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static DBManager;
 
 public class DBManager : ManagerBase
 {
@@ -18,13 +20,16 @@ public class DBManager : ManagerBase
     FirebaseUser user;
     DatabaseReference rootReference;
 
+    [SerializeField] TextMeshProUGUI idText;
+    [SerializeField] OptionID optionID;
     protected override IEnumerator OnConnected(GameManager newManager)
     {
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(InitializeFireBase);
-        ;
         
+        
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(InitializeFireBase);
         yield return null;
     }
+    
 
     protected override void OnDisconnected()
     {
@@ -50,11 +55,14 @@ public class DBManager : ManagerBase
         }
     }
     public TMPro.TMP_InputField nickNameInput;
+    public TMP_InputField itemNameInput;
     public void MakeUserData(string newUserName)
     {
         WriteData(NewUserData(nickNameInput.text), "users", "userData", user.UserId);
+        
     }
 
+  
     public async void GuestLogin()
 
     {
@@ -63,22 +71,37 @@ public class DBManager : ManagerBase
         if (user is not null)
         {
             Debug.LogError($"이미 있는 로그인입니다.({user.IsValid()}, {user.UserId})");
+            
             UserData resultData = await ReadDataAsync<UserData>("users", "userData" , user.UserId);
             if (resultData is not null)
             {
+               
+                optionID.SetID(resultData.nickname);
+                Debug.Log($"resultdata : {resultData.nickname}");
+            }
+            
+            if (resultData is not null)
+            {
                 Debug.Log(resultData.nickname);
+                idText.text = resultData.nickname;
             }
             else
             {
                 WriteData(NewUserData("GongBack"), "users", "userData", user.UserId);
+                
             }
-                return;
+
+            
+            return; 
         }
 
         await authentication.SignInAnonymouslyAsync().ContinueWithOnMainThread(OnLoginResult);
+        
 
+        
     }
 
+    
     void OnLoginResult(Task<AuthResult> task)
     {
         if (task.IsCanceled || task.IsFaulted)
@@ -98,6 +121,8 @@ public class DBManager : ManagerBase
 
         Debug.Log($"로그인 결과 : {user.UserId}");
     }
+
+    
     [Serializable]
     public class UserData
     {
@@ -118,6 +143,8 @@ public class DBManager : ManagerBase
         attendtime = 1
     };
 
+    
+    
     public DatabaseReference GetFindDirectory(DatabaseReference root, params string[] directory)
     {
         if (directory is null || directory.Length == 0) return root;
@@ -128,6 +155,7 @@ public class DBManager : ManagerBase
         }
         return currentReference;
     }
+   
 
     public void WriteData(object wantData, params string[] directory)
     {
@@ -141,7 +169,7 @@ public class DBManager : ManagerBase
         if (rootReference is null || changes is null) return;
         GetFindDirectory(rootReference, directory).UpdateChildrenAsync(changes).ContinueWithOnMainThread(OnTaskResult);
     }
-
+    
     public void ReadData(Action<Task<DataSnapshot>> OnReadData, params string[] directory)
     {
         GetFindDirectory(rootReference, directory).GetValueAsync().ContinueWithOnMainThread(OnReadData);

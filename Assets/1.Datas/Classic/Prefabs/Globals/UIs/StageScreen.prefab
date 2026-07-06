@@ -1042,11 +1042,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1062,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1074,15 +1074,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -43
+      value: -1306
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -271
+      value: -544
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1094,7 +1094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1108,6 +1108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8081680061284280037, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4506492694891613593, guid: dd1d101603a510d47bb70c568299b69c, type: 3}
     - target: {fileID: 8143710975945709970, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: wantType
       value: 18
@@ -1115,19 +1119,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4850223395612299651, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4224666411362801594}
   m_SourcePrefab: {fileID: 100100000, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
 --- !u!114 &1859801857728586598 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8143710975945709970, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
   m_PrefabInstance: {fileID: 7551149076657978100}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 3135743840790850423}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3746ed79334e51a408aeec93da8f24c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_OpenPopup
+--- !u!1 &3135743840790850423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4850223395612299651, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+  m_PrefabInstance: {fileID: 7551149076657978100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4224666411362801594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3135743840790850423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff07097fbd2569e41b17bd826e33f589, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TodaysItemButton
+  todaysItemPanel: {fileID: 0}
+  content: {fileID: 0}
+  item: []
 --- !u!224 &7930797008309914377 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}

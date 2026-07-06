@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -46,10 +47,10 @@ public class GameManager : MonoBehaviour
     DBManager _db;
     public static DBManager DB => _instance?._db;
 
-    /*TMP_InputField _inputField;
-    public TMP_InputField InputField => _inputField;*/
+    
 
     public TMP_InputField InputField { get; set; }
+    
     public Button EnterButton { get; set; }
     public GameState CurrentState { get; set; }
 
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
     public NormalCustomer NormalCustomer => normalCustomer;
     public CreateMethod CreateMethod => createMethod;
 
-    
+    public Action itemPanel;
 
     IEnumerator initializing;
 

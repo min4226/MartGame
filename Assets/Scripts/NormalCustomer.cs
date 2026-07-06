@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
@@ -9,12 +11,15 @@ public class NormalCustomer : MonoBehaviour
     [SerializeField] Transform itemPool;
     [SerializeField] StageContainer stageContainer;
     [SerializeField] Trigger trigger;
-
+    [SerializeField] NormalCustomerItem todayItem;
     
+    public List<ItemData> todayItems = new List<ItemData>();
 
     GameObject normalItem;
     int speed = 3;
     int currentIndex;
+    
+
     
 
     public void Init(StageContainer data)
@@ -28,6 +33,7 @@ public class NormalCustomer : MonoBehaviour
 
     IEnumerator ItemCreate()
     {
+        todayItems.Clear();
         yield return new WaitForSeconds(2f);
         int count = stageContainer.stageDatas[currentIndex].normalCustomerItemCount;
         trigger.SetItemCount(count);
@@ -36,11 +42,12 @@ public class NormalCustomer : MonoBehaviour
             if (items.Length == 0) yield break;
 
             NormalCustomerItem customerItem = items[Random.Range(0, items.Length)];
-
+            
             if (customerItem.item.Length == 0) continue;
 
             ItemData itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
-
+            todayItems.Add(itemData);
+            Debug.Log($"itemsprite : {itemData.itemSprite}");
             normalItem = Instantiate(itemData.itemSprite, itemPool, false);
             
 
