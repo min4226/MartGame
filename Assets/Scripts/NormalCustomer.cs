@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
@@ -18,8 +19,6 @@ public class NormalCustomer : MonoBehaviour
     GameObject normalItem;
     int speed = 3;
     int currentIndex;
-    
-
     
 
     public void Init(StageContainer data)
@@ -47,8 +46,8 @@ public class NormalCustomer : MonoBehaviour
 
             ItemData itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
             todayItems.Add(itemData);
-            Debug.Log($"itemsprite : {itemData.itemSprite}");
-            normalItem = Instantiate(itemData.itemSprite, itemPool, false);
+            
+            normalItem = Instantiate(itemData.itemPrefab, itemPool, false);
             
 
             if (!normalItem.TryGetComponent<MoveRight>(out var move))
@@ -60,8 +59,14 @@ public class NormalCustomer : MonoBehaviour
         }
     }
 
-    
-
-
+    public int ItemTotalValue(List<ItemData> todayItems)
+    {
+        int total = 0;
+        foreach (ItemData currentItem in todayItems)
+        {
+            total += currentItem.itemBasePrice;
+        }
+        return total;
+    }
 
 }

@@ -15,6 +15,7 @@ public class RewardModule : MonoBehaviour
 
     public void ApplyReward(Reward reward)
     {
+        reward = new Reward();
         _fame += reward.fame;
         _coin += reward.coin;
 
@@ -22,7 +23,7 @@ public class RewardModule : MonoBehaviour
         _coin = Mathf.Max(0, _coin);
     }
 
-
+    // 실패했을 때 따로 보상을 감소시키지 않음
 
     // 스테이지를 성공 했을 때 받는 보상 정도
     /*public TimeResult ReceiveReward(TimeResult result, StageData stageData)

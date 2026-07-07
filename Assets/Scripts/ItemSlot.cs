@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    [SerializeField] GameObject itemSlotSprite;
+    [SerializeField] Sprite itemSlotSprite;
     [SerializeField] TextMeshProUGUI itemSlotName;
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI fameText;

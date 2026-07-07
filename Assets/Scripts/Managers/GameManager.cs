@@ -54,16 +54,21 @@ public class GameManager : MonoBehaviour
     public Button EnterButton { get; set; }
     public GameState CurrentState { get; set; }
 
+    public GameObject CorrectAnswer { get; set; }
+    public GameObject FailAnswer { get; set; }
+
     [SerializeField] StageContainer stageContainer;
     [SerializeField] CustomerData customerData;
     [SerializeField] NormalCustomer normalCustomer;
     [SerializeField] CreateMethod createMethod;
-    
+    [SerializeField] RewardModule rewardModule;
+    // 스크립트 참조
     public StageContainer StageContainer => stageContainer;
     public CustomerData CustomerData => customerData;
     public NormalCustomer NormalCustomer => normalCustomer;
     public CreateMethod CreateMethod => createMethod;
 
+    public RewardModule RewardModule => rewardModule ;
     public Action itemPanel;
 
     IEnumerator initializing;
