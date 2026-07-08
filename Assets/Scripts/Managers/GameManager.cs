@@ -62,13 +62,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] NormalCustomer normalCustomer;
     [SerializeField] CreateMethod createMethod;
     [SerializeField] RewardModule rewardModule;
+    [SerializeField] StageData stageData;
+    [SerializeField] CustomerSpawn customerSpawn;
     // 스크립트 참조
     public StageContainer StageContainer => stageContainer;
     public CustomerData CustomerData => customerData;
     public NormalCustomer NormalCustomer => normalCustomer;
     public CreateMethod CreateMethod => createMethod;
-
+    public StageData StageData => stageData;
     public RewardModule RewardModule => rewardModule ;
+    public CustomerSpawn CustomerSpawn => customerSpawn;
+
     public Action itemPanel;
 
     IEnumerator initializing;

@@ -9,28 +9,35 @@ public class InputFieldButton : MonoBehaviour
     int userAnswer;
     int answer;
     Reward reward;
-
+    StageData stageData;
+    CustomerSpawn customerSpawn;
+    
     public void OnInputFieldButton()
     {
         inputField = GameManager.Instance.InputField;
-        Debug.Log($"inputfield : {inputField == null}");
+        customerSpawn = GameManager.Instance.CustomerSpawn;
+        
+
+        Debug.Log($"customerSpawn : {customerSpawn == null}");
+
         userAnswer = int.Parse(inputField.text);
         answer = GameManager.Instance.NormalCustomer.ItemTotalValue(GameManager.Instance.NormalCustomer.todayItems);
 
         if (userAnswer == answer)
         {
-            Debug.Log("정답!");
             GameManager.Instance.CorrectAnswer.SetActive(true);
             inputField.gameObject.SetActive(false);
-            GameManager.Instance.RewardModule.ApplyReward(reward);
+            GameManager.Instance.RewardModule.ApplyReward();
+            customerSpawn.SpawnNextCustomer();
+            customerSpawn.StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
         }
         else
         {
-            Debug.Log("틀렸습니다!");
             GameManager.Instance.FailAnswer.SetActive(true);
             inputField.gameObject.SetActive(false);
-            GameManager.Instance.RewardModule.ApplyReward(reward);
-            Debug.Log($"보상이 잘 실행이 되는가 {reward}");
+
+            customerSpawn.StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
+            customerSpawn.SpawnNextCustomer();
         }
     }
 }

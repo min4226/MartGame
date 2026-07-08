@@ -1273,6 +1273,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!114 &595261845 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1602426972439110401, guid: 6510300a28d87b141bddd0d810705221, type: 3}
+  m_PrefabInstance: {fileID: 1030523812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ad35c95db6c554ab533e712c74bb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerSpawn
 --- !u!1 &599867253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,6 +3446,8 @@ MonoBehaviour:
   normalCustomer: {fileID: 152922909}
   createMethod: {fileID: 793290841}
   rewardModule: {fileID: 599867254}
+  stageData: {fileID: 11400000, guid: fd6bf99874b1c7643973d870b49fd70d, type: 2}
+  customerSpawn: {fileID: 595261845}
   startScreen: 3
 --- !u!4 &1772593127
 Transform:

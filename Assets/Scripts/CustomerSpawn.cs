@@ -14,8 +14,8 @@ public class CustomerSpawn : MonoBehaviour
     bool isSpawning = false;
 
     GameObject currentCustomer;
+    NormalCustomer normalCustomerSpawn;
 
-    
     public void Init(StageData data)
     {
         
@@ -49,7 +49,7 @@ public class CustomerSpawn : MonoBehaviour
     }
 
     // 다음 손님 생성
-    void SpawnNextCustomer()
+    public void SpawnNextCustomer()
     {
         if (isSpawning) return;
 
@@ -93,9 +93,22 @@ public class CustomerSpawn : MonoBehaviour
     
     public void OnCustomerEnd()
     {
+        normalCustomerSpawn = GameManager.Instance.NormalCustomer;
+
         if (currentCustomer != null)
             Destroy(currentCustomer);
-
+        
         SpawnNextCustomer();
+        StartCoroutine(GameManager.Instance.NormalCustomer.ItemCreate()); 
+    }
+
+    public IEnumerator NextCustomerRoutine()
+    { 
+        yield return new WaitForSeconds(1f);
+        GameManager.Instance.CorrectAnswer.SetActive(false);
+        GameManager.Instance.FailAnswer.SetActive(false);
+        GameManager.Instance.InputField.gameObject.SetActive(false);
+        GameManager.Instance.EnterButton.gameObject.SetActive(false);
+        OnCustomerEnd();
     }
 }

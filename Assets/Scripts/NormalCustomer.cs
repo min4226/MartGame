@@ -30,11 +30,12 @@ public class NormalCustomer : MonoBehaviour
 
     }
 
-    IEnumerator ItemCreate()
+    public IEnumerator ItemCreate()
     {
         todayItems.Clear();
         yield return new WaitForSeconds(2f);
         int count = stageContainer.stageDatas[currentIndex].normalCustomerItemCount;
+        
         trigger.SetItemCount(count);
         for (int i = 0; i < count; i++)
         {

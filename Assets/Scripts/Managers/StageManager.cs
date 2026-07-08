@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class StageManager : ManagerBase
     CustomerData customerData;
     NormalCustomer normalCustomer;
     TMP_InputField inputField;
+
+    public int CurrentIndex => currentIndex;
+    public StageData CurrentStage => currentStage;
     public void StartStage(int index)
     {
         currentIndex = index;
@@ -32,11 +36,6 @@ public class StageManager : ManagerBase
         normalCustomer = GameManager.Instance.NormalCustomer;
         customerSpawn = FindFirstObjectByType<CustomerSpawn>();
         
-        /*inputField = FindFirstObjectByType<TMP_InputField>();
-        Debug.Log(inputField == null);*/
-        
-
-
         //StartStage(currentIndex);
 
         yield break;

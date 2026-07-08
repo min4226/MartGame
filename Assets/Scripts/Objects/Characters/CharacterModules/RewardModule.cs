@@ -1,3 +1,5 @@
+using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class RewardModule : MonoBehaviour
@@ -11,16 +13,30 @@ public class RewardModule : MonoBehaviour
 
     int _coin;
     public int Coin => _coin;
+    GameObject coinPanel;
+    GameObject famePanel;
+    
 
-
-    public void ApplyReward(Reward reward)
+    public void ApplyReward()
     {
-        reward = new Reward();
-        _fame += reward.fame;
-        _coin += reward.coin;
+        StageData stage = GameManager.Instance.Stage.CurrentStage;
+        
+        Debug.Log($"stagedata : {stage == null}");
+        // reward = new Reward();
+        _fame += stage.reward.fame ;
+        _coin += stage.reward.coin;
 
         _fame = Mathf.Max(0, _fame);
         _coin = Mathf.Max(0, _coin);
+
+        coinPanel = GameObject.Find("MyCoinCount");
+        famePanel = GameObject.Find("MyFameCount");
+
+        coinPanel.GetComponentInChildren<TMP_Text>().text = _coin.ToString();
+        famePanel.GetComponentInChildren<TMP_Text>().text = _fame.ToString();
+        
+
+        Debug.Log($"_fame, _coin : {_fame}, {_coin}");
     }
 
     // 실패했을 때 따로 보상을 감소시키지 않음

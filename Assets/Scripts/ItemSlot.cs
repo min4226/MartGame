@@ -14,8 +14,8 @@ public class ItemSlot : MonoBehaviour
     {
         itemSlotSprite = itemData.itemSprite;
         itemSlotName.text = itemData.itemName.ToString();
-        coinText.text = itemData.reward.coin.ToString();
-        fameText.text = itemData.reward.fame.ToString();
+        /*coinText.text = itemData.reward.coin.ToString();
+        fameText.text = itemData.reward.fame.ToString();*/
     }
 
     internal Item GetItem()

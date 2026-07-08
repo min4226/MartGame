@@ -28,4 +28,6 @@ public class StageData : ScriptableObject
 
     public ItemCreatePattern[] itemCreatePatterns; // 아이템이 나오는 패턴
     public PatternRules[] patternRules; // 패턴 규칙
+
+    public Reward reward; // 리워드
 }
