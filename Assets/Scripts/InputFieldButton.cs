@@ -28,7 +28,8 @@ public class InputFieldButton : MonoBehaviour
             GameManager.Instance.CorrectAnswer.SetActive(true);
             inputField.gameObject.SetActive(false);
             GameManager.Instance.RewardModule.ApplyReward();
-            customerSpawn.SpawnNextCustomer();
+
+            //customerSpawn.SpawnNextCustomer();
             customerSpawn.StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
         }
         else
@@ -37,7 +38,7 @@ public class InputFieldButton : MonoBehaviour
             inputField.gameObject.SetActive(false);
 
             customerSpawn.StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
-            customerSpawn.SpawnNextCustomer();
+            //customerSpawn.SpawnNextCustomer();
         }
     }
 }

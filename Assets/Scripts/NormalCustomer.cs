@@ -26,17 +26,18 @@ public class NormalCustomer : MonoBehaviour
         if (GameManager.Instance.CurrentState != GameState.PlayScene)
             return;
         stageContainer = data;
-        StartCoroutine(ItemCreate());
-
+        
     }
 
     public IEnumerator ItemCreate()
     {
+        if (GameManager.Instance.currentCustomer == null) yield break; // ienumerator에서는 return과 같은 뜻으로 yield break를 사용
         todayItems.Clear();
         yield return new WaitForSeconds(2f);
         int count = stageContainer.stageDatas[currentIndex].normalCustomerItemCount;
         
         trigger.SetItemCount(count);
+        
         for (int i = 0; i < count; i++)
         {
             if (items.Length == 0) yield break;
@@ -49,6 +50,7 @@ public class NormalCustomer : MonoBehaviour
             todayItems.Add(itemData);
             
             normalItem = Instantiate(itemData.itemPrefab, itemPool, false);
+            
             
 
             if (!normalItem.TryGetComponent<MoveRight>(out var move))

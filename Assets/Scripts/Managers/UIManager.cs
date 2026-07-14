@@ -57,6 +57,7 @@ public class UIManager : ManagerBase
     public PayThingCount payThingCount;
     public PayCountChange payCountChange;
 
+    
     public IEnumerator Initialize(GameManager newManager)
     {
         SetMainCanvas(GetComponentInChildren<Canvas>());

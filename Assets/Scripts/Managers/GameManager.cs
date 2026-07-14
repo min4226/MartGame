@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
     public GameObject CorrectAnswer { get; set; }
     public GameObject FailAnswer { get; set; }
 
+    public GameObject currentCustomer { get; set; }
+
     [SerializeField] StageContainer stageContainer;
     [SerializeField] CustomerData customerData;
     [SerializeField] NormalCustomer normalCustomer;
@@ -64,7 +66,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] RewardModule rewardModule;
     [SerializeField] StageData stageData;
     [SerializeField] CustomerSpawn customerSpawn;
-    // 스크립트 참조
+    [SerializeField] TextMeshProUGUI stageText;
+     // stagetext 설정하기 7월 15일!!
     public StageContainer StageContainer => stageContainer;
     public CustomerData CustomerData => customerData;
     public NormalCustomer NormalCustomer => normalCustomer;

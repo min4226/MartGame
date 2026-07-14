@@ -23,9 +23,7 @@ public class StageManager : ManagerBase
         currentStage = container.stageDatas[index];
         customerSpawn.Init(currentStage);
         normalCustomer.Init(container);
-        Debug.Log($"일반 손님 한 명당 아이템 개수 : {currentStage.normalCustomerItemCount}");
-        Debug.Log($"현재 스테이지 : {currentStage.stageName}");
-        Debug.Log($"손님 수 : {currentStage.normalCustomerCount}");
+        
     }
 
 
@@ -50,7 +48,12 @@ public class StageManager : ManagerBase
     {
         return GameManager.Instance?.Stage.currentStage;
     }
-    
+
+    public void NextStage()
+    {
+        currentIndex++;
+        StartStage(currentIndex);
+    }
 
     
 }

@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
-
 public class ToPlayMode : MonoBehaviour
 {
     GameObject marketScene;
