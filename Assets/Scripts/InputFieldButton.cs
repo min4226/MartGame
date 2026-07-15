@@ -28,17 +28,13 @@ public class InputFieldButton : MonoBehaviour
             GameManager.Instance.CorrectAnswer.SetActive(true);
             inputField.gameObject.SetActive(false);
             GameManager.Instance.RewardModule.ApplyReward();
-
-            //customerSpawn.SpawnNextCustomer();
             customerSpawn.StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
         }
         else
         {
             GameManager.Instance.FailAnswer.SetActive(true);
             inputField.gameObject.SetActive(false);
-
             customerSpawn.StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
-            //customerSpawn.SpawnNextCustomer();
         }
     }
 }

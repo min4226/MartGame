@@ -7,8 +7,12 @@ public class ChangeStageLevel : MonoBehaviour
     [SerializeField] TextMeshProUGUI stageText;
     [SerializeField] StageContainer stageData;
 
+    void Start()
+    {
+        GameManager.Instance.Stage.OnStageChanged += ChangeLevel;    
+    }
     public void ChangeLevel()
     {
-        stageText.text = stageData.stageDatas[0].stageName.ToString();
+        stageText.text = stageData.stageDatas[GameManager.Instance.Stage.CurrentIndex].stageName.ToString();
     }
 }

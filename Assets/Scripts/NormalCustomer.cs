@@ -34,8 +34,7 @@ public class NormalCustomer : MonoBehaviour
         if (GameManager.Instance.currentCustomer == null) yield break; // ienumerator에서는 return과 같은 뜻으로 yield break를 사용
         todayItems.Clear();
         yield return new WaitForSeconds(2f);
-        int count = stageContainer.stageDatas[currentIndex].normalCustomerItemCount;
-        
+        int count = stageContainer.stageDatas[GameManager.Instance.Stage.CurrentIndex].normalCustomerItemCount;
         trigger.SetItemCount(count);
         
         for (int i = 0; i < count; i++)

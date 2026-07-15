@@ -9,15 +9,6 @@ public class PayCountChange : MonoBehaviour
     public TextMeshProUGUI payWindowCount;
     [SerializeField]PayThingCount payThingCount;
 
-    
-
-    /*public void ConnectPayThingCount(PayThingCount target)
-    {
-        payThingCount = target;
-        Debug.Log(payThingCount);
-        UpdateUI();
-    }*/
-
     private void UpdateUI()
     {
         payWindowCount.text = payThingCount.payCount.ToString();

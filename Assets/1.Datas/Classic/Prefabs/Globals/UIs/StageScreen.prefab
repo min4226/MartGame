@@ -973,6 +973,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8155716060959471414, guid: 90f430b687201434ebf5a764633dd8e7, type: 3}
+      propertyPath: m_TextWrappingMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -994,6 +998,10 @@ PrefabInstance:
     - target: {fileID: 3813986333501687981, guid: a220df9a89fbc0b4bbaeda0854dbdc51, type: 3}
       propertyPath: m_Name
       value: MyCoinCount
+      objectReference: {fileID: 0}
+    - target: {fileID: 5237940263827415141, guid: a220df9a89fbc0b4bbaeda0854dbdc51, type: 3}
+      propertyPath: m_TextWrappingMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7699142434740109659, guid: a220df9a89fbc0b4bbaeda0854dbdc51, type: 3}
       propertyPath: m_Pivot.x
@@ -1175,6 +1183,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4350072530671379837, guid: 5af601f7fc40f5148ae31bfc73131973, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6449937818199063953, guid: 5af601f7fc40f5148ae31bfc73131973, type: 3}
+      propertyPath: m_TextWrappingMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

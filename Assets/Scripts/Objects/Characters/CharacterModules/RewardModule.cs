@@ -16,15 +16,16 @@ public class RewardModule : MonoBehaviour
     GameObject coinPanel;
     GameObject famePanel;
     
-
+    
+    //스테이지2에서 리워드가 안 올라감
     public void ApplyReward()
     {
-        StageData stage = GameManager.Instance.Stage.CurrentStage;
-        
-        Debug.Log($"stagedata : {stage == null}");
+        /*StageData stage = GameManager.Instance.Stage.CurrentStage;
+        Debug.Log($"currentstage : {GameManager.Instance.Stage.CurrentStage}");
+        Debug.Log($"stagedata : {stage == null}");*/
         // reward = new Reward();
-        _fame += stage.reward.fame ;
-        _coin += stage.reward.coin;
+        _fame += GameManager.Instance.CustomerData.successReward.fame;
+        _coin += GameManager.Instance.CustomerData.successReward.coin;
 
         _fame = Mathf.Max(0, _fame);
         _coin = Mathf.Max(0, _coin);

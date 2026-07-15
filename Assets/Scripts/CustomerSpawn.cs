@@ -75,7 +75,7 @@ public class CustomerSpawn : MonoBehaviour
         {
             // 여기에서 다음 스테이지로 넘어가는 코드 작성
             Debug.Log("Stage Clear");
-            GameManager.Instance.Stage.NextStage();
+            GameManager.Instance.Stage.StageRewardCorrect();
 
             return;
         }

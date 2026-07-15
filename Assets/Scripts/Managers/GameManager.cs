@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] StageData stageData;
     [SerializeField] CustomerSpawn customerSpawn;
     [SerializeField] TextMeshProUGUI stageText;
+    
      // stagetext 설정하기 7월 15일!!
     public StageContainer StageContainer => stageContainer;
     public CustomerData CustomerData => customerData;
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
     public StageData StageData => stageData;
     public RewardModule RewardModule => rewardModule ;
     public CustomerSpawn CustomerSpawn => customerSpawn;
+    
 
     public Action itemPanel;
 
@@ -215,18 +217,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    /*public void SetInputField(TMP_InputField field)
-    {
-        _inputField = field;
-    }
-
-    public void ShowInputField()
-    {
-        Debug.Log("showinputfield");
-        Debug.Log($"inputfield 생성 중 : {_inputField}");
-        _inputField.gameObject.SetActive(true);
-        
-    }*/
 
     public static void Pause()
     {

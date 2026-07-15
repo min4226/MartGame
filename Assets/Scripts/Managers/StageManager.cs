@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,33 +9,36 @@ public class StageManager : ManagerBase
 {
     
     [SerializeField] CustomerSpawn customerSpawn;
+    [SerializeField] ChangeStageLevel changeStageLevel;
     StageContainer container;
     int currentIndex;
     StageData currentStage;
     CustomerData customerData;
     NormalCustomer normalCustomer;
     TMP_InputField inputField;
-
+    
     public int CurrentIndex => currentIndex;
     public StageData CurrentStage => currentStage;
+
+    public event Action OnStageChanged;
+    
     public void StartStage(int index)
     {
         currentIndex = index;
         currentStage = container.stageDatas[index];
+
         customerSpawn.Init(currentStage);
         normalCustomer.Init(container);
-        
     }
 
-
+    
     protected override IEnumerator OnConnected(GameManager newManager)
     {
         container = GameManager.Instance.StageContainer;
         customerData = GameManager.Instance.CustomerData;
         normalCustomer = GameManager.Instance.NormalCustomer;
         customerSpawn = FindFirstObjectByType<CustomerSpawn>();
-        
-        //StartStage(currentIndex);
+        changeStageLevel = FindFirstObjectByType<ChangeStageLevel>();
 
         yield break;
     }
@@ -49,10 +53,24 @@ public class StageManager : ManagerBase
         return GameManager.Instance?.Stage.currentStage;
     }
 
+    // 스테이지 클리어에 필요한 리워드와 유저가 받은 리워드가 같다면 실행하는 함수
+    public void StageRewardCorrect()
+    {
+        Debug.Log($"requiredcoin : {currentStage.requiredCoin}");
+        Debug.Log($"successreward.coin : {GameManager.Instance.CustomerData.successReward.coin}");
+
+        if (GameManager.Instance.RewardModule.Coin >= currentStage.requiredCoin
+            && GameManager.Instance.RewardModule.Fame >= currentStage.requiredFame)
+        {
+            NextStage();
+        }
+    }
+
     public void NextStage()
     {
         currentIndex++;
         StartStage(currentIndex);
+        OnStageChanged?.Invoke();
     }
 
     
