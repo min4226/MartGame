@@ -77,6 +77,7 @@ public class CustomerSpawn : MonoBehaviour
             Debug.Log("Stage Clear");
             GameManager.Instance.Stage.StageRewardCorrect();
 
+
             return;
         }
 

@@ -25,6 +25,7 @@ public class Trigger : MonoBehaviour
                 EnterButton.gameObject.SetActive(true);
             }
 
+
             Destroy(other.gameObject);
         }
     }

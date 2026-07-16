@@ -10,6 +10,8 @@ public class StageManager : ManagerBase
     
     [SerializeField] CustomerSpawn customerSpawn;
     [SerializeField] ChangeStageLevel changeStageLevel;
+    GameObject stageClearPanel;
+    GameObject stageClearPanelFail;
     StageContainer container;
     int currentIndex;
     StageData currentStage;
@@ -39,7 +41,8 @@ public class StageManager : ManagerBase
         normalCustomer = GameManager.Instance.NormalCustomer;
         customerSpawn = FindFirstObjectByType<CustomerSpawn>();
         changeStageLevel = FindFirstObjectByType<ChangeStageLevel>();
-
+        stageClearPanel = GameManager.Instance.StageClearResultPanel;
+        stageClearPanelFail = GameManager.Instance.StageClearResultPanelFail;
         yield break;
     }
 
@@ -62,7 +65,13 @@ public class StageManager : ManagerBase
         if (GameManager.Instance.RewardModule.Coin >= currentStage.requiredCoin
             && GameManager.Instance.RewardModule.Fame >= currentStage.requiredFame)
         {
-            NextStage();
+            Debug.Log($"stageclearpanel : {stageClearPanel == null}");
+            stageClearPanel.SetActive(true);
+            
+        }
+        else
+        {
+            stageClearPanelFail.SetActive(true);
         }
     }
 

@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 using static UnityEngine.Rendering.DebugUI;
+
+public delegate void changedTodayItems(List<ItemData> todayItems);
 
 public class NormalCustomer : MonoBehaviour
 {
+    public changedTodayItems OnChangedTodayItems;
+
     [SerializeField] NormalCustomerItem[] items;
     [SerializeField] Transform itemPool;
     [SerializeField] StageContainer stageContainer;
@@ -36,21 +41,26 @@ public class NormalCustomer : MonoBehaviour
         yield return new WaitForSeconds(2f);
         int count = stageContainer.stageDatas[GameManager.Instance.Stage.CurrentIndex].normalCustomerItemCount;
         trigger.SetItemCount(count);
-        
+
         for (int i = 0; i < count; i++)
         {
             if (items.Length == 0) yield break;
 
             NormalCustomerItem customerItem = items[Random.Range(0, items.Length)];
-            
+
             if (customerItem.item.Length == 0) continue;
 
             ItemData itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
             todayItems.Add(itemData);
-            
+        }
+        OnChangedTodayItems?.Invoke(todayItems);
+
+
+        foreach (ItemData itemData in todayItems)
+        { 
             normalItem = Instantiate(itemData.itemPrefab, itemPool, false);
-            
-            
+            normalItem.transform.localScale = Vector3.one;
+
 
             if (!normalItem.TryGetComponent<MoveRight>(out var move))
                 move = normalItem.AddComponent<MoveRight>();
@@ -59,6 +69,7 @@ public class NormalCustomer : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
         }
+
     }
 
     public int ItemTotalValue(List<ItemData> todayItems)

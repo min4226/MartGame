@@ -12,7 +12,6 @@ public class UI_OpenPopup : MonoBehaviour
     {
         UIBase opened = null;
 
-        
         if (wantToggle) opened = UIManager.ClaimToggleUI(wantType);
         else opened = UIManager.ClaimOpenUI(wantType);
 
@@ -21,17 +20,6 @@ public class UI_OpenPopup : MonoBehaviour
             opened.transform.SetAsLastSibling();
             
         }
-        
-        
-        /*payThingCount = GetComponent<PayThingCount>(); // shopwindow -> gameobejct 이런 식으로 찾기
-        Debug.Log($"paythingcount : {payThingCount}");
-        payCountChange = GetComponentInChildren<PayCountChange>(); // paywindow -> inputfield 이런 식으로 찾기
-        Debug.Log($"paycountchange : {payCountChange}");
-
-        if (payThingCount != null && payCountChange != null)
-        {
-            payCountChange.Init(payThingCount);
-        }*/
     }
 
     public void Close()

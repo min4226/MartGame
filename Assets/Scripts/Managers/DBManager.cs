@@ -198,7 +198,7 @@ public class DBManager : ManagerBase
         }
         catch (Exception e)
         { 
-            Debug.LogError(e);
+            //Debug.LogError(e);
             return default;
         }
 

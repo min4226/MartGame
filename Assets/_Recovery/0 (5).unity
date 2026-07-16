@@ -3449,7 +3449,6 @@ MonoBehaviour:
   stageData: {fileID: 11400000, guid: fd6bf99874b1c7643973d870b49fd70d, type: 2}
   customerSpawn: {fileID: 595261845}
   stageText: {fileID: 0}
-  stageClearResultPanel: {fileID: 2103448647476923072, guid: dd582fd0e6cd77445bdbedaa998fcd6f, type: 3}
   startScreen: 3
 --- !u!4 &1772593127
 Transform:

@@ -47,11 +47,13 @@ public class GameManager : MonoBehaviour
     DBManager _db;
     public static DBManager DB => _instance?._db;
 
-    
+    public GameObject StageClearResultPanel { get; set; }
+    public GameObject StageClearResultPanelFail { get; set; }
 
     public TMP_InputField InputField { get; set; }
     
     public Button EnterButton { get; set; }
+    
     public GameState CurrentState { get; set; }
 
     public GameObject CorrectAnswer { get; set; }
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] CustomerSpawn customerSpawn;
     [SerializeField] TextMeshProUGUI stageText;
     
-     // stagetext 설정하기 7월 15일!!
+     
     public StageContainer StageContainer => stageContainer;
     public CustomerData CustomerData => customerData;
     public NormalCustomer NormalCustomer => normalCustomer;
