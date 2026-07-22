@@ -157,8 +157,8 @@ public class InputManager : ManagerBase
         InitializeAction("MouseLeftButton", (context) => OnMouseLeftButton?.Invoke(true, cursorScreenPosition, cursorWorldPosition)
                                           , (context) => OnMouseLeftButton?.Invoke(false, cursorScreenPosition, cursorWorldPosition));
 
-        InitializeAction("MouseRightButton", (context) => OnMouseRightButton?.Invoke(true, cursorScreenPosition, cursorWorldPosition)
-                                           , (context) => OnMouseRightButton?.Invoke(false, cursorScreenPosition, cursorWorldPosition));
+        //InitializeAction("MouseRightButton", (context) => OnMouseRightButton?.Invoke(true, cursorScreenPosition, cursorWorldPosition)
+                                          // , (context) => OnMouseRightButton?.Invoke(false, cursorScreenPosition, cursorWorldPosition));
 
         InitializeAction("Cancel", (context) => OnCancel?.Invoke(true));
         InitializeAction("ExterminItemLeft", (context) => OnExterminItemLeft?.Invoke(true));

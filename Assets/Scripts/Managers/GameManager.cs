@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     public TMP_InputField InputField { get; set; }
     
+    
     public Button EnterButton { get; set; }
     
     public GameState CurrentState { get; set; }
@@ -70,7 +71,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] CustomerSpawn customerSpawn;
     [SerializeField] TextMeshProUGUI stageText;
     
-     
     public StageContainer StageContainer => stageContainer;
     public CustomerData CustomerData => customerData;
     public NormalCustomer NormalCustomer => normalCustomer;

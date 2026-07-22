@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class MarketWindow : UIManager
 {
-    [SerializeField] GameObject marketWindow;
-    
+    [SerializeField] GameObject marketWindow; 
     [SerializeField] GameObject stageScene;
    
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
 using static UnityEngine.Rendering.DebugUI;
 
 public delegate void changedTodayItems(List<ItemData> todayItems);

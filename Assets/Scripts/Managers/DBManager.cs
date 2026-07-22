@@ -19,9 +19,9 @@ public class DBManager : ManagerBase
     FirebaseAuth authentication;
     FirebaseUser user;
     DatabaseReference rootReference;
-
-    [SerializeField] TextMeshProUGUI idText;
-    [SerializeField] OptionID optionID;
+    public UserData resultData { get;  set; }
+    TextMeshProUGUI idText;
+    
     protected override IEnumerator OnConnected(GameManager newManager)
     {
         
@@ -54,36 +54,26 @@ public class DBManager : ManagerBase
             Debug.LogError($"firebase 실패 : {task.Exception}");
         }
     }
-    public TMPro.TMP_InputField nickNameInput;
-    public TMP_InputField itemNameInput;
-    public void MakeUserData(string newUserName)
-    {
-        WriteData(NewUserData(nickNameInput.text), "users", "userData", user.UserId);
-        
-    }
+   
 
   
     public async void GuestLogin()
 
     {
+        Debug.Log("게스트로그인 실행 중");
         // 인증기가 존재하지 않을 경우
         if (authentication is null) return;
         if (user is not null)
         {
-            Debug.LogError($"이미 있는 로그인입니다.({user.IsValid()}, {user.UserId})");
+            //Debug.LogError($"이미 있는 로그인입니다.({user.IsValid()}, {user.UserId})");
             
-            UserData resultData = await ReadDataAsync<UserData>("users", "userData" , user.UserId);
-            if (resultData is not null)
-            {
-               
-                optionID.SetID(resultData.nickname);
-                Debug.Log($"resultdata : {resultData.nickname}");
-            }
+            resultData = await ReadDataAsync<UserData>("users", "userData" , user.UserId);
+
             
             if (resultData is not null)
             {
-                Debug.Log(resultData.nickname);
-                idText.text = resultData.nickname;
+                Debug.Log($"resultnickname : {resultData.nickname}");
+                
             }
             else
             {
@@ -133,7 +123,10 @@ public class DBManager : ManagerBase
         public int userlevel;
     }
 
-    public UserData NewUserData (string wantNickname) => new()
+    public UserData NewUserData(string wantNickname)
+    {
+        Debug.Log($"wantnickname : {wantNickname}");
+        return new()
     {
         nickname = wantNickname,
 
@@ -142,9 +135,8 @@ public class DBManager : ManagerBase
         money = 5000,
         attendtime = 1
     };
+    }
 
-    
-    
     public DatabaseReference GetFindDirectory(DatabaseReference root, params string[] directory)
     {
         if (directory is null || directory.Length == 0) return root;
@@ -183,25 +175,22 @@ public class DBManager : ManagerBase
             
     }
 
-    public async Task<T>  ReadDataAsync<T>(params string[] directory)
+    public async Task<T> ReadDataAsync<T>(params string[] directory)
     {
         DataSnapshot currentTask = await GetFindDirectory(rootReference, directory).GetValueAsync();
-        if(currentTask is null) return default;
-        if(!currentTask.Exists) return default;
+
+        if (currentTask == null || !currentTask.Exists)
+            return default;
+
         try
         {
-            if (currentTask.HasChildren)
-            {
-            JsonUtility.FromJson<T>(currentTask.GetRawJsonValue());
-            }
-            return (T)System.Convert.ChangeType(currentTask.Value, typeof(T));
+            return JsonUtility.FromJson<T>(currentTask.GetRawJsonValue());
         }
         catch (Exception e)
-        { 
-            //Debug.LogError(e);
+        {
+            Debug.LogError(e);
             return default;
         }
-
     }
 
     private void OnTaskResult(Task task)
