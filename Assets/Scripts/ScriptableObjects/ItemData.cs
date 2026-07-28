@@ -4,8 +4,8 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName ="Item", menuName = "Scriptable Objects/ItemData")]
 public class ItemData : ScriptableObject
 {
-    public Sprite itemSprite; // ¾ÆÀÌÅÛ ½ºÇÁ¶óÀÌÆ®
-    public string itemName; // ¾ÆÀÌÅÛ ÀÌ¸§
-    public int itemBasePrice; // ¾ÆÀÌÅÛ ±âº» °¡°İ
-    public GameObject itemPrefab; // instantiate¿¡ »ç¿ëÇÒ °ÔÀÓ¿ÀºêÁ§Æ®
+    public Sprite itemSprite; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    public string itemName; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+    public int itemBasePrice; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½
+    public GameObject itemPrefab; // instantiateï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 }

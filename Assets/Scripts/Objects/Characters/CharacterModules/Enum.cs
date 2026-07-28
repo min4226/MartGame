@@ -10,16 +10,16 @@ public enum GameState
     PlayScene, DecoScene,
 }
 
-// ¿¬·É´ë
+// ï¿½ï¿½ï¿½É´ï¿½
 public enum AgeType
 { 
     Teenager, TwenThirty, FourFifty, Sixty,
 }
 
-  // Áø»ó¼Õ´Ô Çàµ¿Å¸ÀÔ
+  // ï¿½ï¿½ï¿½ï¿½Õ´ï¿½ ï¿½àµ¿Å¸ï¿½ï¿½
 public enum RudeCustomerBehaviorType
 {
-                       // ¶¯±ø
+                       // ï¿½ï¿½ï¿½ï¿½
     Steal, ThrowMoney, Tantrum, LayCounter, 
     _Length
 }
@@ -43,7 +43,7 @@ public enum ItemCreatePattern
 
 public enum PatternRules
 {
-    // º¯Àå   ÈÉÄ§    ÇÒÀÎ
+    // ï¿½ï¿½ï¿½ï¿½   ï¿½ï¿½Ä§    ï¿½ï¿½ï¿½ï¿½
     disguise, steal, discount,
 
 

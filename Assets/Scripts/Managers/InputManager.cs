@@ -63,7 +63,7 @@ public class InputManager : ManagerBase
     {
 
 
-        // Å°ÀÔ·ÂÀ» º¯°æÇÏ±â À§ÇØ
+        // Å°ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
         targetInput = GetComponent<PlayerInput>();
         LoadAllActions();
         InitializeAllActions();
@@ -110,7 +110,7 @@ public class InputManager : ManagerBase
         }
         else 
         {
-            // ¶÷´Ù : ÀÌ¸§ ¾ø´Â ÇÔ¼ö
+            // ï¿½ï¿½ï¿½ï¿½ : ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
             float GetDistance(RaycastResult target)
             {
                 return target.distance;

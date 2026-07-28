@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ExpulsionItem", menuName = "Scriptable Objects/ExpulsionItem")]
 public class ExpulsionItem : ScriptableObject
 {
-    public Sprite ExpulsionItemSprite; // ╬фюлеш ╫╨га╤Сюлф╝
-    public string ExpulsionItemName; // ╬фюлеш юл╦╖
-    public float ExpulsionDamage; // ╬фюлешюл аж╢б ╣╔╧лаЖ
+    public Sprite ExpulsionItemSprite; // О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ф╝
+    public string ExpulsionItemName; // О©╫О©╫О©╫О©╫О©╫О©╫ О©╫л╦О©╫
+    public float ExpulsionDamage; // О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫ж╢О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
 }

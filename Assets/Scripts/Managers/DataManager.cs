@@ -37,7 +37,7 @@ public class DataManager : ManagerBase
         {
             loaded ++;
             progressUI?.AddCurrent(1);
-            statusUI?.SetCurrentStatus($"{loadString}{loaded}/{total} ·Îµù ÁßÀÔ´Ï´Ù");
+            statusUI?.SetCurrentStatus($"{loadString}{loaded}/{total} ï¿½Îµï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
         
         };
         loadString = "Load Game Objects";
@@ -53,6 +53,7 @@ public class DataManager : ManagerBase
         yield return LoadAllFromAssetBundle<ShopData>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<ShopItemData>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<StageContainer>("Global", ProgressOnLoad).WaitForTask();
+        
 
         /*GameObject prefab = LoadDataFile<GameObject>("Square");
         Instantiate(prefab, Random.insideUnitCircle * 3.0f, Random.rotation);*/
@@ -130,7 +131,7 @@ public class DataManager : ManagerBase
             SaveDataFile(loaded);
             actionForEachLoad();
         
-        }); // ¶÷´Ù½Ä
+        }); 
         Task result = finder.Task;
         await result;
         DisconnectEvent += () => finder.Release();
@@ -141,7 +142,7 @@ public class DataManager : ManagerBase
     async void LoadFileFromAssetBundle<T>(string address) where T : Object
     {
         var finder = Addressables.LoadAssetAsync<T>(address);
-        await finder.Task; // ÀÛ¾÷ÀÌ ³¡³¯ ¶§±îÁö ±â´Ù¸®±â
+        await finder.Task; 
         SaveDataFile(finder.Result);
         DisconnectEvent += () => finder.Release();
     }

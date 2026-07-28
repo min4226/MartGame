@@ -6,7 +6,7 @@ public class CustomerSpawn : MonoBehaviour
 {
     [SerializeField] CustomerData[] customerData;
     [SerializeField] Transform poolPosition;
-
+    [SerializeField] GameObject processObj;
     StageData stageData;
 
     List<CustomerType> spawnList;
@@ -19,7 +19,7 @@ public class CustomerSpawn : MonoBehaviour
     public void Init(StageData data)
     {
         stageData = data;
-
+        processObj.SetActive(false);
         Debug.Log($"Stage : {stageData.stageName}");
         Debug.Log($"Normal : {stageData.normalCustomerCount}");
         Debug.Log($"Thief : {stageData.thiefCustomerCount}");
@@ -94,7 +94,7 @@ public class CustomerSpawn : MonoBehaviour
         yield return new WaitForSeconds(1f); // 손님 등장 시간
 
         Spawn(type);
-
+        
         index++;
 
         isSpawning = false;
@@ -104,11 +104,21 @@ public class CustomerSpawn : MonoBehaviour
     void Spawn(CustomerType type)
     {
         CustomerData data = GetCustomerData(type);
-
-        GameManager.Instance.currentCustomer =
-            Instantiate(data.ageSprite, poolPosition.position, Quaternion.identity);
-
-        StartCoroutine(GameManager.Instance.NormalCustomer.ItemCreate());
+        GameObject customer = Instantiate(data.ageSprite, poolPosition.position, Quaternion.identity);
+        GameManager.Instance.currentCustomer = customer;
+        switch (type)
+        {
+            case CustomerType.NormalCustomer: // 일반 손님일 경우
+                Debug.Log("1 일반손님 생성");
+                StartCoroutine(GameManager.Instance.NormalCustomer.ItemCreate());
+                return;
+            case CustomerType.TroubleMakerCustomer: // 진상 손님일 경우
+                Debug.Log("진상 손님 생성");
+                StartCoroutine(ProcessObjCreate(customer));
+                return;
+        }
+         
+        
     }
 
     CustomerData GetCustomerData(CustomerType type)
@@ -134,5 +144,29 @@ public class CustomerSpawn : MonoBehaviour
         GameManager.Instance.InputField.gameObject.SetActive(false);
         GameManager.Instance.EnterButton.gameObject.SetActive(false);
         OnCustomerEnd();
+    }
+
+    public IEnumerator ProcessObjCreate(GameObject customer)
+    {
+        Debug.Log("2 너 생성하고 있니...?");
+        yield return new WaitForSeconds(1f);
+        GameObject troubleCustomerClone = GameObject.Find("Person 3(Clone)");
+        Transform troubleCustomerCanvas = troubleCustomerClone.transform.Find("Canvas");
+        Transform processObj = troubleCustomerCanvas.transform.Find("ProcessObj");
+        Debug.Log($"troublecustomer : {troubleCustomerClone}");
+        Debug.Log($"찾은 ProcessObj : {processObj}");
+
+        if (processObj != null)
+        {
+            Debug.Log("ProcessObj 켜기");
+            processObj.gameObject.SetActive(true);
+            /*Vector3 screenPos = Camera.main.WorldToScreenPoint(customer.transform.position);
+            processObj.position = screenPos;*/
+            
+        }
+        else
+        {
+            Debug.Log("ProcessObj 못 찾음");
+        }
     }
 }

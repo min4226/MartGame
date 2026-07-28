@@ -35,7 +35,7 @@ public class UI_Button_OpenScreen : MonoBehaviour
 
     public void RestartPlayButton()
     {
-        Debug.Log($"ClaimOpenScreen È£Ãâ : {wantType}, {changeType}");
+        Debug.Log($"ClaimOpenScreen È£ï¿½ï¿½ : {wantType}, {changeType}");
         if (GameManager.Instance.CurrentState != GameState.PlayScene)
             return;
         UIManager.ClaimOpenScreen(wantType, changeType);

@@ -33,7 +33,7 @@ public class DBManager : ManagerBase
 
     protected override void OnDisconnected()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 
     void InitializeFireBase(Task<DependencyStatus> task)
@@ -46,12 +46,12 @@ public class DBManager : ManagerBase
 
             GuestLogin();
             
-            Debug.Log("firebase ¼º°ø");
+            Debug.Log("firebase ï¿½ï¿½ï¿½ï¿½");
         }
         else
 
         {
-            Debug.LogError($"firebase ½ÇÆÐ : {task.Exception}");
+            Debug.LogError($"firebase ï¿½ï¿½ï¿½ï¿½ : {task.Exception}");
         }
     }
    
@@ -60,12 +60,12 @@ public class DBManager : ManagerBase
     public async void GuestLogin()
 
     {
-        Debug.Log("°Ô½ºÆ®·Î±×ÀÎ ½ÇÇà Áß");
-        // ÀÎÁõ±â°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì
+        Debug.Log("ï¿½Ô½ï¿½Æ®ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½");
+        // ï¿½ï¿½ï¿½ï¿½ï¿½â°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (authentication is null) return;
         if (user is not null)
         {
-            //Debug.LogError($"ÀÌ¹Ì ÀÖ´Â ·Î±×ÀÎÀÔ´Ï´Ù.({user.IsValid()}, {user.UserId})");
+            //Debug.LogError($"ï¿½Ì¹ï¿½ ï¿½Ö´ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½.({user.IsValid()}, {user.UserId})");
             
             resultData = await ReadDataAsync<UserData>("users", "userData" , user.UserId);
 
@@ -77,7 +77,8 @@ public class DBManager : ManagerBase
             }
             else
             {
-                WriteData(NewUserData("GongBack"), "users", "userData", user.UserId);
+                resultData = NewUserData("GongBack");
+                WriteData(resultData, "users", "userData", user.UserId);
                 
             }
 
@@ -96,7 +97,7 @@ public class DBManager : ManagerBase
     {
         if (task.IsCanceled || task.IsFaulted)
         {
-            Debug.LogError($"·Î±×ÀÎ ½ÇÆÐ : {task.Exception}");
+            Debug.LogError($"ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : {task.Exception}");
             return;
         }
 
@@ -109,7 +110,7 @@ public class DBManager : ManagerBase
             user.UserId     
         );
 
-        Debug.Log($"·Î±×ÀÎ °á°ú : {user.UserId}");
+        Debug.Log($"ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ : {user.UserId}");
     }
 
     
@@ -122,6 +123,8 @@ public class DBManager : ManagerBase
         public string nickname;
         public int userlevel;
     }
+
+    
 
     public UserData NewUserData(string wantNickname)
     {
@@ -200,4 +203,16 @@ public class DBManager : ManagerBase
                 Debug.LogError(task.Exception);
             }
         }
+
+    public void NickNameChange(string nickName)
+    {
+        resultData.nickname = nickName;
+
+        WriteData(
+            resultData,
+            "users",
+            "userData",
+            user.UserId
+        );
     }
+}

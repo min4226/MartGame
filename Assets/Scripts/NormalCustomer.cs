@@ -36,7 +36,7 @@ public class NormalCustomer : MonoBehaviour
 
     public IEnumerator ItemCreate()
     {
-        if (GameManager.Instance.currentCustomer == null) yield break; // ienumerator¿¡¼­´Â return°ú °°Àº ¶æÀ¸·Î yield break¸¦ »ç¿ë
+        if (GameManager.Instance.currentCustomer == null) yield break; // ienumeratorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ returnï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ yield breakï¿½ï¿½ ï¿½ï¿½ï¿½
         todayItems.Clear();
         yield return new WaitForSeconds(2f);
         int count = stageContainer.stageDatas[GameManager.Instance.Stage.CurrentIndex].normalCustomerItemCount;

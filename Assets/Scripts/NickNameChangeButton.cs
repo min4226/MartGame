@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class NickNameChangeButton : MonoBehaviour
 {
-    // ¿ù¿äÀÏ³¯ ¿Í¼­ ÇÒ ÀÏ
-    // ¹öÆ°À» ´­·¶À» ¶§ inputfield¸¦ »õ·Î ¸¸µéÁö 
-    // ±×¸®°í firebase¿¡ ¿¬°á ½ÃÄÑ³õ±â
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½ ï¿½Í¼ï¿½ ï¿½ï¿½ ï¿½ï¿½
+    // ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ inputfieldï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+    // ï¿½×¸ï¿½ï¿½ï¿½ firebaseï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ³ï¿½ï¿½ï¿½
+    
     void Start()
     {
         

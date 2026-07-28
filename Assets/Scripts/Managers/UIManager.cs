@@ -5,13 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+               
 // 팝업을 띄우고 싶을 때 무조건 option->ranking 일때 맨처음 창에 required window 넣기!
 public enum UIType
 { 
     None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow, 
     Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, MarketWindow, Inventory, ItemCursorSlot, 
-    ItemPriceMenu, StageClearPanel,
+    ItemPriceMenu, StageClearPanel, NickNameChangePanel,
     _Length
 }
 
@@ -54,8 +54,7 @@ public class UIManager : ManagerBase
     float _uiScale = 1.0f;
     public static float UIScale => GameManager.Instance?.UI?._uiScale ?? 1.0f;
 
-    public PayThingCount payThingCount;
-    public PayCountChange payCountChange;
+    
 
     
     public IEnumerator Initialize(GameManager newManager)
@@ -90,11 +89,9 @@ public class UIManager : ManagerBase
         createdTransform = CreateFullScreen("createdUI");
         switcherTransform = CreateFullScreen("ScreenSwitcher");
 
-        InputManager.OnRestart += RestartButton;
-
-        InputManager.OnShop += ShopButton;
-        InputManager.OnRanking += RankingButton;
-
+        
+        
+        
 
         CreateUI(UIType.Title, "TitleScreen", switcherTransform);
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
@@ -131,46 +128,7 @@ public class UIManager : ManagerBase
        
     }
 
-    private void RankingButton(bool value)
-    {
-        if (!value) return;
-        ClaimOpenUI(UIType.Ranking);
-    }
-
-    private void ShopButton(bool value)
-    {
-        throw new System.Exception("여기 실행됨");
-        if (!value) return;
-        Debug.Log("상점으로");
-        ClaimOpenUI(UIType.Shop);
-        
-
-    }
-
-    private void RestartButton(bool value)
-    {
-        if (!value) return;
-        ClaimOpenUI(UIType.Stage);
-        ClaimOpenUI(UIType.BackGround);
-    }
-
     
-    void Init()
-    {
-        Debug.Log("init함수 시작");
-
-        payThingCount = GetComponentInChildren<PayThingCount>();
-        Debug.Log($"payThingCount = {payThingCount}");
-
-        payCountChange = GetComponentInChildren<PayCountChange>();
-        Debug.Log($"payCountChange = {payCountChange}");
-
-        payCountChange.Init(payThingCount);
-
-        Debug.Log("init함수 끝");
-
-    }
-
     protected override void OnDisconnected()
     {
         UnSetAllUI();
@@ -219,6 +177,8 @@ public class UIManager : ManagerBase
         {
             _movableScreen?.SetChild(result.gameObject);
         }
+        Debug.Log($"wantType = {wantType}");
+        Debug.Log($"wantName = {wantName}");
         return result;
     }
 
