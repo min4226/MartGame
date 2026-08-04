@@ -192,7 +192,7 @@ public class Inventory : MonoBehaviour
         return slots[index / width ,(index % width)];
     }
 
-    // 원하는 자료형을 반복적으로 내보냄. itemslot을 요구할 때마다 다음 슬롯을 내놓음
+    
     public IEnumerable<ItemSlots> GetAllSlot()
     {
         // ItemSlots[] result = new ItemSlots[slots.Length];
@@ -204,7 +204,7 @@ public class Inventory : MonoBehaviour
             for (int column = 0; column < width; column++)
             {
                 if (slots[row, column] is null) continue;
-                // 결과를 내보내고 기다림
+                
                 yield return slots[row, column];
             }
         }
@@ -244,14 +244,14 @@ public class Inventory : MonoBehaviour
         {
             Item currentItem = currentSlot.GetItem();
             if (!currentItem) continue;
-            // 이미 딕셔너리에 해당 아이템이 있는 경우
+            
             if (result.TryGetValue(currentItem, out List<ItemSlots> currentList))
             {
                 currentList.Add(currentSlot);
             }
-            else // 처음 보는 아이템일 경우
+            else
             {
-                // 딕셔너리에 해당 아이템 추가 (새로운 리스트 안에 내가 들어가 있도록)
+                
                 result.Add(currentItem, new() { currentSlot });
             }
         }
@@ -426,17 +426,17 @@ public class Inventory : MonoBehaviour
         int slotCount = containSlots.Count;
         if (totalCount >= slotCount * maxStack || slotCount <= 1) return;
 
-        // 모든 슬롯을 돌지만 맨 마지막은 돌지 않기
+        
         int finalSlot = slotCount - 1;
         for (int i = 0; i < finalSlot; i++)
         { 
             ItemSlots currentSlot = containSlots[i];
             for (int j = finalSlot; j > i; j--)
             {
-                if (currentSlot.GetIsMax()) break; // 꽉 찬 슬롯은 병합 시킬 필요 x
+                if (currentSlot.GetIsMax()) break; 
                 ItemSlots targetSlot = containSlots[j];
                 targetSlot.GiveItem(currentSlot);
-                // 대상이 되는 슬롯이 비어있다면 마지막 슬롯을 하나 덜 체크
+                
                 if (targetSlot.GetIsEmpty()) finalSlot--;
             }
             

@@ -46,12 +46,12 @@ public class DBManager : ManagerBase
 
             GuestLogin();
             
-            Debug.Log("firebase ����");
+            Debug.Log("firebase 연동");
         }
         else
 
         {
-            Debug.LogError($"firebase ���� : {task.Exception}");
+            Debug.LogError($"firebase 실패 : {task.Exception}");
         }
     }
    
@@ -60,12 +60,11 @@ public class DBManager : ManagerBase
     public async void GuestLogin()
 
     {
-        Debug.Log("�Խ�Ʈ�α��� ���� ��");
-        // �����Ⱑ �������� ���� ���
+        
+        
         if (authentication is null) return;
         if (user is not null)
         {
-            //Debug.LogError($"�̹� �ִ� �α����Դϴ�.({user.IsValid()}, {user.UserId})");
             
             resultData = await ReadDataAsync<UserData>("users", "userData" , user.UserId);
 
@@ -97,7 +96,7 @@ public class DBManager : ManagerBase
     {
         if (task.IsCanceled || task.IsFaulted)
         {
-            Debug.LogError($"�α��� ���� : {task.Exception}");
+            Debug.LogError($"로그인 실패 : {task.Exception}");
             return;
         }
 
@@ -110,7 +109,7 @@ public class DBManager : ManagerBase
             user.UserId     
         );
 
-        Debug.Log($"�α��� ��� : {user.UserId}");
+        Debug.Log($"user.userid : {user.UserId}");
     }
 
     

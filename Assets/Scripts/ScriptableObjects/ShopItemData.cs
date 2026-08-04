@@ -9,3 +9,4 @@ public class ShopItemData : ScriptableObject
     public Reward reward;
 
 }
+

@@ -5,15 +5,21 @@ using UnityEngine;
 public class RechangeButton : MonoBehaviour
 {
     public TMP_InputField reChange;
-    TMP_InputField optionNick;
+    TextMeshProUGUI optionNick;
 
     public void RechangeNick()
     {
         GameObject IdInfo = GameObject.Find("idInfo");
-        optionNick = IdInfo.GetComponentInChildren<TMP_InputField>();
+        Debug.Log($"idinfo : {IdInfo}");
+        TextMeshProUGUI nickname = IdInfo.transform.Find("nicknameText").GetComponentInChildren<TextMeshProUGUI>();
+        Debug.Log($"nicknametransform : {nickname}");
+        //optionNick = IdInfo.GetComponentInChildren<TextMeshProUGUI>();
+        //Debug.Log($"optionnick : {optionNick}");
+
         string nick = reChange.text;
         GameManager.DB.NickNameChange(nick);
-        optionNick.text = nick; // 얘 null 뜸
+        Debug.Log($"nick : {nick}");
+        nickname.text = nick;
 
     }
 }

@@ -17,7 +17,7 @@ public class DiscountValue : MonoBehaviour
     }
 
    
-    // ������ ���
+    
     public void ItemDiscount(ItemData itemData, int percent)
     { 
         percent = discountRates[Random.Range(0, discountRates.Length)];

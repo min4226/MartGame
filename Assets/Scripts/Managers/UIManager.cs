@@ -177,8 +177,7 @@ public class UIManager : ManagerBase
         {
             _movableScreen?.SetChild(result.gameObject);
         }
-        Debug.Log($"wantType = {wantType}");
-        Debug.Log($"wantName = {wantName}");
+        
         return result;
     }
 

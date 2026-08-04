@@ -37,7 +37,7 @@ public class DataManager : ManagerBase
         {
             loaded ++;
             progressUI?.AddCurrent(1);
-            statusUI?.SetCurrentStatus($"{loadString}{loaded}/{total} �ε� ���Դϴ�");
+            statusUI?.SetCurrentStatus($"{loadString}{loaded}/{total} 를 생성하는 중");
         
         };
         loadString = "Load Game Objects";
@@ -53,7 +53,9 @@ public class DataManager : ManagerBase
         yield return LoadAllFromAssetBundle<ShopData>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<ShopItemData>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<StageContainer>("Global", ProgressOnLoad).WaitForTask();
-        
+        yield return LoadAllFromAssetBundle<ExpulsionItem>("Global", ProgressOnLoad).WaitForTask();
+        yield return LoadAllFromAssetBundle<ExplusionItems>("Global", ProgressOnLoad).WaitForTask();
+
 
         /*GameObject prefab = LoadDataFile<GameObject>("Square");
         Instantiate(prefab, Random.insideUnitCircle * 3.0f, Random.rotation);*/

@@ -17,9 +17,6 @@ public class InputFieldButton : MonoBehaviour
         inputField = GameManager.Instance.InputField;
         customerSpawn = GameManager.Instance.CustomerSpawn;
         
-
-        Debug.Log($"customerSpawn : {customerSpawn == null}");
-
         userAnswer = int.Parse(inputField.text);
         answer = GameManager.Instance.NormalCustomer.ItemTotalValue(GameManager.Instance.NormalCustomer.todayItems);
 

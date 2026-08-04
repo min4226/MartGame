@@ -300,9 +300,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6638911875459438496}
     m_Modifications:
+    - target: {fileID: 184396870746030129, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 741351112025336030, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
       propertyPath: m_Name
       value: ProcessObj
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642089370056074446, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2341013245070964702, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
       propertyPath: m_Pivot.x
@@ -383,6 +391,10 @@ PrefabInstance:
     - target: {fileID: 2341013245070964702, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798319950756857286, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ShopItemInstance : MonoBehaviour
 {
-    public ShopData shopData; // 상점템들의 아이템이 들어가 있는 scriptable object
-    public GameObject itemSlotPrefab; // 아이템 슬롯 창
+    public ShopData shopData; 
+    public GameObject itemSlotPrefab; 
     public Transform content;
 
     void Start()
