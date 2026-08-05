@@ -14,10 +14,11 @@ public class Trigger : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
+
             inputField = GameManager.Instance.InputField;
             EnterButton = GameManager.Instance.EnterButton;
             activeItemCount--;
-            
+            inputField.onValidateInput += ValidateNumber;
 
             if (activeItemCount <= 0)
             {
@@ -34,5 +35,12 @@ public class Trigger : MonoBehaviour
         activeItemCount = count;
         
     }
-    
+
+    private char ValidateNumber(string text, int charIndex, char addedChar)
+    {
+        if (char.IsDigit(addedChar))
+            return addedChar;
+
+        return '\0';
+    }
 }

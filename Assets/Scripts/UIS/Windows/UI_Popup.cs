@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
-public class UI_Popup : UIBase, ISystemMessagePossible , IConfirmable
+/*public class UI_Popup : UIBase, ISystemMessagePossible , IConfirmable
 {
     [SerializeField]TextMeshProUGUI titleText;
     [SerializeField]TextMeshProUGUI contextText;
@@ -42,4 +42,4 @@ public class UI_Popup : UIBase, ISystemMessagePossible , IConfirmable
     }
 
     
-}
+}*/

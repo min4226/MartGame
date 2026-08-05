@@ -213,17 +213,6 @@
                 },
                 {
                     "name": "",
-                    "id": "8d9fd934-cfaa-44c2-a358-1ce34b155f1f",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ExterminItemLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "fb8575af-ed30-41b8-ae6b-bab25d52afc5",
                     "path": "<Keyboard>/2",
                     "interactions": "",

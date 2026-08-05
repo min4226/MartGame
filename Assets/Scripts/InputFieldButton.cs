@@ -11,10 +11,17 @@ public class InputFieldButton : MonoBehaviour
     Reward reward;
     StageData stageData;
     CustomerSpawn customerSpawn;
-    
-    public void OnInputFieldButton()
+
+    private void Start()
     {
         inputField = GameManager.Instance.InputField;
+        inputField.contentType = TMP_InputField.ContentType.IntegerNumber; // 숫자만 쓰는 게 가능하도록
+        inputField.characterLimit = 7; // 글자 수 제한
+        
+    }
+    public void OnInputFieldButton()
+    {
+        
         customerSpawn = GameManager.Instance.CustomerSpawn;
         
         userAnswer = int.Parse(inputField.text);
@@ -34,4 +41,6 @@ public class InputFieldButton : MonoBehaviour
             customerSpawn.StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
         }
     }
+
+    
 }

@@ -38,21 +38,32 @@ public class DBManager : ManagerBase
 
     void InitializeFireBase(Task<DependencyStatus> task)
     {
-        if (task.Result == DependencyStatus.Available)
+        try
         {
-            authentication = FirebaseAuth.DefaultInstance;
-            user = authentication.CurrentUser;
-            rootReference = FirebaseDatabase.DefaultInstance.RootReference;
 
-            GuestLogin();
-            
-            Debug.Log("firebase 연동");
+            if (task.Result == DependencyStatus.Available)
+            {
+                authentication = FirebaseAuth.DefaultInstance;
+                user = authentication.CurrentUser;
+                Debug.Log(FirebaseDatabase.DefaultInstance);
+                rootReference = FirebaseDatabase.DefaultInstance.RootReference;
+
+
+                GuestLogin();
+
+                Debug.Log("firebase 연동");
+            }
+            else
+
+            {
+                Debug.LogError($"firebase 실패 : {task.Exception}");
+            }
         }
-        else
-
+        catch (Exception e)
         {
-            Debug.LogError($"firebase 실패 : {task.Exception}");
+            Debug.LogError(e);
         }
+
     }
    
 

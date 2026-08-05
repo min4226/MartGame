@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2892679205858755748}
   - component: {fileID: 5351276055855207858}
   - component: {fileID: 8792373127124043974}
-  - component: {fileID: 1916533865809187004}
   m_Layer: 5
   m_Name: NoButton
   m_TagString: Untagged
@@ -122,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1916533865809187004}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_ExScreen, Assembly-CSharp
         m_MethodName: Close
         m_Mode: 1
@@ -134,19 +133,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1916533865809187004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817554017308319092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be4e9a8984dca54ebf9c8aede63afce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ExScreen
-  requiredUI: []
 --- !u!1 &1995764838514742607
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,8 +690,6 @@ GameObject:
   - component: {fileID: 6906093363461657886}
   - component: {fileID: 2923403518896851346}
   - component: {fileID: 1419115266410789597}
-  - component: {fileID: -5637076209271131380}
-  - component: {fileID: 4004638171633272397}
   m_Layer: 5
   m_Name: PopupMessage
   m_TagString: Untagged
@@ -775,34 +759,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-5637076209271131380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5648252053699298687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a48e39e4d124b6649851003559c5bde9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_Popup
-  titleText: {fileID: 0}
-  contextText: {fileID: 1770060325397653004}
-  confirmText: {fileID: 6929836593279180675}
-  confirmButton: {fileID: 8792373127124043974}
---- !u!114 &4004638171633272397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5648252053699298687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93549deb840e4dc4f91f2f21dc5068e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_PullUpWindow
 --- !u!1 &6752303750519220097
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +770,6 @@ GameObject:
   - component: {fileID: 9168556174147876139}
   - component: {fileID: 1301310898384491249}
   - component: {fileID: 373586539735606873}
-  - component: {fileID: 859691175263672120}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -879,19 +834,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &859691175263672120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6752303750519220097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6913127530f4f7d42b4f584b038d22e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_DraggableWindow
-  rootTransform: {fileID: 6906093363461657886}
 --- !u!1 &7660725087866229120
 GameObject:
   m_ObjectHideFlags: 0
