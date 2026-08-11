@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4563395243211055005}
   - component: {fileID: 8634123787546624444}
-  - component: {fileID: -1087886622278047190}
+  - component: {fileID: 34735191860555675}
   m_Layer: 0
   m_Name: MarketWindow
   m_TagString: MarketWindow
@@ -368,7 +368,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-1087886622278047190
+--- !u!114 &34735191860555675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -377,10 +377,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8689371032371938187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be4e9a8984dca54ebf9c8aede63afce, type: 3}
+  m_Script: {fileID: 11500000, guid: f7a4aec2ac7b8974889a0d471f909bbb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_ExScreen
+  m_EditorClassIdentifier: Assembly-CSharp::UI_MyMarketScene
   requiredUI:
   - prefabName: Inventory
     uiType: 16
     isOpen: 0
+    isOverlay: 0

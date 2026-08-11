@@ -28,10 +28,7 @@ public class CustomerSpawn : MonoBehaviour
 
         spawnList = BuildCustomerList(stageData);
 
-        foreach (var type in spawnList)
-        {
-            Debug.Log($"spawnlist type : {type}");
-        }
+        
 
         index = 0;
 
@@ -57,12 +54,10 @@ public class CustomerSpawn : MonoBehaviour
 
     void AddCustomers(List<CustomerType> list, CustomerType type, int count)
     {
-        Debug.Log($"호출 : {type}, count = {count}");
 
         for (int i = 0; i < count; i++)
         {
             list.Add(type);
-            Debug.Log($"추가 : {type}");
         }
     }
 
@@ -73,8 +68,7 @@ public class CustomerSpawn : MonoBehaviour
         
         if (spawnList == null || index >= spawnList.Count)
         {
-            // 여기에서 다음 스테이지로 넘어가는 코드 작성
-            Debug.Log("Stage Clear");
+            
             GameManager.Instance.Stage.StageRewardCorrect();
 
 
@@ -109,11 +103,11 @@ public class CustomerSpawn : MonoBehaviour
         switch (type)
         {
             case CustomerType.NormalCustomer: // 일반 손님일 경우
-                Debug.Log("1 일반손님 생성");
+                
                 StartCoroutine(GameManager.Instance.NormalCustomer.ItemCreate());
                 return;
             case CustomerType.TroubleMakerCustomer: // 진상 손님일 경우
-                Debug.Log("진상 손님 생성");
+                
                 StartCoroutine(ProcessObjCreate(customer));
                 return;
         }
@@ -148,25 +142,21 @@ public class CustomerSpawn : MonoBehaviour
 
     public IEnumerator ProcessObjCreate(GameObject customer)
     {
-        Debug.Log("2 너 생성하고 있니...?");
+        
         yield return new WaitForSeconds(1f);
         GameObject troubleCustomerClone = GameObject.Find("Person 3(Clone)");
         Transform troubleCustomerCanvas = troubleCustomerClone.transform.Find("Canvas");
         Transform processObj = troubleCustomerCanvas.transform.Find("ProcessObj");
-        Debug.Log($"troublecustomer : {troubleCustomerClone}");
-        Debug.Log($"찾은 ProcessObj : {processObj}");
+        
 
         if (processObj != null)
         {
-            Debug.Log("ProcessObj 켜기");
+ 
             processObj.gameObject.SetActive(true);
             /*Vector3 screenPos = Camera.main.WorldToScreenPoint(customer.transform.position);
             processObj.position = screenPos;*/
             
         }
-        else
-        {
-            Debug.Log("ProcessObj 못 찾음");
-        }
+        
     }
 }

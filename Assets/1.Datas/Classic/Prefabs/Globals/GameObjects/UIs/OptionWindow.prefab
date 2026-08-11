@@ -813,7 +813,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7724707209936121379}
         m_TargetAssemblyTypeName: UI_Button_OpenScreen, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: MyMarketWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

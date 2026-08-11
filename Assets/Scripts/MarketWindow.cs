@@ -4,8 +4,8 @@ public class MarketWindow : UIManager
 {
     [SerializeField] GameObject marketWindow; 
     [SerializeField] GameObject stageScene;
-   
-
+    
+    
     void Awake()
     {
         marketWindow = GameObject.FindGameObjectWithTag("MarketWindow");

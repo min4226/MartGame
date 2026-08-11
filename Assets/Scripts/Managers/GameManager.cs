@@ -173,7 +173,6 @@ public class GameManager : MonoBehaviour
         yield return _stage.Connect(this);
         loadingProgress?.AddCurrent(1);
         yield return _db.Connect(this);
-
         loadingProgress?.AddCurrent(1);
 
         yield return new WaitForSeconds(1.0f);
@@ -196,6 +195,7 @@ public class GameManager : MonoBehaviour
         Data?.Disconnect();
         Stage?.Disconnect();
         DB?.Disconnect();
+
     }
 
     ManagerType CreateManager<ManagerType>(ref ManagerType targetVariable)  where ManagerType :  ManagerBase

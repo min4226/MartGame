@@ -37,7 +37,7 @@ public class ItemSlots
         int stackable = Mathf.Min(item.maxStack - currentStack, amount);
         currentStack += stackable;
 
-        return amount - stackable; // Ãß°¡ÇÏ°í½ÍÀº °ª - Ãß°¡ÇÑ °ª
+        return amount - stackable; // ï¿½ß°ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ - ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½
     }
 
     public int Clear()
@@ -98,7 +98,7 @@ public class ItemSlots
 
     public void LeftClick(ItemSlots wantSlot)
     {
-         // ¹Ý¿Ã¸² :  + 0.5
+         
         if (wantSlot is null) return;
         if (InputManager.IsShift)
         {
@@ -135,5 +135,6 @@ public class ItemSlots
         
         NoticeChanged();
         wantSlot.NoticeChanged();
+
     }
 }

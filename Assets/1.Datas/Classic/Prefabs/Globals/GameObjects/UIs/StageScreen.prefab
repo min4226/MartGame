@@ -678,6 +678,10 @@ PrefabInstance:
       propertyPath: stageText
       value: 
       objectReference: {fileID: 4735920290725048682}
+    - target: {fileID: 5532493411350222358, guid: 67689f0d4c3526f498c80af4744a49d9, type: 3}
+      propertyPath: m_text
+      value: "\uC2A4\uD14C\uC774\uC9C0  1"
+      objectReference: {fileID: 0}
     - target: {fileID: 7211052250504441577, guid: 67689f0d4c3526f498c80af4744a49d9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

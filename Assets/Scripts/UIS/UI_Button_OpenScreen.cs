@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_Button_OpenScreen : MonoBehaviour
@@ -20,10 +21,22 @@ public class UI_Button_OpenScreen : MonoBehaviour
     {
         if (GameManager.Instance.CurrentState != GameState.PlayScene)
             return;
-        UIManager.ClaimOpenScreen(wantType, changeType);
-        
-        createMethod.OnToggle();
 
+        if (GameManager.Instance.Stage.CurrentIndex != 0)
+            return;
+
+        
+        UIManager.ClaimOpenScreen(wantType, changeType);
+
+        createMethod.OnToggle();
+        Debug.Log($"createmethod name : {createMethod.gameObject.name}");
+    }
+
+    public void MyMarketWindow()
+    {
+        if (GameManager.Instance.CurrentState != GameState.PlayScene)
+            return;
+        UIManager.ClaimOpenScreen(wantType, changeType);
     }
 
     public void GameQuitOpen()
@@ -40,7 +53,7 @@ public class UI_Button_OpenScreen : MonoBehaviour
             return;
         UIManager.ClaimOpenScreen(wantType, changeType);
         createMethod.gameObject.SetActive(false);
-        Debug.Log($"createmethod : {createMethod.name}");
+        
 
     }
 

@@ -833,8 +833,8 @@ GameObject:
   - component: {fileID: 3593087799280997124}
   - component: {fileID: 9206763232841596919}
   m_Layer: 5
-  m_Name: GameMethodPanel 1
-  m_TagString: Untagged
+  m_Name: GameMethodPanel
+  m_TagString: GameMethodPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

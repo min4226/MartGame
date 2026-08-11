@@ -437,6 +437,7 @@ public class Inventory : MonoBehaviour
                 ItemSlots targetSlot = containSlots[j];
                 targetSlot.GiveItem(currentSlot);
                 
+
                 if (targetSlot.GetIsEmpty()) finalSlot--;
             }
             

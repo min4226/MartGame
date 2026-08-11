@@ -51,7 +51,7 @@ public class MovementModule : CharacterModule, IRunable
         if (targetDestination is null) return;
         Vector3 currentMoveDirection = (targetDestination.Value - transform.position);
         float distance = currentMoveDirection.magnitude;
-        float currentMoveSpeed = GetMoveSpeed(deltaTime); // ÇÑ¹ø ÀÌµ¿ÇÏ´Â °Å¸®
+        float currentMoveSpeed = GetMoveSpeed(deltaTime); // ï¿½Ñ¹ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½Å¸ï¿½
         float resultMoveSpeed = Mathf.Min(currentMoveSpeed, distance);
 
         if (distance > targetTolerance)
