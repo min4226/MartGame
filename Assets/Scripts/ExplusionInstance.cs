@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class ExplusionInstance : MonoBehaviour
 {
+
     public ExplusionItems explusion;
     public Image[] imagePanel;
     public Image dragImage;
     public GameObject dragObject;
     private ExpulsionItem[] currentItems;
-
+    private ExpulsionItem item;
     void Start()
     {
         List<ExpulsionItem> randomItems = new List<ExpulsionItem>(explusion.expulsionItems);
@@ -30,9 +31,24 @@ public class ExplusionInstance : MonoBehaviour
 
     public void SelectItem(int index)
     {
-        ExpulsionItem item = currentItems[index];
+        Debug.Log("SelectItem 호출됨");
+        Debug.Log("index : " + index);
+        Debug.Log("currentItems : " + currentItems);
+        Debug.Log("선택 전 item : " + item);
+        
+        item = currentItems[index];
+        this.gameObject.SetActive(false);
+        Debug.Log("선택 후 item : " + item);
+
+        
+
         dragImage.sprite = item.ExpulsionItemSprite;
         dragObject.SetActive(true);
-        
     }
+    public ExpulsionItem GetSelectedItem()
+    {
+        Debug.Log($"getselecteditem에서의 item : {item}");
+        return item;
+    }
+
 }

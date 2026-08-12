@@ -19,6 +19,6 @@ public class CustomerData : ScriptableObject
     
     public GameObject ageSprite;
 
-    
+    public int troubleCustomerHealth;
 
 }

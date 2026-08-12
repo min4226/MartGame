@@ -205,9 +205,10 @@ GameObject:
   - component: {fileID: 825790548047410675}
   - component: {fileID: 5768621606504949917}
   - component: {fileID: -6633950005975957284}
+  - component: {fileID: 8845929181971080914}
   m_Layer: 0
   m_Name: Person 3
-  m_TagString: Untagged
+  m_TagString: TroubleCustomer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,9 +291,21 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: -0.065340996, y: 0.026136398}
+  m_Size: {x: 4.603426, y: 7.3477545}
   m_Direction: 0
+--- !u!114 &8845929181971080914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829200121524381901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65d401056c85ab46b0d293139f35caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TroubleCustomerDamage
 --- !u!1001 &5121246585579353387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,6 +491,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
+--- !u!114 &5230084105808713088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1118774429070303403, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
+  m_PrefabInstance: {fileID: 5121246585579353387}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302c845e2dddfb44bb99ceeeb227ecc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ExplusionInstance
 --- !u!224 &7453072032160531189 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2341013245070964702, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
@@ -571,6 +595,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7232434977424755639, guid: d453cc271158c2141a40eb17ebfb3c0b, type: 3}
+      propertyPath: water
+      value: 
+      objectReference: {fileID: 263834857292922719, guid: 3c2775f6f7f3b9446b69e7252d4f2cbf, type: 3}
+    - target: {fileID: 7232434977424755639, guid: d453cc271158c2141a40eb17ebfb3c0b, type: 3}
+      propertyPath: explusion
+      value: 
+      objectReference: {fileID: 5230084105808713088}
     - target: {fileID: 7980436497527107068, guid: d453cc271158c2141a40eb17ebfb3c0b, type: 3}
       propertyPath: m_Name
       value: DragItem

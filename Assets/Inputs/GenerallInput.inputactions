@@ -131,6 +131,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MouseUp",
+                    "type": "Button",
+                    "id": "44404fc0-9d37-4dc7-a9c5-c8eb59146775",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -351,6 +360,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c92b2ba8-66ef-4f7a-aa68-bb4c23a41a5a",
+                    "path": "<Mouse>/press",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

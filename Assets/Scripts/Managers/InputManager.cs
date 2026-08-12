@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.EventSystems;
@@ -14,7 +16,7 @@ public delegate void MouseUIHoverEvent(UIType uiType , UIType oldUITarget);
 public delegate void ExterminItemEvent(bool value);
 public delegate void AxisEvent(Vector2 value);
 public delegate void ButtonEvent(bool value);
-
+public delegate void MouseUPEvent(bool value);
 public delegate void RestartEvent(bool value);
 public delegate void ShopEvent(bool value);
 public delegate void MarketEvent(bool value);
@@ -29,7 +31,7 @@ public class InputManager : ManagerBase
     public static event MouseMoveEvent OnMouseMove;
     public static event MouseHoverEvent OnMouseHover;
     public static event MouseUIHoverEvent OnMouseUIHover;
-
+    public static event MouseUPEvent OnMouseUPEvent;
     public static event ExterminItemEvent OnExterminItemLeft;
     public static event ExterminItemEvent OnExterminItemMiddle;
     public static event ExterminItemEvent OnExterminItemRight;
@@ -166,7 +168,7 @@ public class InputManager : ManagerBase
         InitializeAction("ExterminItemRight", (context) => OnExterminItemRight?.Invoke(true));
         InitializeAction("Move", (context) => OnMove?.Invoke(GetVector2Value(context))
                                , (context) => OnMove?.Invoke(Vector2.zero));
-
+        InitializeAction("MouseUp", (context) => OnMouseUPEvent?.Invoke(true));
         InitializeAction("Restart", (context) => OnRestart?.Invoke(true));
         InitializeAction("Shop", (context) => OnShop?.Invoke(true));
         InitializeAction("Market", (context) => OnMarket?.Invoke(true));
