@@ -6,6 +6,6 @@ public class ExpulsionItem : ScriptableObject
 {
     public Sprite ExpulsionItemSprite; 
     public string ExpulsionItemName; 
-    public float ExpulsionDamage;
+    public int ExpulsionDamage;
     public UnityEvent OnRelease;
 }

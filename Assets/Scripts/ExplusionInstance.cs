@@ -31,6 +31,8 @@ public class ExplusionInstance : MonoBehaviour
 
     public void SelectItem(int index)
     {
+        Debug.Log($"===== SelectItem 실행 ===== {Time.frameCount}");
+
         Debug.Log("SelectItem 호출됨");
         Debug.Log("index : " + index);
         Debug.Log("currentItems : " + currentItems);
