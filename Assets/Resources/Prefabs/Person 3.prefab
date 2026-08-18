@@ -306,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65d401056c85ab46b0d293139f35caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TroubleCustomerDamage
+  customerData: {fileID: 11400000, guid: cbc29434d2a04194c8e170c23e4c120f, type: 2}
 --- !u!1001 &5121246585579353387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -595,10 +596,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7232434977424755639, guid: d453cc271158c2141a40eb17ebfb3c0b, type: 3}
-      propertyPath: water
-      value: 
-      objectReference: {fileID: 263834857292922719, guid: 3c2775f6f7f3b9446b69e7252d4f2cbf, type: 3}
     - target: {fileID: 7232434977424755639, guid: d453cc271158c2141a40eb17ebfb3c0b, type: 3}
       propertyPath: explusion
       value: 

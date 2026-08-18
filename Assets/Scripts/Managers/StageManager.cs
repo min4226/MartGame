@@ -18,22 +18,24 @@ public class StageManager : ManagerBase
     CustomerData customerData;
     NormalCustomer normalCustomer;
     TMP_InputField inputField;
-    
+    int clearedCustomerCount; // ìŠ¤í…Œì´ì§€ ë‚´ ì²˜ë¦¬í•œ ì†ë‹˜ ìˆ˜
     public int CurrentIndex => currentIndex;
     public StageData CurrentStage => currentStage;
 
     public event Action OnStageChanged;
-    
+
     public void StartStage(int index)
     {
         currentIndex = index;
         currentStage = container.stageDatas[index];
 
+        clearedCustomerCount = 0;
+
         customerSpawn.Init(currentStage);
         normalCustomer.Init(container);
     }
 
-    
+
     protected override IEnumerator OnConnected(GameManager newManager)
     {
         container = GameManager.Instance.StageContainer;
@@ -56,7 +58,7 @@ public class StageManager : ManagerBase
         return GameManager.Instance?.Stage.currentStage;
     }
 
-    // ½ºÅ×ÀÌÁö Å¬¸®¾î¿¡ ÇÊ¿äÇÑ ¸®¿öµå¿Í À¯Àú°¡ ¹ŞÀº ¸®¿öµå°¡ °°´Ù¸é ½ÇÇàÇÏ´Â ÇÔ¼ö
+    
     public void StageRewardCorrect()
     {
         Debug.Log($"requiredcoin : {currentStage.requiredCoin}");
@@ -82,5 +84,37 @@ public class StageManager : ManagerBase
         OnStageChanged?.Invoke();
     }
 
-    
+    public void CustomerCleared()
+    {
+        clearedCustomerCount++;
+
+        CheckStageClear();
+    }
+    public void CheckStageClear()
+    {
+        int totalCustomerCount =
+            currentStage.normalCustomerCount
+            + currentStage.troublemakerCustomerCount
+            + currentStage.thiefCustomerCount
+            + currentStage.specialCustomerCount;
+
+        bool allCustomerCleared = clearedCustomerCount >= totalCustomerCount;
+
+        bool coinEnough =
+            GameManager.Instance.RewardModule.Coin >= currentStage.requiredCoin;
+
+        bool expEnough =
+            GameManager.Instance.RewardModule.Fame >= currentStage.requiredFame;
+
+        // ëª¨ë“  ì†ë‹˜ ì²˜ë¦¬ + ì½”ì¸ + ê²½í—˜ì¹˜ ëª¨ë‘ ë§Œì¡±
+        if (allCustomerCleared && coinEnough && expEnough)
+        {
+            stageClearPanel.SetActive(true);
+        }
+        // ëª¨ë“  ì†ë‹˜ì„ ì²˜ë¦¬í–ˆëŠ”ë° ì¡°ê±´ì„ ëª» ì±„ì›€
+        else if (allCustomerCleared)
+        {
+            stageClearPanelFail.SetActive(true);
+        }
+    }
 }

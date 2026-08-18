@@ -17,7 +17,7 @@ public class PayCountChange : MonoBehaviour
 
     public void Init(PayThingCount target)
     {
-        Debug.Log("paycountchange ÂÊ init ÇÔ¼ö");
+        Debug.Log("paycountchange ï¿½ï¿½ init ï¿½Ô¼ï¿½");
         payThingCount = target;
         UpdateUI();
     }

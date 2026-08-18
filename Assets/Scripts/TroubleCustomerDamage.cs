@@ -3,34 +3,34 @@ using UnityEngine;
 
 public class TroubleCustomerDamage : MonoBehaviour
 {
-    CustomerData customerData;
+    [SerializeField]CustomerData customerData;
 
     private int currentHP;
     private Vector3 originalPosition;
 
     private void Awake()
     {
-        currentHP = GameManager.Instance.CustomerData.troubleCustomerHealth;   
+        currentHP = customerData.troubleCustomerHealth;   
         originalPosition = transform.position;
+        
     }
 
     public void TakeDamage(int damage, Vector3 hitPosition)
     {
-        Debug.Log("데미지 주기");
-
         
+
         currentHP -= damage;
-        Debug.Log($"진상 데미지 : {currentHP}");
-        
-        StartCoroutine(HitReaction(hitPosition));
 
-        
-        if (currentHP <= 0)
-        {
+        if (currentHP < 0)
             currentHP = 0;
 
-            
-            Debug.Log("진상 퇴치 완료!");
+       
+
+        StartCoroutine(HitReaction(hitPosition));
+
+        if (currentHP <= 0)
+        {
+            StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
         }
     }
 
