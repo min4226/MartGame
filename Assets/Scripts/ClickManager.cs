@@ -8,8 +8,9 @@ public class ClickManager : MonoBehaviour
 {
     private RectTransform dragItemRect;
 
-    
-    
+    [SerializeField] ParticleSystem waterParticle;
+    [SerializeField] Transform waterTransform;
+
 
     public ExplusionInstance explusion;
 
@@ -19,8 +20,11 @@ public class ClickManager : MonoBehaviour
 
     
     private GameObject currentTroubleCustomer;
+    public GameObject CurrentTroubleCustomer
+    {
+        get { return currentTroubleCustomer; }
+    }
 
-    
     private Vector3 currentHitPosition;
 
 
@@ -36,18 +40,7 @@ public class ClickManager : MonoBehaviour
                 FindObjectsSortMode.None
             );
 
-        Debug.Log($"===== ClickManager 개수 : {managers.Length} =====");
-
-        /*foreach (ClickManager manager in managers)
-        {
-            Debug.Log(
-                $"ClickManager 발견 | " +
-                $"GameObject = {manager.gameObject.name} | " +
-                $"ID = {manager.GetInstanceID()} | " +
-                $"Scene = {manager.gameObject.scene.name}"
-            );
-        }*/
-        
+       
     }
 
     
@@ -95,7 +88,6 @@ public class ClickManager : MonoBehaviour
     private void OnMouseRelease(Vector3 worldPosition)
     {
 
-        
         currentItem = explusion.GetSelectedItem();
         
         if (currentItem == null)
@@ -128,7 +120,10 @@ public class ClickManager : MonoBehaviour
             if (damage != null)
             {
                 currentTroubleCustomer = damage.gameObject;
-               
+                Debug.Log(
+      "할당한 ClickManager ID : " + GetInstanceID() +
+      " / Customer : " + currentTroubleCustomer.name
+  );
                 break;
             }
         }
@@ -138,25 +133,15 @@ public class ClickManager : MonoBehaviour
             Object target = currentItem.OnRelease.GetPersistentTarget(i);
             string method = currentItem.OnRelease.GetPersistentMethodName(i);
         }
+        Debug.Log(
+    "OnRelease 직전 ClickManager ID : " + GetInstanceID() +
+    " / Customer : " + currentTroubleCustomer
+);
         currentItem.OnRelease?.Invoke();
+
+        
         HitItem();
-        if (currentItem.ExpulsionItemName == "양동이")
-        {
-            Collider2D[] itemHits =
-                Physics2D.OverlapPointAll(currentHitPosition);
-
-            foreach (Collider2D col in itemHits)
-            {
-                PailWater pailWater =
-                    col.GetComponentInParent<PailWater>();
-
-                if (pailWater != null)
-                {
-                    pailWater.PourWater();
-                    break;
-                }
-            }
-        }
+        
     }
 
 
@@ -196,6 +181,30 @@ public class ClickManager : MonoBehaviour
         StartCoroutine(Knockback(customer, direction));
     }
 
+    public void PourWater()
+    {
+        Debug.Log("Pour 시작");
+
+        GameObject obj = Instantiate(waterParticle.gameObject);
+
+        Debug.Log("생성 성공 : " + obj.name);
+
+        obj.transform.position = waterTransform.position;
+        obj.transform.rotation = waterTransform.rotation;
+
+        ParticleSystem particle = obj.GetComponent<ParticleSystem>();
+        particle.Play();
+    }
+    private void OnParticleCollision(GameObject other)
+    {
+        TroubleCustomerDamage damage =
+            other.GetComponentInParent<TroubleCustomerDamage>();
+
+        if (damage != null)
+        {
+            damage.TakeDamage(currentItem.ExpulsionDamage, currentHitPosition);
+        }
+    }
     private IEnumerator Knockback(Transform customer, Vector3 direction)
     {
         // 때리기 전 원래 위치
