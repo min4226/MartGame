@@ -1,19 +1,50 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WaterParticleCollision : MonoBehaviour
 {
-    private ExpulsionItem currentItem;
-    private Vector3 currentHitPosition;
-    private void OnParticleCollision(GameObject other)
-    {
-        Debug.Log("파티클과 손님 충돌");
-        TroubleCustomerDamage damage =
-            other.GetComponentInParent<TroubleCustomerDamage>();
+    [SerializeField] private int damage = 30;
 
-        if (damage != null)
+    private ParticleSystem particleSystem;
+    private List<ParticleSystem.Particle> triggerParticles =
+        new List<ParticleSystem.Particle>();
+
+    private void Awake()
+    {
+        particleSystem = GetComponent<ParticleSystem>();
+    }
+
+    private void OnParticleTrigger()
+    {
+        int count = particleSystem.GetTriggerParticles(
+            ParticleSystemTriggerEventType.Enter,
+            triggerParticles
+        );
+
+        for (int i = 0; i < count; i++)
         {
-            Debug.Log("손님과 충돌 중");
-            damage.TakeDamage(currentItem.ExpulsionDamage, currentHitPosition);
+            Vector3 hitPosition = triggerParticles[i].position;
+
+            Collider2D[] hits =
+                Physics2D.OverlapPointAll(hitPosition);
+
+            foreach (Collider2D hit in hits)
+            {
+                TroubleCustomerDamage damageTarget =
+                    hit.GetComponentInParent<TroubleCustomerDamage>();
+
+                if (damageTarget != null)
+                {
+                    Debug.Log("물 파티클이 손님에게 닿음");
+
+                    damageTarget.TakeDamage(
+                        damage,
+                        hitPosition
+                    );
+
+                    break;
+                }
+            }
         }
     }
 }

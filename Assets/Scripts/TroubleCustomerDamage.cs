@@ -17,20 +17,25 @@ public class TroubleCustomerDamage : MonoBehaviour
 
     public void TakeDamage(int damage, Vector3 hitPosition)
     {
-        
+        Debug.Log($"피격 전 HP: {currentHP}");
+        Debug.Log($"받은 데미지: {damage}");
 
         currentHP -= damage;
 
         if (currentHP < 0)
             currentHP = 0;
 
-       
+        Debug.Log($"피격 후 HP: {currentHP}");
 
         StartCoroutine(HitReaction(hitPosition));
 
         if (currentHP <= 0)
         {
-            StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
+            Debug.Log("!!! HP가 0 이하가 됨 !!!");
+
+            StartCoroutine(
+                GameManager.Instance.CustomerSpawn.NextCustomerRoutine()
+            );
         }
     }
 

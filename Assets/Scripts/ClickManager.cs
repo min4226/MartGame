@@ -9,7 +9,7 @@ public class ClickManager : MonoBehaviour
     private RectTransform dragItemRect;
 
     [SerializeField] ParticleSystem waterParticle;
-    [SerializeField] Transform waterTransform;
+    [SerializeField] Vector3 waterTransform;
 
 
     public ExplusionInstance explusion;
@@ -32,6 +32,7 @@ public class ClickManager : MonoBehaviour
         
     private void Awake()
     {
+        this.gameObject.SetActive(false);
         dragItemRect = GetComponent<RectTransform>();
 
         ClickManager[] managers =
@@ -50,6 +51,7 @@ public class ClickManager : MonoBehaviour
     {
         if (dragItemRect != null)
         {
+            this.gameObject.SetActive(true);
             dragItemRect.position = screenPosition;
         }
     }
@@ -98,7 +100,7 @@ public class ClickManager : MonoBehaviour
 
         
         currentHitPosition = worldPosition;
-        currentHitPosition.z = 0f;
+        //currentHitPosition.z = 0f;
 
 
         
@@ -108,11 +110,11 @@ public class ClickManager : MonoBehaviour
 
         
 
-        Collider2D[] hits = Physics2D.OverlapPointAll(currentHitPosition);
+        Collider[] hits = Physics.OverlapSphere(currentHitPosition, 0.1f);
 
 
 
-        foreach (Collider2D col in hits)
+        foreach (Collider col in hits)
         {
             TroubleCustomerDamage damage = col.GetComponentInParent<TroubleCustomerDamage>();
 
@@ -161,6 +163,9 @@ public class ClickManager : MonoBehaviour
             return;
         }
 
+        if (currentItem.name == "Pail") return;
+        
+
         Transform customer = currentTroubleCustomer.transform;
 
         TroubleCustomerDamage damage = currentTroubleCustomer.GetComponent<TroubleCustomerDamage>();
@@ -185,26 +190,28 @@ public class ClickManager : MonoBehaviour
     {
         Debug.Log("Pour 시작");
 
-        GameObject obj = Instantiate(waterParticle.gameObject);
+        GameObject obj = Instantiate(waterParticle.gameObject, waterTransform, Quaternion.identity);
 
         Debug.Log("생성 성공 : " + obj.name);
 
-        obj.transform.position = waterTransform.position;
-        obj.transform.rotation = waterTransform.rotation;
+        obj.transform.position = waterTransform;
+        //obj.transform.rotation = waterTransform.;
 
         ParticleSystem particle = obj.GetComponent<ParticleSystem>();
         particle.Play();
     }
-    private void OnParticleCollision(GameObject other)
+    /*private void OnParticleCollision(GameObject other)
     {
+        Debug.Log("파티클 충돌 실행");
         TroubleCustomerDamage damage =
             other.GetComponentInParent<TroubleCustomerDamage>();
 
         if (damage != null)
         {
+            Debug.Log("데미지를 받음");
             damage.TakeDamage(currentItem.ExpulsionDamage, currentHitPosition);
         }
-    }
+    }*/
     private IEnumerator Knockback(Transform customer, Vector3 direction)
     {
         // 때리기 전 원래 위치

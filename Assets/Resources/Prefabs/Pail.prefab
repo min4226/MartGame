@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickManager
   waterParticle: {fileID: 263834857292922719, guid: 3c2775f6f7f3b9446b69e7252d4f2cbf, type: 3}
-  waterTransform: {fileID: 749624166488754487}
+  waterTransform: {x: 0.5, y: 1, z: 0}
   explusion: {fileID: 1118774429070303403, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
 --- !u!1 &2578606652114210824
 GameObject:
