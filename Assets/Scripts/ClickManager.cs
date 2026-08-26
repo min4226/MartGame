@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -10,12 +11,10 @@ public class ClickManager : MonoBehaviour
 
     [SerializeField] ParticleSystem waterParticle;
     [SerializeField] Vector3 waterTransform;
-
-
+    Transform cartCreate;
+    public GameObject cartPrefab;
     public ExplusionInstance explusion;
-
-    
-
+    public float speed = 2.0f;
     private ExpulsionItem currentItem;
 
     
@@ -26,10 +25,7 @@ public class ClickManager : MonoBehaviour
     }
 
     private Vector3 currentHitPosition;
-
-
-    
-        
+  
     private void Awake()
     {
         this.gameObject.SetActive(false);
@@ -40,12 +36,15 @@ public class ClickManager : MonoBehaviour
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None
             );
+        //cartCreate = GameObject.Find("CartSpawn").transform;
 
-       
+        //Debug.Log($"cartcreate : {cartCreate}");
+        
+
+        cartCreate = GameObject.Find("CartSpawn").transform;
+
+        Debug.Log($"cartCreate : {cartCreate}");
     }
-
-    
-
 
     private void MoveToMouse(Vector2 screenPosition, Vector3 worldPosition)
     {
@@ -74,45 +73,28 @@ public class ClickManager : MonoBehaviour
     }
 
 
-    private void LeftButton(
-    bool value,
-    Vector2 screenPosition,
-    Vector3 worldPosition)
+    private void LeftButton(bool value, Vector2 screenPosition, Vector3 worldPosition)
     {
-        
-        if (value)
-            return;
-
+        if (value) return;
         OnMouseRelease(worldPosition);
     }
 
 
     private void OnMouseRelease(Vector3 worldPosition)
     {
-
         currentItem = explusion.GetSelectedItem();
-        
-        if (currentItem == null)
+
+        if (currentItem == null) return;
+        if (currentItem.name == "MartCart")
         {
+            CartCollider();
             return;
         }
-
-
-        
         currentHitPosition = worldPosition;
         //currentHitPosition.z = 0f;
-
-
-        
-
         currentTroubleCustomer = null;
 
-
-        
-
         Collider[] hits = Physics.OverlapSphere(currentHitPosition, 0.1f);
-
-
 
         foreach (Collider col in hits)
         {
@@ -122,10 +104,7 @@ public class ClickManager : MonoBehaviour
             if (damage != null)
             {
                 currentTroubleCustomer = damage.gameObject;
-                Debug.Log(
-      "할당한 ClickManager ID : " + GetInstanceID() +
-      " / Customer : " + currentTroubleCustomer.name
-  );
+                
                 break;
             }
         }
@@ -135,15 +114,12 @@ public class ClickManager : MonoBehaviour
             Object target = currentItem.OnRelease.GetPersistentTarget(i);
             string method = currentItem.OnRelease.GetPersistentMethodName(i);
         }
-        Debug.Log(
-    "OnRelease 직전 ClickManager ID : " + GetInstanceID() +
-    " / Customer : " + currentTroubleCustomer
-);
+        
         currentItem.OnRelease?.Invoke();
 
         
         HitItem();
-        
+ 
     }
 
 
@@ -188,30 +164,22 @@ public class ClickManager : MonoBehaviour
 
     public void PourWater()
     {
-        Debug.Log("Pour 시작");
-
         GameObject obj = Instantiate(waterParticle.gameObject, waterTransform, Quaternion.identity);
-
-        Debug.Log("생성 성공 : " + obj.name);
 
         obj.transform.position = waterTransform;
         //obj.transform.rotation = waterTransform.;
 
         ParticleSystem particle = obj.GetComponent<ParticleSystem>();
+        GameObject troubleCustomer = GameObject.FindGameObjectWithTag("TroubleCustomer");
+        //particle.trigger.AddCollider(troubleCustomer.GetComponent<Collider2D>());
+        Collider collider = troubleCustomer.GetComponent<Collider>();
+
+        particle.trigger.AddCollider(collider);
+
+        
         particle.Play();
     }
-    /*private void OnParticleCollision(GameObject other)
-    {
-        Debug.Log("파티클 충돌 실행");
-        TroubleCustomerDamage damage =
-            other.GetComponentInParent<TroubleCustomerDamage>();
-
-        if (damage != null)
-        {
-            Debug.Log("데미지를 받음");
-            damage.TakeDamage(currentItem.ExpulsionDamage, currentHitPosition);
-        }
-    }*/
+    
     private IEnumerator Knockback(Transform customer, Vector3 direction)
     {
         // 때리기 전 원래 위치
@@ -249,6 +217,51 @@ public class ClickManager : MonoBehaviour
         customer.position = start;
     }
 
+    public void CartCollider()
+    {
+        if (cartPrefab == null)
+        {
+            Debug.LogError("❌ cartPrefab이 비어있음");
+            return;
+        }
+
+        if (cartCreate == null)
+        {
+            Debug.LogError("❌ cartCreate가 비어있음");
+            return;
+        }
+
+        Debug.Log($"🛒 카트 생성 시작");
+        Debug.Log($"cartPrefab = {cartPrefab.name}");
+        Debug.Log($"cartCreate = {cartCreate.name}");
+        Debug.Log($"cartCreate.position = {cartCreate.position}");
+
+        GameObject cart = Instantiate(
+            cartPrefab,
+            cartCreate.position,
+            Quaternion.identity
+        );
+
+        cart.SetActive(true);
+        Debug.Log($"🛒 카트 생성 완료 : {cart.name}");
+        Debug.Log($"카트 위치 : {cart.transform.position}");
+
+        StartCoroutine(MoveCart(cart));
+    }
+
+    private IEnumerator MoveCart(GameObject cart)
+    {
+        Debug.Log("🛒 카트 이동 시작");
+
+        while (cart != null)
+        {
+            cart.transform.position += Vector3.left * speed * Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
+}
 
     
-}
+

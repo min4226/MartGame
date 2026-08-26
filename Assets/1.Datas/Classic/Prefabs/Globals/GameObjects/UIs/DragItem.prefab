@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d599ae7704370364f81d53f69cb50e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickManager
-  waterPrefab: {fileID: 263834857292922719, guid: 3c2775f6f7f3b9446b69e7252d4f2cbf, type: 3}
+  waterParticle: {fileID: 0}
+  waterTransform: {x: 0, y: 0, z: 0}
+  cartPrefab: {fileID: 787486227355040322, guid: fa9a34c5c5179e144b78e3a1e425ad4b, type: 3}
   explusion: {fileID: 0}
-  waterParticlePosition: {fileID: 0}
+  speed: 2

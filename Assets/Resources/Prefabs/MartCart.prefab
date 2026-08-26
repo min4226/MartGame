@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6524051578458265013}
   - component: {fileID: 6479084665235239993}
   - component: {fileID: 7408724152966571525}
+  - component: {fileID: 4957771299797677869}
   m_Layer: 0
   m_Name: MartCart
   m_TagString: Item
@@ -82,12 +83,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5164683668456666737, guid: 3ad0e931223920947875f38ef1666576, type: 3}
+  m_Sprite: {fileID: 4703795632787446001, guid: f2dc8c5bfb0b33e468c986c9700b1518, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 3.86, y: 3.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -126,15 +127,33 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.6284676, y: 0.27292752}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.86, y: 3.55}
-    newSize: {x: 20, y: 20}
+    oldSize: {x: 3.86, y: 3.57}
+    newSize: {x: 3.86, y: 3.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.49, y: 0.56}
+  m_Size: {x: 0.5081949, y: 1.324197}
   m_EdgeRadius: 0
+--- !u!114 &4957771299797677869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787486227355040322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d599ae7704370364f81d53f69cb50e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ClickManager
+  waterParticle: {fileID: 0}
+  waterTransform: {x: 0, y: 0, z: 0}
+  cartCreate: {x: 9.38, y: -1.34, z: 0}
+  cartPrefab: {fileID: 787486227355040322}
+  explusion: {fileID: 0}
+  speed: 2

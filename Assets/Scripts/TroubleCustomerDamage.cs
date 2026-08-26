@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TroubleCustomerDamage : MonoBehaviour
 {
+
     [SerializeField]CustomerData customerData;
 
     private int currentHP;

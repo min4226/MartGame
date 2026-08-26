@@ -244,6 +244,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1877919bbaa7dd94da1a97021894f68e, type: 2}
   - {fileID: 11400000, guid: 00758dd3380a59f419d7102975643b99, type: 2}
   poolPosition: {fileID: 6331415108093384308}
+  processObj: {fileID: 0}
 --- !u!1 &3814695997648820459
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +384,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ca40f8f8361ac5458ffeed26c95f95b, type: 2}
   itemPool: {fileID: 9108484198134008851}
   stageContainer: {fileID: 11400000, guid: c67e569a7debce44a986a186f3c6f1e4, type: 2}
+  trigger: {fileID: 0}
+  todayItem: {fileID: 0}
+  todayItems: []
 --- !u!1 &9124268566221645886
 GameObject:
   m_ObjectHideFlags: 0
