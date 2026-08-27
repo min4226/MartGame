@@ -204,8 +204,8 @@ GameObject:
   m_Component:
   - component: {fileID: 825790548047410675}
   - component: {fileID: 8845929181971080914}
-  - component: {fileID: 7324958622153802617}
-  - component: {fileID: 9065412504028483315}
+  - component: {fileID: 4052529050841828291}
+  - component: {fileID: 2055558863240610740}
   m_Layer: 0
   m_Name: Person 3
   m_TagString: TroubleCustomer
@@ -243,30 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TroubleCustomerDamage
   customerData: {fileID: 11400000, guid: cbc29434d2a04194c8e170c23e4c120f, type: 2}
---- !u!136 &7324958622153802617
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8829200121524381901}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.2217984
-  m_Height: 7.09196
-  m_Direction: 1
-  m_Center: {x: 0.07874155, y: 0.19685411, z: 0}
---- !u!54 &9065412504028483315
+--- !u!54 &4052529050841828291
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,6 +270,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
+--- !u!136 &2055558863240610740
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829200121524381901}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1364949
+  m_Height: 6.829487
+  m_Direction: 1
+  m_Center: {x: -0.039371014, y: 0.23622513, z: 0}
 --- !u!1001 &5121246585579353387
 PrefabInstance:
   m_ObjectHideFlags: 0

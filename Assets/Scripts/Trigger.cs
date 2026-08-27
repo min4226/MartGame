@@ -17,6 +17,14 @@ public class Trigger : MonoBehaviour
 
             inputField = GameManager.Instance.InputField;
             EnterButton = GameManager.Instance.EnterButton;
+
+            if (other.gameObject.name.Contains("MartCart"))
+            {
+                Debug.Log("🛒 Trigger에서 카트 감지 → InputField 활성화 안 함");
+
+                //Destroy(other.gameObject);
+                return;
+            }
             activeItemCount--;
             inputField.onValidateInput += ValidateNumber;
 

@@ -11,10 +11,10 @@ public class ClickManager : MonoBehaviour
 
     [SerializeField] ParticleSystem waterParticle;
     [SerializeField] Vector3 waterTransform;
-    Transform cartCreate;
+    public Transform cartCreate;
     public GameObject cartPrefab;
     public ExplusionInstance explusion;
-    public float speed = 2.0f;
+    //public float speed = 2.0f;
     private ExpulsionItem currentItem;
 
     
@@ -28,7 +28,7 @@ public class ClickManager : MonoBehaviour
   
     private void Awake()
     {
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false); // dragitem쪽 애를 비활성화 시키는 것
         dragItemRect = GetComponent<RectTransform>();
 
         ClickManager[] managers =
@@ -36,23 +36,33 @@ public class ClickManager : MonoBehaviour
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None
             );
-        //cartCreate = GameObject.Find("CartSpawn").transform;
-
-        //Debug.Log($"cartcreate : {cartCreate}");
         
 
-        cartCreate = GameObject.Find("CartSpawn").transform;
 
-        Debug.Log($"cartCreate : {cartCreate}");
+        GameObject cartSpawn = GameObject.Find("CartSpawn");
+
+        if (cartSpawn == null)
+        {
+            Debug.LogError("❌ Hierarchy에서 CartSpawn을 찾지 못함");
+            return;
+        }
+
+        cartCreate = cartSpawn.transform;
+
+        
     }
 
     private void MoveToMouse(Vector2 screenPosition, Vector3 worldPosition)
     {
+        if (currentItem != null && currentItem.name == "MartCart")
+            return;
         if (dragItemRect != null)
         {
             this.gameObject.SetActive(true);
             dragItemRect.position = screenPosition;
         }
+
+
     }
 
 
@@ -75,23 +85,38 @@ public class ClickManager : MonoBehaviour
 
     private void LeftButton(bool value, Vector2 screenPosition, Vector3 worldPosition)
     {
-        if (value) return;
+        if (value)
+            return;
+
+        currentItem = explusion.GetSelectedItem();
+
+        if (currentItem == null)
+            return;
+
+        if (currentItem.name == "MartCart")
+        {
+            
+
+            Debug.Log("🛒 카트 감지");
+            CartCollider();
+
+            return;
+        }
+
         OnMouseRelease(worldPosition);
     }
 
 
     private void OnMouseRelease(Vector3 worldPosition)
     {
+        Debug.Log("마우스 눌림");
         currentItem = explusion.GetSelectedItem();
-
+        Debug.Log($"currentitem : {currentItem}");
         if (currentItem == null) return;
-        if (currentItem.name == "MartCart")
-        {
-            CartCollider();
-            return;
-        }
+
+        
         currentHitPosition = worldPosition;
-        //currentHitPosition.z = 0f;
+        
         currentTroubleCustomer = null;
 
         Collider[] hits = Physics.OverlapSphere(currentHitPosition, 0.1f);
@@ -217,50 +242,19 @@ public class ClickManager : MonoBehaviour
         customer.position = start;
     }
 
+    
+     
     public void CartCollider()
     {
-        if (cartPrefab == null)
-        {
-            Debug.LogError("❌ cartPrefab이 비어있음");
-            return;
-        }
-
-        if (cartCreate == null)
-        {
-            Debug.LogError("❌ cartCreate가 비어있음");
-            return;
-        }
-
-        Debug.Log($"🛒 카트 생성 시작");
-        Debug.Log($"cartPrefab = {cartPrefab.name}");
-        Debug.Log($"cartCreate = {cartCreate.name}");
-        Debug.Log($"cartCreate.position = {cartCreate.position}");
-
         GameObject cart = Instantiate(
             cartPrefab,
             cartCreate.position,
             Quaternion.identity
         );
-
+        
         cart.SetActive(true);
-        Debug.Log($"🛒 카트 생성 완료 : {cart.name}");
-        Debug.Log($"카트 위치 : {cart.transform.position}");
-
-        StartCoroutine(MoveCart(cart));
+        Debug.Log($"🛒 카트 생성 : {cart.name}");
     }
-
-    private IEnumerator MoveCart(GameObject cart)
-    {
-        Debug.Log("🛒 카트 이동 시작");
-
-        while (cart != null)
-        {
-            cart.transform.position += Vector3.left * speed * Time.deltaTime;
-
-            yield return null;
-        }
-    }
-
 }
 
     

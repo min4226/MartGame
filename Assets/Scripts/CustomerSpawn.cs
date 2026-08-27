@@ -198,6 +198,7 @@ public class CustomerSpawn : MonoBehaviour
     // -----------------------------------------
     public IEnumerator NextCustomerRoutine()
     {
+        Debug.Log("🚨🚨🚨 NextCustomerRoutine 실행됨!");
         yield return new WaitForSeconds(1f);
 
         GameManager.Instance.CorrectAnswer.SetActive(false);

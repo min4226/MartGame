@@ -32,7 +32,14 @@ public class ExplusionInstance : MonoBehaviour
     public void SelectItem(int index)
     {
         item = currentItems[index];
-        
+        if (item.name == "MartCart")
+        {
+            ClickManager clickManager = FindFirstObjectByType<ClickManager>(FindObjectsInactive.Include);
+            this.gameObject.SetActive(false);
+            Debug.Log($"clickmanager : {clickManager}");
+            clickManager.CartCollider();
+            return;
+        }
         this.gameObject.SetActive(false);
         Debug.Log("선택 후 item : " + item);
 
