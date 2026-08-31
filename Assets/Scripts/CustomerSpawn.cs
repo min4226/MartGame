@@ -7,11 +7,11 @@ public class CustomerSpawn : MonoBehaviour
     [SerializeField] CustomerData[] customerData;
     [SerializeField] Transform poolPosition;
     [SerializeField] GameObject processObj;
+    GameObject lastTroubleCustomer;
 
     StageData stageData;
 
     List<CustomerType> spawnList;
-
     int index = 0;
     bool isSpawning = false;
 
@@ -87,9 +87,7 @@ public class CustomerSpawn : MonoBehaviour
     }
 
 
-    // -----------------------------------------
-    // 다음 손님 생성
-    // -----------------------------------------
+    
     public void SpawnNextCustomer()
     {
         if (isSpawning)
@@ -118,19 +116,59 @@ public class CustomerSpawn : MonoBehaviour
     }
 
 
-    // -----------------------------------------
-    // 손님 생성
-    // -----------------------------------------
+
     void Spawn(CustomerType type)
     {
         CustomerData data = GetCustomerData(type);
 
-        GameObject customer =
-            Instantiate(
-                data.ageSprite,
-                poolPosition.position,
-                Quaternion.identity
+        // TroubleCustomer인 경우
+        if (type == CustomerType.TroubleMakerCustomer)
+        {
+            CustomerData[] troubleDatas = System.Array.FindAll(
+                customerData,
+                x => x.customerType == CustomerType.TroubleMakerCustomer
             );
+
+            // TroubleCustomer가 여러 명 등록되어 있는 경우
+            if (troubleDatas.Length > 1)
+            {
+                List<CustomerData> availableDatas = new List<CustomerData>();
+
+                foreach (CustomerData troubleData in troubleDatas)
+                {
+                    // 바로 직전에 나온 캐릭터 제외
+                    if (troubleData.ageSprite != lastTroubleCustomer)
+                    {
+                        availableDatas.Add(troubleData);
+                    }
+                }
+
+                // 혹시 전부 제외되어도 안전하게 처리
+                if (availableDatas.Count > 0)
+                {
+                    data = availableDatas[
+                        Random.Range(0, availableDatas.Count)
+                    ];
+                }
+                else
+                {
+                    // 선택 가능한 캐릭터가 없으면 그냥 랜덤
+                    data = troubleDatas[
+                        Random.Range(0, troubleDatas.Length)
+                    ];
+                }
+            }
+
+            lastTroubleCustomer = data.ageSprite;
+        }
+
+        Debug.Log($"🧑 생성할 손님 : {data.ageSprite.name}");
+
+        GameObject customer = Instantiate(
+            data.ageSprite,
+            poolPosition.position,
+            Quaternion.identity
+        );
 
         GameManager.Instance.currentCustomer = customer;
 
@@ -143,7 +181,6 @@ public class CustomerSpawn : MonoBehaviour
                 );
 
                 return;
-
 
             case CustomerType.TroubleMakerCustomer:
 
@@ -218,11 +255,15 @@ public class CustomerSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        GameObject troubleCustomerClone =
-            GameObject.Find("Person 3(Clone)");
+        if (customer == null)
+        {
+            Debug.LogError("TroubleCustomer가 생성되지 않았습니다.");
+            yield break;
+        }
+
 
         Transform troubleCustomerCanvas =
-            troubleCustomerClone.transform.Find("Canvas");
+            customer.transform.Find("Canvas");
 
         Transform processObj =
             troubleCustomerCanvas.transform.Find("ProcessObj");

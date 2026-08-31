@@ -15,7 +15,7 @@ GameObject:
   m_Layer: 0
   m_Name: TriggerPlace
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -134,7 +134,7 @@ GameObject:
   m_Layer: 0
   m_Name: CustomerPool
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -243,6 +243,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 75f919bf83f7ff643a700e850d58d7cc, type: 2}
   - {fileID: 11400000, guid: 1877919bbaa7dd94da1a97021894f68e, type: 2}
   - {fileID: 11400000, guid: 00758dd3380a59f419d7102975643b99, type: 2}
+  - {fileID: 11400000, guid: 99a793f382438f54ebb253bc84dc116a, type: 2}
   poolPosition: {fileID: 6331415108093384308}
   processObj: {fileID: 0}
 --- !u!1 &3814695997648820459
@@ -349,7 +350,7 @@ GameObject:
   m_Layer: 0
   m_Name: ItemPool
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -399,7 +400,7 @@ GameObject:
   m_Layer: 0
   m_Name: CartSpawn
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

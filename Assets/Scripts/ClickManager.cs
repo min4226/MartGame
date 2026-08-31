@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -11,13 +11,15 @@ public class ClickManager : MonoBehaviour
 
     [SerializeField] ParticleSystem waterParticle;
     [SerializeField] Vector3 waterTransform;
+    
     public Transform cartCreate;
     public GameObject cartPrefab;
     public ExplusionInstance explusion;
+    
     //public float speed = 2.0f;
     private ExpulsionItem currentItem;
 
-    
+    private CallingToPolice callingToPolice;
     private GameObject currentTroubleCustomer;
     public GameObject CurrentTroubleCustomer
     {
@@ -36,32 +38,22 @@ public class ClickManager : MonoBehaviour
                 FindObjectsInactive.Include,
                 FindObjectsSortMode.None
             );
-        
 
+        callingToPolice = FindFirstObjectByType<CallingToPolice>();
 
         GameObject cartSpawn = GameObject.Find("CartSpawn");
-
-        if (cartSpawn == null)
-        {
-            Debug.LogError("❌ Hierarchy에서 CartSpawn을 찾지 못함");
-            return;
-        }
-
         cartCreate = cartSpawn.transform;
-
-        
     }
 
     private void MoveToMouse(Vector2 screenPosition, Vector3 worldPosition)
     {
-        if (currentItem != null && currentItem.name == "MartCart")
+        if (currentItem != null && currentItem.name == "MartCart" && currentItem.name == "Phone")
             return;
         if (dragItemRect != null)
         {
             this.gameObject.SetActive(true);
             dragItemRect.position = screenPosition;
         }
-
 
     }
 
@@ -85,8 +77,7 @@ public class ClickManager : MonoBehaviour
 
     private void LeftButton(bool value, Vector2 screenPosition, Vector3 worldPosition)
     {
-        if (value)
-            return;
+        if (value) return;
 
         currentItem = explusion.GetSelectedItem();
 
@@ -95,25 +86,21 @@ public class ClickManager : MonoBehaviour
 
         if (currentItem.name == "MartCart")
         {
-            
-
-            Debug.Log("🛒 카트 감지");
             CartCollider();
 
             return;
         }
 
+        
         OnMouseRelease(worldPosition);
     }
 
 
     private void OnMouseRelease(Vector3 worldPosition)
     {
-        Debug.Log("마우스 눌림");
         currentItem = explusion.GetSelectedItem();
         Debug.Log($"currentitem : {currentItem}");
         if (currentItem == null) return;
-
         
         currentHitPosition = worldPosition;
         
@@ -142,18 +129,12 @@ public class ClickManager : MonoBehaviour
         
         currentItem.OnRelease?.Invoke();
 
-        
         HitItem();
  
     }
 
-
-
-
     public void HitItem()
     {
-        
-
         if (currentItem == null)
         {
             return;
@@ -187,6 +168,7 @@ public class ClickManager : MonoBehaviour
         StartCoroutine(Knockback(customer, direction));
     }
 
+    // 물 붓기
     public void PourWater()
     {
         GameObject obj = Instantiate(waterParticle.gameObject, waterTransform, Quaternion.identity);
@@ -253,8 +235,10 @@ public class ClickManager : MonoBehaviour
         );
         
         cart.SetActive(true);
-        Debug.Log($"🛒 카트 생성 : {cart.name}");
     }
+
+    
+
 }
 
     

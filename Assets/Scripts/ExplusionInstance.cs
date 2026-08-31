@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ExplusionInstance : MonoBehaviour
 {
-
+    public CallingToPolice callingToPolicePrefab;
     public ExplusionItems explusion;
     public Image[] imagePanel;
     public Image dragImage;
@@ -13,6 +13,7 @@ public class ExplusionInstance : MonoBehaviour
     private ExpulsionItem item;
     void Start()
     {
+       
         List<ExpulsionItem> randomItems = new List<ExpulsionItem>(explusion.expulsionItems);
 
         currentItems = new ExpulsionItem[imagePanel.Length];
@@ -36,15 +37,25 @@ public class ExplusionInstance : MonoBehaviour
         {
             ClickManager clickManager = FindFirstObjectByType<ClickManager>(FindObjectsInactive.Include);
             this.gameObject.SetActive(false);
-            Debug.Log($"clickmanager : {clickManager}");
             clickManager.CartCollider();
             return;
         }
+        if (item.name == "Phone")
+        {
+            CallingToPolice callingToPolice =
+                Instantiate(callingToPolicePrefab);
+
+            callingToPolice.CallPolice();
+
+            this.gameObject.SetActive(false);
+            return;
+        }
+
         this.gameObject.SetActive(false);
         Debug.Log("선택 후 item : " + item);
 
         
-
+            
         dragImage.sprite = item.ExpulsionItemSprite;
         dragObject.SetActive(true);
     }

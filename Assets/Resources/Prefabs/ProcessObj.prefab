@@ -51,11 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302c845e2dddfb44bb99ceeeb227ecc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ExplusionInstance
+  callingToPolicePrefab: {fileID: 5985964921528799927, guid: ddacaa8e9a9a3fe46a3c69f48be5161c, type: 3}
   explusion: {fileID: 11400000, guid: 4ff7d32aa2a04ba4c847c68372a43692, type: 2}
   imagePanel:
   - {fileID: 3569393037482452539}
   - {fileID: 8177213322994297015}
   - {fileID: 5952851969504441754}
+  dragImage: {fileID: 0}
+  dragObject: {fileID: 0}
 --- !u!1 &3108185737751698294
 GameObject:
   m_ObjectHideFlags: 0
