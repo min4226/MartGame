@@ -27,7 +27,7 @@ public class UI_Button_OpenScreen : MonoBehaviour
 
         
         UIManager.ClaimOpenScreen(wantType, changeType);
-
+                             
         createMethod.OnToggle();
         Debug.Log($"createmethod name : {createMethod.gameObject.name}");
     }

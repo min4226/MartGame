@@ -87,7 +87,7 @@ public class CustomerSpawn : MonoBehaviour
     }
 
 
-    
+
     public void SpawnNextCustomer()
     {
         if (isSpawning)
@@ -162,7 +162,7 @@ public class CustomerSpawn : MonoBehaviour
             lastTroubleCustomer = data.ageSprite;
         }
 
-        Debug.Log($"🧑 생성할 손님 : {data.ageSprite.name}");
+        Debug.Log($" 생성할 손님 : {data.ageSprite.name}");
 
         GameObject customer = Instantiate(
             data.ageSprite,
@@ -235,7 +235,7 @@ public class CustomerSpawn : MonoBehaviour
     // -----------------------------------------
     public IEnumerator NextCustomerRoutine()
     {
-        Debug.Log("🚨🚨🚨 NextCustomerRoutine 실행됨!");
+        Debug.Log("NextCustomerRoutine 실행됨!");
         yield return new WaitForSeconds(1f);
 
         GameManager.Instance.CorrectAnswer.SetActive(false);
@@ -250,7 +250,7 @@ public class CustomerSpawn : MonoBehaviour
     }
 
 
-    
+
     public IEnumerator ProcessObjCreate(GameObject customer)
     {
         yield return new WaitForSeconds(1f);
@@ -271,6 +271,13 @@ public class CustomerSpawn : MonoBehaviour
         if (processObj != null)
         {
             processObj.gameObject.SetActive(true);
+        }
+    }
+    public void SetCustomerVisible(bool visible)
+    {
+        if (GameManager.Instance.currentCustomer != null)
+        {
+            GameManager.Instance.currentCustomer.SetActive(visible);
         }
     }
 }

@@ -6,7 +6,10 @@ public class RechangeButton : MonoBehaviour
 {
     public TMP_InputField reChange;
     TextMeshProUGUI optionNick;
-
+    private void Start()
+    {
+        reChange.characterLimit = 7;
+    }
     public void RechangeNick()
     {
         GameObject IdInfo = GameObject.Find("idInfo");
@@ -17,6 +20,7 @@ public class RechangeButton : MonoBehaviour
         //Debug.Log($"optionnick : {optionNick}");
 
         string nick = reChange.text;
+        
         GameManager.DB.NickNameChange(nick);
         Debug.Log($"nick : {nick}");
         nickname.text = nick;

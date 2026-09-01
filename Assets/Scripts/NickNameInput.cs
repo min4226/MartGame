@@ -8,6 +8,7 @@ public class NickNameInput : MonoBehaviour
     private void Start()
     {
         nicknameInput.text = GameManager.DB.resultData.nickname;
+        
         Debug.Log($"nickname : {nicknameInput.text}");
     }
 }

@@ -26,7 +26,15 @@ public class StageManager : ManagerBase
 
     public void StartStage(int index)
     {
+        if (customerSpawn == null)
+            customerSpawn = FindFirstObjectByType<CustomerSpawn>();
+        Debug.Log($"[StartStage] container = {container}");
+        Debug.Log($"[StartStage] customerSpawn = {customerSpawn}");
+        Debug.Log($"[StartStage] normalCustomer = {normalCustomer}");
+        Debug.Log($"[StartStage] index = {index}");
+
         currentIndex = index;
+
         currentStage = container.stageDatas[index];
 
         clearedCustomerCount = 0;
@@ -41,7 +49,7 @@ public class StageManager : ManagerBase
         container = GameManager.Instance.StageContainer;
         customerData = GameManager.Instance.CustomerData;
         normalCustomer = GameManager.Instance.NormalCustomer;
-        customerSpawn = FindFirstObjectByType<CustomerSpawn>();
+        customerSpawn = GameManager.Instance.CustomerSpawn;
         changeStageLevel = FindFirstObjectByType<ChangeStageLevel>();
         stageClearPanel = GameManager.Instance.StageClearResultPanel;
         stageClearPanelFail = GameManager.Instance.StageClearResultPanelFail;

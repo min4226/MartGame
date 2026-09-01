@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MarketWindow : UIManager
+public class MarketWindow : MonoBehaviour
 {
     [SerializeField] GameObject marketWindow; 
     [SerializeField] GameObject stageScene;
