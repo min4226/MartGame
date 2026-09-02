@@ -27,10 +27,10 @@ public class CustomerSpawn : MonoBehaviour
         Debug.Log($"Trouble : {stageData.troublemakerCustomerCount}");
         Debug.Log($"Special : {stageData.specialCustomerCount}");
 
-        // 스테이지에 나올 손님 목록 생성
+       
         spawnList = BuildCustomerList(stageData);
 
-        // 처음부터 다시 시작
+        
         index = 0;
 
         if (GameManager.Instance.CurrentState != GameState.PlayScene)
@@ -40,9 +40,7 @@ public class CustomerSpawn : MonoBehaviour
     }
 
 
-    // -----------------------------------------
-    // 스테이지 손님 목록 만들기
-    // -----------------------------------------
+    
     List<CustomerType> BuildCustomerList(StageData stageData)
     {
         List<CustomerType> list = new List<CustomerType>();
@@ -70,10 +68,20 @@ public class CustomerSpawn : MonoBehaviour
             CustomerType.SpecialCustomer,
             stageData.specialCustomerCount
         );
-
+        Shuffle(list);
         return list;
     }
+    void Shuffle(List<CustomerType> list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            int randomIndex = Random.Range(i, list.Count);
 
+            CustomerType temp = list[i];
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
+    }
 
     void AddCustomers(
         List<CustomerType> list,
@@ -93,7 +101,7 @@ public class CustomerSpawn : MonoBehaviour
         if (isSpawning)
             return;
 
-        // 더 이상 생성할 손님이 없음
+        
         if (spawnList == null || index >= spawnList.Count)
             return;
 
@@ -109,7 +117,7 @@ public class CustomerSpawn : MonoBehaviour
 
         Spawn(type);
 
-        // 현재 손님을 생성했으므로 다음 번호로 이동
+        
         index++;
 
         isSpawning = false;
@@ -121,7 +129,7 @@ public class CustomerSpawn : MonoBehaviour
     {
         CustomerData data = GetCustomerData(type);
 
-        // TroubleCustomer인 경우
+        
         if (type == CustomerType.TroubleMakerCustomer)
         {
             CustomerData[] troubleDatas = System.Array.FindAll(
@@ -129,21 +137,21 @@ public class CustomerSpawn : MonoBehaviour
                 x => x.customerType == CustomerType.TroubleMakerCustomer
             );
 
-            // TroubleCustomer가 여러 명 등록되어 있는 경우
+            
             if (troubleDatas.Length > 1)
             {
                 List<CustomerData> availableDatas = new List<CustomerData>();
 
                 foreach (CustomerData troubleData in troubleDatas)
                 {
-                    // 바로 직전에 나온 캐릭터 제외
+                    
                     if (troubleData.ageSprite != lastTroubleCustomer)
                     {
                         availableDatas.Add(troubleData);
                     }
                 }
 
-                // 혹시 전부 제외되어도 안전하게 처리
+                
                 if (availableDatas.Count > 0)
                 {
                     data = availableDatas[
@@ -152,7 +160,7 @@ public class CustomerSpawn : MonoBehaviour
                 }
                 else
                 {
-                    // 선택 가능한 캐릭터가 없으면 그냥 랜덤
+                    
                     data = troubleDatas[
                         Random.Range(0, troubleDatas.Length)
                     ];
@@ -202,9 +210,7 @@ public class CustomerSpawn : MonoBehaviour
     }
 
 
-    // -----------------------------------------
-    // 현재 손님 처리 완료
-    // -----------------------------------------
+    
     public void OnCustomerEnd()
     {
         if (GameManager.Instance.currentCustomer != null)
@@ -214,7 +220,7 @@ public class CustomerSpawn : MonoBehaviour
         }
 
 
-        // 모든 손님 처리가 끝났는지 확인
+        
         if (index >= spawnList.Count)
         {
             Debug.Log("모든 손님 처리 완료");
@@ -225,14 +231,11 @@ public class CustomerSpawn : MonoBehaviour
         }
 
 
-        // 아직 남은 손님이 있음
         SpawnNextCustomer();
     }
 
 
-    // -----------------------------------------
-    // 다음 손님으로 넘어가는 코루틴
-    // -----------------------------------------
+    
     public IEnumerator NextCustomerRoutine()
     {
         Debug.Log("NextCustomerRoutine 실행됨!");

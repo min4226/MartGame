@@ -34,13 +34,25 @@ public class MartCart : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         TroubleCustomerDamage customerDamage =
-       collision.gameObject.GetComponentInParent<TroubleCustomerDamage>();
-        
-        
+            collision.gameObject.GetComponentInParent<TroubleCustomerDamage>();
 
-        Debug.Log("🛒 카트가 진상에게 충돌!");
+        Rigidbody customerRb =
+            collision.gameObject.GetComponentInParent<Rigidbody>();
 
-        StartCoroutine(CartDamage(customerDamage));
+        Debug.Log(" 카트가 진상에게 충돌!");
+
+        if (customerRb != null)
+        {
+            customerRb.AddForce(
+                Vector3.left * 5f,
+                ForceMode.Impulse
+            );
+        }
+
+        if (customerDamage != null)
+        {
+            StartCoroutine(CartDamage(customerDamage));
+        }
     }
 
     private IEnumerator CartDamage(TroubleCustomerDamage customerDamage)

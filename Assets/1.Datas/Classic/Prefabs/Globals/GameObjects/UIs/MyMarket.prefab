@@ -2357,6 +2357,7 @@ GameObject:
   - component: {fileID: 3800918824418697552}
   - component: {fileID: 9164244014917786072}
   - component: {fileID: 5784726962829334847}
+  - component: {fileID: 4810255933525850273}
   m_Layer: 5
   m_Name: MyItem
   m_TagString: Untagged
@@ -2455,6 +2456,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4810255933525850273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544414194023749743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1c254b4b1c46740ac32368289fa7c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MyItemInventoryUI
+  itemSlotPrefab: {fileID: 5103402494691588990, guid: c5978ca32fa547b42a053d4d770234e1, type: 3}
+  content: {fileID: 3864593912390262132}
 --- !u!1 &4887363276527647522
 GameObject:
   m_ObjectHideFlags: 0

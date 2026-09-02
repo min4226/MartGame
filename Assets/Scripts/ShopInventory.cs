@@ -53,4 +53,9 @@ public class ShopInventory : MonoBehaviour
 
         UIManager.ClaimCloseUI(UIType.PayWindow);
     }
+
+    public Dictionary<ShopItemData, int> GetItems()
+    {
+        return items;
+    }
 }

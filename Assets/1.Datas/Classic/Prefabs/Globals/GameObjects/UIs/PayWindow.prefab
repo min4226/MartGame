@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1555671526260855566}
   - component: {fileID: 4387737419659095691}
   - component: {fileID: 4113396203901772674}
-  - component: {fileID: 2526136934137618825}
+  - component: {fileID: 72281303575415428}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2526136934137618825}
-        m_TargetAssemblyTypeName: ShopItemSlot, Assembly-CSharp
-        m_MethodName: BuyButton
+      - m_Target: {fileID: 72281303575415428}
+        m_TargetAssemblyTypeName: ShopInventory, Assembly-CSharp
+        m_MethodName: BuySelectedItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2526136934137618825
+--- !u!114 &72281303575415428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 391032051478659989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b67ff875fb3619a49a90d771f8e22433, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a59f7a864f466c408048e4c4c9fad74, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopItemSlot
-  itemSlotSprite: {fileID: 0}
-  itemSlotName: {fileID: 0}
-  coinText: {fileID: 0}
-  fameText: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ShopInventory
+  shopData: {fileID: 11400000, guid: d9eb17fb28cdc99418b1b9c39b8ea82c, type: 2}
 --- !u!1 &536391822390502157
 GameObject:
   m_ObjectHideFlags: 0

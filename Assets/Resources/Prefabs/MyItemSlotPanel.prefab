@@ -149,8 +149,7 @@ GameObject:
   - component: {fileID: 1719625063071332524}
   - component: {fileID: 292455308970231148}
   - component: {fileID: 3374929707754592542}
-  - component: {fileID: 5190156168840118192}
-  - component: {fileID: 4940102519019462429}
+  - component: {fileID: 2513000313463188882}
   m_Layer: 5
   m_Name: MyItemSlotPanel
   m_TagString: Untagged
@@ -263,7 +262,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5190156168840118192}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_OpenPopup, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1
@@ -275,7 +274,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5190156168840118192
+--- !u!114 &2513000313463188882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -284,28 +283,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5103402494691588990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3746ed79334e51a408aeec93da8f24c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 97be9ae87df5da24288b3666b205fa31, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UI_OpenPopup
-  wantType: 9
-  wantToggle: 0
-  openOnTop: 1
---- !u!114 &4940102519019462429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5103402494691588990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b67ff875fb3619a49a90d771f8e22433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopItemSlot
-  itemSlotSprite: {fileID: 4297170775661562310}
-  itemSlotName: {fileID: 4760563324201370973}
-  coinText: {fileID: 0}
-  fameText: {fileID: 3936931387908103608}
+  m_EditorClassIdentifier: Assembly-CSharp::MyItemSlot
+  itemImage: {fileID: 4297170775661562310}
+  itemName: {fileID: 4760563324201370973}
+  countText: {fileID: 7272228783313689510}
 --- !u!1 &6675112008807762274
 GameObject:
   m_ObjectHideFlags: 0

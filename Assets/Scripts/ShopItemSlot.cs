@@ -37,6 +37,12 @@ public class ShopItemSlot : MonoBehaviour
 
     public void BuyButton()
     {
+        Debug.Log(
+            $"[BUY] 슬롯 ID : {GetInstanceID()} / " +
+            $"gameObject : {gameObject.name} / " +
+            $"shopData : {shopData}"
+        );
+
         if (shopData == null)
         {
             Debug.LogError("shopData가 null입니다.");

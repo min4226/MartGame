@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db6f1aa438bb1c49a80ac26195b1df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MartCart
-  speed: 2
+  speed: 20
   damage: 30
 --- !u!65 &2203286264533465442
 BoxCollider:
