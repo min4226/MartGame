@@ -29,7 +29,6 @@ public class UI_Button_OpenScreen : MonoBehaviour
         UIManager.ClaimOpenScreen(wantType, changeType);
                              
         createMethod.OnToggle();
-        Debug.Log($"createmethod name : {createMethod.gameObject.name}");
     }
 
     public void MyMarketWindow()
@@ -48,7 +47,6 @@ public class UI_Button_OpenScreen : MonoBehaviour
 
     public void RestartPlayButton()
     {
-        Debug.Log($"ClaimOpenScreen ȣ�� : {wantType}, {changeType}");
         if (GameManager.Instance.CurrentState != GameState.PlayScene)
             return;
         UIManager.ClaimOpenScreen(wantType, changeType);

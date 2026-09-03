@@ -10,6 +10,7 @@ public class MyItemSlot : MonoBehaviour
 
     public void SetItem(ShopItemData data, int count)
     {
+        Debug.Log("set item 함수 실행");
         itemImage.sprite = data.shopItemSprite;
         itemName.text = data.shopItemName.ToString();
         countText.text = $"x{count}";

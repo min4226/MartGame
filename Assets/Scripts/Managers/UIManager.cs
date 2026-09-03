@@ -128,7 +128,6 @@ public class UIManager : ManagerBase
        
     }
 
-    
     protected override void OnDisconnected()
     {
         UnSetAllUI();
@@ -307,9 +306,7 @@ public class UIManager : ManagerBase
 
     protected UIBase OpenScreen(UIType wantType)
     {
-        Debug.Log($"[화면 전환] {CurrentScreen} -> {wantType}");
-
-        // 현재 화면 닫기
+        
         if (CurrentScreen != UIType.None && CurrentScreen != wantType)
         {
             CloseUI(CurrentScreen);
@@ -330,7 +327,6 @@ public class UIManager : ManagerBase
 
         UIBase result = OpenUI(wantType);
 
-        Debug.Log($"[화면 전환 결과] {wantType} / {result} / 활성화={result?.gameObject.activeSelf}");
 
         return result;
     }

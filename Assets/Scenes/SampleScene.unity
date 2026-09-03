@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopInventory
   shopData: {fileID: 11400000, guid: d9eb17fb28cdc99418b1b9c39b8ea82c, type: 2}
+  myItemInventoryUI: {fileID: 0}
 --- !u!4 &64977583
 Transform:
   m_ObjectHideFlags: 0
@@ -1510,18 +1511,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5236750881164039064, guid: 815babec7c7e4d04384f98af6c825545, type: 3}
   m_PrefabInstance: {fileID: 4282082923810319445}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1160553437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160553431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9a02994d7b7dfa4baa8df749067afd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1001 &1265453362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2515,10 +2504,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5236750881164039064, guid: 815babec7c7e4d04384f98af6c825545, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1160553437}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 815babec7c7e4d04384f98af6c825545, type: 3}
 --- !u!224 &4723973989965027679 stripped
 RectTransform:

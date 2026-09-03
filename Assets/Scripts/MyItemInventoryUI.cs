@@ -7,20 +7,24 @@ public class MyItemInventoryUI : MonoBehaviour
 
     public void Refresh()
     {
+        Debug.Log("Refresh 실행!");
+
         // 기존 슬롯 삭제
         foreach (Transform child in content)
         {
             Destroy(child.gameObject);
         }
 
-        // 보유 아이템 생성
         foreach (var item in ShopInventory.Instance.GetItems())
         {
-            GameObject slotObject =
-                Instantiate(itemSlotPrefab, content);
+            Debug.Log($"{item.Key.shopItemName} : {item.Value}");
 
-            MyItemSlot slot =
-                slotObject.GetComponent<MyItemSlot>();
+            if (item.Value <= 0)
+                continue;
+
+            GameObject slotObject = Instantiate(itemSlotPrefab, content);
+
+            MyItemSlot slot = slotObject.GetComponent<MyItemSlot>();
 
             slot.SetItem(item.Key, item.Value);
         }

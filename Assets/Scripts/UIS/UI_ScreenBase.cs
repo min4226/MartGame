@@ -38,13 +38,11 @@ public class UI_ScreenBase : UIBase , IOpenable
     public bool IsOpen => gameObject.activeSelf;
     public void Close()
     {
-        Debug.Log($"[UI CLOSE] {gameObject.name}");
         gameObject.SetActive(false);
     }
 
     public void Open()
     {
-        Debug.Log($"[UI OPEN] {gameObject.name}");
         gameObject.SetActive(true);
     }
     public void Toggle()
