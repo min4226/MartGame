@@ -1,11 +1,11 @@
 using UnityEngine;
-// 나의 마트로 가기 씬에서 단말기를 눌렀을 때 빨간 버튼을 눌렀을 경우
-// 상점템이 나오고 초록색 버튼을 눌렀을 때 내 아이템 패널이 나오는 코드
+
 public class ItemlListInstance : MonoBehaviour
 {
     [SerializeField] GameObject shopItem;
     [SerializeField] GameObject myItem;
-    
+    MyItemInventoryUI myItemInventoryUI;
+    public MyItemInventoryUI MyItemInventoryUI => myItemInventoryUI;
     public void OnShopItemListButton()
     {
         shopItem.SetActive(true);
@@ -15,6 +15,9 @@ public class ItemlListInstance : MonoBehaviour
     public void OnMyItemListButton()
     {
         myItem.SetActive(true);
+        myItemInventoryUI = myItem.GetComponentInChildren<MyItemInventoryUI>(true);
+        Debug.Log($"myItem : {myItem}");
+        Debug.Log($"myItemInventoryUI : {myItemInventoryUI}");
         shopItem.SetActive(false);
     }
 

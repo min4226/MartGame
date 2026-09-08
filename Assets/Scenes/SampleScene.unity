@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopInventory
   shopData: {fileID: 11400000, guid: d9eb17fb28cdc99418b1b9c39b8ea82c, type: 2}
-  myItemInventoryUI: {fileID: 0}
 --- !u!4 &64977583
 Transform:
   m_ObjectHideFlags: 0
@@ -176,17 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3f27f08f1212341a5a3f71d0bfc842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalCustomer
---- !u!114 &207305430 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2348434790334224523, guid: 6510300a28d87b141bddd0d810705221, type: 3}
-  m_PrefabInstance: {fileID: 1030523812}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4220e5ed1c5f45140a41cdac6546b19c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Trigger
 --- !u!1 &212968241 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5236750881164039064, guid: 815babec7c7e4d04384f98af6c825545, type: 3}
@@ -1431,10 +1419,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1602426972439110401, guid: 6510300a28d87b141bddd0d810705221, type: 3}
-      propertyPath: processObj
-      value: 
-      objectReference: {fileID: 741351112025336030, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
     - target: {fileID: 5165296437076613161, guid: 6510300a28d87b141bddd0d810705221, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1475,10 +1459,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7468286764850322015, guid: 6510300a28d87b141bddd0d810705221, type: 3}
-      propertyPath: trigger
-      value: 
-      objectReference: {fileID: 207305430}
     - target: {fileID: 9124268566221645886, guid: 6510300a28d87b141bddd0d810705221, type: 3}
       propertyPath: m_Name
       value: BackGround

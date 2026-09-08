@@ -244,8 +244,41 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1877919bbaa7dd94da1a97021894f68e, type: 2}
   - {fileID: 11400000, guid: 00758dd3380a59f419d7102975643b99, type: 2}
   - {fileID: 11400000, guid: 99a793f382438f54ebb253bc84dc116a, type: 2}
+  - {fileID: 11400000, guid: 2b0e529a81080ac4a9a1986166db8876, type: 2}
   poolPosition: {fileID: 6331415108093384308}
-  processObj: {fileID: 0}
+  processObj: {fileID: 741351112025336030, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
+  dialogueText: {fileID: 0}
+--- !u!1 &904723249476290831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7066468325842150968}
+  m_Layer: 0
+  m_Name: TroubleItemSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7066468325842150968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904723249476290831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24, y: -1.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5165296437076613161}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3814695997648820459
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,8 +418,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ca40f8f8361ac5458ffeed26c95f95b, type: 2}
   itemPool: {fileID: 9108484198134008851}
   stageContainer: {fileID: 11400000, guid: c67e569a7debce44a986a186f3c6f1e4, type: 2}
-  trigger: {fileID: 0}
+  trigger: {fileID: 2348434790334224523}
   todayItem: {fileID: 0}
+  balloonImage: {fileID: 0}
+  dialogueText: {fileID: 0}
   todayItems: []
 --- !u!1 &8833255836880616540
 GameObject:
@@ -455,6 +490,7 @@ Transform:
   - {fileID: 9108484198134008851}
   - {fileID: 4769864351909910772}
   - {fileID: 4935600371575483171}
+  - {fileID: 7066468325842150968}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1935344984876292095

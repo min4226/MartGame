@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CustomerSpawn : MonoBehaviour
@@ -7,6 +8,7 @@ public class CustomerSpawn : MonoBehaviour
     [SerializeField] CustomerData[] customerData;
     [SerializeField] Transform poolPosition;
     [SerializeField] GameObject processObj;
+    [SerializeField] TextMeshProUGUI dialogueText;
     GameObject lastTroubleCustomer;
 
     StageData stageData;
@@ -184,11 +186,15 @@ public class CustomerSpawn : MonoBehaviour
         {
             case CustomerType.NormalCustomer:
 
+
+                GameManager.Instance.NormalCustomer.SetDialogue(data);
+
                 StartCoroutine(
                     GameManager.Instance.NormalCustomer.ItemCreate()
                 );
 
                 return;
+
 
             case CustomerType.TroubleMakerCustomer:
 
@@ -283,4 +289,6 @@ public class CustomerSpawn : MonoBehaviour
             GameManager.Instance.currentCustomer.SetActive(visible);
         }
     }
+    
+    
 }

@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4778378557487297347, guid: e4719385e1eee344a89caafe7424c7db, type: 3}
+  m_Sprite: {fileID: 1214265846298375564, guid: 99f52a8dfb6019146a0278c5a6cb8244, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -203,12 +203,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 825790548047410675}
-  - component: {fileID: 8845929181971080914}
   - component: {fileID: 4052529050841828291}
   - component: {fileID: 2055558863240610740}
-  - component: {fileID: 238934210002184760}
+  - component: {fileID: 8845929181971080914}
+  - component: {fileID: -7061023542799357488}
   m_Layer: 0
-  m_Name: Person 4
+  m_Name: Person 5
   m_TagString: TroubleCustomer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,19 +231,6 @@ Transform:
   - {fileID: 6638911875459438496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8845929181971080914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8829200121524381901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b65d401056c85ab46b0d293139f35caa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TroubleCustomerDamage
-  customerData: {fileID: 11400000, guid: cbc29434d2a04194c8e170c23e4c120f, type: 2}
 --- !u!54 &4052529050841828291
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -269,7 +256,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 64
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &2055558863240610740
 CapsuleCollider:
@@ -294,7 +281,20 @@ CapsuleCollider:
   m_Height: 6.829487
   m_Direction: 1
   m_Center: {x: -0.039371014, y: 0.23622513, z: 0}
---- !u!114 &238934210002184760
+--- !u!114 &8845929181971080914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829200121524381901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65d401056c85ab46b0d293139f35caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TroubleCustomerDamage
+  customerData: {fileID: 11400000, guid: cbc29434d2a04194c8e170c23e4c120f, type: 2}
+--- !u!114 &-7061023542799357488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

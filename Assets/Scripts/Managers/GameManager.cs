@@ -59,7 +59,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject CorrectAnswer { get; set; }
     public GameObject FailAnswer { get; set; }
-
+    public GameObject Speech { get; set; }
+    
     public GameObject currentCustomer { get; set; }
 
     [SerializeField] StageContainer stageContainer;

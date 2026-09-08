@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 using static UnityEngine.Rendering.DebugUI;
 
 public delegate void changedTodayItems(List<ItemData> todayItems);
@@ -18,18 +18,25 @@ public class NormalCustomer : MonoBehaviour
     [SerializeField] StageContainer stageContainer;
     [SerializeField] Trigger trigger;
     [SerializeField] NormalCustomerItem todayItem;
-    
+    [SerializeField] Image balloonImage;
+    [SerializeField] TextMeshProUGUI dialogueText;
+    Transform dialogueUI;
+    Canvas canvas;
     public List<ItemData> todayItems = new List<ItemData>();
-
+    
     GameObject normalItem;
     int speed = 3;
     int currentIndex;
-    
+    private void Awake()
+    {
+        canvas = FindFirstObjectByType<Canvas>();
+    }
 
     public void Init(StageContainer data)
     {
         if (GameManager.Instance.CurrentState != GameState.PlayScene)
             return;
+        
         stageContainer = data;
         
     }
@@ -80,6 +87,41 @@ public class NormalCustomer : MonoBehaviour
             total += currentItem.itemBasePrice;
         }
         return total;
+    }
+    public void SetDialogue(CustomerData data)
+    {
+        UI_StageScreen stageScreen = canvas.GetComponentInChildren<UI_StageScreen>(true);
+
+        dialogueUI = stageScreen.transform.Find("SpeechBubble");
+        balloonImage = dialogueUI.GetComponentInChildren<Image>(true);
+        dialogueText = dialogueUI.GetComponentInChildren<TextMeshProUGUI>(true);
+        int randomIndex = Random.Range(0, data.dialogues.Count);
+        DialogueData dialogue = data.dialogues[randomIndex];
+        
+        balloonImage.sprite = dialogue.balloonSprite;
+        dialogueText.text = dialogue.dialogue;
+
+        StartCoroutine(ShowDialogues(data));
+    }
+    private IEnumerator ShowDialogues(CustomerData data)
+    {
+        dialogueUI.gameObject.SetActive(true);
+
+        foreach (DialogueData dialogue in data.dialogues)
+        {
+            balloonImage.sprite = dialogue.balloonSprite;
+            dialogueText.text = dialogue.dialogue;
+
+            yield return new WaitForSeconds(2f);
+
+            dialogueUI.gameObject.SetActive(false);
+
+            yield return new WaitForSeconds(0.5f);
+
+            dialogueUI.gameObject.SetActive(true);
+        }
+
+        dialogueUI.gameObject.SetActive(false);
     }
 
 }

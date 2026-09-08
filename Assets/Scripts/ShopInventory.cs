@@ -6,7 +6,7 @@ public class ShopInventory : MonoBehaviour
     public static ShopInventory Instance;
 
     [SerializeField] ShopData shopData;
-    [SerializeField] MyItemInventoryUI myItemInventoryUI;
+    ItemlListInstance itemlistinstance;
 
     Dictionary<ShopItemData, int> items = new();
 
@@ -19,30 +19,32 @@ public class ShopInventory : MonoBehaviour
             $"Object : {gameObject.name} / " +
             $"Scene : {gameObject.scene.name}"
         );
-
+        itemlistinstance = GetComponent<ItemlListInstance>();
         Instance = this;
 
         foreach (ShopItemData item in shopData.items)
         {
             items.Add(item, 0);
         }
+
+        
     }
 
     public void SelectItem(ShopItemData item)
     {
-        Debug.Log($"SelectItem 실행 / 받은 item : {item}");
+        Debug.Log($"[Select] Inventory ID : {GetInstanceID()}");
+        Debug.Log($"[Select] 받은 item : {item}");
+        Debug.Log($"[Select] 받은 item 이름 : {(item != null ? item.shopItemName : "NULL")}");
 
         selectedItem = item;
 
-        Debug.Log($"selectedItem에 저장된 값 : {selectedItem}");
+        Debug.Log($"[Select] selectedItem 저장 후 : {selectedItem}");
 
         UIManager.ClaimOpenUI(UIType.PayWindow);
     }
 
     public void BuySelectedItem()
     {
-        Debug.Log($"BuySelectedItem 실행 / selectedItem : {selectedItem}");
-
         if (selectedItem == null)
         {
             Debug.LogError("selectedItem이 null입니다!");
@@ -55,7 +57,15 @@ public class ShopInventory : MonoBehaviour
             $"{selectedItem.shopItemName} 보유 개수 : {items[selectedItem]}"
         );
 
-        myItemInventoryUI.Refresh();
+        MyItemInventoryUI ui =
+            FindFirstObjectByType<MyItemInventoryUI>(FindObjectsInactive.Include);
+
+        Debug.Log($"구매 후 MyItemInventoryUI : {ui}");
+
+        if (ui != null)
+        {
+            ui.Refresh();
+        }
 
         selectedItem = null;
 

@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 8845929181971080914}
   - component: {fileID: 4052529050841828291}
   - component: {fileID: 2055558863240610740}
+  - component: {fileID: -579623123181943343}
   m_Layer: 0
   m_Name: Person 3
   m_TagString: TroubleCustomer
@@ -293,6 +294,23 @@ CapsuleCollider:
   m_Height: 6.829487
   m_Direction: 1
   m_Center: {x: -0.039371014, y: 0.23622513, z: 0}
+--- !u!114 &-579623123181943343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829200121524381901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8a15778180efd4a82073d1235b047c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TroubleCustomerAction
+  actionSpawnPoint: {fileID: 0}
+  dialogueUI: {fileID: 0}
+  balloonImage: {fileID: 0}
+  dialogueText: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1001 &5121246585579353387
 PrefabInstance:
   m_ObjectHideFlags: 0

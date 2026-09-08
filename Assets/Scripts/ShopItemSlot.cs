@@ -38,19 +38,15 @@ public class ShopItemSlot : MonoBehaviour
     public void BuyButton()
     {
         Debug.Log("[1] BuyButton 실행");
-
-        Debug.Log($"[2] ShopInventory.Instance = {ShopInventory.Instance}");
+        Debug.Log($"[2] ShopInventory.Instance : {ShopInventory.Instance}");
+        Debug.Log($"[3] shopData : {shopData}");
 
         if (ShopInventory.Instance == null)
         {
-            Debug.LogError("[3] ShopInventory.Instance가 NULL!");
+            Debug.LogError("[4] ShopInventory.Instance NULL");
             return;
         }
 
-        Debug.Log("[4] SelectItem 호출 직전");
-
         ShopInventory.Instance.SelectItem(shopData);
-
-        Debug.Log("[5] SelectItem 호출 완료");
     }
 }
