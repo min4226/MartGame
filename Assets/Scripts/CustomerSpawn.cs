@@ -130,8 +130,8 @@ public class CustomerSpawn : MonoBehaviour
     void Spawn(CustomerType type)
     {
         CustomerData data = GetCustomerData(type);
-
         
+
         if (type == CustomerType.TroubleMakerCustomer)
         {
             CustomerData[] troubleDatas = System.Array.FindAll(
@@ -156,16 +156,11 @@ public class CustomerSpawn : MonoBehaviour
                 
                 if (availableDatas.Count > 0)
                 {
-                    data = availableDatas[
-                        Random.Range(0, availableDatas.Count)
-                    ];
+                    data = availableDatas[Random.Range(0, availableDatas.Count)];
                 }
                 else
                 {
-                    
-                    data = troubleDatas[
-                        Random.Range(0, troubleDatas.Length)
-                    ];
+                    data = troubleDatas[Random.Range(0, troubleDatas.Length)];
                 }
             }
 
@@ -181,7 +176,16 @@ public class CustomerSpawn : MonoBehaviour
         );
 
         GameManager.Instance.currentCustomer = customer;
+        if (type == CustomerType.TroubleMakerCustomer)
+        {
+            TroubleCustomerAction troubleAction = customer.GetComponent<TroubleCustomerAction>();
 
+            if (troubleAction != null)
+            {
+                troubleAction.StartActions(data);
+            }
+            
+        }
         switch (type)
         {
             case CustomerType.NormalCustomer:
@@ -197,11 +201,8 @@ public class CustomerSpawn : MonoBehaviour
 
 
             case CustomerType.TroubleMakerCustomer:
-
-                StartCoroutine(
-                    ProcessObjCreate(customer)
-                );
-
+                
+                
                 return;
         }
     }
@@ -260,7 +261,7 @@ public class CustomerSpawn : MonoBehaviour
 
 
 
-    public IEnumerator ProcessObjCreate(GameObject customer)
+    /*public IEnumerator ProcessObjCreate(GameObject customer)
     {
         yield return new WaitForSeconds(1f);
 
@@ -281,7 +282,7 @@ public class CustomerSpawn : MonoBehaviour
         {
             processObj.gameObject.SetActive(true);
         }
-    }
+    }*/
     public void SetCustomerVisible(bool visible)
     {
         if (GameManager.Instance.currentCustomer != null)

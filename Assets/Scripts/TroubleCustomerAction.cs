@@ -10,36 +10,43 @@ using UnityEngine.UI;
 public class TroubleCustomerAction : MonoBehaviour
 {
     [SerializeField] private Transform actionSpawnPoint;
-
-    [SerializeField] private GameObject dialogueUI;
+    [SerializeField] private Transform dialogueUI;
     [SerializeField] private Image balloonImage;
     [SerializeField] private TextMeshProUGUI dialogueText;
-
     [SerializeField] private Animator animator;
-
+    [SerializeField] TroubleActionData actionData;
+    Canvas canvas;
+    GameObject actionObject = null;
     private void Awake()
     {
+        Transform canvas = transform.Find("Canvas");
+        actionData = FindAnyObjectByType<TroubleActionData>();
+        Debug.Log($"actiondata : {actionData}");
+        if (canvas != null)
+        {
+            Transform processObj = canvas.Find("ProcessObj");
+
+            if (processObj != null)
+            {
+                processObj.gameObject.SetActive(false);
+            }
+        }
         GameObject background = GameObject.FindGameObjectWithTag("PlayGame");
         Debug.Log($"background : {background}");
         if (background != null)
         {
-            Transform troubleItemSpawn =
-                background.transform.Find("TroubleItemSpawn");
+            Transform troubleItemSpawn = background.transform.Find("TroubleItemSpawn");
+            Debug.Log($"troubleitemspawn : {troubleItemSpawn}");
 
             if (troubleItemSpawn != null)
             {
                 actionSpawnPoint = troubleItemSpawn;
             }
-            else
-            {
-                Debug.LogError("BackGround 아래에서 TroubleItemSpawn을 찾지 못했습니다.");
-            }
+            
         }
-        else
-        {
-            Debug.LogError("PlayGame 태그가 붙은 BackGround를 찾지 못했습니다.");
-        }
-    }
+        
+    
+}
 
     public void StartActions(CustomerData data)
     {
@@ -48,30 +55,31 @@ public class TroubleCustomerAction : MonoBehaviour
 
     private IEnumerator ExecuteActions(CustomerData data)
     {
-        foreach (TroubleActionData action in data.troubleActions)
-        {
-            yield return StartCoroutine(Execute(action));
-        }
+        if (data.troubleActions == null || data.troubleActions.Count == 0)
+            yield break;
+
+        int randomIndex = Random.Range(0, data.troubleActions.Count);
+
+        TroubleActionData action = data.troubleActions[randomIndex];
+
+        yield return StartCoroutine(Execute(action));
     }
     public IEnumerator Execute(TroubleActionData action)
     {
-        // 1. 애니메이션
-        if (action.actionClip != null)
-        {
-            animator.Play(action.actionClip.name);
-        }
+        Debug.Log("Execute 실행");
 
-        // 2. 프리팹 생성
+        
+
         if (action.actionPrfab != null)
         {
-            Instantiate(
+            actionObject = Instantiate(
                 action.actionPrfab,
                 actionSpawnPoint.position,
                 Quaternion.identity
             );
         }
 
-        // 3. 말풍선
+        // 말풍선
         if (action.dialogueTroubleData != null &&
             action.dialogueTroubleData.Count > 0)
         {
@@ -80,26 +88,60 @@ public class TroubleCustomerAction : MonoBehaviour
             );
         }
 
-        // 4. 행동 시간
+        
+        // 대사 끝난 후 3초 대기
+        yield return new WaitForSeconds(3f);
+
+        // 퇴치물건 UI
+        ShowExpulsionUI();
+
         yield return new WaitForSeconds(action.actionDuration);
     }
 
 
     private IEnumerator ShowDialogues(List<DialogueData> dialogues)
     {
-        foreach (DialogueData dialogue in dialogues)
+        UI_StageScreen stageScreen = FindFirstObjectByType<UI_StageScreen>();
+
+        dialogueUI = stageScreen.transform.Find("SpeechBubble");
+        balloonImage = dialogueUI.GetComponentInChildren<Image>(true);
+        dialogueText = dialogueUI.GetComponentInChildren<TextMeshProUGUI>(true);
+
+        // 대사가 없으면 종료
+        if (dialogues == null || dialogues.Count == 0)
+            yield break;
+
+        // 랜덤으로 하나 선택
+        int randomIndex = Random.Range(0, dialogues.Count);
+        DialogueData dialogue = dialogues[randomIndex];
+
+        balloonImage.sprite = dialogue.balloonSprite;
+        dialogueText.text = dialogue.dialogue;
+
+        dialogueUI.gameObject.SetActive(true);
+
+        // 2초 동안 보여주기
+        yield return new WaitForSeconds(2f);
+
+        dialogueUI.gameObject.SetActive(false);
+        if (actionObject == null)
+            yield return null;
+        else
         {
-            balloonImage.sprite = dialogue.balloonSprite;
-            dialogueText.text = dialogue.dialogue;
-
-            dialogueUI.SetActive(true);
-
-            yield return new WaitForSeconds(2f);
-
-            dialogueUI.SetActive(false);
-
-            yield return new WaitForSeconds(0.5f);
+            actionObject.SetActive(false);
         }
+        
+        // 다음 행동까지 잠깐 대기
+        yield return new WaitForSeconds(0.5f);
+    }
+    private void ShowExpulsionUI()
+    {
+        Debug.Log("!!! 퇴치물건 UI 켜짐 !!!");
+        Transform canvas = transform.Find("Canvas");
+
+        Transform processObj = canvas.Find("ProcessObj");
+
+        processObj.gameObject.SetActive(true);
     }
 }
 

@@ -126,6 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickManager
   waterParticle: {fileID: 0}
   waterTransform: {x: 0, y: 0, z: 0}
+  cartCreate: {fileID: 0}
   cartPrefab: {fileID: 787486227355040322, guid: fa9a34c5c5179e144b78e3a1e425ad4b, type: 3}
   explusion: {fileID: 0}
-  speed: 2

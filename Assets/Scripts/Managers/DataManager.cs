@@ -55,6 +55,7 @@ public class DataManager : ManagerBase
         yield return LoadAllFromAssetBundle<StageContainer>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<ExpulsionItem>("Global", ProgressOnLoad).WaitForTask();
         yield return LoadAllFromAssetBundle<ExplusionItems>("Global", ProgressOnLoad).WaitForTask();
+        yield return LoadAllFromAssetBundle<TroubleActionData>("Global", ProgressOnLoad).WaitForTask();
 
 
         /*GameObject prefab = LoadDataFile<GameObject>("Square");

@@ -245,6 +245,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 00758dd3380a59f419d7102975643b99, type: 2}
   - {fileID: 11400000, guid: 99a793f382438f54ebb253bc84dc116a, type: 2}
   - {fileID: 11400000, guid: 2b0e529a81080ac4a9a1986166db8876, type: 2}
+  - {fileID: 11400000, guid: 230c3cff7c4e9f84a9b0987ebb7dce70, type: 2}
   poolPosition: {fileID: 6331415108093384308}
   processObj: {fileID: 741351112025336030, guid: 602cf2464f406fc4e955c45cf043c3c9, type: 3}
   dialogueText: {fileID: 0}
