@@ -205,6 +205,7 @@ public class CustomerSpawn : MonoBehaviour
                 
                 return;
         }
+
     }
 
 
@@ -215,9 +216,12 @@ public class CustomerSpawn : MonoBehaviour
             x => x.customerType == type
         );
     }
+    public void StartNextCustomer()
+    {
+        StartCoroutine(NextCustomerRoutine());
+    }
 
 
-    
     public void OnCustomerEnd()
     {
         if (GameManager.Instance.currentCustomer != null)

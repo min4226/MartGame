@@ -5,7 +5,8 @@ public class TroubleCustomerDamage : MonoBehaviour
 {
 
     [SerializeField]CustomerData customerData;
-
+    [SerializeField] private GameObject cart;
+    ClickManager clickManager;
     private int currentHP;
     private Vector3 originalPosition;
 
@@ -13,43 +14,42 @@ public class TroubleCustomerDamage : MonoBehaviour
     {
         currentHP = customerData.troubleCustomerHealth;   
         originalPosition = transform.position;
-        
+        clickManager = GameObject.FindFirstObjectByType<ClickManager>();
     }
 
-    public void TakeDamage(int damage, Vector3 hitPosition)
+    public void TakeDamage(int damage, Vector3 hitPosition, bool isCartAttack = false)
     {
-        Debug.Log($"피격 전 HP: {currentHP}");
-        Debug.Log($"받은 데미지: {damage}");
-
         currentHP -= damage;
 
         if (currentHP < 0)
             currentHP = 0;
 
-        Debug.Log($"피격 후 HP: {currentHP}");
-
-        StartCoroutine(HitReaction(hitPosition));
-
-        if (currentHP <= 0)
-        {
-            Debug.Log("!!! HP가 0 이하가 됨 !!!");
-
-            StartCoroutine(
-                GameManager.Instance.CustomerSpawn.NextCustomerRoutine()
-            );
-        }
+        StartCoroutine(HitReaction(hitPosition, isCartAttack));
     }
 
-    private IEnumerator HitReaction(Vector3 hitPosition)
+    private IEnumerator HitReaction(Vector3 hitPosition, bool isCartAttack)
     {
-        
         Vector3 direction = (transform.position - hitPosition).normalized;
 
-        transform.position = originalPosition + direction * 0.3f;
+        // 맞았을 때 잠깐 밀려남
+        transform.position += direction * 0.3f;
 
         yield return new WaitForSeconds(0.1f);
 
-        
-        transform.position = originalPosition;
+        // 카트 공격이 아닐 때만 원래 위치로 복귀
+        if (!isCartAttack)
+        {
+            transform.position = originalPosition;
+        }
+
+        if (currentHP <= 0)
+        {
+            if (cart != null)
+                Destroy(cart);
+
+            gameObject.SetActive(false);
+
+            GameManager.Instance.CustomerSpawn.StartNextCustomer();
+        }
     }
 }

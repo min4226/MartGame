@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6588095686302509308, guid: 7afdec2899195a347a27b55da6f2d5ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 5681107130230346465}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 324a7a0063f4fcf498cdf4f6d1173f59, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -230,7 +230,6 @@ GameObject:
   - component: {fileID: 2055558863240610740}
   - component: {fileID: 8845929181971080914}
   - component: {fileID: -7061023542799357488}
-  - component: {fileID: 5895765726542620601}
   m_Layer: 0
   m_Name: Person 6
   m_TagString: TroubleCustomer
@@ -318,6 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TroubleCustomerDamage
   customerData: {fileID: 11400000, guid: cbc29434d2a04194c8e170c23e4c120f, type: 2}
+  cart: {fileID: 0}
 --- !u!114 &-7061023542799357488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,28 +336,6 @@ MonoBehaviour:
   dialogueText: {fileID: 0}
   animator: {fileID: 0}
   actionData: {fileID: 0}
---- !u!95 &5895765726542620601
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8829200121524381901}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 324a7a0063f4fcf498cdf4f6d1173f59, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &5121246585579353387
 PrefabInstance:
   m_ObjectHideFlags: 0

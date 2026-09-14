@@ -51,15 +51,16 @@ public class MartCart : MonoBehaviour
 
         if (customerDamage != null)
         {
+
             StartCoroutine(CartDamage(customerDamage));
         }
     }
 
     private IEnumerator CartDamage(TroubleCustomerDamage customerDamage)
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(3f);
 
-        customerDamage.TakeDamage(100, transform.position);
+        customerDamage.TakeDamage(100, transform.position); 
 
         Destroy(this);
     }

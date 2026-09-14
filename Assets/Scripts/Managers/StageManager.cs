@@ -28,11 +28,7 @@ public class StageManager : ManagerBase
     {
         if (customerSpawn == null)
             customerSpawn = FindFirstObjectByType<CustomerSpawn>();
-        Debug.Log($"[StartStage] container = {container}");
-        Debug.Log($"[StartStage] customerSpawn = {customerSpawn}");
-        Debug.Log($"[StartStage] normalCustomer = {normalCustomer}");
-        Debug.Log($"[StartStage] index = {index}");
-
+        
         currentIndex = index;
 
         currentStage = container.stageDatas[index];

@@ -79,7 +79,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1214265846298375564, guid: 99f52a8dfb6019146a0278c5a6cb8244, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TroubleCustomerDamage
   customerData: {fileID: 11400000, guid: cbc29434d2a04194c8e170c23e4c120f, type: 2}
+  cart: {fileID: 0}
 --- !u!114 &-7061023542799357488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +312,7 @@ MonoBehaviour:
   balloonImage: {fileID: 0}
   dialogueText: {fileID: 0}
   animator: {fileID: 0}
+  actionData: {fileID: 0}
 --- !u!1001 &5121246585579353387
 PrefabInstance:
   m_ObjectHideFlags: 0
