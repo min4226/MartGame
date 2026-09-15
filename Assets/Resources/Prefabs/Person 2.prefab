@@ -102,6 +102,8 @@ GameObject:
   - component: {fileID: 825790548047410675}
   - component: {fileID: 5768621606504949917}
   - component: {fileID: -6633950005975957284}
+  - component: {fileID: 336397811159697194}
+  - component: {fileID: 2100005885249618170}
   m_Layer: 0
   m_Name: Person 2
   m_TagString: Untagged
@@ -189,3 +191,32 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &336397811159697194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829200121524381901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77d53cfb3e75cf74883e8cb6729d4104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Thief
+  moveSpeed: 2
+--- !u!114 &2100005885249618170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829200121524381901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9566b87a38db5449fff3e656257c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThiefManager
+  thiefPrefab: {fileID: 8829200121524381901}
+  spawnPoints: []
+  targetPoints: []
+  exitPoints: []

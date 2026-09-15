@@ -8,26 +8,26 @@ using UnityEngine;
 public class StageData : ScriptableObject 
 {
     
-    // ½Ã°£ Á¦ÇÑ
+    // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
     public float timeLimit;
 
-    // ½ºÅ×ÀÌÁö¸¦ Å¬¸®¾î ÇÏ±â À§ÇØ ÇÊ¿äÇÑ µ·°ú ¸í¼º
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     public int requiredCoin;
     public int requiredFame;
 
-    // ½ºÅ×ÀÌÁö ÀÌ¸§
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
     public StageType stageName;
 
-    // ½ºÅ×ÀÌÁö º°¸¶´Ù ³ª¿À´Â ¼Õ´Ô ºóµµ¼ö
-    public int normalCustomerCount; // ÀÏ¹Ý ¼Õ´Ô
-    public int troublemakerCustomerCount; // Áø»ó ¼Õ´Ô
-    public int thiefCustomerCount; // µµµÏ ¼Õ´Ô
-    public int specialCustomerCount; // Æ¯º° ¼Õ´Ô
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´ï¿½ ï¿½óµµ¼ï¿½
+    public int normalCustomerCount; // ï¿½Ï¹ï¿½ ï¿½Õ´ï¿½
+    public int troublemakerCustomerCount; // ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´ï¿½
+    public int thiefCustomerCount; // ï¿½ï¿½ï¿½ï¿½ ï¿½Õ´ï¿½
+    public int specialCustomerCount; // Æ¯ï¿½ï¿½ ï¿½Õ´ï¿½
 
-    public int normalCustomerItemCount; // ÀÏ¹Ý ¼Õ´ÔÀÌ »ý¼ºµÇ¾úÀ» ¶§ ³ª¿Ã ¾ÆÀÌÅÛÀÇ °³¼ö
+    public int normalCustomerItemCount; // ï¿½Ï¹ï¿½ ï¿½Õ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    public ItemCreatePattern[] itemCreatePatterns; // ¾ÆÀÌÅÛÀÌ ³ª¿À´Â ÆÐÅÏ
-    public PatternRules[] patternRules; // ÆÐÅÏ ±ÔÄ¢
+    public ItemCreatePattern[] itemCreatePatterns; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public PatternRules[] patternRules; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¢
 
-    //public Reward reward; // ¸®¿öµå
+    //public Reward reward; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }

@@ -1665,6 +1665,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 1182854284330665358, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: lockImage
+      value: 
+      objectReference: {fileID: 5754115815981835452, guid: 555882760fc750a44be89016182f6aa3, type: 3}
+    - target: {fileID: 1182854284330665358, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: pricePanel
+      value: 
+      objectReference: {fileID: 6696494288268862256, guid: c664e81185a25144bb9eed0542058816, type: 3}
+    - target: {fileID: 1182854284330665358, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: arrowButton
+      value: 
+      objectReference: {fileID: 2954973976503691635}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1859801857728586598}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 8692305341622501242}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenPricePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_OpenPopup, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PricePanelController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4850223395612299651, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
       propertyPath: m_Name
       value: Button (1)
@@ -1674,11 +1730,44 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+--- !u!114 &1859801857728586598 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8143710975945709970, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+  m_PrefabInstance: {fileID: 7551149076657978100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3746ed79334e51a408aeec93da8f24c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_OpenPopup
+--- !u!114 &2954973976503691635 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4740389623508833159, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+  m_PrefabInstance: {fileID: 7551149076657978100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &7930797008309914377 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 487738753779806717, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
   m_PrefabInstance: {fileID: 7551149076657978100}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8692305341622501242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1182854284330665358, guid: 9596585d08193c04db87dfd20e1bd7f9, type: 3}
+  m_PrefabInstance: {fileID: 7551149076657978100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740aabfe6e222634b81f7107327593b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PricePanelController
 --- !u!1001 &8918881454177000738
 PrefabInstance:
   m_ObjectHideFlags: 0
