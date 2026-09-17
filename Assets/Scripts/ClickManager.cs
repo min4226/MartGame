@@ -15,10 +15,8 @@ public class ClickManager : MonoBehaviour
     public Transform cartCreate;
     public GameObject cartPrefab;
     public ExplusionInstance explusion;
-    
-    //public float speed = 2.0f;
-    private ExpulsionItem currentItem;
 
+    private ExpulsionItem currentItem;
     private CallingToPolice callingToPolice;
     private GameObject currentTroubleCustomer;
     public GameObject CurrentTroubleCustomer

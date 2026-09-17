@@ -16,7 +16,7 @@ public class MouseFollower : MonoBehaviour, IFunctionable
     {
         
         
-        InputManager.OnExterminItemLeft += (value) => UIManager.ClaimPopup("Ã¹ ¹øÂ° ÅðÄ¡ ¹°°Ç", "¼¼ °³ÀÇ ¹°°Ç Áß ¸Ç ¿ÞÂÊ¿¡ ÀÖ´Â ÅðÄ¡ ¹°°Ç", "1");
+        InputManager.OnExterminItemLeft += (value) => UIManager.ClaimPopup("Ã¹ ï¿½ï¿½Â° ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½", "1");
     }
     public void UnregistrationFunctions()
     {

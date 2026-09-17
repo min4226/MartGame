@@ -262,9 +262,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_OpenPopup, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 2513000313463188882}
+        m_TargetAssemblyTypeName: MyItemSlot, Assembly-CSharp
+        m_MethodName: OnClickSlot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -289,6 +289,7 @@ MonoBehaviour:
   itemImage: {fileID: 4297170775661562310}
   itemName: {fileID: 4760563324201370973}
   countText: {fileID: 7272228783313689510}
+  furnitureDrag: {fileID: 197073927185365191, guid: 1ffbc98e138e5cc44b5e214f8fa9ae4b, type: 3}
 --- !u!1 &6675112008807762274
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,17 +6,20 @@ public class ShopInventory : MonoBehaviour
     public static ShopInventory Instance;
 
     [SerializeField] ShopData shopData;
+    [SerializeField] ShopItemPay shopItemPay;
     ItemlListInstance itemlistinstance;
 
     Dictionary<ShopItemData, int> items = new();
-
+    PayCountChange payCountChange;
     ShopItemData selectedItem;
-
+    [SerializeField] UserPayCount userPayCount;
     private void Awake()
     {
         itemlistinstance = GetComponent<ItemlListInstance>();
+        payCountChange = GetComponent<PayCountChange>();
+        Debug.Log($"paycountchange : {payCountChange}");
         Instance = this;
-
+        
         foreach (ShopItemData item in shopData.items)
         {
             items.Add(item, 0);
@@ -26,6 +29,8 @@ public class ShopInventory : MonoBehaviour
     public void SelectItem(ShopItemData item)
     {
         selectedItem = item;
+        //userPayCount.ResetTextCount();
+        payCountChange.Init(1);
         UIManager.ClaimOpenUI(UIType.PayWindow);
     }
 
@@ -50,6 +55,7 @@ public class ShopInventory : MonoBehaviour
         selectedItem = null;
 
         UIManager.ClaimCloseUI(UIType.PayWindow);
+        
     }
 
     public Dictionary<ShopItemData, int> GetItems()

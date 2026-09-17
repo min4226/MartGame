@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class JudgeModule : StageData
 {
-    // ¼º°ø, ½ÇÆÐ
+    // ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½
 
-    // ½Ã°£ Á¦ÇÑ ÆÇÁ¤
+    // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public TimeResult StageClear(float playingTime, StageData stageData)
     {
-        // Á¦ÇÑ½Ã°£À» ³Ñ°å°Å³ª 0ÀÏ °æ¿ì ½ÇÆÐ¸¦ ¾Ë·ÁÁÜ
+        // ï¿½ï¿½ï¿½Ñ½Ã°ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½Å³ï¿½ 0ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ð¸ï¿½ ï¿½Ë·ï¿½ï¿½ï¿½
         if (playingTime >= stageData.timeLimit || playingTime <= 0) return TimeResult.Fail;
 
         return TimeResult.Success;

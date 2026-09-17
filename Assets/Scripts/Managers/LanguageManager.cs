@@ -20,7 +20,7 @@ public class LanguageManager : ManagerBase
     public void ChangeLanguage(string languageCode)
     {
         Debug.Log(languageCode);
-        // localization¿¡ ÀÖ´Â ¾ð¾î µé°í ¿À±â
+        // localizationï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         var localLanguage = LocalizationSettings.AvailableLocales.GetLocale(languageCode);
         if (localLanguage != null)
         {

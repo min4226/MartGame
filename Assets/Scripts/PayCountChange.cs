@@ -7,18 +7,18 @@ using UnityEngine.UI;
 public class PayCountChange : MonoBehaviour 
 {
     public TextMeshProUGUI payWindowCount;
-    [SerializeField]PayThingCount payThingCount;
+    public int shopPayCount;
 
     private void UpdateUI()
     {
-        payWindowCount.text = payThingCount.payCount.ToString();
+        payWindowCount.text = shopPayCount.ToString();
         
     }
 
-    public void Init(PayThingCount target)
+    public void Init(int target)
     {
         Debug.Log("paycountchange �� init �Լ�");
-        payThingCount = target;
+        shopPayCount = target;
         UpdateUI();
     }
 

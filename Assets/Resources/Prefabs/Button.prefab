@@ -149,7 +149,8 @@ GameObject:
   - component: {fileID: 7674261107193711493}
   - component: {fileID: 1179329065604527058}
   - component: {fileID: 301743961176967307}
-  - component: {fileID: 654681018554970759}
+  - component: {fileID: 258766556324510087}
+  - component: {fileID: 2087700227921195970}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -259,9 +260,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654681018554970759}
-        m_TargetAssemblyTypeName: UI_OpenPopup, Assembly-CSharp
-        m_MethodName: Open
+      - m_Target: {fileID: 258766556324510087}
+        m_TargetAssemblyTypeName: UserPayCount, Assembly-CSharp
+        m_MethodName: BuyUserPay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -271,7 +272,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &654681018554970759
+--- !u!114 &258766556324510087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6879422314352897107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9bf457a4b52684882abc12e75780f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UserPayCount
+  paythingCount: {fileID: 0}
+  mainShop: {fileID: 8148082329205025153, guid: e279d50934db7954ba7e872b1093ffcb, type: 3}
+--- !u!114 &2087700227921195970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,6 +298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3746ed79334e51a408aeec93da8f24c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_OpenPopup
-  wantType: 9
+  wantType: 21
   wantToggle: 0
   openOnTop: 1

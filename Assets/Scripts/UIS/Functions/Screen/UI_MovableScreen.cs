@@ -22,8 +22,8 @@ public class UI_MovableScreen : UI_ScreenBase
         InputManager.OnMouseMove += MouseMove;
         InputManager.OnMouseLeftButton -= MouseLeft;
         InputManager.OnMouseLeftButton += MouseLeft;
-        UIManager.OnPopup -= Popup;
-        UIManager.OnPopup += Popup;
+        //UIManager.OnPopup -= Popup;
+        //UIManager.OnPopup += Popup;
     }
 
     
@@ -32,7 +32,7 @@ public class UI_MovableScreen : UI_ScreenBase
     {
         base.Unregistration(manager);
         InputManager.OnMouseMove -= MouseMove;
-        UIManager.OnPopup -= Popup;
+        //UIManager.OnPopup -= Popup;
     }
 
     
@@ -89,7 +89,7 @@ public class UI_MovableScreen : UI_ScreenBase
         }
     }
 
-    void Popup(string title, string context, string confirm)
+    /*void Popup(string title, string context, string confirm)
     {
         GameObject newChild= SetChild(ObjectManager.CreateObject("Popup"));
         if (newChild)
@@ -119,10 +119,10 @@ public class UI_MovableScreen : UI_ScreenBase
 
             
         }
-        
-    }
 
-    public Vector3 GetNextPopupPosition()
+}
+
+public Vector3 GetNextPopupPosition()
     { 
             Vector3 bestScore = Vector3.zero;
 
@@ -138,8 +138,8 @@ public class UI_MovableScreen : UI_ScreenBase
 
         return bestScore + popupShift;
         
-    }
+    }*/
 
 
-    
+
 }

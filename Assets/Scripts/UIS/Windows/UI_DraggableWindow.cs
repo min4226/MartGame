@@ -22,7 +22,7 @@ public class UI_DraggableWindow : UIBase, IPointerDownHandler
     {
         Vector2 screenDelta = screenPosition - currentScreenPosition;
         currentScreenPosition = screenPosition;
-        // Ä«¸Þ¶ó À§Ä¡ - ÇöÀç Ä«¸Þ¶ó À§Ä¡
+        // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½Ä¡ - ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½Ä¡
         if (shiftedPosition.x * screenDelta.x > 0.0f)
         {
 
