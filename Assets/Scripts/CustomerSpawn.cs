@@ -189,7 +189,7 @@ public class CustomerSpawn : MonoBehaviour
         switch (type)
         {
             case CustomerType.NormalCustomer:
-
+                GameManager.Instance.NormalCustomer.ResetItemProgress();
 
                 GameManager.Instance.NormalCustomer.SetDialogue(data);
 
@@ -198,7 +198,6 @@ public class CustomerSpawn : MonoBehaviour
                 );
 
                 return;
-
 
             case CustomerType.TroubleMakerCustomer:
                 

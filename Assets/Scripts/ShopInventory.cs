@@ -12,12 +12,19 @@ public class ShopInventory : MonoBehaviour
     Dictionary<ShopItemData, int> items = new();
     PayCountChange payCountChange;
     ShopItemData selectedItem;
-    [SerializeField] UserPayCount userPayCount;
+    UserPayCount userPayCount;
     private void Awake()
     {
         itemlistinstance = GetComponent<ItemlListInstance>();
-        payCountChange = GetComponent<PayCountChange>();
-        Debug.Log($"paycountchange : {payCountChange}");
+        Canvas canvas = FindFirstObjectByType<Canvas>();
+
+        userPayCount = FindFirstObjectByType<UserPayCount>(FindObjectsInactive.Include);
+
+        
+        GameObject countCountText = userPayCount.transform.Find("CountCountText").gameObject;
+        
+        payCountChange = countCountText.GetComponent<PayCountChange>();
+        
         Instance = this;
         
         foreach (ShopItemData item in shopData.items)
@@ -29,23 +36,21 @@ public class ShopInventory : MonoBehaviour
     public void SelectItem(ShopItemData item)
     {
         selectedItem = item;
-        //userPayCount.ResetTextCount();
         payCountChange.Init(1);
         UIManager.ClaimOpenUI(UIType.PayWindow);
     }
 
     public void BuySelectedItem()
-    { 
-        items[selectedItem]++;
+    {
+        if (selectedItem == null)
+        {
+            return;
+        }
 
-        Debug.Log(
-            $"{selectedItem.shopItemName} 보유 개수 : {items[selectedItem]}"
-        );
+        items[selectedItem]++;
 
         MyItemInventoryUI ui = FindFirstObjectByType<MyItemInventoryUI>(FindObjectsInactive.Include);
 
-
-        Debug.Log($"구매 후 MyItemInventoryUI : {ui}");
 
         if (ui != null)
         {
@@ -55,7 +60,6 @@ public class ShopInventory : MonoBehaviour
         selectedItem = null;
 
         UIManager.ClaimCloseUI(UIType.PayWindow);
-        
     }
 
     public Dictionary<ShopItemData, int> GetItems()

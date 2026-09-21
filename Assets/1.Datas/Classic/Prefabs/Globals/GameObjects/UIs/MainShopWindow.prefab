@@ -609,6 +609,7 @@ GameObject:
   - component: {fileID: 7704375910714776009}
   - component: {fileID: 8725067490226663025}
   - component: {fileID: 2095995762508156464}
+  - component: {fileID: 316969209369795008}
   m_Layer: 5
   m_Name: CountCountText
   m_TagString: CountCountText
@@ -735,6 +736,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &316969209369795008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089567584355424059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63dc9f3646bdce4daf0a4129eac8bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PayCountChange
+  payWindowCount: {fileID: 2095995762508156464}
+  shopPayCount: 0
 --- !u!1 &8148082329205025153
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +851,6 @@ MonoBehaviour:
   wantType: 21
   wantToggle: 0
   openOnTop: 1
-  userPayCount: {fileID: 2150431024136178772}
 --- !u!114 &1205302285963087917
 MonoBehaviour:
   m_ObjectHideFlags: 0

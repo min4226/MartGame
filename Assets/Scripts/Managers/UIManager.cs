@@ -94,7 +94,7 @@ public class UIManager : ManagerBase
         CreateUI(UIType.Stage, "StageScreen", switcherTransform);
         CreateUI(UIType.MyMarket, "MyMarket", switcherTransform);
         CreateUI(UIType.ItemPriceMenu, "ItemPricePanel");
-        CreateUI(UIType.PayWindow, "PayWindow 1");
+        CreateUI(UIType.PayWindow, "PayWindow 1", MainCanvas.transform);
         CreateUI(UIType.MainShopWindow, "MainShopWindow");
 
         foreach (Transform currentTransform in switcherTransform)

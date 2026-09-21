@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class FurnitureDrag : MonoBehaviour
 {
     [SerializeField] private GameObject furnitureSlot;
+    public GameObject FurnitureSlot => furnitureSlot;
     [SerializeField] private Transform placedFurnitureParent;
 
     private RectTransform furnitureSlotRect;
@@ -13,8 +14,8 @@ public class FurnitureDrag : MonoBehaviour
 
     // 현재 어떤 인벤토리 슬롯에서 가져왔는지 저장
     private MyItemSlot currentSlot;
-
-
+    GameObject placedFurniture;
+    public GameObject PlacedFurniture => placedFurniture;
     private void OnDisable()
     {
         InputManager.OnMouseUPEvent -= EndDrag;
@@ -89,45 +90,35 @@ public class FurnitureDrag : MonoBehaviour
 
     private void EndDrag(bool value)
     {
+        Debug.Log($"현재 UIType : {UIManager.CurrentScreen}");
+
         if (shopItemData == null)
             return;
 
-        Debug.Log("===== 가구 배치 =====");
-
-        
-        GameObject placedFurniture =
-            Instantiate(
-                furnitureSlot,
-                placedFurnitureParent
-            );
-
-        
-        RectTransform placedRect =
-            placedFurniture.GetComponent<RectTransform>();
-
-        placedRect.position =
-            furnitureSlotRect.position;
-
-        
-        FurnitureDrag drag =
-            placedFurniture.GetComponent<FurnitureDrag>();
-
-        if (drag != null)
+        if (UIManager.CurrentScreen == UIType.MyMarket)
         {
-            Destroy(drag);
+            placedFurniture = Instantiate(furnitureSlot, placedFurnitureParent);
+
+            RectTransform placedRect = placedFurniture.GetComponent<RectTransform>();
+
+            placedRect.position = furnitureSlotRect.position;
+
+            FurnitureDrag drag = placedFurniture.GetComponent<FurnitureDrag>();
+
+            if (drag != null)
+            {
+                Destroy(drag);
+            }
         }
 
-        
         if (currentSlot != null)
         {
             currentSlot.UseItem();
         }
 
-        
         shopItemData = null;
         currentSlot = null;
 
-        // 마우스 UP 이벤트 해제
         InputManager.OnMouseUPEvent -= EndDrag;
 
         Debug.Log("가구 배치 완료!");

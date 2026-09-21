@@ -30,6 +30,7 @@ public class Trigger : MonoBehaviour
 
             if (activeItemCount <= 0)
             {
+                Debug.Log("상품 전부 들어옴 → InputField 활성화");
                 inputField.gameObject.SetActive(true);
                 EnterButton.gameObject.SetActive(true);
             }

@@ -18,7 +18,7 @@ public class UI_OpenPayWindow : MonoBehaviour
 
         if (openOnTop && opened)
         {
-            opened.transform.SetAsLastSibling();
+            opened.transform.parent.SetAsLastSibling();
         }
     }
 

@@ -37,9 +37,10 @@ public class ShopItemSlot : MonoBehaviour
 
     public void BuyButton()
     {
+        Debug.Log($"BuyButton shopData : {shopData}");
+
         if (ShopInventory.Instance == null)
             return;
-        
 
         ShopInventory.Instance.SelectItem(shopData);
     }
