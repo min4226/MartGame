@@ -217,6 +217,7 @@ public class CustomerSpawn : MonoBehaviour
     }
     public void StartNextCustomer()
     {
+        Debug.Log("[StartNextCustomer] 호출됨");
         StartCoroutine(NextCustomerRoutine());
     }
 
@@ -245,11 +246,14 @@ public class CustomerSpawn : MonoBehaviour
     }
 
 
-    
+
     public IEnumerator NextCustomerRoutine()
     {
-        Debug.Log("NextCustomerRoutine 실행됨!");
+        Debug.Log("[NextCustomerRoutine] 실행됨");
+
         yield return new WaitForSeconds(1f);
+
+        Debug.Log("[NextCustomerRoutine] InputField 비활성화");
 
         GameManager.Instance.CorrectAnswer.SetActive(false);
         GameManager.Instance.FailAnswer.SetActive(false);

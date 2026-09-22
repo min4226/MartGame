@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+
+// 전화기를 눌렀을 때 경찰이 나오는 스크립트
 public class CallingToPolice : MonoBehaviour
 {
     public Animator callPoliceAnim;
     public SpriteRenderer PhoneSprite;
     public GameObject takeInSpritePrefab;
-    //public Vector3 policePosition;
     
     public void CallPolice()
     {
@@ -19,21 +20,11 @@ public class CallingToPolice : MonoBehaviour
 
     IEnumerator Process()
     {
-        Debug.Log("연행하기");
         yield return new WaitForSeconds(2f);
         PhoneSprite.gameObject.SetActive(false);
 
         GameObject takeInSprite = Instantiate(takeInSpritePrefab, transform.position, Quaternion.identity);
         GameManager.Instance.currentCustomer.SetActive(false);
-
-        
-
-       
-
-        // 화면 밖으로 나가면 제거
-        /*takeInSprite.SetActive(false);
-        GameManager.Instance.CustomerSpawn.StartNextCustomer();*/
     }
    
-    
 }

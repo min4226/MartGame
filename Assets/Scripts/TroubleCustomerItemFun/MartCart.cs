@@ -8,7 +8,6 @@ public class MartCart : MonoBehaviour
     [SerializeField] private int damage = 30;
 
     private Rigidbody rb;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,11 +22,8 @@ public class MartCart : MonoBehaviour
     {
         while (true)
         {
-            rb.MovePosition(
-     rb.position + Vector3.left * speed * Time.deltaTime);
- 
-
-             yield return new WaitForFixedUpdate();
+            rb.MovePosition(rb.position + Vector3.left * speed * Time.deltaTime);
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -39,19 +35,14 @@ public class MartCart : MonoBehaviour
         Rigidbody customerRb =
             collision.gameObject.GetComponentInParent<Rigidbody>();
 
-        Debug.Log(" 카트가 진상에게 충돌!");
-
+       
         if (customerRb != null)
         {
-            customerRb.AddForce(
-                Vector3.left * 5f,
-                ForceMode.Impulse
-            );
+            customerRb.AddForce(Vector3.left * 5f, ForceMode.Impulse);
         }
 
         if (customerDamage != null)
         {
-
             StartCoroutine(CartDamage(customerDamage));
         }
     }
@@ -62,6 +53,6 @@ public class MartCart : MonoBehaviour
 
         customerDamage.TakeDamage(100, transform.position); 
 
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

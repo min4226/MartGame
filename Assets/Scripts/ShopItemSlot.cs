@@ -12,9 +12,6 @@ public class ShopItemSlot : MonoBehaviour
     ShopItemData shopData;
     public void SetItemData(ShopItemData shopData)
     {
-        Debug.Log($"SetItemData로 받은 값 : {shopData}");
-        Debug.Log($"SET 슬롯 ID : {GetInstanceID()} / data : {shopData}");
-
         this.shopData = shopData;
 
         itemSlotSprite.sprite = shopData.shopItemSprite;
@@ -25,8 +22,6 @@ public class ShopItemSlot : MonoBehaviour
 
     public ShopItemData GetItem()
     {
-        Debug.Log($"GetItem에서 반환하는 shopData : {shopData}");
-        Debug.Log($"GET 슬롯 ID : {GetInstanceID()} / data : {shopData}");
         if (shopData != null)
         {
             Debug.Log($"가구 이름 : {shopData.shopItemName}");
@@ -37,8 +32,6 @@ public class ShopItemSlot : MonoBehaviour
 
     public void BuyButton()
     {
-        Debug.Log($"BuyButton shopData : {shopData}");
-
         if (ShopInventory.Instance == null)
             return;
 

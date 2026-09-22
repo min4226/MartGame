@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// 게임 방법 판넬
 public class CreateMethod : MonoBehaviour
 {
     [SerializeField] GameObject gameObjectPanel;

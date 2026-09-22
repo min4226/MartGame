@@ -29,5 +29,5 @@ public class StageData : ScriptableObject
     public ItemCreatePattern[] itemCreatePatterns; // �������� ������ ����
     public PatternRules[] patternRules; // ���� ��Ģ
 
-    //public Reward reward; // ������
+    
 }

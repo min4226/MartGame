@@ -1,40 +1,38 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 
 public class Trigger : MonoBehaviour
 {
     int activeItemCount;
     private TMP_InputField inputField;
     private Button EnterButton;
+
+    private IEnumerator ShowInputField()
+    {
+        yield return new WaitForSeconds(1.5f);
+        inputField.gameObject.SetActive(true);
+        EnterButton.gameObject.SetActive(true);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Item"))
         {
-
             inputField = GameManager.Instance.InputField;
             EnterButton = GameManager.Instance.EnterButton;
 
             if (other.gameObject.name.Contains("MartCart"))
-            {
-                Debug.Log("🛒 Trigger에서 카트 감지 → InputField 활성화 안 함");
-
-                //Destroy(other.gameObject);
                 return;
-            }
+
             activeItemCount--;
             inputField.onValidateInput += ValidateNumber;
 
             if (activeItemCount <= 0)
             {
-                Debug.Log("상품 전부 들어옴 → InputField 활성화");
-                inputField.gameObject.SetActive(true);
-                EnterButton.gameObject.SetActive(true);
+                StartCoroutine(ShowInputField());
             }
-
 
             Destroy(other.gameObject);
         }
@@ -45,9 +43,10 @@ public class Trigger : MonoBehaviour
         
     }
 
+    // inputfield에 숫자만 입력하도록 설정
     private char ValidateNumber(string text, int charIndex, char addedChar)
     {
-        if (char.IsDigit(addedChar))
+        if (char.IsDigit(addedChar)) // isDigit : 숫자인지 판별
             return addedChar;
 
         return '\0';

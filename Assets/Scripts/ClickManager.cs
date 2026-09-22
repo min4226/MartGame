@@ -31,10 +31,9 @@ public class ClickManager : MonoBehaviour
         this.gameObject.SetActive(false); // dragitem쪽 애를 비활성화 시키는 것
         dragItemRect = GetComponent<RectTransform>();
 
-        ClickManager[] managers =
-            FindObjectsByType<ClickManager>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None
+        ClickManager[] managers = FindObjectsByType<ClickManager>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
             );
 
         callingToPolice = FindFirstObjectByType<CallingToPolice>();
@@ -54,7 +53,6 @@ public class ClickManager : MonoBehaviour
         }
 
     }
-
 
     private void OnEnable()
     {
@@ -97,7 +95,7 @@ public class ClickManager : MonoBehaviour
     private void OnMouseRelease(Vector3 worldPosition)
     {
         currentItem = explusion.GetSelectedItem();
-        Debug.Log($"currentitem : {currentItem}");
+        
         if (currentItem == null) return;
         
         currentHitPosition = worldPosition;
@@ -172,11 +170,9 @@ public class ClickManager : MonoBehaviour
         GameObject obj = Instantiate(waterParticle.gameObject, waterTransform, Quaternion.identity);
 
         obj.transform.position = waterTransform;
-        //obj.transform.rotation = waterTransform.;
-
+        
         ParticleSystem particle = obj.GetComponent<ParticleSystem>();
         GameObject troubleCustomer = GameObject.FindGameObjectWithTag("TroubleCustomer");
-        //particle.trigger.AddCollider(troubleCustomer.GetComponent<Collider2D>());
         Collider collider = troubleCustomer.GetComponent<Collider>();
 
         particle.trigger.AddCollider(collider);
@@ -196,7 +192,7 @@ public class ClickManager : MonoBehaviour
         float time = 0f;
         float duration = 0.15f;
 
-        // 1. 때린 방향으로 이동
+        // 때린 방향으로 이동
         while (time < duration)
         {
             time += Time.deltaTime;
@@ -210,7 +206,7 @@ public class ClickManager : MonoBehaviour
         // 시간 초기화
         time = 0f;
 
-        // 2. 다시 원래 위치로 돌아오기
+        // 다시 원래 위치로 돌아오기
         while (time < duration)
         {
             time += Time.deltaTime;
@@ -234,8 +230,6 @@ public class ClickManager : MonoBehaviour
         
         cart.SetActive(true);
     }
-
-    
 
 }
 

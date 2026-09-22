@@ -71,12 +71,10 @@ public class DBManager : ManagerBase
     public async void GuestLogin()
 
     {
-        
-        
         if (authentication is null) return;
         if (user is not null)
         {
-            
+            Debug.Log($"현재 Firebase UserId : {user.UserId}");
             resultData = await ReadDataAsync<UserData>("users", "userData" , user.UserId);
 
             
@@ -112,6 +110,7 @@ public class DBManager : ManagerBase
         }
 
         user = task.Result.User;
+        Debug.Log($"새로 로그인된 Firebase UserId : {user.UserId}");
 
         WriteData(
             NewUserData("GongBack"),

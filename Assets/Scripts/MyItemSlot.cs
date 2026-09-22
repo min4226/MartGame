@@ -47,12 +47,20 @@ public class MyItemSlot : MonoBehaviour
     }
 
     // 가구를 실제로 배치했을 때 호출
+    // 여기를 고쳐야함 사용을 했을 때 itemcount를 다시 담아야할 것 같음
     public void UseItem()
     {
         if (itemCount <= 0)
             return;
 
         itemCount--;
+
+        var items = ShopInventory.Instance.GetItems();
+
+        if (items.ContainsKey(itemData))
+        {
+            items[itemData]--;
+        }
 
         countText.text = $"x{itemCount}";
 

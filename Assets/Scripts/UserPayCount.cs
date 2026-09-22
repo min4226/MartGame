@@ -10,20 +10,10 @@ public class UserPayCount : MonoBehaviour
     {
         TextMeshProUGUI countText = mainShop.transform.Find("CountCountText").GetComponent<TextMeshProUGUI>();
 
-
         countText.text = paythingCount._inputField.text;
 
         UIManager.ClaimOpenUI(UIType.MainShopWindow);
 
         paythingCount.ResetCount();
     }
-
-    /*public void ResetTextCount()
-    {
-        TextMeshProUGUI textCount = mainShop.transform
-            .Find("CountCountText")
-            .GetComponent<TextMeshProUGUI>();
-
-        textCount.text = "0";
-    }*/
 }

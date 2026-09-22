@@ -15,7 +15,7 @@ public class FurnitureDrag : MonoBehaviour
     // 현재 어떤 인벤토리 슬롯에서 가져왔는지 저장
     private MyItemSlot currentSlot;
     GameObject placedFurniture;
-    public GameObject PlacedFurniture => placedFurniture;
+    
     private void OnDisable()
     {
         InputManager.OnMouseUPEvent -= EndDrag;

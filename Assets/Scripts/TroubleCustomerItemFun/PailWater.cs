@@ -7,11 +7,7 @@ public class PailWater : MonoBehaviour
 
     public void PourWater()
     {
-        Debug.Log("Pour 시작");
-
         GameObject obj = Instantiate(waterParticle.gameObject);
-
-        Debug.Log("생성 성공 : " + obj.name);
 
         obj.transform.position = waterTransform.position;
         obj.transform.rotation = waterTransform.rotation;
