@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class RewardModule : MonoBehaviour
 {
-    // ÅğÄ¡ÇÑ ÈÄ º¸»óÀ» ¹ŞÀ» °æ¿ì
-    // º¸»ó ¾òÀ½
-    // º¸»ó Áõ°¡ -> Á¦ÇÑ ½Ã°£ ³» Ã³¸® ¿Ï·á ÇßÀ» ¶§
-    // º¸»ó °¨¼Ò -> Á¦ÇÑ ½Ã°£ ³» Ã³¸® ¸ø ÇßÀ» °æ¿ì
     int _fame;
     public int Fame => _fame;
 
@@ -15,15 +11,18 @@ public class RewardModule : MonoBehaviour
     public int Coin => _coin;
     GameObject coinPanel;
     GameObject famePanel;
-    
-    
-    //½ºÅ×ÀÌÁö2¿¡¼­ ¸®¿öµå°¡ ¾È ¿Ã¶ó°¨
+
+    // FireBaseì— ì½”ì¸, ê²½í—˜ì¹˜ ì¶”ê°€
+    public void SetRewardData(int coin, int fame)
+    { 
+        _coin = coin;
+        _fame = fame;
+
+        Debug.Log($"Firebase ë¶ˆëŸ¬ì˜¨ ë³´ìƒ ë°ì´í„° - coin: {_coin}, fame: {_fame}");
+    }
+
     public void ApplyReward()
     {
-        /*StageData stage = GameManager.Instance.Stage.CurrentStage;
-        Debug.Log($"currentstage : {GameManager.Instance.Stage.CurrentStage}");
-        Debug.Log($"stagedata : {stage == null}");*/
-        // reward = new Reward();
         _fame += GameManager.Instance.CustomerData.successReward.fame;
         _coin += GameManager.Instance.CustomerData.successReward.coin;
 
@@ -35,37 +34,12 @@ public class RewardModule : MonoBehaviour
 
         coinPanel.GetComponentInChildren<TMP_Text>().text = _coin.ToString();
         famePanel.GetComponentInChildren<TMP_Text>().text = _fame.ToString();
-        
 
+        // Firebaseì— ì €ì¥
+        GameManager.DB.SaveRewardData(_coin, _fame);
+
+        Debug.Log($"_fame, _coin : {_fame}, {_coin}");
         Debug.Log($"_fame, _coin : {_fame}, {_coin}");
     }
 
-    // ½ÇÆĞÇßÀ» ¶§ µû·Î º¸»óÀ» °¨¼Ò½ÃÅ°Áö ¾ÊÀ½
-
-    // ½ºÅ×ÀÌÁö¸¦ ¼º°ø ÇßÀ» ¶§ ¹Ş´Â º¸»ó Á¤µµ
-    /*public TimeResult ReceiveReward(TimeResult result, StageData stageData)
-    {
-        if (result == TimeResult.Success)
-        {
-            _fame += stageData.fameReward;
-            _coin += stageData.coinReward;
-        }
-        return result;
-    }
-
-    // Áø»óÀ» Ã³¸®ÇßÀ» ¶§ ¹Ş´Â º¸»ó
-    public void IncreaseReward(StageData stageData)
-    {
-        _fame += stageData.fameIncrease;
-        _coin += stageData.coinIncrease;
-    }
-    // Áø»ó Ã³¸®¸¦ ¸ø ÇßÀ» ½Ã
-    public void DecreaseReward(StageData stageData)
-    {
-        _fame -= stageData.fameDecrease;
-        _coin -= stageData.coinDecrease;
-
-        _fame = Mathf.Max(0, _fame);
-        _coin = Mathf.Max(0, _coin);
-    }*/
 }

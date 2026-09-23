@@ -19,30 +19,20 @@ public class CustomerSpawn : MonoBehaviour
 
     public void Init(StageData data)
     {
-        stageData = data;
-
-        processObj.SetActive(false);
-
-        Debug.Log($"Stage : {stageData.stageName}");
-        Debug.Log($"Normal : {stageData.normalCustomerCount}");
-        Debug.Log($"Thief : {stageData.thiefCustomerCount}");
-        Debug.Log($"Trouble : {stageData.troublemakerCustomerCount}");
-        Debug.Log($"Special : {stageData.specialCustomerCount}");
-
-       
-        spawnList = BuildCustomerList(stageData);
-
         
+        stageData = data;
+        processObj.SetActive(false);
+        spawnList = BuildCustomerList(stageData);
         index = 0;
 
-        if (GameManager.Instance.CurrentState != GameState.PlayScene)
-            return;
 
+        if (GameManager.Instance.CurrentState != GameState.PlayScene) return;
+        
+
+        
         SpawnNextCustomer();
     }
 
-
-    
     List<CustomerType> BuildCustomerList(StageData stageData)
     {
         List<CustomerType> list = new List<CustomerType>();
@@ -78,7 +68,6 @@ public class CustomerSpawn : MonoBehaviour
         for (int i = 0; i < list.Count; i++)
         {
             int randomIndex = Random.Range(i, list.Count);
-
             CustomerType temp = list[i];
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
@@ -96,20 +85,16 @@ public class CustomerSpawn : MonoBehaviour
         }
     }
 
-
-
     public void SpawnNextCustomer()
     {
         if (isSpawning)
             return;
 
-        
         if (spawnList == null || index >= spawnList.Count)
             return;
 
         StartCoroutine(SpawnRoutine(spawnList[index]));
     }
-
 
     IEnumerator SpawnRoutine(CustomerType type)
     {
@@ -119,19 +104,15 @@ public class CustomerSpawn : MonoBehaviour
 
         Spawn(type);
 
-        
         index++;
 
         isSpawning = false;
     }
 
-
-
     void Spawn(CustomerType type)
     {
         CustomerData data = GetCustomerData(type);
         
-
         if (type == CustomerType.TroubleMakerCustomer)
         {
             CustomerData[] troubleDatas = System.Array.FindAll(
@@ -139,7 +120,6 @@ public class CustomerSpawn : MonoBehaviour
                 x => x.customerType == CustomerType.TroubleMakerCustomer
             );
 
-            
             if (troubleDatas.Length > 1)
             {
                 List<CustomerData> availableDatas = new List<CustomerData>();
@@ -153,7 +133,6 @@ public class CustomerSpawn : MonoBehaviour
                     }
                 }
 
-                
                 if (availableDatas.Count > 0)
                 {
                     data = availableDatas[Random.Range(0, availableDatas.Count)];
@@ -167,8 +146,6 @@ public class CustomerSpawn : MonoBehaviour
             lastTroubleCustomer = data.ageSprite;
         }
 
-        Debug.Log($" 생성할 손님 : {data.ageSprite.name}");
-
         GameObject customer = Instantiate(
             data.ageSprite,
             poolPosition.position,
@@ -176,6 +153,7 @@ public class CustomerSpawn : MonoBehaviour
         );
 
         GameManager.Instance.currentCustomer = customer;
+
         if (type == CustomerType.TroubleMakerCustomer)
         {
             TroubleCustomerAction troubleAction = customer.GetComponent<TroubleCustomerAction>();
@@ -193,34 +171,24 @@ public class CustomerSpawn : MonoBehaviour
 
                 GameManager.Instance.NormalCustomer.SetDialogue(data);
 
-                StartCoroutine(
-                    GameManager.Instance.NormalCustomer.ItemCreate()
-                );
+                StartCoroutine(GameManager.Instance.NormalCustomer.ItemCreate());
 
                 return;
 
             case CustomerType.TroubleMakerCustomer:
-                
-                
                 return;
         }
 
     }
 
-
     CustomerData GetCustomerData(CustomerType type)
     {
-        return System.Array.Find(
-            customerData,
-            x => x.customerType == type
-        );
+        return System.Array.Find(customerData, x => x.customerType == type);
     }
     public void StartNextCustomer()
     {
-        Debug.Log("[StartNextCustomer] 호출됨");
         StartCoroutine(NextCustomerRoutine());
     }
-
 
     public void OnCustomerEnd()
     {
@@ -230,30 +198,18 @@ public class CustomerSpawn : MonoBehaviour
             GameManager.Instance.currentCustomer = null;
         }
 
-
-        
         if (index >= spawnList.Count)
         {
-            Debug.Log("모든 손님 처리 완료");
-
             GameManager.Instance.Stage.StageRewardCorrect();
 
             return;
         }
-
-
         SpawnNextCustomer();
     }
 
-
-
     public IEnumerator NextCustomerRoutine()
     {
-        Debug.Log("[NextCustomerRoutine] 실행됨");
-
         yield return new WaitForSeconds(1f);
-
-        Debug.Log("[NextCustomerRoutine] InputField 비활성화");
 
         GameManager.Instance.CorrectAnswer.SetActive(false);
         GameManager.Instance.FailAnswer.SetActive(false);
@@ -266,30 +222,6 @@ public class CustomerSpawn : MonoBehaviour
         OnCustomerEnd();
     }
 
-
-
-    /*public IEnumerator ProcessObjCreate(GameObject customer)
-    {
-        yield return new WaitForSeconds(1f);
-
-        if (customer == null)
-        {
-            Debug.LogError("TroubleCustomer가 생성되지 않았습니다.");
-            yield break;
-        }
-
-
-        Transform troubleCustomerCanvas =
-            customer.transform.Find("Canvas");
-
-        Transform processObj =
-            troubleCustomerCanvas.transform.Find("ProcessObj");
-
-        if (processObj != null)
-        {
-            processObj.gameObject.SetActive(true);
-        }
-    }*/
     public void SetCustomerVisible(bool visible)
     {
         if (GameManager.Instance.currentCustomer != null)

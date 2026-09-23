@@ -1,11 +1,8 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-//using static UnityEngine.Rendering.DebugUI;
 
 public delegate void changedTodayItems(List<ItemData> todayItems);
 
@@ -18,10 +15,11 @@ public class NormalCustomer : MonoBehaviour
     [SerializeField] StageContainer stageContainer;
     [SerializeField] Trigger trigger;
     [SerializeField] NormalCustomerItem todayItem;
+
     [SerializeField] Image balloonImage;
     [SerializeField] TextMeshProUGUI dialogueText;
 
-    // 가격 패널 관련
+    // 가격 패널
     [SerializeField] private Button priceArrowButton;
     [SerializeField] private GameObject pricePanel;
 
@@ -36,57 +34,82 @@ public class NormalCustomer : MonoBehaviour
 
     int speed = 3;
     int currentIndex;
+
+    
     private int createdItemCount = 0;
     private int targetItemCount = 0;
+
     private bool isItemCreating = false;
+
+
+    
+    private int currentDialogueIndex = 0;
+
+    
+    private float dialogueTimer = 0f;
+
+    
+    private bool isDialogueFinished = false;
+
+    
+    private bool isDialoguePlaying = false;
+
+    
+    private CustomerData currentDialogueData;
+
+
+    
 
     private void Awake()
     {
         canvas = FindFirstObjectByType<Canvas>();
     }
+
+
+    
     private void OnEnable()
     {
-        Debug.Log($"[NormalCustomer OnEnable] 실행 / created={createdItemCount}, target={targetItemCount}, isCreating={isItemCreating}");
-
         if (GameManager.Instance == null)
-        {
-            Debug.Log("[NormalCustomer OnEnable] GameManager 없음");
             return;
-        }
 
         if (GameManager.Instance.CurrentState != GameState.PlayScene)
-        {
-            Debug.Log($"[NormalCustomer OnEnable] PlayScene 아님 / 현재 상태={GameManager.Instance.CurrentState}");
             return;
-        }
 
         if (GameManager.Instance.currentCustomer == null)
-        {
-            Debug.Log("[NormalCustomer OnEnable] currentCustomer 없음");
             return;
-        }
 
-        if (createdItemCount >= targetItemCount)
+
+
+        if (createdItemCount < targetItemCount && !isItemCreating)
         {
-            Debug.Log("[NormalCustomer OnEnable] 이미 목표 개수만큼 생성됨");
-            return;
+            StartCoroutine(ItemCreate());
         }
 
-        if (isItemCreating)
+
+        
+        if (!isDialogueFinished &&
+            currentDialogueData != null &&
+            !isDialoguePlaying)
         {
-            Debug.Log("[NormalCustomer OnEnable] 이전 ItemCreate가 중단됨 → 다시 시작");
-            isItemCreating = false;
+            StartCoroutine(ShowDialogues(currentDialogueData));
         }
-
-        Debug.Log("[NormalCustomer OnEnable] ItemCreate 시작!");
-        StartCoroutine(ItemCreate());
     }
+
+
+   
+    private void OnDisable()
+    {
+        // 기존 진행 상황을 그대로 들고오게 하기
+
+        isItemCreating = false;
+        isDialoguePlaying = false;
+    }
+
 
     public void Init(StageContainer data)
     {
         if (GameManager.Instance.CurrentState != GameState.PlayScene)
             return;
-       
 
         stageContainer = data;
     }
@@ -94,36 +117,37 @@ public class NormalCustomer : MonoBehaviour
 
     public IEnumerator ItemCreate()
     {
-        Debug.Log($"[ItemCreate 시작] created={createdItemCount}, target={targetItemCount}, isCreating={isItemCreating}");
-
         if (GameManager.Instance.currentCustomer == null)
-        {
-            Debug.Log("[ItemCreate] currentCustomer 없음 → 종료");
             yield break;
-        }
 
         isItemCreating = true;
+
 
         int stageIndex = GameManager.Instance.Stage.CurrentIndex;
 
         StageData stageData =
             stageContainer.stageDatas[stageIndex];
 
-        targetItemCount = stageData.normalCustomerItemCount;
 
-        // 새 손님일 때만 초기화
+        targetItemCount =
+            stageData.normalCustomerItemCount;
+
+
         if (createdItemCount == 0)
         {
             todayItems.Clear();
 
-            PricePanelController priceController = FindFirstObjectByType<PricePanelController>();
+            PricePanelController priceController =
+                FindFirstObjectByType<PricePanelController>();
 
             if (priceController != null)
                 priceController.ResetButton();
+
             trigger.SetItemCount(targetItemCount);
         }
 
-        // 이미 생성한 상품이 있다면 남은 상품만 생성
+
+       
         while (createdItemCount < targetItemCount)
         {
             if (items.Length == 0)
@@ -132,54 +156,77 @@ public class NormalCustomer : MonoBehaviour
                 yield break;
             }
 
-            NormalCustomerItem customerItem = items[Random.Range(0, items.Length)];
+
+            NormalCustomerItem customerItem =
+                items[Random.Range(0, items.Length)];
+
 
             if (customerItem.item.Length == 0)
                 continue;
 
-            ItemData itemData = customerItem.item[
+
+            ItemData itemData =
+                customerItem.item[
                     Random.Range(0, customerItem.item.Length)
                 ];
 
+
+            // 상품 데이터 저장
             todayItems.Add(itemData);
 
+
+            // 실제 상품 생성
             normalItem = Instantiate(
                 itemData.itemPrefab,
                 itemPool,
                 false
             );
 
+
             normalItem.transform.localScale = Vector3.one;
+
+
+
 
             if (!normalItem.TryGetComponent<MoveRight>(out var move))
             {
                 move = normalItem.AddComponent<MoveRight>();
             }
 
+
             move.speed = speed;
 
+
+            
             createdItemCount++;
 
-            while (GameManager.Instance.CurrentState != GameState.PlayScene)
+            while (GameManager.Instance.CurrentState
+                   != GameState.PlayScene)
             {
                 yield return null;
             }
 
+
             yield return StartCoroutine(WaitForPlaySeconds(2f));
+
         }
 
+        
         OnChangedTodayItems?.Invoke(todayItems);
 
         isItemCreating = false;
-
     }
+
+
     private IEnumerator WaitForPlaySeconds(float seconds)
     {
         float timer = 0f;
 
+
         while (timer < seconds)
         {
-            if (GameManager.Instance.CurrentState == GameState.PlayScene)
+            if (GameManager.Instance.CurrentState
+                == GameState.PlayScene)
             {
                 timer += Time.deltaTime;
             }
@@ -187,6 +234,7 @@ public class NormalCustomer : MonoBehaviour
             yield return null;
         }
     }
+
 
     public void OpenPricePanel()
     {
@@ -198,21 +246,22 @@ public class NormalCustomer : MonoBehaviour
 
         isPricePanelLocked = true;
 
-
         pricePanel.SetActive(true);
-
 
         priceArrowButton.interactable = false;
     }
+
 
     public int ItemTotalValue(List<ItemData> todayItems)
     {
         int total = 0;
 
+
         foreach (ItemData currentItem in todayItems)
         {
             total += currentItem.itemBasePrice;
         }
+
 
         return total;
     }
@@ -220,56 +269,170 @@ public class NormalCustomer : MonoBehaviour
 
     public void SetDialogue(CustomerData data)
     {
+        if (data == null) return;
+       
+        currentDialogueData = data;
+
+        currentDialogueIndex = 0;
+        dialogueTimer = 0f;
+        isDialogueFinished = false;
+
         UI_StageScreen stageScreen = canvas.GetComponentInChildren<UI_StageScreen>(true);
 
         dialogueUI = stageScreen.transform.Find("SpeechBubble");
-         
-        balloonImage = dialogueUI.GetComponentInChildren<Image>(true);
 
-        dialogueText = dialogueUI.GetComponentInChildren<TextMeshProUGUI>(true);
+        if (dialogueUI == null)
+        {
+            Debug.LogError("SpeechBubble을 찾을 수 없습니다.");
+            return;
+        }
 
-        int randomIndex = Random.Range(0, data.dialogues.Count);
 
-        DialogueData dialogue = data.dialogues[randomIndex];
+        balloonImage =
+            dialogueUI.GetComponentInChildren<Image>(true);
 
-        balloonImage.sprite = dialogue.balloonSprite;
 
-        dialogueText.text = dialogue.dialogue;
+        dialogueText =
+            dialogueUI.GetComponentInChildren<TextMeshProUGUI>(true);
 
-        StartCoroutine(ShowDialogues(data));
 
+        // 이미 실행 중이면 또 실행하지 않음
+        if (!isDialoguePlaying)
+        {
+            StartCoroutine(ShowDialogues(data));
+        }
     }
+
 
     private IEnumerator ShowDialogues(CustomerData data)
     {
-        dialogueUI.gameObject.SetActive(true);
+        if (data == null)
+            yield break;
 
 
-        foreach (DialogueData dialogue in data.dialogues)
+        if (data.dialogues == null ||
+            data.dialogues.Count == 0)
         {
-            balloonImage.sprite = dialogue.balloonSprite;
+            isDialogueFinished = true;
+            isDialoguePlaying = false;
+            yield break;
+        }
 
-            dialogueText.text = dialogue.dialogue;
 
-            yield return new WaitForSeconds(2f);
+        isDialoguePlaying = true;
+
+
+        while (currentDialogueIndex < data.dialogues.Count)
+        {
+           
+            while (GameManager.Instance.CurrentState
+                   != GameState.PlayScene)
+            {
+                yield return null;
+            }
+
+
+            DialogueData dialogue =
+                data.dialogues[currentDialogueIndex];
+
+
+            
+            dialogueUI.gameObject.SetActive(true);
+
+            balloonImage.sprite =
+                dialogue.balloonSprite;
+
+            dialogueText.text =
+                dialogue.dialogue;
+
+
+
+            while (dialogueTimer < 2f)
+            {
+                if (GameManager.Instance.CurrentState
+                    == GameState.PlayScene)
+                {
+                    dialogueTimer += Time.deltaTime;
+                }
+
+                yield return null;
+            }
+
+
+            // 현재 대사 완료
+            dialogueTimer = 0f;
+
+            currentDialogueIndex++;
+
 
 
             dialogueUI.gameObject.SetActive(false);
 
 
-            yield return new WaitForSeconds(0.5f);
+            
+
+            float nextDialogueTimer = 0f;
 
 
-            dialogueUI.gameObject.SetActive(true);
+            while (nextDialogueTimer < 0.5f)
+            {
+                if (GameManager.Instance.CurrentState
+                    == GameState.PlayScene)
+                {
+                    nextDialogueTimer += Time.deltaTime;
+                }
+
+                yield return null;
+            }
+
+
+            // 다음 대사가 있으면 다시 표시
+            if (currentDialogueIndex < data.dialogues.Count)
+            {
+                dialogueUI.gameObject.SetActive(true);
+            }
         }
 
+
         dialogueUI.gameObject.SetActive(false);
+
+        isDialogueFinished = true;
+        isDialoguePlaying = false;
     }
+
+
     public void ResetItemProgress()
     {
         createdItemCount = 0;
         targetItemCount = 0;
+
         isItemCreating = false;
+
         todayItems.Clear();
+    }
+
+
+    public void ResetDialogueProgress()
+    {
+        currentDialogueIndex = 0;
+
+        dialogueTimer = 0f;
+
+        isDialogueFinished = false;
+
+        isDialoguePlaying = false;
+    }
+
+
+    public void ResetCustomerProgress()
+    {
+        
+        ResetItemProgress();
+
+        
+        ResetDialogueProgress();
+
+        
+        isPricePanelLocked = false;
     }
 }

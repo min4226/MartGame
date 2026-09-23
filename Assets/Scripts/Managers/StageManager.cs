@@ -26,6 +26,7 @@ public class StageManager : ManagerBase
 
     public void StartStage(int index)
     {
+        Debug.Log("★ StartStage 실행");
         if (customerSpawn == null)
             customerSpawn = FindFirstObjectByType<CustomerSpawn>();
         
@@ -65,15 +66,10 @@ public class StageManager : ManagerBase
     
     public void StageRewardCorrect()
     {
-        Debug.Log($"requiredcoin : {currentStage.requiredCoin}");
-        Debug.Log($"successreward.coin : {GameManager.Instance.CustomerData.successReward.coin}");
-
         if (GameManager.Instance.RewardModule.Coin >= currentStage.requiredCoin
             && GameManager.Instance.RewardModule.Fame >= currentStage.requiredFame)
         {
-            Debug.Log($"stageclearpanel : {stageClearPanel == null}");
             stageClearPanel.SetActive(true);
-            
         }
         else
         {
@@ -110,12 +106,12 @@ public class StageManager : ManagerBase
         bool expEnough =
             GameManager.Instance.RewardModule.Fame >= currentStage.requiredFame;
 
-        // 모든 손님 처리 + 코인 + 경험치 모두 만족
+        
         if (allCustomerCleared && coinEnough && expEnough)
         {
             stageClearPanel.SetActive(true);
         }
-        // 모든 손님을 처리했는데 조건을 못 채움
+        
         else if (allCustomerCleared)
         {
             stageClearPanelFail.SetActive(true);

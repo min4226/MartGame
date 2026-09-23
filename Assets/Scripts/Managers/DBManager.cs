@@ -24,8 +24,6 @@ public class DBManager : ManagerBase
     
     protected override IEnumerator OnConnected(GameManager newManager)
     {
-        
-        
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(InitializeFireBase);
         yield return null;
     }
@@ -33,7 +31,7 @@ public class DBManager : ManagerBase
 
     protected override void OnDisconnected()
     {
-        // throw new System.NotImplementedException();
+       
     }
 
     void InitializeFireBase(Task<DependencyStatus> task)
@@ -48,13 +46,10 @@ public class DBManager : ManagerBase
                 Debug.Log(FirebaseDatabase.DefaultInstance);
                 rootReference = FirebaseDatabase.DefaultInstance.RootReference;
 
-
                 GuestLogin();
 
-                Debug.Log("firebase 연동");
             }
             else
-
             {
                 Debug.LogError($"firebase 실패 : {task.Exception}");
             }
@@ -65,8 +60,6 @@ public class DBManager : ManagerBase
         }
 
     }
-   
-
   
     public async void GuestLogin()
 
@@ -74,30 +67,42 @@ public class DBManager : ManagerBase
         if (authentication is null) return;
         if (user is not null)
         {
-            Debug.Log($"현재 Firebase UserId : {user.UserId}");
-            resultData = await ReadDataAsync<UserData>("users", "userData" , user.UserId);
-
             
+            resultData = await ReadDataAsync<UserData>(
+                "users",
+                "userData",
+                user.UserId
+            );
+
             if (resultData is not null)
             {
                 Debug.Log($"resultnickname : {resultData.nickname}");
-                
+
+                // 기존 유저 데이터에 coin, fame 추가
+                WriteData(
+                    resultData,
+                    "users",
+                    "userData",
+                    user.UserId
+                );
             }
             else
             {
                 resultData = NewUserData("GongBack");
-                WriteData(resultData, "users", "userData", user.UserId);
-                
+
+                WriteData(
+                    resultData,
+                    "users",
+                    "userData",
+                    user.UserId
+                );
             }
 
-            
-            return; 
+            return;
         }
 
         await authentication.SignInAnonymouslyAsync().ContinueWithOnMainThread(OnLoginResult);
-        
-
-        
+       
     }
 
     
@@ -127,26 +132,28 @@ public class DBManager : ManagerBase
     public class UserData
     {
         public int attendtime;
-        public int money;
+        public int cash;
         public DateTime assignDate;
         public string nickname;
         public int userlevel;
+        public int coin;
+        public int fame;
     }
 
     
-
     public UserData NewUserData(string wantNickname)
     {
         Debug.Log($"wantnickname : {wantNickname}");
         return new()
-    {
-        nickname = wantNickname,
-
-        assignDate = DateTime.Today,
-        userlevel = 1,
-        money = 5000,
-        attendtime = 1
-    };
+        {
+            nickname = wantNickname,
+            assignDate = DateTime.Today,
+            userlevel = 1,
+            cash = 0,
+            coin = 0,
+            fame = 0,
+            attendtime = 1
+        };
     }
 
     public DatabaseReference GetFindDirectory(DatabaseReference root, params string[] directory)
@@ -216,6 +223,18 @@ public class DBManager : ManagerBase
     public void NickNameChange(string nickName)
     {
         resultData.nickname = nickName;
+
+        WriteData(
+            resultData,
+            "users",
+            "userData",
+            user.UserId
+        );
+    }
+    public void SaveRewardData(int coin, int fame)
+    {
+        resultData.coin = coin;
+        resultData.fame = fame;
 
         WriteData(
             resultData,

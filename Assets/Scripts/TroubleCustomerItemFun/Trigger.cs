@@ -3,16 +3,19 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Rendering.MaterialUpgrader;
 
 public class Trigger : MonoBehaviour
 {
     int activeItemCount;
     private TMP_InputField inputField;
     private Button EnterButton;
-
+    
     private IEnumerator ShowInputField()
     {
         yield return new WaitForSeconds(1.5f);
+        UI_StageScreen stageScreen = FindFirstObjectByType<UI_StageScreen>();
+        
         inputField.gameObject.SetActive(true);
         EnterButton.gameObject.SetActive(true);
     }
@@ -31,7 +34,7 @@ public class Trigger : MonoBehaviour
 
             if (activeItemCount <= 0)
             {
-                StartCoroutine(ShowInputField());
+                GameManager.Instance.StartCoroutine(ShowInputField());
             }
 
             Destroy(other.gameObject);

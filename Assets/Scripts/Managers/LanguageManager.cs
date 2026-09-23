@@ -9,7 +9,6 @@ public class LanguageManager : ManagerBase
     protected override IEnumerator OnConnected(GameManager newManager)
     {
         yield return LocalizationSettings.InitializationOperation;
-        ChangeLanguage("ko");
     }
 
     protected override void OnDisconnected()

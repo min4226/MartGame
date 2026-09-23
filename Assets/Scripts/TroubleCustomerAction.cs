@@ -9,19 +9,19 @@ using UnityEngine.UI;
 
 public class TroubleCustomerAction : MonoBehaviour
 {
-    [SerializeField] private Transform actionSpawnPoint;
-    [SerializeField] private Transform dialogueUI;
-    [SerializeField] private Image balloonImage;
-    [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private Animator animator;
-    [SerializeField] TroubleActionData actionData;
+    Transform actionSpawnPoint;
+    Transform dialogueUI;
+    Image balloonImage;
+    TextMeshProUGUI dialogueText;
+    Animator animator;
+    TroubleActionData actionData;
     Canvas canvas;
     GameObject actionObject = null;
     private void Awake()
     {
         Transform canvas = transform.Find("Canvas");
         actionData = FindAnyObjectByType<TroubleActionData>();
-        Debug.Log($"actiondata : {actionData}");
+        
         if (canvas != null)
         {
             Transform processObj = canvas.Find("ProcessObj");
@@ -32,12 +32,11 @@ public class TroubleCustomerAction : MonoBehaviour
             }
         }
         GameObject background = GameObject.FindGameObjectWithTag("PlayGame");
-        Debug.Log($"background : {background}");
+        
         if (background != null)
         {
             Transform troubleItemSpawn = background.transform.Find("TroubleItemSpawn");
-            Debug.Log($"troubleitemspawn : {troubleItemSpawn}");
-
+            
             if (troubleItemSpawn != null)
             {
                 actionSpawnPoint = troubleItemSpawn;
@@ -47,7 +46,6 @@ public class TroubleCustomerAction : MonoBehaviour
         
     
 }
-
     public void StartActions(CustomerData data)
     {
         StartCoroutine(ExecuteActions(data));
@@ -66,10 +64,6 @@ public class TroubleCustomerAction : MonoBehaviour
     }
     public IEnumerator Execute(TroubleActionData action)
     {
-        Debug.Log("Execute 실행");
-
-        
-
         if (action.actionPrfab != null)
         {
             actionObject = Instantiate(
@@ -83,12 +77,9 @@ public class TroubleCustomerAction : MonoBehaviour
         if (action.dialogueTroubleData != null &&
             action.dialogueTroubleData.Count > 0)
         {
-            yield return StartCoroutine(
-                ShowDialogues(action.dialogueTroubleData)
-            );
+            yield return StartCoroutine(ShowDialogues(action.dialogueTroubleData));
         }
 
-        
         // 대사 끝난 후 3초 대기
         yield return new WaitForSeconds(3f);
 
@@ -97,7 +88,6 @@ public class TroubleCustomerAction : MonoBehaviour
 
         yield return new WaitForSeconds(action.actionDuration);
     }
-
 
     private IEnumerator ShowDialogues(List<DialogueData> dialogues)
     {
@@ -120,23 +110,18 @@ public class TroubleCustomerAction : MonoBehaviour
 
         dialogueUI.gameObject.SetActive(true);
 
-        // 2초 동안 보여주기
         yield return new WaitForSeconds(2f);
 
         dialogueUI.gameObject.SetActive(false);
         if (actionObject == null)
             yield return null;
         else
-        {
             actionObject.SetActive(false);
-        }
         
-        // 다음 행동까지 잠깐 대기
         yield return new WaitForSeconds(0.5f);
     }
     private void ShowExpulsionUI()
     {
-        Debug.Log("!!! 퇴치물건 UI 켜짐 !!!");
         Transform canvas = transform.Find("Canvas");
 
         Transform processObj = canvas.Find("ProcessObj");
