@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     StageManager _stage;
     public StageManager Stage => _stage;
 
+    
+
     DBManager _db;
     public static DBManager DB => _instance?._db;
 
@@ -100,7 +102,7 @@ public class GameManager : MonoBehaviour
     public static DestroyEvent OnDestroyController;
     public static DestroyEvent OnDestroyCharacter;
     public static DestroyEvent OnDestroyObject;
-
+    public ThiefManager thiefManager;
     [SerializeField] UIType startScreen = UIType.Title;
     
     public static bool is2D = true;
@@ -144,6 +146,7 @@ public class GameManager : MonoBehaviour
         totalLoad += CreateManager(ref _camera).LoadingCount;
         totalLoad += CreateManager(ref _input).LoadingCount;
         totalLoad += CreateManager(ref _stage).LoadingCount;
+
         totalLoad += CreateManager(ref _db).LoadingCount;
 
 
@@ -172,6 +175,7 @@ public class GameManager : MonoBehaviour
         yield return _input.Connect(this);
         loadingProgress?.AddCurrent(1);
         yield return _stage.Connect(this);
+       
         loadingProgress?.AddCurrent(1);
         yield return _db.Connect(this);
         loadingProgress?.AddCurrent(1);
@@ -196,7 +200,7 @@ public class GameManager : MonoBehaviour
         Data?.Disconnect();
         Stage?.Disconnect();
         DB?.Disconnect();
-
+        
     }
 
     ManagerType CreateManager<ManagerType>(ref ManagerType targetVariable)  where ManagerType :  ManagerBase

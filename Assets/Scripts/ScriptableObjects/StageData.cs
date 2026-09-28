@@ -29,5 +29,5 @@ public class StageData : ScriptableObject
     public ItemCreatePattern[] itemCreatePatterns; // �������� ������ ����
     public PatternRules[] patternRules; // ���� ��Ģ
 
-    
+    public float thiefTimeLimit; // 도둑 손님 제한 시간
 }

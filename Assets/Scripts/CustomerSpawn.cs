@@ -9,6 +9,12 @@ public class CustomerSpawn : MonoBehaviour
     [SerializeField] Transform poolPosition;
     [SerializeField] GameObject processObj;
     [SerializeField] TextMeshProUGUI dialogueText;
+
+    
+    [SerializeField] private int thiefSpawnMinCustomer = 2;
+    [SerializeField] private int thiefSpawnMaxCustomer = 4;
+
+    private bool thiefSpawned = false;
     GameObject lastTroubleCustomer;
 
     StageData stageData;
@@ -19,17 +25,16 @@ public class CustomerSpawn : MonoBehaviour
 
     public void Init(StageData data)
     {
-        
         stageData = data;
+
         processObj.SetActive(false);
+
         spawnList = BuildCustomerList(stageData);
         index = 0;
 
+        if (GameManager.Instance.CurrentState != GameState.PlayScene)
+            return;
 
-        if (GameManager.Instance.CurrentState != GameState.PlayScene) return;
-        
-
-        
         SpawnNextCustomer();
     }
 
@@ -45,12 +50,6 @@ public class CustomerSpawn : MonoBehaviour
 
         AddCustomers(
             list,
-            CustomerType.ThiefCustomer,
-            stageData.thiefCustomerCount
-        );
-
-        AddCustomers(
-            list,
             CustomerType.TroubleMakerCustomer,
             stageData.troublemakerCustomerCount
         );
@@ -60,14 +59,18 @@ public class CustomerSpawn : MonoBehaviour
             CustomerType.SpecialCustomer,
             stageData.specialCustomerCount
         );
+
         Shuffle(list);
+
         return list;
     }
+
     void Shuffle(List<CustomerType> list)
     {
         for (int i = 0; i < list.Count; i++)
         {
             int randomIndex = Random.Range(i, list.Count);
+
             CustomerType temp = list[i];
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
@@ -112,40 +115,20 @@ public class CustomerSpawn : MonoBehaviour
     void Spawn(CustomerType type)
     {
         CustomerData data = GetCustomerData(type);
-        
-        if (type == CustomerType.TroubleMakerCustomer)
+
+        if (data == null)
         {
-            CustomerData[] troubleDatas = System.Array.FindAll(
-                customerData,
-                x => x.customerType == CustomerType.TroubleMakerCustomer
-            );
-
-            if (troubleDatas.Length > 1)
-            {
-                List<CustomerData> availableDatas = new List<CustomerData>();
-
-                foreach (CustomerData troubleData in troubleDatas)
-                {
-                    
-                    if (troubleData.ageSprite != lastTroubleCustomer)
-                    {
-                        availableDatas.Add(troubleData);
-                    }
-                }
-
-                if (availableDatas.Count > 0)
-                {
-                    data = availableDatas[Random.Range(0, availableDatas.Count)];
-                }
-                else
-                {
-                    data = troubleDatas[Random.Range(0, troubleDatas.Length)];
-                }
-            }
-
-            lastTroubleCustomer = data.ageSprite;
+            Debug.LogError($"CustomerData를 찾을 수 없습니다. Type : {type}");
+            return;
         }
 
+        if (data.ageSprite == null)
+        {
+            Debug.LogError($"CustomerData의 ageSprite가 없습니다. Type : {type}");
+            return;
+        }
+
+        // 손님 생성
         GameObject customer = Instantiate(
             data.ageSprite,
             poolPosition.position,
@@ -154,37 +137,52 @@ public class CustomerSpawn : MonoBehaviour
 
         GameManager.Instance.currentCustomer = customer;
 
-        if (type == CustomerType.TroubleMakerCustomer)
-        {
-            TroubleCustomerAction troubleAction = customer.GetComponent<TroubleCustomerAction>();
+        // 기존 손님 처리...
 
-            if (troubleAction != null)
-            {
-                troubleAction.StartActions(data);
-            }
-            
-        }
         switch (type)
         {
             case CustomerType.NormalCustomer:
-                GameManager.Instance.NormalCustomer.ResetItemProgress();
 
+                GameManager.Instance.NormalCustomer.ResetItemProgress();
                 GameManager.Instance.NormalCustomer.SetDialogue(data);
 
-                StartCoroutine(GameManager.Instance.NormalCustomer.ItemCreate());
+                StartCoroutine(
+                    GameManager.Instance.NormalCustomer.ItemCreate()
+                );
 
-                return;
+                break;
 
             case CustomerType.TroubleMakerCustomer:
-                return;
+
+                TroubleCustomerAction troubleAction =
+                    customer.GetComponent<TroubleCustomerAction>();
+
+                if (troubleAction != null)
+                {
+                    troubleAction.StartActions(data);
+                }
+
+                break;
+
+            case CustomerType.SpecialCustomer:
+
+                Debug.Log("특수 손님 등장!");
+
+                break;
         }
 
+        // 도둑 등장 체크
+        TrySpawnThief();
     }
 
     CustomerData GetCustomerData(CustomerType type)
     {
-        return System.Array.Find(customerData, x => x.customerType == type);
+        return System.Array.Find(
+            customerData,
+            x => x.customerType == type
+        );
     }
+
     public void StartNextCustomer()
     {
         StartCoroutine(NextCustomerRoutine());
@@ -195,6 +193,7 @@ public class CustomerSpawn : MonoBehaviour
         if (GameManager.Instance.currentCustomer != null)
         {
             Destroy(GameManager.Instance.currentCustomer);
+
             GameManager.Instance.currentCustomer = null;
         }
 
@@ -204,6 +203,7 @@ public class CustomerSpawn : MonoBehaviour
 
             return;
         }
+
         SpawnNextCustomer();
     }
 
@@ -229,6 +229,33 @@ public class CustomerSpawn : MonoBehaviour
             GameManager.Instance.currentCustomer.SetActive(visible);
         }
     }
-    
-    
+    void TrySpawnThief()
+    {
+        if (thiefSpawned)
+            return;
+
+        if (stageData.thiefCustomerCount <= 0)
+            return;
+
+        // 지금까지 생성된 일반 손님 계열 수
+        int spawnedCustomerCount = index;
+
+        if (spawnedCustomerCount < thiefSpawnMinCustomer)
+            return;
+
+        if (spawnedCustomerCount > thiefSpawnMaxCustomer)
+            return;
+
+        thiefSpawned = true;
+
+        StartCoroutine(ThiefSpawnRoutine());
+    }
+    IEnumerator ThiefSpawnRoutine()
+    {
+        float delay = Random.Range(3f, 8f);
+
+        yield return new WaitForSeconds(delay);
+
+        GameManager.Instance.thiefManager.StartThief(stageData);
+    }
 }

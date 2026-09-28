@@ -60,14 +60,13 @@ public class DBManager : ManagerBase
         }
 
     }
-  
-    public async void GuestLogin()
 
+    public async void GuestLogin()
     {
         if (authentication is null) return;
+
         if (user is not null)
         {
-            
             resultData = await ReadDataAsync<UserData>(
                 "users",
                 "userData",
@@ -78,13 +77,14 @@ public class DBManager : ManagerBase
             {
                 Debug.Log($"resultnickname : {resultData.nickname}");
 
-                // 기존 유저 데이터에 coin, fame 추가
                 WriteData(
                     resultData,
                     "users",
                     "userData",
                     user.UserId
                 );
+
+                UpdateRewardUI();
             }
             else
             {
@@ -96,16 +96,18 @@ public class DBManager : ManagerBase
                     "userData",
                     user.UserId
                 );
+
+                UpdateRewardUI();
             }
 
             return;
         }
 
-        await authentication.SignInAnonymouslyAsync().ContinueWithOnMainThread(OnLoginResult);
-       
+        await authentication.SignInAnonymouslyAsync()
+            .ContinueWithOnMainThread(OnLoginResult);
     }
 
-    
+
     void OnLoginResult(Task<AuthResult> task)
     {
         if (task.IsCanceled || task.IsFaulted)
@@ -115,19 +117,24 @@ public class DBManager : ManagerBase
         }
 
         user = task.Result.User;
+
         Debug.Log($"새로 로그인된 Firebase UserId : {user.UserId}");
 
+        resultData = NewUserData("GongBack");
+
         WriteData(
-            NewUserData("GongBack"),
+            resultData,
             "users",
             "userData",
-            user.UserId     
+            user.UserId
         );
+
+        UpdateRewardUI();
 
         Debug.Log($"user.userid : {user.UserId}");
     }
 
-    
+
     [Serializable]
     public class UserData
     {
@@ -242,5 +249,33 @@ public class DBManager : ManagerBase
             "userData",
             user.UserId
         );
+    }
+
+    public void UpdateRewardUI()
+    {
+        GameObject coinPanel = GameObject.Find("MyCoinCount");
+        GameObject famePanel = GameObject.Find("MyFameCount");
+
+        if (coinPanel != null)
+        {
+            TMP_Text coinText = coinPanel.GetComponentInChildren<TMP_Text>();
+
+            if (coinText != null)
+            {
+                coinText.text = resultData.coin.ToString();
+            }
+        }
+
+        if (famePanel != null)
+        {
+            TMP_Text fameText = famePanel.GetComponentInChildren<TMP_Text>();
+
+            if (fameText != null)
+            {
+                fameText.text = resultData.fame.ToString();
+            }
+        }
+
+
     }
 }

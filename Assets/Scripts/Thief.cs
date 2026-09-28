@@ -2,29 +2,35 @@ using UnityEngine;
 
 public class Thief : MonoBehaviour
 {
-    private Transform targetPoint;
-    private Transform exitPoint;
-
     [SerializeField] private float moveSpeed = 2f;
 
-    private bool isGoingToExit = false;
+    private Transform[] targetPoints;
+    private Transform exitPoint;
 
-    public void Init(Transform target, Transform exit)
+    private int currentIndex;
+    private bool isGoingToExit;
+
+    public void Init(Transform[] targets, Transform exit)
     {
-        targetPoint = target;
+        targetPoints = targets;
         exitPoint = exit;
+
+        currentIndex = 0;
+        isGoingToExit = false;
     }
 
     private void Update()
     {
-        if (!isGoingToExit)
-        {
-            MoveTo(targetPoint);
-        }
-        else
+        if (isGoingToExit)
         {
             MoveTo(exitPoint);
+            return;
         }
+
+        if (targetPoints == null || targetPoints.Length == 0)
+            return;
+
+        MoveTo(targetPoints[currentIndex]);
     }
 
     private void MoveTo(Transform target)
@@ -40,14 +46,25 @@ public class Thief : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) < 0.05f)
         {
-            if (!isGoingToExit)
+            if (isGoingToExit)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            currentIndex++;
+
+            if (currentIndex >= targetPoints.Length)
             {
                 isGoingToExit = true;
             }
-            else
-            {
-                Destroy(gameObject);
-            }
         }
+    }
+
+    public void Catch()
+    {
+        Debug.Log("도둑을 잡았습니다!");
+
+        Destroy(gameObject);
     }
 }
