@@ -1,4 +1,7 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ThiefManager : MonoBehaviour
 {
@@ -10,7 +13,8 @@ public class ThiefManager : MonoBehaviour
     private float thiefTimer;
     private bool isThiefActive;
     private GameObject currentThief;
-
+    GameObject catchText;
+    
     private void Update()
     {
         if (!isThiefActive)
@@ -35,9 +39,9 @@ public class ThiefManager : MonoBehaviour
     }
 
     private void OnMouseLeftButton(
-        bool value,
-        Vector2 screenPosition,
-        Vector3 worldPosition)
+    bool value,
+    Vector2 screenPosition,
+    Vector3 worldPosition)
     {
         if (!value)
             return;
@@ -45,9 +49,37 @@ public class ThiefManager : MonoBehaviour
         if (currentThief == null)
             return;
 
-        if (InputManager.CursorSelectObject == currentThief)
+        Collider2D hit = Physics2D.OverlapPoint(worldPosition);
+
+        if (hit == null)
+            return;
+
+        if (hit.gameObject != currentThief)
+            return;
+
+        Debug.Log("[ThiefManager] 도둑 클릭 성공!");
+
+        CatchThief();
+
+        catchText = null;
+
+        GameObject[] objects = FindObjectsByType<GameObject>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+
+        foreach (GameObject obj in objects)
         {
-            CatchThief();
+            if (obj.CompareTag("CatchText"))
+            {
+                catchText = obj;
+                break;
+            }
+        }
+
+        if (catchText != null)
+        {
+            StartCoroutine(ShowCatchText()); 
         }
     }
     public void StartThief(StageData stageData)
@@ -59,12 +91,7 @@ public class ThiefManager : MonoBehaviour
 
         GameObject background = GameObject.Find("BackGround");
 
-        if (background == null)
-        {
-            Debug.LogError("BackGround를 찾을 수 없습니다.");
-            return;
-        }
-
+        
         spawnPoint = background.transform.Find("ThiefSpawn");
 
         Transform target1 = background.transform.Find("ThiefTarget");
@@ -73,36 +100,7 @@ public class ThiefManager : MonoBehaviour
 
         exitPoint = background.transform.Find("ThiefExit");
 
-        if (spawnPoint == null)
-        {
-            Debug.LogError("ThiefSpawn을 찾을 수 없습니다.");
-            return;
-        }
-
-        if (target1 == null || target2 == null || target3 == null)
-        {
-            Debug.LogError("ThiefTarget를 찾을 수 없습니다.");
-            return;
-        }
-
-        if (exitPoint == null)
-        {
-            Debug.LogError("ThiefExit을 찾을 수 없습니다.");
-            return;
-        }
-
-        if (thiefPrefab == null)
-        {
-            Debug.LogError("ThiefPrefab이 ThiefManager에 들어있지 않습니다.");
-            return;
-        }
-
-        if (stageData == null)
-        {
-            Debug.LogError("StageData가 null입니다.");
-            return;
-        }
-
+        
         targetPoints = new Transform[]
         {
         target1,
@@ -120,7 +118,6 @@ public class ThiefManager : MonoBehaviour
 
         if (thief == null)
         {
-            Debug.LogError("ThiefPrefab에 Thief 컴포넌트가 없습니다.");
             Destroy(currentThief);
             currentThief = null;
             return;
@@ -132,7 +129,6 @@ public class ThiefManager : MonoBehaviour
         thiefTimer = stageData.thiefTimeLimit;
         isThiefActive = true;
 
-        Debug.Log($"도둑 등장! 제한시간 : {thiefTimer}");
     }
     public void ThiefFinished()
     {
@@ -140,9 +136,8 @@ public class ThiefManager : MonoBehaviour
     }
     public void CatchThief()
     {
-        if (currentThief == null)
-            return;
-
+        RewardUI rewardUI = GameObject.Find("GameObject").GetComponent<RewardUI>();
+        Debug.Log($"rewardui : {rewardUI}");
         isThiefActive = false;
         thiefTimer = 0f;
 
@@ -150,6 +145,7 @@ public class ThiefManager : MonoBehaviour
         currentThief = null;
 
         Debug.Log("도둑을 잡았습니다!");
+        // 리워드 넣을 공간
     }
     private void ThiefFailed()
     {
@@ -162,5 +158,14 @@ public class ThiefManager : MonoBehaviour
         }
 
         Debug.Log("도둑을 놓쳤습니다!");
-    }  
+        // 리워드 넣을 공간
+    }
+    private IEnumerator ShowCatchText()
+    {
+        catchText.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
+
+        catchText.SetActive(false);
+    }
 }

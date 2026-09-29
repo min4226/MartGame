@@ -24,7 +24,7 @@ public class ShopInventory : MonoBehaviour
         GameObject countCountText = userPayCount.transform.Find("CountCountText").gameObject;
         
         payCountChange = countCountText.GetComponent<PayCountChange>();
-        
+
         Instance = this;
         
         foreach (ShopItemData item in shopData.items)
@@ -35,6 +35,7 @@ public class ShopInventory : MonoBehaviour
 
     public void SelectItem(ShopItemData item)
     {
+        
         selectedItem = item;
         payCountChange.Init(1);
         UIManager.ClaimOpenUI(UIType.PayWindow);

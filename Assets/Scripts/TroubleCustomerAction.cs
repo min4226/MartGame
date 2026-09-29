@@ -44,7 +44,6 @@ public class TroubleCustomerAction : MonoBehaviour
             
         }
         
-    
 }
     public void StartActions(CustomerData data)
     {

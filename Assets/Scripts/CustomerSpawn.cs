@@ -137,7 +137,7 @@ public class CustomerSpawn : MonoBehaviour
 
         GameManager.Instance.currentCustomer = customer;
 
-        // 기존 손님 처리...
+        // 기존 손님 처리
 
         switch (type)
         {
@@ -177,10 +177,20 @@ public class CustomerSpawn : MonoBehaviour
 
     CustomerData GetCustomerData(CustomerType type)
     {
-        return System.Array.Find(
-            customerData,
-            x => x.customerType == type
-        );
+        List<CustomerData> matchingData = new List<CustomerData>();
+
+        foreach (CustomerData data in customerData)
+        {
+            if (data.customerType == type)
+            {
+                matchingData.Add(data);
+            }
+        }
+
+        if (matchingData.Count == 0)
+            return null;
+
+        return matchingData[Random.Range(0, matchingData.Count)];
     }
 
     public void StartNextCustomer()
