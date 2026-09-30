@@ -67,4 +67,8 @@ public class ShopInventory : MonoBehaviour
     {
         return items;
     }
+    public ShopItemData GetSelectedItem()
+    {
+        return selectedItem;
+    }
 }

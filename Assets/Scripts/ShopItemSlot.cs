@@ -10,6 +10,7 @@ public class ShopItemSlot : MonoBehaviour
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI fameText;
     ShopItemData shopData;
+    
     public void SetItemData(ShopItemData shopData)
     {
         this.shopData = shopData;
@@ -32,6 +33,7 @@ public class ShopItemSlot : MonoBehaviour
 
     public void BuyButton()
     {
+
         if (ShopInventory.Instance == null)
             return;
 

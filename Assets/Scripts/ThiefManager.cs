@@ -9,12 +9,14 @@ public class ThiefManager : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform[] targetPoints;
     [SerializeField] private Transform exitPoint;
+    [SerializeField] private CustomerData thiefCustomerData;
 
     private float thiefTimer;
     private bool isThiefActive;
     private GameObject currentThief;
     GameObject catchText;
-    
+    RewardUI rewardUI;
+    public RewardUI RewardUIUI => rewardUI;
     private void Update()
     {
         if (!isThiefActive)
@@ -136,7 +138,7 @@ public class ThiefManager : MonoBehaviour
     }
     public void CatchThief()
     {
-        RewardUI rewardUI = GameObject.Find("GameObject").GetComponent<RewardUI>();
+        rewardUI = GameObject.Find("GameObject").GetComponent<RewardUI>();
         Debug.Log($"rewardui : {rewardUI}");
         isThiefActive = false;
         thiefTimer = 0f;
@@ -145,7 +147,21 @@ public class ThiefManager : MonoBehaviour
         currentThief = null;
 
         Debug.Log("도둑을 잡았습니다!");
-        // 리워드 넣을 공간
+        
+        int currentCoin = int.Parse(rewardUI.CoinText.text);
+        int currentFame = int.Parse(rewardUI.FameText.text);
+        Debug.Log($"currentcoin : {currentCoin}");
+
+        currentCoin += thiefCustomerData.successReward.coin;
+        currentFame += thiefCustomerData.successReward.fame;
+        rewardUI.CoinText.text = currentCoin.ToString();
+        rewardUI.FameText.text = currentFame.ToString();
+
+        GameManager.DB.resultData.coin = int.Parse(rewardUI.CoinText.text);
+        GameManager.DB.resultData.fame = int.Parse(rewardUI.FameText.text);
+
+        GameManager.DB.SaveRewardData(GameManager.DB.resultData.coin, GameManager.DB.resultData.fame);
+        Debug.Log($"successcoin : {rewardUI.CoinText.text}" );
     }
     private void ThiefFailed()
     {
@@ -158,7 +174,20 @@ public class ThiefManager : MonoBehaviour
         }
 
         Debug.Log("도둑을 놓쳤습니다!");
-        // 리워드 넣을 공간
+        
+        int currentCoin = int.Parse(rewardUI.CoinText.text);
+        int currentFame = int.Parse(rewardUI.FameText.text);
+
+        currentCoin -= thiefCustomerData.failedReward.coin;
+        currentFame -= thiefCustomerData.failedReward.fame;
+
+        rewardUI.CoinText.text = currentCoin.ToString();
+        rewardUI.FameText.text = currentFame.ToString();
+
+        GameManager.DB.resultData.coin = int.Parse(rewardUI.CoinText.text);
+        GameManager.DB.resultData.fame = int.Parse(rewardUI.FameText.text);
+
+        GameManager.DB.SaveRewardData(GameManager.DB.resultData.coin, GameManager.DB.resultData.fame);
     }
     private IEnumerator ShowCatchText()
     {

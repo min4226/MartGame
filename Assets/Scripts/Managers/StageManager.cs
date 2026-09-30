@@ -26,7 +26,6 @@ public class StageManager : ManagerBase
 
     public void StartStage(int index)
     {
-        Debug.Log("★ StartStage 실행");
         if (customerSpawn == null)
             customerSpawn = FindFirstObjectByType<CustomerSpawn>();
         
