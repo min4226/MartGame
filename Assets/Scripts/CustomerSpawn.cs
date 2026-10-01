@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomerSpawn : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class CustomerSpawn : MonoBehaviour
     [SerializeField] Transform poolPosition;
     [SerializeField] GameObject processObj;
     [SerializeField] TextMeshProUGUI dialogueText;
+    [SerializeField] private GameObject writeName;
+    [SerializeField] private TextMeshProUGUI writeText;
+    [SerializeField] private Button writeButton;
 
-    
     [SerializeField] private int thiefSpawnMinCustomer = 2;
     [SerializeField] private int thiefSpawnMaxCustomer = 4;
 
@@ -54,11 +57,11 @@ public class CustomerSpawn : MonoBehaviour
             stageData.troublemakerCustomerCount
         );
 
-        AddCustomers(
+        /*AddCustomers(
             list,
             CustomerType.SpecialCustomer,
             stageData.specialCustomerCount
-        );
+        );*/
 
         Shuffle(list);
 
@@ -137,6 +140,7 @@ public class CustomerSpawn : MonoBehaviour
 
         GameManager.Instance.currentCustomer = customer;
 
+        
         // 기존 손님 처리
 
         switch (type)
@@ -154,6 +158,36 @@ public class CustomerSpawn : MonoBehaviour
 
             case CustomerType.TroubleMakerCustomer:
 
+                GameObject[] objects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+                foreach (GameObject obj in objects)
+                {
+                    if (obj.name == "WriteTroubleCustomerName")
+                    {
+                        writeName = obj;
+                        break;
+                    }
+                }
+
+                foreach (GameObject obj in objects)
+                {
+                    if (obj.name == "WriteCustomerText")
+                    {
+                        writeText = obj.GetComponent<TextMeshProUGUI>();
+                        break;
+                    }
+                }
+
+                foreach (GameObject obj in objects)
+                {
+                    if (obj.name == "WriteTroubleCustomerButton")
+                    {
+                        writeButton = obj.GetComponent<Button>();
+                        break;
+                    }
+                }
+
+                
                 TroubleCustomerAction troubleAction =
                     customer.GetComponent<TroubleCustomerAction>();
 
@@ -161,7 +195,7 @@ public class CustomerSpawn : MonoBehaviour
                 {
                     troubleAction.StartActions(data);
                 }
-
+                StartCoroutine(WriteInputField());
                 break;
 
             case CustomerType.SpecialCustomer:
@@ -174,7 +208,22 @@ public class CustomerSpawn : MonoBehaviour
         // 도둑 등장 체크
         TrySpawnThief();
     }
+    public IEnumerator WriteInputField()
+    {
+        yield return new WaitForSeconds(5f);
 
+        if (GameManager.Instance.Stage.CurrentStage.stageName >= StageType.stage2)
+        {
+            writeName.SetActive(true);
+            writeText.gameObject.SetActive(true);
+            writeButton.gameObject.SetActive(true);
+
+        }
+        yield return new WaitForSeconds(2f);
+        writeName.SetActive(false);
+        writeText.gameObject.SetActive(false);
+        writeButton.gameObject.SetActive(false);
+    }
     CustomerData GetCustomerData(CustomerType type)
     {
         List<CustomerData> matchingData = new List<CustomerData>();

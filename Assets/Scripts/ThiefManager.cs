@@ -48,41 +48,10 @@ public class ThiefManager : MonoBehaviour
         if (!value)
             return;
 
-        if (currentThief == null)
+        if (!isThiefActive || currentThief == null)
             return;
-
-        Collider2D hit = Physics2D.OverlapPoint(worldPosition);
-
-        if (hit == null)
-            return;
-
-        if (hit.gameObject != currentThief)
-            return;
-
-        Debug.Log("[ThiefManager] 도둑 클릭 성공!");
 
         CatchThief();
-
-        catchText = null;
-
-        GameObject[] objects = FindObjectsByType<GameObject>(
-            FindObjectsInactive.Include,
-            FindObjectsSortMode.None
-        );
-
-        foreach (GameObject obj in objects)
-        {
-            if (obj.CompareTag("CatchText"))
-            {
-                catchText = obj;
-                break;
-            }
-        }
-
-        if (catchText != null)
-        {
-            StartCoroutine(ShowCatchText()); 
-        }
     }
     public void StartThief(StageData stageData)
     {
@@ -138,14 +107,14 @@ public class ThiefManager : MonoBehaviour
     }
     public void CatchThief()
     {
-        rewardUI = GameObject.Find("GameObject").GetComponent<RewardUI>();
+        rewardUI = GameObject.Find("UserCoin_Fame").GetComponent<RewardUI>();
         Debug.Log($"rewardui : {rewardUI}");
         isThiefActive = false;
         thiefTimer = 0f;
 
         Destroy(currentThief);
         currentThief = null;
-
+        ;
         Debug.Log("도둑을 잡았습니다!");
         
         int currentCoin = int.Parse(rewardUI.CoinText.text);

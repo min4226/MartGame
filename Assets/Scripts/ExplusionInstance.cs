@@ -13,7 +13,6 @@ public class ExplusionInstance : MonoBehaviour
     private ExpulsionItem item;
     void Start()
     {
-       
         List<ExpulsionItem> randomItems = new List<ExpulsionItem>(explusion.expulsionItems);
 
         currentItems = new ExpulsionItem[imagePanel.Length];

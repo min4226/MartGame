@@ -38,7 +38,6 @@ public class DBManager : ManagerBase
     {
         try
         {
-
             if (task.Result == DependencyStatus.Available)
             {
                 authentication = FirebaseAuth.DefaultInstance;
@@ -146,8 +145,11 @@ public class DBManager : ManagerBase
         public int coin;
         public int fame;
     }
-
-    
+    [Serializable]
+    public class TroubleCustomerNameData
+    {
+        public string troubleCustomerName;
+    }
     public UserData NewUserData(string wantNickname)
     {
         Debug.Log($"wantnickname : {wantNickname}");
@@ -162,7 +164,14 @@ public class DBManager : ManagerBase
             attendtime = 1
         };
     }
-
+    public TroubleCustomerNameData NewTroubleCustomerNameData(string wantName)
+    {
+        return new()
+        {
+            troubleCustomerName = wantName,
+        };
+    
+    }
     public DatabaseReference GetFindDirectory(DatabaseReference root, params string[] directory)
     {
         if (directory is null || directory.Length == 0) return root;
@@ -238,6 +247,18 @@ public class DBManager : ManagerBase
             user.UserId
         );
     }
+
+    public void SaveTroubleCustomerName(string customerName)
+    {
+        TroubleCustomerNameData data = NewTroubleCustomerNameData(customerName);
+
+        WriteData(
+            data,
+            "users",
+            "troubleCustomerData",
+            user.UserId
+        );
+    }
     public void SaveRewardData(int coin, int fame)
     {
         resultData.coin = coin;
@@ -278,4 +299,5 @@ public class DBManager : ManagerBase
 
 
     }
+    
 }

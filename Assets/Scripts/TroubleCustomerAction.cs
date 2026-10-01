@@ -83,7 +83,7 @@ public class TroubleCustomerAction : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         // 퇴치물건 UI
-        ShowExpulsionUI();
+        StartCoroutine(ShowExpulsionUI());
 
         yield return new WaitForSeconds(action.actionDuration);
     }
@@ -119,10 +119,11 @@ public class TroubleCustomerAction : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
     }
-    private void ShowExpulsionUI()
+    private IEnumerator ShowExpulsionUI()
     {
-        Transform canvas = transform.Find("Canvas");
+        yield return new WaitForSeconds(3f);
 
+        Transform canvas = transform.Find("Canvas");
         Transform processObj = canvas.Find("ProcessObj");
 
         processObj.gameObject.SetActive(true);
