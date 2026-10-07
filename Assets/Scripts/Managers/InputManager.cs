@@ -193,7 +193,7 @@ public class InputManager : ManagerBase
         }
 
         void CursorPositionChanged(InputAction.CallbackContext context)
-        {
+        { 
             RefreshGameObjectUnderCursor(GetVector2Value(context));
             OnMouseMove?.Invoke(cursorScreenPosition, cursorWorldPosition);
         }

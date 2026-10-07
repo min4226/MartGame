@@ -16,8 +16,8 @@ public class NormalCustomer : MonoBehaviour
     [SerializeField] Trigger trigger;
     [SerializeField] NormalCustomerItem todayItem;
 
-    [SerializeField] Image balloonImage;
-    [SerializeField] TextMeshProUGUI dialogueText;
+    Image balloonImage;
+    TextMeshProUGUI dialogueText;
 
     // 가격 패널
     [SerializeField] private Button priceArrowButton;
@@ -79,28 +79,22 @@ public class NormalCustomer : MonoBehaviour
             return;
 
 
-
+        // 아직 생성해야될 물건이 남아있고 상품 생성 중이 아니라면
         if (createdItemCount < targetItemCount && !isItemCreating)
         {
             StartCoroutine(ItemCreate());
         }
 
-
-        
-        if (!isDialogueFinished &&
-            currentDialogueData != null &&
-            !isDialoguePlaying)
+        // 대화가 끝나지 않았고 현재 실행된 데이터가 있거나 대화가 나오는 상태가 아니라면
+        if (!isDialogueFinished && currentDialogueData != null && !isDialoguePlaying)
         {
             StartCoroutine(ShowDialogues(currentDialogueData));
         }
     }
 
-
-   
     private void OnDisable()
     {
         // 기존 진행 상황을 그대로 들고오게 하기
-
         isItemCreating = false;
         isDialoguePlaying = false;
     }
@@ -125,20 +119,16 @@ public class NormalCustomer : MonoBehaviour
 
         int stageIndex = GameManager.Instance.Stage.CurrentIndex;
 
-        StageData stageData =
-            stageContainer.stageDatas[stageIndex];
+        StageData stageData = stageContainer.stageDatas[stageIndex];
 
-
-        targetItemCount =
-            stageData.normalCustomerItemCount;
-
+        targetItemCount = stageData.normalCustomerItemCount;
 
         if (createdItemCount == 0)
         {
             todayItems.Clear();
 
-            PricePanelController priceController =
-                FindFirstObjectByType<PricePanelController>();
+            PricePanelController priceController = FindFirstObjectByType<PricePanelController>();
+
 
             if (priceController != null)
                 priceController.ResetButton();
@@ -146,8 +136,6 @@ public class NormalCustomer : MonoBehaviour
             trigger.SetItemCount(targetItemCount);
         }
 
-
-       
         while (createdItemCount < targetItemCount)
         {
             if (items.Length == 0)
@@ -157,19 +145,13 @@ public class NormalCustomer : MonoBehaviour
             }
 
 
-            NormalCustomerItem customerItem =
-                items[Random.Range(0, items.Length)];
-
+            NormalCustomerItem customerItem = items[Random.Range(0, items.Length)];
 
             if (customerItem.item.Length == 0)
                 continue;
 
 
-            ItemData itemData =
-                customerItem.item[
-                    Random.Range(0, customerItem.item.Length)
-                ];
-
+            ItemData itemData = customerItem.item[Random.Range(0, customerItem.item.Length)];
 
             // 상품 데이터 저장
             todayItems.Add(itemData);
@@ -225,8 +207,7 @@ public class NormalCustomer : MonoBehaviour
 
         while (timer < seconds)
         {
-            if (GameManager.Instance.CurrentState
-                == GameState.PlayScene)
+            if (GameManager.Instance.CurrentState == GameState.PlayScene)
             {
                 timer += Time.deltaTime;
             }
@@ -248,7 +229,7 @@ public class NormalCustomer : MonoBehaviour
 
         pricePanel.SetActive(true);
 
-        priceArrowButton.interactable = false;
+        priceArrowButton.interactable = false; // interactable : 버튼을 누르지 못하도록.
     }
 
 
@@ -262,10 +243,8 @@ public class NormalCustomer : MonoBehaviour
             total += currentItem.itemBasePrice;
         }
 
-
         return total;
     }
-
 
     public void SetDialogue(CustomerData data)
     {
@@ -303,7 +282,6 @@ public class NormalCustomer : MonoBehaviour
         }
     }
 
-
     private IEnumerator ShowDialogues(CustomerData data)
     {
         if (data == null)
@@ -332,25 +310,17 @@ public class NormalCustomer : MonoBehaviour
             }
 
 
-            DialogueData dialogue =
-                data.dialogues[currentDialogueIndex];
+            DialogueData dialogue = data.dialogues[currentDialogueIndex];
 
-
-            
             dialogueUI.gameObject.SetActive(true);
 
-            balloonImage.sprite =
-                dialogue.balloonSprite;
+            balloonImage.sprite = dialogue.balloonSprite;
 
-            dialogueText.text =
-                dialogue.dialogue;
-
-
+            dialogueText.text = dialogue.dialogue;
 
             while (dialogueTimer < 2f)
             {
-                if (GameManager.Instance.CurrentState
-                    == GameState.PlayScene)
+                if (GameManager.Instance.CurrentState == GameState.PlayScene)
                 {
                     dialogueTimer += Time.deltaTime;
                 }

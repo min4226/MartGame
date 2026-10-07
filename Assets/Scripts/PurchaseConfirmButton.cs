@@ -41,16 +41,11 @@ public class PurchaseConfirmButton : MonoBehaviour
         GameManager.DB.resultData.fame = currentFame;
 
         // Firebase 저장
-        GameManager.DB.SaveRewardData(
-            GameManager.DB.resultData.coin,
-            GameManager.DB.resultData.fame
-        );
+        GameManager.DB.SaveRewardData(GameManager.DB.resultData.coin,
+            GameManager.DB.resultData.fame);
 
         // 실제 아이템 구매 처리
         ShopInventory.Instance.BuySelectedItem();
 
-        Debug.Log($"구매 완료 : {selectedItem.shopItemName}");
-        Debug.Log($"사용 코인 : {reward.coin}");
-        Debug.Log($"사용 명성 : {reward.fame}");
     }
 }

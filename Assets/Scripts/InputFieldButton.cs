@@ -46,7 +46,7 @@ public class InputFieldButton : MonoBehaviour
             GameManager.Instance.CorrectAnswer.SetActive(true);
             inputField.gameObject.SetActive(false);
             GameManager.Instance.RewardModule.ApplyReward();
-            customerSpawn.StartCoroutine(GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
+            customerSpawn.StartCoroutine (GameManager.Instance.CustomerSpawn.NextCustomerRoutine());
         }
         else
         {

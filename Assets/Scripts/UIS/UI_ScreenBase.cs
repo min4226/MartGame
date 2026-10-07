@@ -35,7 +35,7 @@ public class UI_ScreenBase : UIBase , IOpenable
 {
     [SerializeField] UIClaim[] requiredUI;
 
-    public bool IsOpen => gameObject.activeSelf;
+    public bool IsOpen => gameObject.activeSelf; // activeself : 현재 상태를 나타냄 true라면 true를 반환
     public void Close()
     {
         gameObject.SetActive(false);

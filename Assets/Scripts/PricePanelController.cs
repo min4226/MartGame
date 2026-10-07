@@ -5,18 +5,13 @@ public class PricePanelController : MonoBehaviour
 {
     [SerializeField] private GameObject pricePanel;
     [SerializeField] private Button arrowButton;
-    [SerializeField] private GameObject lockImage;
-
+    
     private bool isLocked = false;
-
-    private void Start()
-    {
-        if (lockImage != null)
-            lockImage.SetActive(false);
-    }
 
     public void OpenPricePanel()
     {
+        // return은 조건이 true일 때만 실행이 됨 현재 isLocked는 false이기
+        // 때문에 return을 실행하지 않음
         if (isLocked)
             return;
 
@@ -25,9 +20,9 @@ public class PricePanelController : MonoBehaviour
 
         if (arrowButton != null)
             arrowButton.interactable = false;
-
-        if (lockImage != null)
-            lockImage.SetActive(true);
+            // interactable : ui를 사용자가 누를 수 있는지
+            // isLocked가 true이기 때문에 ui를 사용자가 누르지
+            // 못하게 막음
     }
 
     public void ResetButton()
@@ -37,7 +32,5 @@ public class PricePanelController : MonoBehaviour
         if (arrowButton != null)
             arrowButton.interactable = true;
 
-        if (lockImage != null)
-            lockImage.SetActive(false);
     }
 }

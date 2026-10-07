@@ -149,9 +149,6 @@ public class GameManager : MonoBehaviour
 
         totalLoad += CreateManager(ref _db).LoadingCount;
 
-
-
-
         yield return  UI.Initialize(this);
         UIBase loadingUI = UIManager.ClaimOpenScreen(UIType.Loading);
         IProgress<int> loadingProgress = loadingUI as IProgress<int>;
@@ -223,7 +220,6 @@ public class GameManager : MonoBehaviour
 #endif
 
     }
-
 
     public static void Pause()
     {

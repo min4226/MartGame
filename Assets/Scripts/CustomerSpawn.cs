@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class CustomerSpawn : MonoBehaviour
 {
     [SerializeField] CustomerData[] customerData;
@@ -208,6 +209,12 @@ public class CustomerSpawn : MonoBehaviour
         // 도둑 등장 체크
         TrySpawnThief();
     }
+    public void SetActiveWriteButton()
+    {
+        writeName.SetActive(false);
+        writeText.gameObject.SetActive(false);
+        writeButton.gameObject.SetActive(false);
+    }
     public IEnumerator WriteInputField()
     {
         yield return new WaitForSeconds(5f);
@@ -217,12 +224,16 @@ public class CustomerSpawn : MonoBehaviour
             writeName.SetActive(true);
             writeText.gameObject.SetActive(true);
             writeButton.gameObject.SetActive(true);
+            
 
         }
-        yield return new WaitForSeconds(2f);
+
+        /*if (string.IsNullOrWhiteSpace(writeText.text))
+            yield break ;
+
         writeName.SetActive(false);
         writeText.gameObject.SetActive(false);
-        writeButton.gameObject.SetActive(false);
+        writeButton.gameObject.SetActive(false);*/
     }
     CustomerData GetCustomerData(CustomerType type)
     {

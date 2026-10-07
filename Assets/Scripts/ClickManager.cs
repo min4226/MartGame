@@ -32,8 +32,8 @@ public class ClickManager : MonoBehaviour
         dragItemRect = GetComponent<RectTransform>();
 
         ClickManager[] managers = FindObjectsByType<ClickManager>(
-            FindObjectsInactive.Include,
-            FindObjectsSortMode.None
+            FindObjectsInactive.Include, // 비활성화 되어있는 애들도 포함
+            FindObjectsSortMode.None // 찾은 결과를 정렬 시키지 않음
             );
 
         callingToPolice = FindFirstObjectByType<CallingToPolice>();

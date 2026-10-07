@@ -1,18 +1,24 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Rendering.UI;
 
 public class WriteTroubleCustomerName : MonoBehaviour
 {
-    TextMeshProUGUI troubleCustomerName;
-    TMP_InputField writeTroubleCustomerName;
-    // 적는 공간의 인풋 필드, 띄울 인풋 필드
+    [SerializeField] private TextMeshProUGUI troubleCustomerName;
+    [SerializeField] private TMP_InputField writeTroubleCustomerName;
+    Transform troubleName;
+    
     public void OnWriteTroubleCustomerNameButton()
     {
-        Debug.Log("이름 입력 버튼 함수 실행");
         GameObject canvas = GameObject.Find("Canvas");
         Debug.Log($"canvas : {canvas}");
-        TextMeshProUGUI troubleCustomerName = canvas.transform.Find("TroubleCustomerName").GetComponent<TextMeshProUGUI>(); // 띄워질 인풋필드 들고오는 것
-        TMP_InputField writeTroubleCustomerName = GameObject.Find("WriteTroubleCustomerName").GetComponent<TMP_InputField>();
+        TMP_InputField inputField =
+            canvas.transform.Find("WriteTroubleCustomerName").GetComponent<TMP_InputField>();
+        Debug.Log($"writetroublecustomername : {inputField}");
+            return;
+
+        troubleCustomerName.text = inputField.text;
+
+        Debug.Log($"입력한 이름 : {inputField.text}");
     }
 }

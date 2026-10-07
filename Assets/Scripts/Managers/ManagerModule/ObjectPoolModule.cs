@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class ObjectPoolModule
 {
     PoolSetting _setting;
-    public PoolSetting Setting => _setting; // ¹Û¿¡¼­´Â º¸´Â °Í¸¸ °¡´ÉÇÏµµ·Ï ÇÁ·ÎÆÛÆ¼
+    public PoolSetting Setting => _setting; // ï¿½Û¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼
     Transform rootTransform;
 
     Queue<GameObject> prepareQueue = new();
@@ -32,7 +32,7 @@ public class ObjectPoolModule
         return result;
     }
     
-                       // ¸¶ÀÌ³Ê½º°¡ ¾ÈµÇ±â À§ÇØ
+                       // ï¿½ï¿½ï¿½Ì³Ê½ï¿½ï¿½ï¿½ ï¿½ÈµÇ±ï¿½ ï¿½ï¿½ï¿½ï¿½
     void PrepareObjects(uint count)
     {
         if (!Setting.target) return;

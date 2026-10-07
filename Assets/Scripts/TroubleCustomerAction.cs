@@ -15,11 +15,13 @@ public class TroubleCustomerAction : MonoBehaviour
     TextMeshProUGUI dialogueText;
     Animator animator;
     TroubleActionData actionData;
-    Canvas canvas;
+    
     GameObject actionObject = null;
+    Transform canvas;
+    public Transform Canvas => canvas;
     private void Awake()
     {
-        Transform canvas = transform.Find("Canvas");
+        canvas = transform.Find("Canvas");
         actionData = FindAnyObjectByType<TroubleActionData>();
         
         if (canvas != null)
@@ -103,7 +105,7 @@ public class TroubleCustomerAction : MonoBehaviour
         // 랜덤으로 하나 선택
         int randomIndex = Random.Range(0, dialogues.Count);
         DialogueData dialogue = dialogues[randomIndex];
-
+                                                                                                                             
         balloonImage.sprite = dialogue.balloonSprite;
         dialogueText.text = dialogue.dialogue;
 
@@ -121,11 +123,12 @@ public class TroubleCustomerAction : MonoBehaviour
     }
     private IEnumerator ShowExpulsionUI()
     {
-        yield return new WaitForSeconds(3f);
-
+        CustomerSpawn customerSpawn = FindFirstObjectByType<CustomerSpawn>();
+        Debug.Log($"customerspawn : {customerSpawn}");
+        yield return new WaitForSeconds(5f);
         Transform canvas = transform.Find("Canvas");
         Transform processObj = canvas.Find("ProcessObj");
-
+        customerSpawn.SetActiveWriteButton();
         processObj.gameObject.SetActive(true);
     }
 }
