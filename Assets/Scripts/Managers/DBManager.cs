@@ -150,6 +150,13 @@ public class DBManager : ManagerBase
     {
         public string troubleCustomerName;
     }
+    [Serializable]
+    public class RankingData
+    {
+        public string nickname;
+        public int heart;
+        public string troubleCustomerName;
+    }
     public UserData NewUserData(string wantNickname)
     {
         Debug.Log($"wantnickname : {wantNickname}");
@@ -268,6 +275,29 @@ public class DBManager : ManagerBase
             resultData,
             "users",
             "userData",
+            user.UserId
+        );
+    }
+    public void SaveRankingData(string troubleCustomerName)
+    {
+        HeartCount heartCount = FindFirstObjectByType<HeartCount>(FindObjectsInactive.Include);
+
+        if (heartCount == null)
+        {
+            Debug.LogError("HeartCount를 찾을 수 없습니다.");
+            return;
+        }
+
+        RankingData data = new RankingData
+        {
+            nickname = resultData.nickname,
+            heart = heartCount.count,
+            troubleCustomerName = troubleCustomerName
+        };
+
+        WriteData(
+            data,
+            "ranking",
             user.UserId
         );
     }

@@ -11,7 +11,7 @@ public enum UIType
 { 
     None, Loading,  Movable,  Title, Stage, Option, Shop, GameQuit, MyMarket, PayWindow, 
     Ranking, BackGround, CoinInfo, FameInfo, NormalCustomerInfo, MarketWindow, Inventory, ItemCursorSlot, 
-    ItemPriceMenu, StageClearPanel, NickNameChangePanel, MainShopWindow,
+    ItemPriceMenu, StageClearPanel, NickNameChangePanel, MainShopWindow, TroubleCustomerNamePanel,
     _Length
 }
 
@@ -96,7 +96,7 @@ public class UIManager : ManagerBase
         CreateUI(UIType.ItemPriceMenu, "ItemPricePanel");
         CreateUI(UIType.PayWindow, "PayWindow 1", MainCanvas.transform);
         CreateUI(UIType.MainShopWindow, "MainShopWindow");
-
+        CreateUI(UIType.TroubleCustomerNamePanel, "TroubleCustomerNamePanelPopup");
         foreach (Transform currentTransform in switcherTransform)
         { 
             

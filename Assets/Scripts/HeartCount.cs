@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class HeartCount : MonoBehaviour
 {
-    int count;
+    public int count;
     public TextMeshProUGUI heartCount;
     public Sprite emptyHeart;
     public Sprite fullHeart;

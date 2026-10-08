@@ -80,7 +80,7 @@ public class TroubleCustomerAction : MonoBehaviour
         {
             yield return StartCoroutine(ShowDialogues(action.dialogueTroubleData));
         }
-
+        
         // 대사 끝난 후 3초 대기
         yield return new WaitForSeconds(3f);
 
