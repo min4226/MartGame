@@ -20,6 +20,7 @@ public class DBManager : ManagerBase
     FirebaseUser user;
     DatabaseReference rootReference;
     public UserData resultData { get;  set; }
+    public RankingData rankingData { get; set; }
     TextMeshProUGUI idText;
     
     protected override IEnumerator OnConnected(GameManager newManager)
@@ -105,7 +106,18 @@ public class DBManager : ManagerBase
         await authentication.SignInAnonymouslyAsync()
             .ContinueWithOnMainThread(OnLoginResult);
     }
+    public async Task<RankingData> RegistrationRanking()
+    {
+        if (user == null)
+            return null;
 
+        rankingData = await ReadDataAsync<RankingData>(
+            "ranking",
+            user.UserId
+        );
+
+        return rankingData;
+    }
 
     void OnLoginResult(Task<AuthResult> task)
     {
