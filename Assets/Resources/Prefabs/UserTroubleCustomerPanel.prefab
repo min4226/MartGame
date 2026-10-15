@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3037209326980909186}
   - component: {fileID: 4207031285855741290}
   m_Layer: 5
-  m_Name: Image
+  m_Name: UserTroubleCustomerPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,9 +103,10 @@ GameObject:
   - component: {fileID: 411051689112155685}
   - component: {fileID: 1416492036702535646}
   - component: {fileID: 6862355342439630978}
+  - component: {fileID: 3053345041179133836}
   m_Layer: 5
   m_Name: ThumbsUp
-  m_TagString: Untagged
+  m_TagString: thumpsUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +169,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3053345041179133836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887391394504467172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2f189a5a7a2b246835f9f79f72d013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HeartCount
+  count: 0
+  heartCount: {fileID: 7580119848577282336}
+  emptyHeart: {fileID: -7766813470746754612, guid: cfc4f09c20b31434aa75e255613fba74, type: 3}
+  fullHeart: {fileID: 1513905477794136545, guid: ee82a91bc6ba93a438ccd242bfd1656d, type: 3}
+  heartImage: {fileID: 6862355342439630978}
 --- !u!1 &5339446950530379745
 GameObject:
   m_ObjectHideFlags: 0

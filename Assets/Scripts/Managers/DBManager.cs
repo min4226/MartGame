@@ -290,16 +290,29 @@ public class DBManager : ManagerBase
             user.UserId
         );
     }
+
     public void SaveRankingData(string troubleCustomerName)
     {
-        HeartCount heartCount = FindFirstObjectByType<HeartCount>(FindObjectsInactive.Include);
+        // 팝업 오브젝트 찾기
+        GameObject panel = GameObject.Find("UserTroubleCustomerPanel");
 
-        if (heartCount == null)
+        if (panel == null)
         {
-            Debug.LogError("HeartCount를 찾을 수 없습니다.");
+            Debug.LogError("UserTroubleCustomerPanel을 찾을 수 없습니다.");
             return;
         }
 
+        // 팝업 내부에서 HeartCount 찾기
+        HeartCount heartCount =
+            panel.GetComponentInChildren<HeartCount>(true);
+
+        if (heartCount == null)
+        {
+            Debug.LogError("팝업 내부에서 HeartCount를 찾을 수 없습니다.");
+            return;
+        }
+
+        // 랭킹 데이터 생성
         RankingData data = new RankingData
         {
             nickname = resultData.nickname,
@@ -307,12 +320,15 @@ public class DBManager : ManagerBase
             troubleCustomerName = troubleCustomerName
         };
 
-        WriteData(
-            data,
-            "ranking",
-            user.UserId
+        // Firebase 저장
+        WriteData(data, "ranking", user.UserId);
+
+        Debug.Log(
+            $"랭킹 저장 요청: 닉네임={data.nickname}, " +
+            $"하트={data.heart}, 진상 이름={data.troubleCustomerName}"
         );
     }
+
 
     public void UpdateRewardUI()
     {
@@ -341,5 +357,40 @@ public class DBManager : ManagerBase
 
 
     }
-    
+    public async Task<List<RankingData>> ReadAllRankingData()
+    {
+        List<RankingData> rankings = new List<RankingData>();
+
+        if (rootReference == null)
+        {
+            Debug.LogError("Firebase가 아직 초기화되지 않았습니다.");
+            return rankings;
+        }
+
+        DataSnapshot snapshot = await GetFindDirectory(
+            rootReference, "ranking"
+        ).GetValueAsync();
+
+        if (snapshot == null || !snapshot.Exists)
+        {
+            Debug.Log("저장된 랭킹 데이터가 없습니다.");
+            return rankings;
+        }
+
+        foreach (DataSnapshot child in snapshot.Children)
+        {
+            RankingData data = JsonUtility.FromJson<RankingData>(
+                child.GetRawJsonValue()
+            );
+
+            if (data != null)
+            {
+                rankings.Add(data);
+            }
+        }
+
+        rankings.Sort((a, b) => b.heart.CompareTo(a.heart));
+
+        return rankings;
+    }
 }

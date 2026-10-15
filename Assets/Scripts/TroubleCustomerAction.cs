@@ -21,18 +21,10 @@ public class TroubleCustomerAction : MonoBehaviour
     public Transform Canvas => canvas;
     private void Awake()
     {
-        canvas = transform.Find("Canvas");
+       
         actionData = FindAnyObjectByType<TroubleActionData>();
         
-        if (canvas != null)
-        {
-            Transform processObj = canvas.Find("ProcessObj");
-
-            if (processObj != null)
-            {
-                processObj.gameObject.SetActive(false);
-            }
-        }
+        
         GameObject background = GameObject.FindGameObjectWithTag("PlayGame");
         
         if (background != null)
@@ -126,10 +118,10 @@ public class TroubleCustomerAction : MonoBehaviour
         CustomerSpawn customerSpawn = FindFirstObjectByType<CustomerSpawn>();
         Debug.Log($"customerspawn : {customerSpawn}");
         yield return new WaitForSeconds(5f);
-        Transform canvas = transform.Find("Canvas");
-        Transform processObj = canvas.Find("ProcessObj");
+        /*Transform canvas = transform.Find("Canvas");
+        Transform processObj = canvas.Find("ProcessObj");*/
         customerSpawn.SetActiveWriteButton();
-        processObj.gameObject.SetActive(true);
+       
     }
 }
 

@@ -1,3 +1,4 @@
+
 using TMPro;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class RankingSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI customerName;
     [SerializeField] private TextMeshProUGUI thumbsCount;
 
-    public void Init(DBManager.RankingData data) 
+    public void Init(DBManager.RankingData data)
     {
         userName.text = data.nickname;
         customerName.text = data.troubleCustomerName;

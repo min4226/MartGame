@@ -148,7 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopInventory
   shopData: {fileID: 11400000, guid: d9eb17fb28cdc99418b1b9c39b8ea82c, type: 2}
   shopItemPay: {fileID: 0}
-  userPayCount: {fileID: 2150431024136178772}
 --- !u!1 &536391822390502157
 GameObject:
   m_ObjectHideFlags: 0

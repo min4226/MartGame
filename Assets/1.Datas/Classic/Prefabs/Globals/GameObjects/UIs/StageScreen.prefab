@@ -955,7 +955,7 @@ MonoBehaviour:
     uiType: 6
     isOpen: 0
     isOverlay: 0
-  - prefabName: RankingPopup
+  - prefabName: RankingPanel
     uiType: 10
     isOpen: 0
     isOverlay: 0

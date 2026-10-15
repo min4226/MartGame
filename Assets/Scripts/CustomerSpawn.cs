@@ -12,9 +12,11 @@ public class CustomerSpawn : MonoBehaviour
     [SerializeField] GameObject processObj;
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] private GameObject writeName;
+    public GameObject WriteName => writeName;
     [SerializeField] private TextMeshProUGUI writeText;
+    public TextMeshProUGUI WriteText => writeText;
     [SerializeField] private Button writeButton;
-
+    public Button WriteButton => writeButton;
     [SerializeField] private int thiefSpawnMinCustomer = 2;
     [SerializeField] private int thiefSpawnMaxCustomer = 4;
 
@@ -228,12 +230,6 @@ public class CustomerSpawn : MonoBehaviour
 
         }
 
-        /*if (string.IsNullOrWhiteSpace(writeText.text))
-            yield break ;
-
-        writeName.SetActive(false);
-        writeText.gameObject.SetActive(false);
-        writeButton.gameObject.SetActive(false);*/
     }
     CustomerData GetCustomerData(CustomerType type)
     {
